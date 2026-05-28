@@ -1,0 +1,436 @@
+REPORTE DE LIMPIEZA Y NORMALIZACIÓN DE AFILIACIONES UNAM
+
+======================================================================
+1. OBJETIVO DE ESTA ETAPA
+======================================================================
+
+Después de la fase de separación artículo-autor-afiliación, se continuó con la
+normalización de afiliaciones UNAM y con el filtrado de autores externos.
+
+El objetivo fue preparar una base en la que se conservaran únicamente las filas
+correspondientes a autores con alguna afiliación asociada a la Universidad
+Nacional Autónoma de México, y en la que las afiliaciones UNAM restantes quedaran
+normalizadas conforme a un catálogo/diccionario construido a partir de la base de
+referencia de la tutora.
+
+La fase no tuvo como objetivo deduplicar artículos, limpiar títulos, limpiar DOI,
+normalizar keywords, corregir abstracts ni modificar autores. Esas tareas quedan
+fuera de esta etapa.
+
+======================================================================
+2. PUNTO DE PARTIDA
+======================================================================
+
+La entrada principal de esta etapa fue la base ya separada artículo-autor-
+afiliación:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\00_Separacion_Autor_Afiliacion\integrado_articulo_autor_afiliacion_unificado_manual.csv
+
+Características de la base de entrada:
+
+- Filas originales artículo-autor: 8,940
+- Columnas: 14 columnas canónicas
+- Columnas conservadas:
+  indice
+  Titulo
+  Año
+  Autor_norm
+  Afiliacion1
+  Afiliacion2
+  ISBN
+  ISSN
+  Doi
+  URL
+  Area
+  Subarea
+  Keywords
+  Abstract
+
+Esta base ya tenía una fila por autor de artículo. La tarea pendiente era decidir
+cuáles de esas filas correspondían a autores con afiliación UNAM y normalizar el
+nombre de dichas afiliaciones.
+
+La referencia institucional utilizada fue:
+
+C:\Users\hazar\Desktop\PROYECTO\00_control\UNAM_Completo_Corregido.xlsx
+
+Esta base de referencia no contiene los mismos artículos del periodo actual, pero
+sí sirvió para identificar el estándar esperado de afiliaciones: nombres de
+organismos, institutos, facultades, centros, escuelas, unidades y direcciones
+reales de adscripción, evitando dejar como afiliación final textos demasiado
+generales, direcciones largas o programas académicos cuando era posible asociarlos
+con un organismo.
+
+======================================================================
+3. LIBRETAS USADAS EN ESTA PARTE
+======================================================================
+
+Las libretas finales usadas para llegar al estado actual fueron:
+
+1) 04_limpieza_01_catalogo_afiliaciones_unam_campus.ipynb
+
+   Función:
+   Crear un primer catálogo de organismos UNAM, alias, programas y casos de
+   revisión a partir del Excel de referencia de la tutora.
+
+   Esta libreta se centró en no perder sedes, campus o unidades fuera de Ciudad
+   Universitaria cuando forman parte de la adscripción real. Por ejemplo:
+
+   - Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán
+   - Instituto de Neurobiología Unidad Juriquilla
+   - Centro de Física Aplicada y Tecnología Avanzada Juriquilla
+   - Centro Regional de Investigaciones Multidisciplinarias Cuernavaca
+   - Centro de Ciencias Genómicas Cuernavaca
+   - Instituto de Química Unidad Mérida
+
+   La idea principal fue no borrar automáticamente términos como Juriquilla,
+   Yucatán, Mérida, Cuernavaca, Morelia o León cuando ayudan a distinguir una sede
+   o unidad UNAM real.
+
+2) 04_limpieza_02_catalogo_diccionario_afiliaciones_unam_final.ipynb
+
+   Función:
+   Tomar el catálogo inicial, los alias, los programas por asociar, las
+   afiliaciones genéricas y los casos de revisión para producir el catálogo final
+   y el diccionario final de alias.
+
+   En esta libreta se consolidaron los nombres finales de afiliación. También se
+   aplicó la regla de que la columna afiliacion de los archivos finales no debe
+   contener comas. Esto facilita la etapa posterior de reemplazo y evita que una
+   afiliación final quede como dirección larga.
+
+3) 04_limpieza_03_normalizar_filtrar_afiliaciones_unam.ipynb
+
+   Función:
+   Leer la base artículo-autor-afiliación, aplicar el catálogo/diccionario final,
+   normalizar Afiliacion1 y Afiliacion2, y eliminar todas las filas donde no se
+   detectó asociación UNAM.
+
+   Esta libreta generó el archivo final actual:
+
+   C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\integrado_solo_unam_normalizado.csv
+
+
+
+======================================================================
+4. PRIMERA SUBFASE: CATÁLOGO INICIAL DE ORGANISMOS UNAM
+======================================================================
+
+Libreta principal:
+
+04_limpieza_01_catalogo_afiliaciones_unam_campus.ipynb
+
+Entrada:
+
+C:\Users\hazar\Desktop\PROYECTO\00_control\UNAM_Completo_Corregido.xlsx
+
+Destino de trabajo:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones
+
+Objetivo:
+
+Crear una base de conocimiento inicial con organismos UNAM, alias, programas y
+casos especiales. Esta subfase buscó identificar nombres de adscripción que sí
+pueden ser afiliaciones válidas, y separar aquellos textos que requieren
+tratamiento especial.
+
+Criterios usados:
+
+- Extraer valores de Afiliacion1 y Afiliacion2 del archivo de referencia.
+- Normalizar internamente para comparación, sin perder el nombre legible.
+- Detectar organismos como facultades, institutos, centros, escuelas, unidades,
+  direcciones generales y coordinaciones.
+- Detectar programas o afiliaciones no finales como posgrados, licenciaturas,
+  maestrías, doctorados, programas académicos y unidad de posgrado.
+- Detectar afiliaciones genéricas UNAM.
+- Detectar afiliaciones externas o no objetivo.
+- Mantener sedes/campus/unidades cuando forman parte del organismo.
+
+Archivos generados por esta subfase:
+
+1) afiliaciones_genericas_unam.csv
+   Filas: 3
+   Uso: registrar formas genéricas de UNAM que sirven como evidencia, pero que no
+   siempre son suficientes para identificar un organismo específico.
+
+2) afiliaciones_requieren_revision.csv
+   Filas: 18
+   Uso: registrar valores que requieren validación o decisión manual antes de ser
+   usados como afiliación final.
+
+3) catalogo_organismos_unam.csv
+   Filas: 88
+   Uso: catálogo inicial de organismos UNAM observados o inferidos desde la base
+   de referencia.
+
+4) catalogo_programas_unam_por_asociar.csv
+   Filas: 8
+   Uso: catálogo de programas o posgrados que no deben quedar necesariamente como
+   afiliación final si es posible asociarlos a una dependencia real.
+
+5) diccionario_alias_organismos_unam.csv
+   Filas: 129
+   Uso: alias iniciales para mapear variantes textuales, siglas y formas sin
+   acento hacia organismos UNAM.
+
+Resultado conceptual de esta subfase:
+
+Se construyó una primera estructura de autoridad institucional, separando:
+
+- organismos válidos;
+- alias;
+- programas por asociar;
+- afiliaciones genéricas;
+- externos observados;
+- casos que requieren revisión.
+
+======================================================================
+5. SEGUNDA SUBFASE: CATÁLOGO Y DICCIONARIO FINAL DE AFILIACIONES UNAM
+======================================================================
+
+Libreta principal:
+
+04_limpieza_02_catalogo_diccionario_afiliaciones_unam_final.ipynb
+
+Entradas principales:
+
+- UNAM_Completo_Corregido.xlsx
+- catalogo_organismos_unam.csv
+- diccionario_alias_organismos_unam.csv
+- catalogo_programas_unam_por_asociar.csv
+- afiliaciones_requieren_revision.csv
+- afiliaciones_genericas_unam.csv
+
+Destino:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones
+
+Objetivo:
+
+Consolidar el catálogo definitivo de afiliaciones UNAM y el diccionario definitivo
+de alias. Estos dos archivos son los que se usan directamente para normalizar la
+base artículo-autor-afiliación.
+
+Archivos finales generados:
+
+1) 2_catalogo_afiliaciones_unam_final_actualizado.csv
+   Filas: 89
+   Columnas: afiliacion
+
+2) 2_diccionario_afiliaciones_unam_final_actualizado.csv
+   Filas: 261
+   Columnas: alias, afiliacion
+
+Reglas aplicadas:
+
+- La afiliación final no debe contener comas.
+- La afiliación final debe ser un organismo o adscripción reconocible, no una
+  dirección larga.
+- Las formas genéricas como UNAM o Universidad Nacional Autónoma de México se
+  mantienen como caso permitido sólo cuando no se logra identificar una dependencia
+  específica.
+- Los posgrados y programas académicos se tratan preferentemente como alias hacia
+  organismos, no como afiliaciones finales.
+- Se conservaron sedes y unidades cuando forman parte del nombre usado en el
+  catálogo, por ejemplo Unidad Yucatán, Unidad Juriquilla, Unidad Mérida o
+  Cuernavaca.
+- Se agregaron alias con y sin acentos para mejorar la detección en fuentes
+  bibliográficas.
+
+Ejemplos de normalización conceptual del diccionario:
+
+- IIMAS -> Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas
+- IIMAS Unidad Yucatán -> Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán
+- Faculty of Engineering -> Facultad de Ingeniería
+- Institute of Engineering -> Instituto de Ingeniería
+- Posgrado en Ciencia e Ingeniería de la Computación -> Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas
+- Posgrado en Ingeniería -> Facultad de Ingeniería
+- National Autonomous University of Mexico -> Universidad Nacional Autonoma de Mexico
+
+Validaciones del catálogo/diccionario final:
+
+- No hay comas en la columna afiliacion.
+- No hay afiliaciones finales vacías.
+- No hay alias vacíos en el diccionario final.
+- Los posgrados redirigidos no quedan como afiliación final cuando deben funcionar
+  como alias.
+
+======================================================================
+6. TERCERA SUBFASE: NORMALIZAR AFILIACIONES Y FILTRAR SÓLO AUTORES UNAM
+======================================================================
+
+Libreta principal:
+
+04_limpieza_03_normalizar_filtrar_afiliaciones_unam.ipynb
+
+Entrada principal:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\00_Separacion_Autor_Afiliacion\integrado_articulo_autor_afiliacion_unificado_manual.csv
+
+Entradas de referencia:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\2_catalogo_afiliaciones_unam_final_actualizado.csv
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\2_diccionario_afiliaciones_unam_final_actualizado.csv
+
+Salida final:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\integrado_solo_unam_normalizado.csv
+
+Objetivo:
+
+Filtrar la base separada artículo-autor-afiliación para conservar únicamente las
+filas con autores asociados a la UNAM, reemplazando las afiliaciones crudas por
+su forma normalizada del catálogo.
+
+Criterios aplicados:
+
+1. Leer cada fila artículo-autor de la base separada.
+2. Revisar Afiliacion1 y Afiliacion2.
+3. Buscar coincidencias en el diccionario de alias.
+4. Aplicar reglas complementarias para variantes frecuentes en inglés o formas
+   abreviadas de dependencias UNAM.
+5. Detectar evidencia directa de UNAM cuando no se encuentra alias específico.
+6. Evitar conservar afiliaciones externas.
+7. Evitar conservar placeholders o textos de no recuperación.
+8. Normalizar Afiliacion1 y Afiliacion2 sólo a valores presentes en el catálogo
+   final.
+9. Si se detectan dos afiliaciones UNAM distintas, conservar una en Afiliacion1 y
+   otra en Afiliacion2.
+10. Si se detecta una afiliación específica y una genérica, conservar la específica.
+11. Si sólo se detecta UNAM genérico sin organismo específico, conservar:
+    Universidad Nacional Autonoma de Mexico
+12. Eliminar la fila si no se detecta ninguna asociación UNAM en Afiliacion1 ni en
+    Afiliacion2.
+
+======================================================================
+7. RESULTADO FINAL DE LA NORMALIZACIÓN Y FILTRADO
+======================================================================
+
+Archivo final generado:
+
+integrado_solo_unam_normalizado.csv
+
+Ruta:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\integrado_solo_unam_normalizado.csv
+
+Métricas principales:
+
+- Filas originales de entrada: 8,940
+- Filas conservadas sólo con asociación UNAM: 3,239
+- Filas eliminadas por no tener asociación UNAM: 5,701
+- Artículos con al menos un autor UNAM conservado: 1,459
+- Columnas finales: 14
+- Afiliaciones normalizadas distintas: 48
+- Filas con Afiliacion2 normalizada: 82
+- Filas finales sin Afiliacion1: 0
+- Afiliaciones finales con coma: 0
+- Afiliaciones finales fuera del catálogo: 0
+
+Columnas finales conservadas:
+
+indice
+Titulo
+Año
+Autor_norm
+Afiliacion1
+Afiliacion2
+ISBN
+ISSN
+Doi
+URL
+Area
+Subarea
+Keywords
+Abstract
+
+El archivo final mantiene únicamente estas 14 columnas canónicas. No contiene
+columnas auxiliares de diagnóstico, confianza, regla, alias detectado ni motivo de
+revisión.
+
+======================================================================
+8. AFILIACIONES MÁS FRECUENTES EN EL ARCHIVO FINAL
+======================================================================
+
+Algunas de las afiliaciones normalizadas más frecuentes en el archivo final son:
+
+- Universidad Nacional Autonoma de Mexico: 1,243 apariciones
+- Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas: 468 apariciones
+- Facultad de Ingeniería: 374 apariciones
+- Facultad de Ciencias: 172 apariciones
+- Facultad de Estudios Superiores Aragón: 123 apariciones
+- Instituto de Matemáticas: 122 apariciones
+- Instituto de Ingeniería: 109 apariciones
+- Instituto de Física: 90 apariciones
+- Facultad de Estudios Superiores Cuautitlán: 77 apariciones
+- Instituto de Ciencias Aplicadas y Tecnología: 64 apariciones
+- Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán: 59 apariciones
+- Centro de Estudios en Computación Avanzada: 42 apariciones
+- Instituto de Ciencias Físicas: 41 apariciones
+- Instituto de Neurobiología: 36 apariciones
+- Instituto de Astronomía: 33 apariciones
+- Facultad de Estudios Superiores Acatlán: 30 apariciones
+- Instituto de Geofísica: 24 apariciones
+- Centro de Física Aplicada y Tecnología Avanzada: 23 apariciones
+- Instituto de Ciencias Nucleares: 18 apariciones
+- Facultad de Estudios Superiores Iztacala: 17 apariciones
+
+======================================================================
+9. DIFERENCIA ENTRE CATÁLOGOS INTERMEDIOS Y ARCHIVO FINAL
+======================================================================
+
+Los archivos intermedios de catálogo y diccionario sirven para construir la
+normalización, pero no son la base bibliográfica final.
+
+Archivos intermedios relevantes:
+
+- afiliaciones_genericas_unam.csv
+- afiliaciones_requieren_revision.csv
+- catalogo_organismos_unam.csv
+- catalogo_programas_unam_por_asociar.csv
+- diccionario_alias_organismos_unam.csv
+- 2_catalogo_afiliaciones_unam_final_actualizado.csv
+- 2_diccionario_afiliaciones_unam_final_actualizado.csv
+
+Archivo final de esta etapa:
+
+- integrado_solo_unam_normalizado.csv
+
+Este último es el archivo que debe usarse como entrada para la siguiente fase de
+limpieza.
+
+======================================================================
+10. DECISIONES IMPORTANTES TOMADAS
+======================================================================
+
+1. No se eliminaron filas sólo porque la afiliación contenía palabras como
+   posgrado, licenciatura o programa. En lugar de eso, se intentó resolver esas
+   formas hacia una dependencia real usando el catálogo/diccionario.
+
+2. No se conservaron afiliaciones externas en Afiliacion1 o Afiliacion2.
+
+3. No se conservaron direcciones completas, países, ciudades, códigos postales ni
+   fragmentos largos como afiliación final.
+
+4. Se permitió conservar sedes o unidades fuera de CU cuando son parte del nombre
+   institucional útil.
+
+5. Se eliminó cualquier fila en la que no se detectó asociación UNAM en ninguna de
+   las dos columnas de afiliación.
+
+6. La forma genérica Universidad Nacional Autonoma de Mexico se conserva sólo como
+   respaldo cuando sí hay evidencia UNAM pero no se identifica un organismo más
+   específico.
+
+7. Se mantuvieron únicamente las 14 columnas canónicas para que el archivo siga
+   siendo compatible con el modelo bibliográfico del proyecto.
+
+
+Resultado final:
+
+integrado_solo_unam_normalizado.csv
+
+Este archivo contiene 3,239 filas artículo-autor con afiliación UNAM normalizada y
+queda preparado para las siguientes etapas de limpieza y consolidación.
