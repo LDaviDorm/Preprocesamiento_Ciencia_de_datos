@@ -1,0 +1,392 @@
+﻿REPORTE FINAL DE CONVERSION CANONICA Y CLASIFICACION DE AREA
+Proyecto: Base bibliografica/académica de articulos UNAM en Ciencias de la Computacion
+Periodo: marzo 2024 - diciembre 2025
+Etapa documentada: archivos canonicos por fuente con Area clasificada
+
+================================================================================
+1. OBJETIVO DE ESTA ETAPA
+================================================================================
+
+El objetivo de esta etapa fue dejar preparados los 8 archivos canonicos por fuente/editorial,
+con la columna Area corregida y clasificada de forma mas consistente con el contenido real de
+cada articulo.
+
+En esta etapa NO se genero todavia un archivo unico integrado. Los archivos siguen separados
+por fuente porque aun falta una modificacion manual adicional antes de unir, deduplicar y validar
+la base final.
+
+Las columnas del modelo canonico se conservaron en el siguiente orden:
+
+1. indice
+2. Titulo
+3. Año
+4. Autor_norm
+5. Afiliacion1
+6. Afiliacion2
+7. ISBN
+8. ISSN
+9. Doi
+10. URL
+11. Area
+12. Subarea
+13. Keywords
+14. Abstract
+
+================================================================================
+2. ACTIVIDADES REALIZADAS HASTA ESTE PUNTO
+================================================================================
+
+2.1 Conversion inicial a modelo canonico
+---------------------------------------
+Se convirtieron los archivos descargados desde las fuentes originales a un formato canonico
+comun. Para cada fuente se revisaron las columnas disponibles y se mapearon solamente los
+campos con evidencia directa en los datos.
+
+Reglas aplicadas:
+- No se inventaron DOI, ISBN, ISSN, afiliaciones, autores, keywords, abstracts ni subareas.
+- Los DOI se normalizaron eliminando prefijos como https://doi.org/ y http://dx.doi.org/.
+- El año se normalizo a entero cuando fue posible.
+- La columna Subarea se dejo vacia por falta de evidencia suficientemente clara.
+- Afiliacion2 se dejo vacia en la version canonica simplificada; la informacion institucional se
+  concentro en Afiliacion1 cuando la fuente lo permitia.
+- Solo se permitieron las areas: ISBD, CC, IA, TC, SIAV y RS.
+
+2.2 Revision posterior de Area
+------------------------------
+Despues de la conversion canonica, se revisaron los 8 archivos por fuente para reasignar la
+columna Area con base en el contenido de cada articulo.
+
+Criterios usados para clasificar:
+- Titulo
+- Keywords
+- Abstract
+- Evidencia tematica contenida en el propio archivo canonico
+
+No se hicieron busquedas en internet para esta revision.
+No se modificaron metadatos bibliograficos distintos de Area y Subarea.
+Subarea quedo vacia en todos los registros.
+No se eliminaron registros por NO_CS, porque no se identificaron articulos 100% ajenos a
+Ciencias de la Computacion con la informacion disponible.
+
+================================================================================
+3. NOMBRES CORREGIDOS DE LOS ARCHIVOS CLASIFICADOS
+================================================================================
+
+Los 8 archivos canonicos correctamente clasificados deben quedar con estos nombres:
+
+1. acm_canonico_2024-03_2025-12_area_clasificada.csv
+2. ebsco_canonico_2024-03_2025-12_area_clasificada.csv
+3. engineering_village_canonico_2024-03_2025-12_area_clasificada.csv
+4. ieee_xplore_canonico_2024-03_2025-12_area_clasificada.csv
+5. proquest_canonico_2024-03_2025-12_area_clasificada.csv
+6. sciencedirect_canonico_2024-03_2025-12_area_clasificada.csv
+7. scopus_canonico_2024-03_2025-12_area_clasificada.csv
+8. web_of_science_canonico_2024-03_2025-12_area_clasificada.csv
+
+Convencion recomendada:
+<fuente>_canonico_2024-03_2025-12_area_clasificada.csv
+
+Justificacion del sufijo:
+El sufijo area_clasificada indica que el archivo ya esta en modelo canonico y que la columna
+Area fue revisada/corregida. No se usa todavia final, definitivo, integrado ni depurado_final,
+porque aun falta una modificacion manual adicional y despues vendran la union y la deduplicacion.
+
+================================================================================
+4. RENOMBRADO RECOMENDADO
+================================================================================
+
+Nombre anterior recomendado a corregir -> Nombre final recomendado
+
+acm_canonico_2024-03_2025-12_area_revisada.csv
+-> acm_canonico_2024-03_2025-12_area_clasificada.csv
+
+ebsco_canonico_2024-03_2025-12_area_corregida.csv
+-> ebsco_canonico_2024-03_2025-12_area_clasificada.csv
+
+engineering_village_canonico_2024-03_2025-12_clasificado.csv
+-> engineering_village_canonico_2024-03_2025-12_area_clasificada.csv
+
+ieee_xplore_canonico_2024-03_2025-12_area_revisada.csv
+-> ieee_xplore_canonico_2024-03_2025-12_area_clasificada.csv
+
+proquest_canonico_2024-03_2025-12_area_revisada.csv
+-> proquest_canonico_2024-03_2025-12_area_clasificada.csv
+
+sciencedirect_canonico_2024-03_2025-12_area_corregida.csv
+-> sciencedirect_canonico_2024-03_2025-12_area_clasificada.csv
+
+scopus_canonico_2024-03_2025-12_clasificado.csv
+-> scopus_canonico_2024-03_2025-12_area_clasificada.csv
+
+web_of_science_canonico_2024-03_2025-12_area_revisada_final.csv
+-> web_of_science_canonico_2024-03_2025-12_area_clasificada.csv
+
+================================================================================
+5. RESUMEN CUANTITATIVO POR FUENTE
+================================================================================
+
+Fuente                 Registros revisados   Eliminados NO_CS   Cambios de Area
+--------------------   -------------------   ---------------   ---------------
+ACM                                  57                 0                37
+EBSCO                               129                 0                90
+Engineering Village                 142                 0                76
+IEEE Xplore                         158                 0               103
+ProQuest                             19                 0                 7
+ScienceDirect                        43                 0                22
+Scopus                              561                 0               260
+Web of Science                      362                 0               173
+--------------------   -------------------   ---------------   ---------------
+TOTAL                              1471                 0               768
+
+Interpretacion:
+- Se revisaron 1,471 registros canonicos.
+- No se retiro ningun registro por NO_CS.
+- Se modifico el Area de 768 registros.
+- Esto confirma que la clasificacion inicial por carpeta/lote fue util para recolectar, pero no
+  suficiente como clasificacion tematica final por contenido.
+
+================================================================================
+6. DISTRIBUCION FINAL GLOBAL POR AREA
+================================================================================
+
+Area    Registros
+----    ---------
+ISBD        110
+CC          141
+IA          403
+RS          189
+TC          209
+SIAV        419
+----    ---------
+TOTAL      1471
+
+Distribucion observada:
+- Las areas con mayor cantidad de registros son SIAV e IA.
+- Despues aparecen TC, RS, CC e ISBD.
+- Esto es consistente con el tipo de articulos recuperados: muchos trabajos de vision, señales,
+  aprendizaje automatico, NLP, optimizacion, sistemas distribuidos, seguridad y computacion
+  teorica.
+
+================================================================================
+7. DISTRIBUCION FINAL POR FUENTE Y AREA
+================================================================================
+
+Fuente                 ISBD   CC    IA    RS    TC    SIAV   Total
+--------------------   ----   ---   ---   ---   ---   ----   -----
+ACM                      21     0    10     0    23      3      57
+EBSCO                    15    29    43     8     8     26     129
+Engineering Village       7    16    46    18    19     36     142
+IEEE Xplore               8    13    34    32    12     59     158
+ProQuest                  0     2     6     0     4      7      19
+ScienceDirect             2     9    13     4     7      8      43
+Scopus                   35    48   153    72    92    161     561
+Web of Science           22    24    98    55    44    119     362
+--------------------   ----   ---   ---   ---   ---   ----   -----
+TOTAL                   110   141   403   189   209    419    1471
+
+================================================================================
+8. CRITERIOS DE CLASIFICACION UTILIZADOS
+================================================================================
+
+ISBD - Ingenieria de Software, Bases de Datos y Sistemas de Informacion
+-----------------------------------------------------------------------
+Se uso ISBD para articulos cuyo aporte principal fue ingenieria de software, arquitectura de
+software, sistemas de informacion, APIs, bibliotecas, herramientas web, HCI, UX, interfaces,
+CSCW, plataformas interactivas, medicion de software, program synthesis aplicado a software o
+sistemas de apoyo a usuarios.
+
+CC - Computacion Cientifica
+---------------------------
+Se uso CC para articulos centrados en simulacion cientifica, modelado numerico, HPC,
+GPU/CUDA, inversion numerica, solvers, PDE/ODE, FEM/FDM, computacion geofisica, astronomia
+computacional, modelado fisico, software cientifico o pipelines de procesamiento cientifico.
+
+IA - Inteligencia Artificial
+----------------------------
+Se uso IA para articulos centrados en aprendizaje automatico general, NLP, LLM, aprendizaje por
+refuerzo, modelos generativos, robota inteligente, metaheuristicas, optimizacion evolutiva,
+clasificacion, regresion, modelos predictivos o inteligencia computacional, salvo que el dominio
+principal correspondiera claramente a señales/vision, seguridad, software, teoria o computacion
+cientifica.
+
+RS - Redes y Seguridad
+----------------------
+Se uso RS para articulos sobre privacidad, cifrado, esteganografia, watermarking, autenticacion,
+blockchain, smart contracts, seguridad de datos, OpenPGP, IoT, fog/edge computing, redes,
+protocolos, DoS/DDoS, deteccion de anomalias de infraestructura o sistemas distribuidos con
+foco de seguridad/redes.
+
+TC - Teoria de la Computacion
+-----------------------------
+Se uso TC para articulos de logica, verificacion formal, computabilidad distribuida, consenso,
+linearizability, wait-freedom, estructuras concurrentes, teoria de grafos, geometria computacional,
+automatas, complejidad, algoritmos teoricos, campos finitos, codigos y problemas formales.
+
+SIAV - Señales, Imagenes y Ambientes Virtuales
+----------------------------------------------
+Se uso SIAV para articulos centrados en imagen, video, vision computacional, segmentacion,
+reconstruccion, señales EEG/ECG/EMG/ERG/audio/voz/WiFi-CSI, wavelets, sensores, realidad
+virtual, realidad aumentada, XR, interaccion haptica, ambientes inmersivos y analisis de señales
+multimodales.
+
+================================================================================
+9. OBSERVACIONES POR FUENTE
+================================================================================
+
+ACM
+---
+- Registros revisados: 57
+- Cambios de Area: 37
+- No se eliminaron registros.
+- Predominaron TC e ISBD.
+- Los trabajos de concurrencia, memoria compartida, linearizability, consensus number y
+  estructuras concurrentes se clasificaron como TC.
+- Los trabajos de CSCW, HCI, herramientas interactivas y social computing se clasificaron como ISBD.
+- MouseClicker se clasifico como SIAV por su foco en retroalimentacion tactil/haptica.
+
+EBSCO
+-----
+- Registros revisados: 129
+- Cambios de Area: 90
+- No se eliminaron registros.
+- Predominaron IA, CC y SIAV.
+- Los trabajos de inversion numerica, FEM, PDE, geofisica computacional y software cientifico se
+  clasificaron como CC.
+- Los trabajos de LLM/NLP, prediccion, aprendizaje automatico y metaheuristicas se clasificaron como IA.
+- Los trabajos de imagenes medicas, wavelets, señales y VR se clasificaron como SIAV.
+
+Engineering Village
+-------------------
+- Registros revisados: 142
+- Cambios de Area: 76
+- No se eliminaron registros.
+- Predominaron IA, SIAV, TC, RS y CC.
+- Los trabajos de imagenes, señales biomedicas, EEG/ECG, reconstruccion, segmentacion, haptics/XR y
+  ambientes virtuales se clasificaron como SIAV.
+- Los trabajos de seguridad, privacidad, cifrado, esteganografia, protocolos y trazas distribuidas
+  se clasificaron como RS.
+- Los trabajos de modelado/simulacion cientifica, HPC, ocean forecasting y plataformas cientificas
+  se clasificaron como CC.
+
+IEEE Xplore
+-----------
+- Registros revisados: 158
+- Cambios de Area: 103
+- No se eliminaron registros.
+- Predominaron SIAV, IA y RS.
+- Los articulos de aprendizaje profundo aplicado a segmentacion, reconstruccion, imagenes medicas,
+  EEG/EMG y WiFi-CSI se clasificaron como SIAV.
+- Los articulos de cifrado, esteganografia, marca de agua, proteccion de datos, privacidad y DeFi
+  se clasificaron como RS.
+- Los trabajos de logica modal, divergencias y tiempos de mezcla se clasificaron como TC.
+
+ProQuest
+--------
+- Registros revisados: 19
+- Cambios de Area: 7
+- No se eliminaron registros.
+- Predominaron SIAV, IA y TC.
+- Los trabajos de realidad aumentada, Unity 3D, GIS interactivo e imagen/señal medica se
+  clasificaron como SIAV.
+- El trabajo de Capacitated Location Tree Problem se clasifico como IA por uso central de
+  metaheuristicas BRKGA/PSO, aunque puede ser un caso a revisar si se prefiere optimizacion
+  combinatoria pura como TC.
+
+ScienceDirect
+-------------
+- Registros revisados: 43
+- Cambios de Area: 22
+- No se eliminaron registros.
+- Predominaron IA, CC, SIAV y TC.
+- Los articulos de geometria computacional y teoria de grafos se clasificaron como TC.
+- Los articulos de HPC/GPU/supercomputo y herramientas cientificas se clasificaron como CC.
+- Los articulos de segmentacion de imagenes, ECG, EEG y señales multimodales se clasificaron como SIAV.
+- text2graphAPI se clasifico como ISBD por ser una biblioteca/API orientada a documentos y recuperacion.
+
+Scopus
+------
+- Registros revisados: 561
+- Cambios de Area: 260
+- No se eliminaron registros.
+- Predominaron SIAV, IA y TC.
+- Los titulos duplicados recuperados desde distintas areas se normalizaron a una sola Area final.
+- Los articulos interdisciplinarios se conservaron cuando el aporte fue metodo, algoritmo,
+  software, framework, arquitectura, pipeline, benchmark, simulacion o evaluacion computacional.
+
+Web of Science
+--------------
+- Registros revisados: 362
+- Cambios de Area: 173
+- No se eliminaron registros.
+- Predominaron SIAV, IA, RS y TC.
+- Los titulos duplicados recuperados en varias areas se unificaron con una sola area final por
+  aporte principal.
+- En imagenes, vision, segmentacion, reconstruccion, VR/XR, voz/audio, EEG/ECG/ERG/EGG,
+  WiFi-CSI y wavelets se priorizo SIAV.
+- En blockchain, criptografia aplicada, privacidad, IoT, fog/edge, redes inalambricas y protocolos
+  se priorizo RS.
+
+================================================================================
+10. COMANDOS POWERSHELL PARA RENOMBRAR
+================================================================================
+
+Ejecutar desde la carpeta donde estan los 8 CSV clasificados, por ejemplo:
+
+cd "C:\Users\hazar\Desktop\PROYECTO\02_modelo canonico\02_por_area"
+
+Recomendacion: hacer respaldo antes de renombrar.
+
+mkdir "_backup_antes_renombrar"
+Copy-Item *.csv ".\_backup_antes_renombrar"
+
+Renombrado:
+
+Rename-Item "acm_canonico_2024-03_2025-12_area_revisada.csv" "acm_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "ebsco_canonico_2024-03_2025-12_area_corregida.csv" "ebsco_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "engineering_village_canonico_2024-03_2025-12_clasificado.csv" "engineering_village_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "ieee_xplore_canonico_2024-03_2025-12_area_revisada.csv" "ieee_xplore_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "proquest_canonico_2024-03_2025-12_area_revisada.csv" "proquest_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "sciencedirect_canonico_2024-03_2025-12_area_corregida.csv" "sciencedirect_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "scopus_canonico_2024-03_2025-12_clasificado.csv" "scopus_canonico_2024-03_2025-12_area_clasificada.csv"
+Rename-Item "web_of_science_canonico_2024-03_2025-12_area_revisada_final.csv" "web_of_science_canonico_2024-03_2025-12_area_clasificada.csv"
+
+================================================================================
+11. ARCHIVOS ESPERADOS DESPUES DEL RENOMBRADO
+================================================================================
+
+La carpeta deberia contener estos 8 CSV principales:
+
+acm_canonico_2024-03_2025-12_area_clasificada.csv
+ebsco_canonico_2024-03_2025-12_area_clasificada.csv
+engineering_village_canonico_2024-03_2025-12_area_clasificada.csv
+ieee_xplore_canonico_2024-03_2025-12_area_clasificada.csv
+proquest_canonico_2024-03_2025-12_area_clasificada.csv
+sciencedirect_canonico_2024-03_2025-12_area_clasificada.csv
+scopus_canonico_2024-03_2025-12_area_clasificada.csv
+web_of_science_canonico_2024-03_2025-12_area_clasificada.csv
+
+Los reportes individuales deben guardarse aparte, por ejemplo en:
+
+C:\Users\hazar\Desktop\PROYECTO\02_modelo canonico\02_por_area\00_reportes_area
+
+================================================================================
+12. TEXTO SUGERIDO PARA BITACORA
+================================================================================
+
+Se revisaron los 8 archivos canonicos por fuente con el objetivo de corregir la asignacion de la
+columna Area. La revision se realizo con base en Titulo, Keywords y Abstract, sin modificar los
+demas metadatos bibliograficos. La columna Subarea se mantuvo vacia por falta de evidencia clara
+y para evitar inferencias no justificadas. No se eliminaron registros por NO_CS, ya que no se
+identificaron articulos completamente ajenos a Ciencias de la Computacion. Como resultado, se
+obtuvieron 8 archivos canonicos por fuente con Area clasificada de forma mas consistente, los
+cuales quedan pendientes de una ultima revision manual antes de la integracion general.
+
+================================================================================
+13. ESTADO FINAL DE ESTA ETAPA
+================================================================================
+
+Estado: COMPLETADO HASTA LA CLASIFICACION DE AREA POR FUENTE.
+Pendiente: modificacion manual adicional indicada por el usuario.
+No realizar todavia: union de los 8 archivos, deduplicacion global, reindexacion final o entrega de
+base final integrada.
+
