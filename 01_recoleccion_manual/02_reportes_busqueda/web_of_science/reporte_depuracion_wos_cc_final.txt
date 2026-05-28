@@ -1,0 +1,99 @@
+# Reporte de depuración — Web of Science CC
+
+## Archivos recibidos
+- savedrecs (2).xls (176 registros)
+- savedrecs (3).xls (25 registros)
+- savedrecs (4).xls (50 registros)
+- savedrecs (5).xls (33 registros)
+- savedrecs (6).xls (70 registros)
+- savedrecs (7).xls (2 registros)
+- savedrecs (8).xls (50 registros)
+
+## Objetivo
+Depurar registros descargados desde Web of Science para el lote de Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de WoS.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, fuente, direcciones/afiliaciones y fechas WoS.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando faltaba DOI, por título normalizado + año + primer autor.
+
+Nota: Web of Science exportó columnas de fecha como `Publication Date`, `Publication Year`, `Conference Date` y `Early Access Date`. Cuando el mes era verificable se aplicó el periodo estrictamente; cuando sólo había año 2024 se conservó el registro si cumplía los demás criterios.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 406
+- Artículos únicos después de deduplicación: 332
+- Registros duplicados eliminados: 74
+- Registros excluidos por estar fuera de periodo: 34
+- Registros excluidos por no tener afiliación UNAM clara: 15
+- Registros excluidos por no ser claramente Ciencias de la Computación: 245
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 38
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- algoritmos de optimización multiobjetivo, metaheurísticas, ACO, PSO/DE, archiving y selección de soluciones;
+- software/código científico y herramientas computacionales como LyapXool, TLANESY, HV-Inv, ComPASS y código CUDA;
+- métodos numéricos, FEM/diferencias finitas, regularización, inversión y formulaciones eficientes de simulación;
+- cómputo distribuido, verificación/runtime verification, smart contracts, modelos epistémicos y teoría de tareas distribuidas;
+- IA, aprendizaje profundo, aprendizaje por refuerzo, memoria asociativa, segmentación 3D y reconstrucción de señales/imágenes;
+- seguridad/esteganografía y sistemas de cloud/fog/distributed computing cuando el aporte técnico era central.
+
+## Registros dudosos
+Registros dudosos revisados y decisión aplicada:
+
+- `Computational Geodynamics Laboratory: 15 years of numerical modelling and high-performance computing at the Centro de Geociencias, Universidad Nacional Autonoma de Mexico`: Conservado como caso de cómputo científico por el foco explícito en HPC/numerical modelling; no se asigna área final.
+- `Geothermal modeling in complex geological systems with ComPASS`: Conservado porque el aporte describe un simulador/código con implementación paralela y discretización numérica; no sólo una aplicación geotérmica.
+- `T-A-Φ and J-A-Φ formulations for efficient electromagnetic simulations of high-temperature superconductors in 2D`: Conservado por proponer formulaciones FEM que reducen costo computacional; es frontera entre ingeniería eléctrica y cómputo científico.
+- `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit`: No incluido: aunque es CS, la afiliación visible en Addresses corresponde a Universidad Autónoma Metropolitana/IPN; la mención UNAM aparece sólo en Affiliations enriquecido y se trató como no clara.
+- `Application of Optimization Algorithms in Voter Service Module Allocation`: No incluido: la afiliación visible es Universidad Autónoma del Estado de México; la mención UNAM sólo aparece en Affiliations enriquecido de WoS y no fue suficiente.
+- `Deep learning and genetic algorithms for cosmological Bayesian inference speed-up`: No incluido: IA/ML usado para inferencia cosmológica; dominio principal físico/astronómico.
+- `Accelerated computational design of BCC refractory high entropy alloys using metaheuristics, CALPHAD, and artificial neural networks`: No incluido: metaheurísticas/ANN aplicadas al diseño de materiales; aporte principal de materiales.
+- `Data-Driven Power System Linear Model Identification via Quadrature-Based Balanced Truncation`: No incluido: método de identificación/model reduction en sistemas eléctricos; se trató como control/energía más que CS.
+
+## Principales falsos positivos detectados
+
+- simulaciones numéricas rutinarias en geociencias, energía, fluidos, materiales, química, hidrología, oceanografía y estructuras;
+- artículos de control automático, potencia eléctrica, reactores, turbinas o procesos químicos donde el cálculo fue herramienta de dominio;
+- aplicaciones de ML/ANN/metaheurísticas a astronomía, materiales, biología, salud, economía o ingeniería civil sin aporte computacional generalizable;
+- modelos matemáticos o PDE puramente analíticos sin algoritmo, implementación, software o método numérico como contribución central;
+- registros con mención de software, modelado, simulación o base de datos como apoyo instrumental, no como objeto de investigación computacional;
+- falsos positivos institucionales por variantes como Universidad Autónoma Metropolitana/Unidad Lerma o Universidad Autónoma del Estado de México cuando WoS enriquecía Affiliations con UNAM sin evidencia clara en Addresses.
+
+## Decisiones importantes
+- Se mantuvo un criterio conservador: no se aceptó un registro sólo por contener `computational`, `numerical modeling`, `simulation`, `model`, `algorithm`, `software`, `machine learning` o `optimization`.
+- Se aceptaron registros aplicados cuando el objeto central era un algoritmo, método numérico, framework, código, software, arquitectura distribuida, técnica de verificación, método de reconstrucción/segmentación o formulación computacional eficiente.
+- Se excluyeron muchas simulaciones de dominio aunque fueran numéricas, cuando el aporte principal era geológico, energético, químico, biomédico, astronómico, estructural, hidráulico o de materiales.
+- Para afiliación institucional se usaron de forma conservadora las direcciones autor-institución (`Addresses` y `Reprint Addresses`), porque el campo enriquecido `Affiliations` de WoS puede asignar instituciones de forma ambigua. Por eso se excluyeron casos donde sólo `Affiliations` mencionaba UNAM, pero las direcciones visibles correspondían a UAM, UAEMex u otra institución.
+- Se conservaron algunos registros no estrictamente CC —como seguridad, IA, visión/señales, smart contracts y cómputo distribuido— porque sí pertenecen claramente a Ciencias de la Computación y la asignación final por área se hará después.
+
+## Formato del archivo final
+- Los siete archivos de Web of Science tenían el mismo encabezado: 72 columnas.
+- Se conservaron exactamente esas columnas originales en el mismo orden.
+- No se agregaron columnas nuevas.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- No se convirtió al modelo canónico.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+
+- `wos_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Conviene mantener la regla global de excluir simulaciones de dominio si no hay algoritmo, software, código, solver, implementación, formulación numérica o método computacional como contribución central.
+- Conviene documentar que en WoS el campo `Affiliations` enriquecido puede producir falsos positivos institucionales; para esta depuración se priorizó `Addresses`.
+- Hay registros aceptados que probablemente se reasignarán a IA, SIAV, RS o TC en la fase final, pero se conservaron porque esta fase sólo filtra CS vs. no CS.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO, Engineering Village y otros lotes WoS al consolidar todo el corpus.

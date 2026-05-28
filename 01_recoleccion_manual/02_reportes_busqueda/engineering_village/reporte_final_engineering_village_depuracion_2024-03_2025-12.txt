@@ -1,0 +1,403 @@
+REPORTE FINAL DE ENGINEERING VILLAGE — DEPURACIÓN POR ÁREAS
+Periodo del proyecto: marzo 2024 – diciembre 2025
+Fuente: Engineering Village
+Fecha de integración del reporte: 2026-05-17
+
+================================================================================
+1. RESUMEN EJECUTIVO
+================================================================================
+
+Se completó la fase de búsqueda, descarga y depuración inicial en Engineering
+Village para las seis áreas del proyecto:
+
+1. ISBD — Ingeniería de Software y Bases de Datos
+2. CC — Computación Científica
+3. IA — Inteligencia Artificial
+4. RS — Redes y Seguridad en Cómputo
+5. TC — Teoría de la Computación
+6. SIAV — Señales, Imágenes y Ambientes Virtuales
+
+La fase realizada NO convirtió los registros al modelo canónico, NO asignó áreas
+finales y NO asignó subáreas finales. El objetivo fue conservar únicamente
+registros que pertenecen claramente a Ciencias de la Computación, manteniendo el
+diseño original de columnas exportado por Engineering Village.
+
+Resultado acumulado de Engineering Village:
+
+- Total raw descargado: 1145 registros
+- Duplicados eliminados dentro de cada lote: 638
+- Registros únicos después de deduplicación por lote: 507
+- Registros aceptados como Ciencias de la Computación: 142
+- Registros excluidos por no ser Ciencias de la Computación: 264
+- Registros excluidos por afiliación UNAM no clara: 85
+- Registros excluidos por estar fuera de periodo: 15
+- Registros excluidos por metadatos insuficientes: 1
+
+Indicadores acumulados:
+
+- Tasa de duplicación sobre registros raw: 55.7%
+- Tasa de aceptación sobre registros raw: 12.4%
+- Tasa de aceptación sobre registros únicos por lote: 28.0%
+- Tasa de rechazo por no ser CS sobre registros únicos por lote: 52.1%
+- Tasa de rechazo por afiliación UNAM no clara sobre registros únicos por lote: 16.8%
+- Tasa de exclusión por fuera de periodo sobre registros únicos por lote: 3.0%
+
+Este acumulado todavía NO representa una deduplicación global entre áreas de
+Engineering Village. La deduplicación hecha hasta ahora fue interna por área.
+Es probable que algunos artículos aceptados se repitan entre áreas, especialmente
+en IA, SIAV, RS, TC y CC.
+
+================================================================================
+2. TABLA CONSOLIDADA POR ÁREA
+================================================================================
+
+| Área | Nombre | Raw | Duplicados | Únicos | Fuera periodo | Sin afiliación UNAM | No CS | Metadatos insuf. | Aceptados CS |
+|------|--------|-----|------------|--------|---------------|---------------------|-------|------------------|--------------|
+| ISBD | Ingeniería de Software y Bases de Datos | 114 | 58 | 56 | 3 | 6 | 36 | 0 | 11 |
+| CC | Computación Científica | 119 | 45 | 74 | 3 | 6 | 51 | 0 | 14 |
+| IA | Inteligencia Artificial | 421 | 273 | 148 | 5 | 32 | 56 | 0 | 55 |
+| RS | Redes y Seguridad en Cómputo | 96 | 50 | 46 | 1 | 14 | 11 | 0 | 20 |
+| TC | Teoría de la Computación | 71 | 34 | 37 | 0 | 13 | 11 | 0 | 13 |
+| SIAV | Señales, Imágenes y Ambientes Virtuales | 324 | 178 | 146 | 3 | 14 | 99 | 1 | 29 |
+| TOTAL | — | 1145 | 638 | 507 | 15 | 85 | 264 | 1 | 142 |
+
+================================================================================
+3. ARCHIVOS FINALES GENERADOS POR LOTE
+================================================================================
+
+ISBD:
+- ev_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+CC:
+- ev_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+IA:
+- ev_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+RS:
+- ev_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+TC:
+- ev_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+SIAV:
+- ev_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Los archivos finales conservan el formato original exportado por Engineering
+Village. No fueron convertidos al modelo canónico y no se agregaron columnas de
+clasificación final.
+
+================================================================================
+4. CRITERIOS APLICADOS EN LA DEPURACIÓN
+================================================================================
+
+En los seis lotes se aplicaron criterios homogéneos:
+
+- Periodo: marzo 2024 a diciembre 2025.
+- Afiliación: al menos un autor con afiliación UNAM clara en los metadatos de
+  Engineering Village.
+- Tema: pertenencia clara a Ciencias de la Computación.
+- Revisión: título, abstract, términos controlados/no controlados, fuente, DOI,
+  fechas, afiliaciones y metadatos disponibles.
+- Exclusión: falsos positivos interdisciplinarios donde software, base de datos,
+  algoritmo, simulación, red, imagen, señal, IA o modelo eran sólo herramientas
+  secundarias de otra disciplina.
+- Deduplicación: primero por DOI; cuando no había DOI, por título normalizado +
+  año + primer autor. También se eliminaron duplicados claros entre versiones
+  preprint/proceedings o registros con título idéntico y DOI diferente.
+
+Notas importantes:
+- En varios registros Engineering Village sólo proporcionó año 2024 o 2025. Si no
+  había mes verificable, se conservó el registro.
+- Cuando `Issue date` o `Conference date` permitían verificar mes, se aplicó
+  estrictamente el periodo marzo 2024–diciembre 2025.
+- Algunos registros exportados como 2024 fueron excluidos si la conferencia o
+  evento real correspondía a 2022 o 2023.
+- Los registros con afiliación `UNAM` ambigua o no correspondiente a la
+  Universidad Nacional Autónoma de México fueron excluidos.
+
+================================================================================
+5. RESULTADOS POR ÁREA
+================================================================================
+
+5.1 ISBD — Ingeniería de Software y Bases de Datos
+--------------------------------------------------
+
+- Raw recibidos: 114
+- Duplicados eliminados: 58
+- Registros únicos por lote: 56
+- Excluidos fuera de periodo: 3
+- Excluidos por afiliación UNAM no clara: 6
+- Excluidos por no ser CS: 36
+- Aceptados CS: 11
+
+Se conservaron registros de HCI, CSCW, accesibilidad, chatbots, interfaces
+conversacionales, interfaces web/IoT, interacción humano-robot, sistemas hápticos,
+seguridad, privacidad, cifrado homomórfico, watermarking, NLP/software y
+supercómputo. El lote inicial era ISBD, pero se conservaron registros de otras
+familias de CS porque esta fase sólo separa Ciencias de la Computación vs. no CS.
+
+Principales exclusiones: bases de datos, programas o datasets de dominio
+astronómico, biomédico, geocientífico o energético; artículos de bibliotecología,
+gobierno digital, open science, física, materiales, química o salud donde el
+componente computacional no era el aporte principal. También se excluyeron registros
+fuera de periodo, como Q-COSMIC por fecha de febrero de 2024.
+
+5.2 CC — Computación Científica
+-------------------------------
+
+- Raw recibidos: 119
+- Duplicados eliminados: 45
+- Registros únicos por lote: 74
+- Excluidos fuera de periodo: 3
+- Excluidos por afiliación UNAM no clara: 6
+- Excluidos por no ser CS: 51
+- Aceptados CS: 14
+
+Se conservaron trabajos de HPC, supercómputo, GPU, flujos científicos,
+métodos numéricos, inversión numérica, optimización multiobjetivo, optimización
+evolutiva, cómputo distribuido/concurrencia, procesamiento de imágenes,
+esteganografía, reconstrucción de imágenes y modelos computacionales cuando el
+aporte principal fue algorítmico, numérico, de software o de arquitectura
+computacional.
+
+Principales exclusiones: simulación/modelado numérico de ingeniería civil,
+geotecnia, hidráulica, geociencias, energía, materiales, física, astronomía,
+biología o neurociencia sin contribución computacional generalizable. La regla
+conservadora fue aceptar métodos, algoritmos, software, HPC o frameworks
+computacionales; excluir simulaciones rutinarias de dominio.
+
+5.3 IA — Inteligencia Artificial
+--------------------------------
+
+- Raw recibidos: 421
+- Duplicados eliminados: 273
+- Registros únicos por lote: 148
+- Excluidos fuera de periodo: 5
+- Excluidos por afiliación UNAM no clara: 32
+- Excluidos por no ser CS: 56
+- Aceptados CS: 55
+
+Este fue el lote con mayor volumen y mayor duplicación interna. Se conservaron
+registros de machine learning, deep learning, reinforcement learning, NLP, LLM,
+detección de texto generado, análisis de subjetividad, metáforas, similitud
+semántica, clasificación de textos, visión por computadora, segmentación,
+reconstrucción, robótica, SLAM, HRI, navegación, interfaces web, redes,
+protocolos, privacidad, cómputo distribuido, teoría de consenso, HPC y software
+computacional.
+
+Principales exclusiones: IA/ML aplicado como herramienta en energía, sistemas
+eléctricos, astronomía, física, biomedicina, ingeniería civil, geotermia,
+aeroespacial, oceanografía, materiales, educación, bibliotecología, comunicación
+o ciencias sociales. También se excluyeron registros sin afiliación UNAM clara,
+aunque varios eran técnicamente de CS.
+
+5.4 RS — Redes y Seguridad en Cómputo
+-------------------------------------
+
+- Raw recibidos: 96
+- Duplicados eliminados: 50
+- Registros únicos por lote: 46
+- Excluidos fuera de periodo: 1
+- Excluidos por afiliación UNAM no clara: 14
+- Excluidos por no ser CS: 11
+- Aceptados CS: 20
+
+Se conservaron registros de IoT, sistemas embebidos, sensores, interfaces web
+para robótica, interacción humano-robot, seguridad, privacidad, criptografía,
+cifrado homomórfico, smart contracts, OpenPGP, watermarking, esteganografía,
+sistemas distribuidos, verificación en tiempo de ejecución, consenso, memoria
+compartida, estructuras de datos concurrentes, optimización multiobjetivo,
+aprendizaje por refuerzo, HPC y supercómputo.
+
+Principales exclusiones: energía, microredes, transporte, materiales, electroquímica,
+neurociencia, astronomía, gobierno digital o política pública con vocabulario
+tecnológico pero sin método, protocolo, sistema o algoritmo computacional central.
+También se excluyeron registros claramente de CS sin afiliación UNAM clara.
+
+5.5 TC — Teoría de la Computación
+---------------------------------
+
+- Raw recibidos: 71
+- Duplicados eliminados: 34
+- Registros únicos por lote: 37
+- Excluidos fuera de periodo: 0
+- Excluidos por afiliación UNAM no clara: 13
+- Excluidos por no ser CS: 11
+- Aceptados CS: 13
+
+Se conservaron registros de algoritmos y optimización combinatoria, cómputo
+distribuido, concurrencia, memoria compartida, runtime verification, formalización
+de propiedades de sistemas distribuidos, estructuras de datos concurrentes,
+smart contracts, lógica aplicada a IoT, MORL, optimización evolutiva, HRI/robótica
+y protección de imágenes/criptografía.
+
+Principales exclusiones: teoría de grafos, clustering, redes o simulación usados
+como herramientas en potencia eléctrica, hidráulica, oceanografía, biomedicina,
+astrofísica o monitoreo científico. También se excluyeron trabajos de set theory
+o lógica filosófica sin vínculo claro con computabilidad, verificación, formal
+languages, temporal logic, model checking o algoritmos.
+
+5.6 SIAV — Señales, Imágenes y Ambientes Virtuales
+--------------------------------------------------
+
+- Raw recibidos: 324
+- Duplicados eliminados: 178
+- Registros únicos por lote: 146
+- Excluidos fuera de periodo: 3
+- Excluidos por afiliación UNAM no clara: 14
+- Excluidos por no ser CS: 99
+- Excluidos por metadatos insuficientes: 1
+- Aceptados CS: 29
+
+Se conservaron registros de visión por computadora, segmentación, reconstrucción,
+mejora de imágenes, procesamiento de señales biomédicas, EEG, espectrogramas,
+termografía, imágenes médicas, realidad extendida, haptics, interacción
+humano-robot, interfaces inmersivas, protección de imágenes, watermarking,
+esteganografía, cifrado, IA/ML, NLP/LLM, data augmentation, sistemas
+computacionales, anomalías en trazas distribuidas y cómputo científico cuando el
+aporte era claramente computacional.
+
+Principales exclusiones: astronomía, astrofísica, física de altas energías,
+bioimagen, física médica, energía, geotecnia, geofísica, oceanografía, hidrología,
+meteorología, química, materiales, alimentos, biotecnología y estudios educativos
+o sociales donde imagen/señal/ML era herramienta secundaria.
+
+================================================================================
+6. PROBLEMAS GLOBALES DETECTADOS EN ENGINEERING VILLAGE
+================================================================================
+
+6.1 Encabezados distintos entre archivos
+----------------------------------------
+
+Engineering Village no mantuvo siempre el mismo diseño de columnas. Dependiendo
+del lote y del archivo, se recibieron encabezados de 24, 27, 28, 29, 30, 31, 32,
+33 y hasta 34 columnas. Para no perder metadatos, cada lote se armonizó con la
+unión de columnas originales de Engineering Village. No se convirtió al modelo
+canónico y no se renombraron columnas.
+
+6.2 Alto solapamiento entre queries
+-----------------------------------
+
+El solapamiento interno fue alto, especialmente en IA y SIAV:
+
+- IA: 273 duplicados eliminados sobre 421 registros raw.
+- SIAV: 178 duplicados eliminados sobre 324 registros raw.
+- ISBD: 58 duplicados eliminados sobre 114 registros raw.
+- RS: 50 duplicados eliminados sobre 96 registros raw.
+- CC: 45 duplicados eliminados sobre 119 registros raw.
+- TC: 34 duplicados eliminados sobre 71 registros raw.
+
+Esto confirma que las queries de recuperación por keywords, autores y rescate
+son útiles para aumentar recall, pero exigen deduplicación rigurosa.
+
+6.3 Fechas incompletas o contradictorias
+----------------------------------------
+
+Algunos registros sólo indicaban año 2024/2025; otros contenían `Issue date` o
+`Conference date` con mes. Cuando sólo había año, se conservó el registro. Cuando
+había fecha verificable fuera de marzo 2024–diciembre 2025, el registro se
+excluyó. También se detectaron casos exportados como 2024 aunque la conferencia
+real era de 2022 o 2023.
+
+6.4 Afiliación UNAM como criterio fuerte
+----------------------------------------
+
+Engineering Village permitió revisar `Author affiliation`. Se excluyeron registros
+sin afiliación UNAM clara aunque fueran de Ciencias de la Computación. También se
+detectaron posibles falsos positivos institucionales por siglas o afiliaciones
+ambiguas; sólo se aceptaron registros con evidencia clara de la Universidad
+Nacional Autónoma de México o variantes inequívocas.
+
+6.5 Falsos positivos interdisciplinarios
+----------------------------------------
+
+Los principales falsos positivos provinieron de:
+- energía, potencia eléctrica, microredes y sistemas de control;
+- astronomía, astrofísica, rayos cósmicos y observatorios;
+- biomedicina, neurociencia, salud clínica, física médica;
+- geociencias, geotecnia, hidráulica, oceanografía, hidrología y meteorología;
+- química, materiales, nanomateriales, alimentos y biotecnología;
+- educación, bibliotecología, gobierno digital, política pública y ciencias sociales;
+- bases de datos o datasets de dominio sin aporte de DBMS, IR, HCI o software.
+
+La regla aplicada fue no aceptar registros sólo porque contienen términos como
+`software`, `database`, `algorithm`, `machine learning`, `simulation`, `model`,
+`network`, `security`, `image`, `signal`, `AI`, `data`, `digital`, `platform` o
+`system`. Se aceptaron únicamente cuando el aporte principal era método,
+algoritmo, sistema, arquitectura, software, protocolo, interfaz, framework,
+procesamiento, verificación, optimización o implementación computacional.
+
+================================================================================
+7. REGLAS GLOBALES RECOMENDADAS PARA LA SIGUIENTE FASE
+================================================================================
+
+1. Deduplicación global entre las seis áreas de Engineering Village.
+   Los 142 registros aceptados son suma por lote, no necesariamente registros
+   globalmente únicos. Se debe unir los seis CSV finales y deduplicar por DOI;
+   si no hay DOI, usar título normalizado + año + primer autor.
+
+2. Deduplicación global contra Scopus, IEEE, ACM y EBSCO.
+   Varios títulos aceptados en Engineering Village ya aparecieron en fuentes
+   previas. La deduplicación final del proyecto debe hacerse a nivel de todas las
+   editoriales/fuentes.
+
+3. Conversión posterior al modelo canónico.
+   Los archivos finales de Engineering Village conservan columnas originales
+   variables. La conversión al modelo:
+   indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi,
+   URL, Area, Subarea, Keywords, Abstract
+   sigue pendiente.
+
+4. Asignación final de área y subárea.
+   Los lotes por área fueron búsquedas iniciales, no clasificación definitiva.
+   Un artículo recuperado por ISBD, CC, IA, RS, TC o SIAV puede pertenecer
+   finalmente a otra área de Ciencias de la Computación.
+
+5. Mantener criterio conservador de Ciencias de la Computación.
+   No aceptar artículos de otra disciplina donde el componente computacional sea
+   sólo una herramienta secundaria.
+
+6. Mantener criterio fuerte de afiliación UNAM.
+   No aceptar registros sin afiliación UNAM clara, aunque el tema sea
+   computacional.
+
+================================================================================
+8. ESTADO FINAL DE ENGINEERING VILLAGE
+================================================================================
+
+Fuente: Engineering Village
+Áreas cubiertas: 6/6
+
+- ISBD: completado
+- CC: completado
+- IA: completado
+- RS: completado
+- TC: completado
+- SIAV: completado
+
+Registros raw procesados: 1145
+Registros aceptados como Ciencias de la Computación por lote: 142
+Formato de salida actual: CSV con columnas originales de Engineering Village
+Conversión al modelo canónico: pendiente
+Asignación final de área/subárea: pendiente
+Deduplicación global entre áreas: pendiente
+Deduplicación global contra otras fuentes: pendiente
+
+================================================================================
+9. NOTA EJECUTIVA PARA PEGAR EN EL CHAT PRINCIPAL
+================================================================================
+
+Engineering Village quedó completado para las seis áreas del proyecto. Se
+procesaron 1145 registros raw distribuidos en ISBD, Computación Científica,
+Inteligencia Artificial, Redes y Seguridad, Teoría de la Computación y Señales/
+Imágenes/Ambientes Virtuales. Después de deduplicación interna por lote se
+obtuvieron 507 registros únicos por área; de ellos, 142 fueron
+aceptados como claramente pertenecientes a Ciencias de la Computación, 264 fueron
+rechazados por no ser CS, 85 por no tener afiliación UNAM clara, 15 por
+estar fuera de periodo y 1 por metadatos insuficientes. Los CSV finales conservan
+el formato original de Engineering Village, con encabezados variables armonizados
+por unión de columnas. Aún no fueron convertidos al modelo canónico ni
+clasificados por área/subárea final. La siguiente fase debe unir los seis CSV
+finales, deduplicar globalmente entre áreas y luego convertir al modelo canónico
+del proyecto.

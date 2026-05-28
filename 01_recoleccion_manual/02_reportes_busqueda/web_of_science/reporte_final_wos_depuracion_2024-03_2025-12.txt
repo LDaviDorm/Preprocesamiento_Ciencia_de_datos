@@ -1,0 +1,369 @@
+REPORTE FINAL DE WEB OF SCIENCE — DEPURACIÓN POR ÁREAS
+Periodo de trabajo: marzo 2024 – diciembre 2025
+Fuente: Web of Science Core Collection
+Fecha de integración del reporte: 2026-05-19
+
+===============================================================================
+1. RESUMEN EJECUTIVO
+===============================================================================
+
+Se completó la fase de búsqueda, descarga y depuración inicial en Web of Science para las seis áreas del proyecto:
+
+1. ISBD — Ingeniería de Software y Bases de Datos
+2. CC — Computación Científica
+3. IA — Inteligencia Artificial
+4. RS — Redes y Seguridad en Cómputo
+5. TC — Teoría de la Computación
+6. SIAV — Señales, Imágenes y Ambientes Virtuales
+
+La fase realizada NO convirtió los registros al modelo canónico, NO asignó áreas finales y NO asignó subáreas finales. El objetivo fue conservar únicamente registros claramente pertenecientes a Ciencias de la Computación, manteniendo el formato original exportado desde Web of Science.
+
+Resultado acumulado de Web of Science:
+
+- Total raw descargado en Web of Science: 4831 registros
+- Duplicados eliminados dentro de cada lote: 1306
+- Registros únicos después de deduplicación por lote: 3525
+- Registros excluidos por estar fuera de periodo: 359
+- Registros excluidos por no tener afiliación UNAM clara: 116
+- Registros excluidos por no ser Ciencias de la Computación: 2688
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados como Ciencias de la Computación: 362
+
+Indicadores acumulados:
+
+- Tasa de duplicación acumulada por lote: 27.0%
+- Tasa de aceptación sobre registros raw: 7.5%
+- Tasa de aceptación sobre registros únicos por lote: 10.3%
+- Tasa de rechazo por no ser CS sobre registros únicos por lote: 76.3%
+- Tasa de exclusión por fuera de periodo sobre registros únicos por lote: 10.2%
+- Tasa de exclusión por afiliación UNAM no clara sobre registros únicos por lote: 3.3%
+
+Este acumulado todavía NO representa una deduplicación global entre áreas de Web of Science ni contra otras fuentes. La deduplicación hecha hasta ahora fue interna por lote/área. Es probable que algunos artículos aceptados se repitan entre áreas, especialmente en IA, SIAV, RS, TC, cómputo científico, verificación formal, seguridad, optimización, HCI y software científico.
+
+===============================================================================
+2. TABLA CONSOLIDADA POR ÁREA
+===============================================================================
+
+Área        Raw  Duplicados   Únicos  Fuera periodo   Sin UNAM    No CS  Aceptados
+----------------------------------------------------------------------------------
+ISBD       1207         115     1092            109         33      919         31
+CC          406          74      332             34         15      245         38
+IA         1257         521      736             73         29      503        131
+RS          334         128      206             27          5      127         47
+TC          130          41       89              9          3       46         31
+SIAV       1497         427     1070            107         31      848         84
+----------------------------------------------------------------------------------
+TOTAL      4831        1306     3525            359        116     2688        362
+
+===============================================================================
+3. ARCHIVOS FINALES GENERADOS POR LOTE
+===============================================================================
+
+ISBD:
+- wos_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+CC:
+- wos_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+IA:
+- wos_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+RS:
+- wos_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+TC:
+- wos_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+SIAV:
+- wos_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+En los lotes se mantuvo el formato original de Web of Science. Los reportes indican que los archivos de WoS conservaron el encabezado original, generalmente de 72 columnas, sin renombrar columnas, sin agregar columnas nuevas, sin eliminar columnas originales y sin convertir al modelo canónico. Los archivos finales se entregaron como CSV en UTF-8 con BOM para facilitar la apertura en Excel con acentos y caracteres especiales.
+
+Nota: el reporte de ISBD conserva una errata textual en la sección de formato, donde aparece un marcador interno en lugar del número de columnas. Aun así, el mismo reporte confirma que se conservó el diseño original de columnas de Web of Science y que no se renombraron, agregaron ni eliminaron columnas.
+
+===============================================================================
+4. CRITERIOS GENERALES APLICADOS
+===============================================================================
+
+En los seis lotes se aplicaron criterios homogéneos:
+
+- Periodo obligatorio: marzo de 2024 a diciembre de 2025.
+- Afiliación: al menos un autor con afiliación UNAM clara.
+- Tema: pertenencia clara a Ciencias de la Computación.
+- Revisión: título, keywords, abstract, fuente, direcciones/afiliaciones y metadatos.
+- Exclusión: falsos positivos interdisciplinarios.
+- Deduplicación: primero por DOI; si no había DOI, por título normalizado + año + primer autor.
+
+Web of Science exportó campos de fecha como:
+- Publication Date
+- Publication Year
+- Conference Date
+- Early Access Date
+
+Cuando el mes fue verificable, se aplicó estrictamente el periodo marzo 2024–diciembre 2025. Por eso se excluyeron registros de enero/febrero de 2024, registros de 2023, registros de 2026 y registros con fecha de conferencia fuera del periodo aunque el año bibliográfico apareciera como 2024 o 2025. Cuando sólo había año 2024 sin mes verificable, el registro se conservó para evaluación temática.
+
+Para afiliación institucional, se priorizaron:
+- Addresses
+- Reprint Addresses
+- correos institucionales
+- evidencia clara en los metadatos del registro
+
+El campo Affiliations de WoS se usó con cautela, porque puede normalizar instituciones de forma ambigua y producir falsos positivos institucionales.
+
+===============================================================================
+5. RESULTADOS POR ÁREA
+===============================================================================
+
+-------------------------------------------------------------------------------
+5.1 ISBD — Ingeniería de Software y Bases de Datos
+-------------------------------------------------------------------------------
+
+- Total de registros recibidos: 1207
+- Duplicados eliminados: 115
+- Registros únicos después de deduplicación: 1092
+- Excluidos por fuera de periodo: 109
+- Excluidos por afiliación UNAM no clara: 33
+- Excluidos por no ser Ciencias de la Computación: 919
+- Excluidos por metadatos insuficientes: 0
+- Aceptados en CSV final: 31
+
+Se conservaron registros de ingeniería de software, medición funcional, estimación de software, síntesis de programas, asistentes de programación con IA, bases de datos, integración de fuentes, sistemas web, usabilidad, recuperación/indización de información, LLM, NLP, seguridad, esteganografía, watermarking, OpenPGP, HCI, accesibilidad, experiencia de usuario, interfaces web, chatbots educativos, diseño colaborativo, sistemas pervasivos, software científico, visión/señales, optimización, knowledge graphs y algoritmos.
+
+Principales falsos positivos:
+- bases de datos o repositorios de dominio científico sin aporte claro de DBMS, IR, HCI o ingeniería de software;
+- ML/IA aplicado a predicción clínica, energía, química, materiales, geofísica, astronomía, hidrología o educación;
+- instrumentación científica con FPGA, sensores, ASIC, DAQ, telescopios, microscopía, tomografía o sistemas embebidos donde el software era operativo;
+- estudios conceptuales o de adopción/impacto de IA, big data, software o plataformas digitales sin contribución técnica computacional.
+
+Decisiones relevantes:
+- Se aceptó DensToolKit2 como caso frontera porque el aporte central es un paquete open-source con programas, GUI y funcionalidad computacional reutilizable.
+- Se aceptó THE IBDATA WEB SYSTEM FOR BIOLOGICAL COLLECTIONS por el foco en diseño del sistema web y usabilidad.
+- Se excluyeron repositorios científicos de dominio cuando no había evidencia de contribución computacional generalizable.
+
+-------------------------------------------------------------------------------
+5.2 CC — Computación Científica
+-------------------------------------------------------------------------------
+
+- Total de registros recibidos: 406
+- Duplicados eliminados: 74
+- Registros únicos después de deduplicación: 332
+- Excluidos por fuera de periodo: 34
+- Excluidos por afiliación UNAM no clara: 15
+- Excluidos por no ser Ciencias de la Computación: 245
+- Excluidos por metadatos insuficientes: 0
+- Aceptados en CSV final: 38
+
+Se conservaron registros de algoritmos de optimización multiobjetivo, metaheurísticas, ACO, PSO/DE, selección de soluciones, software/código científico, LyapXool, TLANESY, HV-Inv, ComPASS, código CUDA, métodos numéricos, FEM, diferencias finitas, regularización, inversión, formulaciones eficientes de simulación, cómputo distribuido, verificación/runtime verification, smart contracts, modelos epistémicos, IA, aprendizaje profundo, aprendizaje por refuerzo, memoria asociativa, segmentación 3D, reconstrucción de señales/imágenes, seguridad/esteganografía y cloud/fog/distributed computing.
+
+Principales falsos positivos:
+- simulaciones numéricas rutinarias en geociencias, energía, fluidos, materiales, química, hidrología, oceanografía y estructuras;
+- control automático, potencia eléctrica, reactores, turbinas o procesos químicos donde el cálculo fue herramienta de dominio;
+- aplicaciones de ML/ANN/metaheurísticas a astronomía, materiales, biología, salud, economía o ingeniería civil sin aporte computacional generalizable;
+- modelos matemáticos o PDE puramente analíticos sin algoritmo, implementación, software o método numérico como contribución central.
+
+Decisiones relevantes:
+- Se conservó Computational Geodynamics Laboratory por el foco explícito en HPC/numerical modelling.
+- Se conservó Geothermal modeling in complex geological systems with ComPASS por describir simulador/código con implementación paralela y discretización numérica.
+- Se conservó T-A-Phi and J-A-Phi formulations por proponer formulaciones FEM que reducen costo computacional.
+- Se excluyeron casos donde la mención de UNAM aparecía sólo en Affiliations enriquecido, pero Addresses indicaba UAM, UAEMex u otra institución.
+
+-------------------------------------------------------------------------------
+5.3 IA — Inteligencia Artificial
+-------------------------------------------------------------------------------
+
+- Total de registros recibidos: 1257
+- Duplicados eliminados: 521
+- Registros únicos después de deduplicación: 736
+- Excluidos por fuera de periodo: 73
+- Excluidos por afiliación UNAM no clara: 29
+- Excluidos por no ser Ciencias de la Computación: 503
+- Excluidos por metadatos insuficientes: 0
+- Aceptados en CSV final: 131
+
+Este fue el segundo lote más grande y uno de los más ruidosos. Se conservaron registros de machine learning, deep learning, GNN, Transformers, LLM, RAG, modelos generativos, NLP, lingüística computacional, clasificación de reportes, corpus, hate speech, polaridad, hope speech, metáforas, visión por computadora, segmentación, reconstrucción, imágenes médicas, datasets/benchmarks computacionales, software, arquitectura de chatbots, generación/síntesis de programas, medición funcional asistida por IA, optimización evolutiva, MORL, hiperparámetros, algoritmos, estructuras de datos/concurrencia, IoT, WiFi sensing, privacidad, seguridad, verificación formal, HCI, XR, interacción humano-IA, accesibilidad, robótica y sistemas interactivos.
+
+Principales falsos positivos:
+- IA/ML aplicado a medicina, química, materiales, farmacología, bioinformática, astronomía, astrofísica, física, óptica, cosmología, geociencias, volcanología, hidrología, energía, agricultura, clima, ingeniería civil y sistemas eléctricos;
+- estudios educativos, bibliotecológicos, jurídicos, administrativos o sociales sobre uso o impacto de IA sin contribución técnica;
+- registros con afiliación normalizada engañosa donde Affiliations listaba UNAM, pero Addresses correspondía a UAM, UAEMex, UACM u otra institución.
+
+Decisiones relevantes:
+- Se aceptaron trabajos aplicados sólo si el objeto central era método, algoritmo, arquitectura, sistema, interfaz, framework, corpus/dataset computacional o técnica de IA/NLP/visión/señales.
+- Se excluyeron aplicaciones de IA/ML donde el resultado principal era médico, químico, físico, energético, geocientífico, educativo, social o administrativo.
+- Se aceptaron algunos registros no estrictamente IA porque son claramente Ciencias de la Computación y serán reclasificados después.
+
+-------------------------------------------------------------------------------
+5.4 RS — Redes y Seguridad en Cómputo
+-------------------------------------------------------------------------------
+
+- Total de registros recibidos: 334
+- Duplicados eliminados: 128
+- Registros únicos después de deduplicación: 206
+- Excluidos por fuera de periodo: 27
+- Excluidos por afiliación UNAM no clara: 5
+- Excluidos por no ser Ciencias de la Computación: 127
+- Excluidos por metadatos insuficientes: 0
+- Aceptados en CSV final: 47
+
+Se conservaron registros de criptografía, OpenPGP, blockchain, smart contracts, control de acceso, privacidad local, esteganografía, watermarking, protección de imágenes, redes, IoT, 5G/6G, middleware, descubrimiento de vecindad, análisis de tráfico, sistemas distribuidos, verificación formal, runtime verification, linealizabilidad, lógica modal/epistémica, teoría de cómputo distribuido, algoritmos, optimización, estructuras de datos concurrentes, colas concurrentes, cómputo heterogéneo, GPU/HPC, software científico, HCI, robótica, interfaces web y edge/fog computing.
+
+Principales falsos positivos:
+- materiales, fotónica, sensores, energía y nanodispositivos que usan security, encryption, PUF, wireless, IoT o sensor como contexto físico/material;
+- biomédica, salud pública, hidrología, geociencias, energía, edificios, transporte, ecología o agricultura con simulación, sensores, redes o ML como apoyo aplicado;
+- política pública, geopolítica, derecho, gobierno digital o ciencias sociales que mencionan Internet, seguridad, IA o datos sin contribución técnica de CS;
+- falsos positivos institucionales por UNAM asociado a Bilkent/Turquía o variantes ambiguas como Univ Autonoma Mexico sin evidencia clara de UNAM mexicana.
+
+Decisiones relevantes:
+- Se excluyó On the Decentralization of Attribute-Based Encryption Schemes por conferencia de septiembre de 2023.
+- Se excluyó Pattern Models por fecha de febrero de 2024.
+- Se excluyó Comparative Study of PSO and DE on GPU por afiliación UNAM no clara.
+- Se eliminó como duplicado claro una segunda versión de Cryptographic Consensus Protocols in Blockchain for the Internet of Things.
+
+-------------------------------------------------------------------------------
+5.5 TC — Teoría de la Computación
+-------------------------------------------------------------------------------
+
+- Total de registros recibidos: 130
+- Duplicados eliminados: 41
+- Registros únicos después de deduplicación: 89
+- Excluidos por fuera de periodo: 9
+- Excluidos por afiliación UNAM no clara: 3
+- Excluidos por no ser Ciencias de la Computación: 46
+- Excluidos por metadatos insuficientes: 0
+- Aceptados en CSV final: 31
+
+Se conservaron registros de teoría de la computación, cómputo distribuido, consenso, set-agreement, linealizabilidad, estructuras concurrentes, verificación/runtime verification, lógica, razonamiento formal, lógicas descriptivas, lógica modal graduada, smart contracts, verificación formal de sistemas IoT, algoritmos, complejidad/interpretabilidad de Kolmogorov, grafos, geometría computacional, optimización combinatoria, optimización multiobjetivo, teoría de información, códigos lineales/cíclicos, campos finitos con vínculo computacional/criptográfico, criptografía, cifrado de imágenes, blockchain, IoT, protección de información, IA/datos, aprendizaje automático, datos de alta dimensión y computación creativa/celular.
+
+Principales falsos positivos:
+- matemática pura, física, química, biología, ecología, salud, neurociencia o astronomía con grafos, autómatas, Markov chains, redes, topología o campos finitos sin aporte computacional claro;
+- sistemas eléctricos, energía, agua, transporte, clima, materiales y sensores donde algoritmos, clustering, simulación o modelado son herramientas;
+- arte/música/ciencias cognitivas con stochastic processes, Python, Monte Carlo o reflexiones sobre computación sin contribución técnica suficiente;
+- falsos positivos institucionales por Universidad Autónoma de México, UAM, UAEM o UNAM de Bilkent/Turquía.
+
+Decisiones relevantes:
+- Se excluyó Pattern Models por fecha de febrero de 2024.
+- Se excluyó An Interpretable Authorship Attribution Algorithm por conferencia de noviembre de 2023.
+- Se excluyó Verified propagation of imprecise probabilities in non-linear ODEs por enero de 2024.
+- Se aceptó Musical Composition and Two-Dimensional Cellular Automata Based on Music Intervals como computación creativa/celular, pero queda revisable en clasificación final.
+
+-------------------------------------------------------------------------------
+5.6 SIAV — Señales, Imágenes y Ambientes Virtuales
+-------------------------------------------------------------------------------
+
+- Total de registros recibidos: 1497
+- Duplicados eliminados: 427
+- Registros únicos después de deduplicación: 1070
+- Excluidos por fuera de periodo: 107
+- Excluidos por afiliación UNAM no clara: 31
+- Excluidos por no ser Ciencias de la Computación: 848
+- Excluidos por metadatos insuficientes: 0
+- Aceptados en CSV final: 84
+
+Este fue el lote más grande y el más ruidoso. Se conservaron registros de visión por computadora, detección de objetos, segmentación, imágenes médicas, reconstrucción/registro de imágenes, procesamiento de señales, EEG, eye-tracking, audio/speech, wavelets, spike sorting, mode decomposition, realidad virtual, realidad mixta, simuladores, interfaces, interacción usuario-sistema, dispositivos musicales digitales, watermarking, cifrado/protección de imágenes, seguridad visual, autenticación de contenido, robótica, reconocimiento de objetos, pose estimation, manipulación, sistemas de sensado, IA/ML, NLP, data mining, software científico, frameworks y pipelines computacionales.
+
+Principales falsos positivos:
+- biomédica, clínica o salud con imágenes, señales, VR/AR o deep learning como herramienta de diagnóstico o entrenamiento;
+- astronomía, cosmología, geociencias, óptica, fotónica, energía y materiales donde image processing, signal processing o neural networks son herramientas de dominio;
+- datasets/repositorios/catálogos de imágenes o señales de dominio biológico/médico sin método o benchmark computacional;
+- estudios educativos, psicológicos, sociales o clínicos sobre VR/AR/IA sin contribución técnica a HCI, interfaz, sistema o método;
+- sensores, instrumentación, microscopía, espectroscopía o medición donde el procesamiento digital es secundario al dispositivo o fenómeno físico.
+
+Decisiones relevantes:
+- Se aceptaron artículos biomédicos de imágenes/señales sólo cuando el aporte central fue segmentación, reconstrucción, clasificación, software, framework, pipeline, representación/descriptor o método computacional explícito.
+- Se excluyeron registros con deep learning, image processing, signal processing, virtual reality, computer vision, software, algorithm, framework o dataset cuando el aporte principal era de otra disciplina.
+- Se priorizaron Addresses y Reprint Addresses para evitar falsos positivos institucionales.
+
+===============================================================================
+6. PROBLEMAS GLOBALES DETECTADOS EN WEB OF SCIENCE
+===============================================================================
+
+1. Alto ruido temático por el campo TS
+Web of Science recupera muchos registros cuando se usa TS, especialmente en IA, SIAV e ISBD. Términos como software, database, machine learning, image processing, signal processing, network, security, simulation, model, framework o algorithm aparecen frecuentemente como herramientas de otras disciplinas.
+
+2. Campo Affiliations potencialmente ambiguo
+El campo Affiliations de WoS puede normalizar instituciones de forma ambigua. En varios lotes, una afiliación enriquecida podía mostrar Universidad Nacional Autónoma de México aunque Addresses o Reprint Addresses indicaban otra institución. Por eso se priorizaron Addresses, Reprint Addresses y correos.
+
+3. Fechas múltiples y exclusiones temporales
+WoS exporta Publication Date, Publication Year, Conference Date y Early Access Date. En esta depuración se aplicó el periodo de forma estricta cuando había mes verificable. Esto generó exclusiones de enero/febrero de 2024, 2023, 2026 y conferencias fuera del periodo.
+
+4. Solapamiento alto entre queries
+El solapamiento fue considerable, especialmente en IA y SIAV. Se eliminaron 1306 duplicados internos por lote. La deduplicación global entre áreas y fuentes sigue pendiente.
+
+5. Falsos positivos institucionales
+Se detectaron casos con siglas o nombres cercanos a UNAM que no correspondían a la Universidad Nacional Autónoma de México, por ejemplo variantes de Universidad Autónoma Metropolitana, Universidad Autónoma del Estado de México, Universidad Autónoma de la Ciudad de México, Universidad Autónoma de México/Unidad Lerma o UNAM/Bilkent en Turquía.
+
+6. Frontera disciplinaria compleja
+Varias áreas generaron registros frontera:
+- repositorios científicos de dominio;
+- bioinformática y cheminformática;
+- software científico de física/química;
+- IA aplicada en salud, energía, astronomía o geociencias;
+- VR/AR clínica o educativa;
+- matemática pura y lógica filosófica;
+- redes eléctricas o biológicas confundidas con redes de computadoras.
+
+===============================================================================
+7. REGLAS GLOBALES RECOMENDADAS PARA LA SIGUIENTE FASE
+===============================================================================
+
+1. Deduplicación global
+Unir los seis CSV finales de WoS y deduplicar globalmente por DOI. Si no hay DOI, usar título normalizado + año + primer autor. Después deduplicar contra Scopus, IEEE, ACM, EBSCO y Engineering Village.
+
+2. Conversión al modelo canónico
+La conversión al modelo:
+indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract
+sigue pendiente para WoS.
+
+3. Asignación final de área y subárea
+El área inicial de búsqueda no es clasificación definitiva. Varios registros aceptados en ISBD, CC, IA, RS, TC o SIAV pueden pertenecer finalmente a otra área de Ciencias de la Computación.
+
+4. Regla institucional
+Para WoS, priorizar Addresses y Reprint Addresses sobre Affiliations. No aceptar un registro sólo porque el campo Affiliations normalizado mencione UNAM si las direcciones reales no lo respaldan.
+
+5. Regla temática
+No aceptar un artículo sólo por mencionar software, database, algorithm, AI, machine learning, deep learning, model, simulation, network, security, image, signal, virtual reality, data analysis, platform o framework. Debe existir contribución computacional central.
+
+6. Regla para IA/ML aplicada
+Aceptar sólo cuando el aporte sea método, arquitectura, algoritmo, sistema, framework, corpus/dataset computacional, pipeline, interfaz o técnica computacional. Excluir aplicaciones donde IA/ML sea herramienta secundaria de medicina, química, física, energía, geociencias, astronomía, educación, administración o ciencias sociales.
+
+7. Regla para imágenes/señales/VR
+Aceptar sólo cuando el aporte sea procesamiento, segmentación, reconstrucción, registro, clasificación, descriptor, arquitectura DL, software, benchmark, pipeline, interfaz, HCI, sistema VR/AR/XR o evaluación técnica. Excluir usos clínicos, psicológicos, educativos o sociales sin contribución técnica.
+
+8. Regla para computación científica
+Aceptar métodos, algoritmos, solvers, software, código, frameworks, HPC, formulaciones numéricas eficientes, reconstrucción/inversión o simulación como contribución metodológica. Excluir simulaciones rutinarias de dominio.
+
+9. Regla para teoría de la computación
+Aceptar matemática/teoría sólo cuando el vínculo con computabilidad, algoritmos, complejidad, codificación, criptografía, geometría computacional, formal methods, model checking, sistemas distribuidos o teoría de información sea claro.
+
+===============================================================================
+8. ESTADO FINAL DE WEB OF SCIENCE
+===============================================================================
+
+Fuente: Web of Science Core Collection
+Áreas cubiertas: 6/6
+
+ISBD: completado
+CC: completado
+IA: completado
+RS: completado
+TC: completado
+SIAV: completado
+
+Registros raw procesados: 4831
+Registros aceptados como Ciencias de la Computación por lote: 362
+Formato de salida actual: CSV con formato original de Web of Science, sin conversión al modelo canónico.
+
+Pendiente:
+- Unión de los seis CSV finales de WoS.
+- Deduplicación global entre áreas WoS.
+- Deduplicación global contra Scopus, IEEE, ACM, EBSCO y Engineering Village.
+- Conversión al modelo canónico.
+- Asignación final de área.
+- Asignación final de subárea.
+- Perfilado de calidad del conjunto integrado.
+
+===============================================================================
+9. NOTA EJECUTIVA PARA PEGAR EN EL CONTROL PRINCIPAL
+===============================================================================
+
+Web of Science quedó completado para las seis áreas del proyecto. Se procesaron 4831 registros raw distribuidos en ISBD, Computación Científica, Inteligencia Artificial, Redes y Seguridad, Teoría de la Computación y Señales/Imágenes/Ambientes Virtuales. Después de deduplicación interna por lote se obtuvieron 3525 registros únicos por área; de ellos, 362 fueron aceptados como claramente pertenecientes a Ciencias de la Computación, 2688 fueron rechazados por no ser CS, 116 por no tener afiliación UNAM clara y 359 por estar fuera de periodo. Los CSV finales conservan el formato original de Web of Science y aún no fueron convertidos al modelo canónico ni clasificados por área/subárea final. La siguiente fase debe unir los seis CSV finales, realizar deduplicación global entre áreas y contra las demás fuentes, convertir al modelo canónico y asignar áreas/subáreas finales.

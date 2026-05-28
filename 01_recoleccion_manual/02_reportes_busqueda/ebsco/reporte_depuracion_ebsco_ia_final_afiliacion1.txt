@@ -1,0 +1,175 @@
+# Reporte de depuración — EBSCO IA
+
+## Archivos recibidos
+- EBSCO-Metadata-17_05_2026 (1).csv
+- EBSCO-Metadata-17_05_2026 (2).csv
+- EBSCO-Metadata-17_05_2026 (3).csv
+- EBSCO-Metadata-17_05_2026 (4).csv
+- EBSCO-Metadata-17_05_2026 (5).csv
+- EBSCO-Metadata-17_05_2026 (6).csv
+- EBSCO-Metadata-17_05_2026.csv
+
+## Objetivo
+Depurar registros descargados desde EBSCO para el lote inicial IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de EBSCO y agregando únicamente las columnas de afiliación necesarias para esta editorial, porque EBSCO no exportó afiliaciones institucionales.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+- Para optimizar el trabajo, primero se descartaron registros que no eran claramente de Ciencias de la Computación y sólo después se buscaron afiliaciones externas para los candidatos aceptables.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, subjects, fuente, DOI y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no había DOI, por título normalizado + año + primer autor.
+- Búsqueda externa de afiliación únicamente para registros que pasaron el filtro temático de Ciencias de la Computación.
+
+Nota: a diferencia de Scopus, en este lote EBSCO sí exportó `publicationDate`, por lo que el filtro temporal se aplicó estrictamente por fecha cuando fue posible. Se excluyeron registros de enero/febrero de 2024 y registros de 2026 o anteriores a marzo de 2024.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 241
+- Artículos únicos después de deduplicación: 233
+- Registros duplicados eliminados: 8
+- Registros excluidos por estar fuera de periodo: 93
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser Ciencias de la Computación: 107
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 32
+
+## Registros aceptados
+Se conservaron principalmente:
+
+- artículos de NLP, LLM, RAG, clasificación multilabel, análisis de sentimiento y chatbots;
+- artículos de aprendizaje profundo, redes neuronales, optimización de hiperparámetros, KAN-RNN, wavelet-CNN y modelos híbridos;
+- artículos de visión/imágenes biomédicas o biológicas cuando el aporte principal fue segmentación, arquitectura CNN/DL o procesamiento de imagen;
+- artículos de ingeniería de software, estimación de software, síntesis de programas y medición funcional con LLM;
+- artículos de cómputo científico, diferencias finitas, elementos finitos, inversión numérica, reconstrucción y cómputo paralelo/distribuido;
+- artículos de seguridad/criptografía, HCI, VR/usabilidad, IoT con verificación formal y diseño colaborativo asistido por cómputo.
+
+Títulos aceptados en el CSV final:
+- DensToolKit2: A comprehensive open-source package for analyzing the electron density and its derivative scalar and vector fields.
+- Symmetric Grayscale Image Encryption Based on Quantum Operators with Dynamic Matrices.
+- On the multi-objective hyperparameter optimization of the weighted entropic associative memory.
+- Simulation of the behavior of fine and gross motor skills of an individual with motor disabilities.
+- Solution Algorithms for the Capacitated Location Tree Problem with Interconnections.
+- Simulation of an individual with motor disabilities by a deep reinforcement learning model.
+- Proposal for the Application of Fractional Operators in Polynomial Regression Models to Enhance the Determination Coefficient R 2 on Unseen Data.
+- Triangular finite differences using bivariate Lagrange polynomials with applications to elliptic equations.
+- Bayesian Gravity Data Inversion Using a 3D Alpha Shape Source Representation.
+- Kernel-based regularization for photoacoustic pressure reconstructiona).
+- Finite element software for calculating fluid flow and heat transport for seamounts.
+- Acoustic 2-D Full-Waveform Inversion with Non-Balanced Finite differences and Adaptive Weight Decay Methods.
+- A time-domain SGFD-FK hybrid method for 2D teleseismic elastic wave modeling and inversion.
+- Read/write fence-free work-stealing with multiplicity.
+- Exploring the Behavior and Performance of Large Language Models: Can LLMs Infer Answers to Questions Involving Restricted Information?
+- Multi-Label Topic Classification in a Twitter Corpus of Public Communication of Science in Mexican Spanish.
+- Is It Possible to Use ChatGPT to Perform Measurements Using the COSMIC Method?
+- A Systematic Literature Review of 10 years of Research on Program Synthesis and Natural Language Processing.
+- Intelligent MRI diagnosis of neurological alterations in infants from 4 to 12 months.
+- VirDetect-AI: a residual and convolutional neural network–based metagenomic tool for eukaryotic viral protein identification.
+- Educational Chatbots: A Systematic Mapping Study.
+- Demand forecasting using KAN-RNN.
+- Correlations and Fractality in Sentence-Level Sentiment Analysis Based on VADER for Literary Texts.
+- DeepReg: a deep learning hybrid model for predicting transcription factors in eukaryotic and prokaryotic genomes.
+- Membrane and vesicle structure detection in cryo-electron tomography based on deep learning.
+- Multilingual identification of nuanced dimensions of hope speech in social media texts.
+- Proposal of a Methodology Based on Using a Wavelet Transform as a Convolution Operation in a Convolutional Neural Network for Feature Extraction Purposes.
+- Assessing User Experience with Piezoresistive Force Sensors: Interpreting Button Press Impulse and Duration.
+- Merging Distinct Sources Databases to Improve Software Estimation Models.
+- Comparison of Manual, Automatic, and Voice Control in Wheelchair Navigation Simulation in Virtual Environments: Performance Evaluation of User and Motion Sickness.
+- A fuzzy description logic based IoT framework: Formal verification and end user programming.
+- Towards a Collaborative Game Designer Using the CCDSF Framework.
+
+## Afiliaciones recuperadas fuera del CSV de EBSCO
+EBSCO no exportó afiliaciones institucionales en los archivos recibidos. Para los registros aceptados, la afiliación se recuperó en fuentes externas como páginas editoriales, páginas DOI, SIIA UNAM, páginas de revista o vistas del artículo. Toda la información se colocó en `Afiliacion1`, indicando qué autor corresponde a qué afiliación.
+
+- DensToolKit2: A comprehensive open-source package for analyzing the electron density and its derivative scalar and vector fields.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Symmetric Grayscale Image Encryption Based on Quantum Operators with Dynamic Matrices.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- On the multi-objective hyperparameter optimization of the weighted entropic associative memory.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Simulation of the behavior of fine and gross motor skills of an individual with motor disabilities.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Solution Algorithms for the Capacitated Location Tree Problem with Interconnections.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Simulation of an individual with motor disabilities by a deep reinforcement learning model.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Proposal for the Application of Fractional Operators in Polynomial Regression Models to Enhance the Determination Coefficient R 2 on Unseen Data.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Triangular finite differences using bivariate Lagrange polynomials with applications to elliptic equations.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Bayesian Gravity Data Inversion Using a 3D Alpha Shape Source Representation.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Kernel-based regularization for photoacoustic pressure reconstructiona).: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Finite element software for calculating fluid flow and heat transport for seamounts.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Acoustic 2-D Full-Waveform Inversion with Non-Balanced Finite differences and Adaptive Weight Decay Methods.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- A time-domain SGFD-FK hybrid method for 2D teleseismic elastic wave modeling and inversion.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Read/write fence-free work-stealing with multiplicity.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Exploring the Behavior and Performance of Large Language Models: Can LLMs Infer Answers to Questions Involving Restricted Information?: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Multi-Label Topic Classification in a Twitter Corpus of Public Communication of Science in Mexican Spanish.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Is It Possible to Use ChatGPT to Perform Measurements Using the COSMIC Method?: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- A Systematic Literature Review of 10 years of Research on Program Synthesis and Natural Language Processing.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Intelligent MRI diagnosis of neurological alterations in infants from 4 to 12 months.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- VirDetect-AI: a residual and convolutional neural network–based metagenomic tool for eukaryotic viral protein identification.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Educational Chatbots: A Systematic Mapping Study.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Demand forecasting using KAN-RNN.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Correlations and Fractality in Sentence-Level Sentiment Analysis Based on VADER for Literary Texts.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- DeepReg: a deep learning hybrid model for predicting transcription factors in eukaryotic and prokaryotic genomes.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Membrane and vesicle structure detection in cryo-electron tomography based on deep learning.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Multilingual identification of nuanced dimensions of hope speech in social media texts.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Proposal of a Methodology Based on Using a Wavelet Transform as a Convolution Operation in a Convolutional Neural Network for Feature Extraction Purposes.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Assessing User Experience with Piezoresistive Force Sensors: Interpreting Button Press Impulse and Duration.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Merging Distinct Sources Databases to Improve Software Estimation Models.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Comparison of Manual, Automatic, and Voice Control in Wheelchair Navigation Simulation in Virtual Environments: Performance Evaluation of User and Motion Sickness.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- A fuzzy description logic based IoT framework: Formal verification and end user programming.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+- Towards a Collaborative Game Designer Using the CCDSF Framework.: afiliación recuperada fuera del CSV y colocada en Afiliacion1.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con razón breve:
+
+- `MRI based early Temporal Lobe Epilepsy detection using DGWO based optimized HAETN and Fuzzy-AAL Segmentation Framework (FASF)`: tema computacional por DL/segmentación, pero EBSCO no exportó afiliación y la fuente externa mostró afiliaciones no UNAM; el uso del dataset UNAM no equivale a afiliación UNAM.
+- `MetAP DB and Metal-FP: a database and fingerprint framework for advancing metal-based drug discovery`: base de datos y fingerprints de dominio químico/farmacológico; no se consideró aporte principal de DBMS/IR/CS general.
+- `Web-based wide-area monitoring platform for ringdown and clustering analytics in power systems`: plataforma de monitoreo para sistemas eléctricos; se excluyó conservadoramente por aporte principal de ingeniería eléctrica.
+- `DIALOGUE: A Generative AI-Based Pre–Post Simulation Study...`: uso de GenAI para educación médica; no se observó aporte técnico CS principal.
+- `AI-Driven Plant Health Assessment...`: visión/IA aplicada a sanidad vegetal; aporte principal agronómico.
+- `Cataclysmic variables from Sloan Digital Sky Survey... identified using machine learning`: ML aplicado a astronomía; no se identificó método CS central.
+- `Real-time multi-label event categorization in the Brazilian interconnected power system`: clasificación aplicada a sistema eléctrico; dominio de potencia.
+- `Prediction of Sonic Well Logs Using Deep Neural Network...`: DNN aplicado a caracterización petrolera/geociencias.
+- `How far are we from the era of big data in transcriptomics?`: análisis/survey de datos transcriptómicos; dominio bioinformático sin contribución CS suficientemente clara.
+- `ENcyclopedia of TRAnscription Factors in Bacteria and Archaea genomes (ENTRAF) version 2.0`: recurso/base de datos biológica de dominio.
+- `CoralCache, MacaqueNet, LAPOD y SUCANES database`: repositorios o bases de datos científicas de dominio sin aporte claro de sistemas de información/DBMS.
+- `Automatic extraction of transcriptional regulatory interactions...`: aunque contiene BERT/NLP biomédico, quedó fuera por fecha verificable de enero de 2024.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos, clínicos o de salud pública que sólo aplican IA/ML para predicción, diagnóstico o educación médica.
+- Artículos de química, farmacología, materiales y descubrimiento de fármacos con bases de datos, fingerprints, DFT o modelos predictivos como herramientas de dominio.
+- Artículos de astronomía, astrofísica y observatorios que usan ML o repositorios de datos como apoyo.
+- Artículos de geociencias, petróleo, potencia eléctrica, energía, hidráulica, ecología, agricultura y ambiente donde IA/ML se usa para predicción, monitoreo o calibración de variables de dominio.
+- Estudios educativos, jurídicos, administrativos o sociales sobre uso, percepción o gobernanza de IA/ChatGPT sin contribución técnica de CS.
+- Repositorios, catálogos, bases de datos o datasets de dominio biológico, ecológico, geográfico o astronómico sin aporte de DBMS, IR, HCI, ingeniería de software o método computacional central.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `artificial intelligence`, `machine learning`, `deep learning`, `algorithm`, `data science`, `software`, `database`, `model`, `simulation` o `platform`.
+- Se conservaron registros aplicados cuando el objeto central era un método, arquitectura, algoritmo, sistema, framework, herramienta computacional o técnica de procesamiento claramente computacional.
+- Se aceptaron registros no estrictamente IA cuando pertenecían claramente a Ciencias de la Computación, como ingeniería de software, HCI, VR/usabilidad, criptografía, IoT/verificación formal, cómputo científico y cómputo paralelo.
+- Se excluyeron registros que usaban IA/ML como herramienta auxiliar en medicina, química, geociencias, astronomía, energía, educación, economía, política pública o ciencias sociales.
+- Se excluyó un registro con contribución técnica de DL en imágenes médicas porque no se verificó afiliación UNAM; la fuente externa sólo mostró afiliaciones no UNAM y el uso de un dataset UNAM no cumple el criterio institucional.
+
+## Formato del archivo final
+- Se conservaron las 37 columnas originales de EBSCO en el mismo orden.
+- Se añadieron únicamente `Afiliacion1` y `Afiliacion2` al final, por la instrucción especial para EBSCO.
+- Toda la información de afiliación recuperada quedó en `Afiliacion1`.
+- `Afiliacion1` sigue el formato `Autor — Afiliación | Autor — Afiliación | Autor — Afiliación`.
+- Cuando un autor tiene más de una afiliación, se mantuvieron en la misma entrada del autor separadas por punto y coma.
+- `Afiliacion2` se conserva vacía para mantener el diseño utilizado en los lotes EBSCO anteriores.
+- No se renombraron columnas originales.
+- No se eliminaron columnas originales.
+- El CSV final está codificado en UTF-8 con BOM para abrir correctamente acentos y caracteres especiales en Excel.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, subjects largos y caracteres especiales.
+
+## Archivo final generado
+- `ebsco_ia_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- EBSCO no exportó afiliaciones; en IA se hizo primero filtro temático y luego búsqueda externa sólo para candidatos de Ciencias de la Computación.
+- El lote tuvo 8 duplicados y muchos registros fuera de periodo; el periodo se aplicó estrictamente con `publicationDate`.
+- Se excluyó un registro técnicamente computacional de imágenes médicas por no tener afiliación UNAM verificada externamente.
+- La frontera más delicada fue bioinformática/cheminformática: se conservaron modelos o herramientas computacionales centrales como DeepReg y VirDetect-AI, pero se excluyeron bases de datos o recursos de dominio sin aporte CS suficientemente claro.
+- Conviene hacer deduplicación global contra otros lotes EBSCO y contra Scopus/IEEE/ACM al consolidar todo el corpus.

@@ -1,0 +1,100 @@
+# Reporte de depuración — EBSCO SIAV
+
+## Archivos recibidos
+- EBSCO-Metadata-17_05_2026 (1).csv (7 registros)
+- EBSCO-Metadata-17_05_2026 (2).csv (9 registros)
+- EBSCO-Metadata-17_05_2026 (3).csv (20 registros)
+- EBSCO-Metadata-17_05_2026 (4).csv (3 registros)
+- EBSCO-Metadata-17_05_2026 (5).csv (10 registros)
+- EBSCO-Metadata-17_05_2026 (6).csv (32 registros)
+- EBSCO-Metadata-17_05_2026 (7).csv (50 registros)
+- EBSCO-Metadata-17_05_2026.csv (50 registros)
+
+## Objetivo
+Depurar registros descargados desde EBSCO para el lote SIAV — Señales, Imágenes y Ambientes Virtuales — y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, aunque no sean estrictamente del área final SIAV, manteniendo el diseño de columnas de EBSCO.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de SIAV.
+- La clasificación final por área se realizará en una fase posterior.
+- Para optimizar el trabajo, primero se descartaron registros no CS y después se buscaron/verificaron afiliaciones sólo para los candidatos aceptables.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025, usando `publicationDate` como campo principal cuando contenía año y mes.
+- Afiliación UNAM clara. EBSCO no exportó afiliaciones institucionales, por lo que las afiliaciones de los aceptados fueron recuperadas fuera del CSV.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, subjects, fuente, DOI y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no había DOI, por título normalizado.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 181
+- Artículos únicos después de deduplicación: 178
+- Registros duplicados eliminados: 3
+- Registros excluidos por estar fuera de periodo: 108
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 61
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 9
+
+## Registros aceptados
+Se conservaron registros de procesamiento/reconstrucción de imágenes y señales, visión por computadora, extracción de características con CNN/wavelets, clasificación/segmentación de imágenes médicas, reducción dimensional y clustering para señales neuronales, realidad virtual/HCI y evaluación de interfaces en entornos virtuales:
+- `Kernel-based regularization for photoacoustic pressure reconstructiona).` — DOI `10.1121/10.0039382`: reconstrucción fotoacústica, inverse problems, regularización y procesamiento/reconstrucción de señales e imágenes.
+- `Efficient and reliable spike sorting from neural recordings with UMAP-based unsupervised nonlinear dimensionality reduction.` — DOI `10.1371/journal.pbio.3003527`: spike sorting de señales neuronales con reducción dimensional UMAP y clustering.
+- `An Improved Object Detection Algorithm Based on the Hessian Matrix and Conformable Derivative.` — DOI `10.1007/s00034-024-02669-3`: algoritmo de detección de objetos/bordes para procesamiento de imágenes.
+- `Intelligent MRI diagnosis of neurological alterations in infants from 4 to 12 months.` — DOI `10.1002/ima.23074`: segmentación y clasificación MRI con U-Net, extracción de características, kNN y CNN.
+- `Emotion detection based on infrared thermography: A review of machine learning and deep learning algorithms.` — DOI `10.1016/j.infrared.2024.105669`: revisión técnica de algoritmos ML/DL para termografía infrarroja, reconocimiento de patrones y detección de emociones.
+- `A three-dimensional extension of the slope chain code: analyzing the tortuosity of the flagellar beat of human sperm.` — DOI `10.1007/s10044-024-01286-9`: extensión 3D de slope chain code, descriptores geométricos y visión computacional para trayectorias 3D+t.
+- `Comparison of Manual, Automatic, and Voice Control in Wheelchair Navigation Simulation in Virtual Environments: Performance Evaluation of User and Motion Sickness.` — DOI `10.3390/s25020530`: simulación de navegación en realidad virtual, control de interfaz y evaluación de desempeño/usabilidad.
+- `Proposal of a Methodology Based on Using a Wavelet Transform as a Convolution Operation in a Convolutional Neural Network for Feature Extraction Purposes.` — DOI `10.3390/a18040221`: metodología wavelet-CNN para extracción de características.
+- `Usability, sense of presence, and performance of a virtual reality emotion recognition task.` — DOI `10.1371/journal.pone.0330084`: tarea de reconocimiento de emociones en realidad virtual con evaluación de usabilidad, presencia y rendimiento.
+
+## Afiliaciones recuperadas fuera del CSV de EBSCO
+EBSCO no exportó afiliaciones institucionales. Para los registros aceptados, la afiliación se recuperó o verificó en páginas editoriales, DOI, páginas de revista, fuentes institucionales o verificaciones externas ya usadas en lotes EBSCO previos. Toda la información se colocó en `Afiliacion1` con el formato `Autor — Afiliación | Autor — Afiliación`; `Afiliacion2` se conserva vacía.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+- `Generating a database for deep learning-based applications in multimodal tomography of the human brain`: dataset/recurso para tomografía cerebral; se dejó fuera por ser principalmente recurso biomédico sin método CS central claramente descrito.
+- `Statistical Study of the Bias and Precision for Six Estimation Methods for the Fractal Dimension of Randomly Rough Surfaces`: comparación estadística de estimadores en superficies rugosas; frontera matemática/física, sin aporte CS suficientemente claro.
+- `Kuturani: a low-cost device to augment acoustic string instruments`: dispositivo/interfaz musical de bajo costo; se consideró instrumentación/diseño sonoro más que contribución CS central.
+- `Pioneering Augmented and Mixed Reality in Cranial Surgery: The First Latin American Experience`: uso clínico de AR/MR en cirugía; la tecnología es instrumental, no contribución computacional.
+- `University membership through immersive virtual environments and a sense of belongingness`: estudio educativo/psicológico con entorno virtual; no presenta aporte técnico CS.
+- `Using a virtual reality resurgence task to compare time-out and extinction during alternative reinforcement`: experimento de psicología conductual; VR como instrumento experimental.
+- `Empathy Through Immersion: The Impact of 360-Degree Virtual Reality on Fostering Perspective-Taking and Sense of Oneness in the Embodiment of a Sexual Harassment Victim`: estudio social/psicológico con video 360; sin aporte CS técnico.
+- `Virtual Reality in the Neurorehabilitation of Patients with Idiopathic Parkinson's Disease: Pilot Study`: rehabilitación clínica con VR/Kinect; no se observó aporte computacional central.
+- `An assessment of mangrove forest in northwestern Mexico using the Google Earth Engine cloud computing platform`: teledetección/ecología con plataforma GEE; aporte principal ambiental.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos, clínicos, de neurorehabilitación o cirugía que usan imagen, AR/MR, VR o segmentación como herramienta de dominio, sin aporte computacional central.
+- Artículos de ecología, geología, hidrología, teledetección, agricultura, atmósfera y recursos naturales que usan imágenes satelitales, cámaras o Google Earth Engine como instrumento de análisis de dominio.
+- Artículos de física, materiales, fotónica, sensores, fluidos e instrumentación donde el procesamiento de señales o imágenes es apoyo experimental.
+- Estudios educativos, psicológicos o sociales con realidad virtual, 360 grados o entornos inmersivos como herramienta de intervención o medición, no como contribución técnica de HCI/VR.
+- Bases de datos, datasets o recursos biomédicos/geocientíficos sin método computacional generalizable.
+
+## Decisiones importantes
+- Se aplicó un umbral conservador: no se aceptó un registro sólo por mencionar `image`, `signal`, `remote sensing`, `virtual reality`, `augmented reality`, `machine learning`, `deep learning`, `sensor`, `database`, `software` o `simulation`.
+- Se aceptaron artículos aplicados sólo cuando el aporte principal era una técnica computacional: reconstrucción/segmentación de imagen, algoritmo de detección, arquitectura o metodología de aprendizaje profundo, descriptor de visión, procesamiento de señales, interfaz/VR evaluada como sistema computacional o pipeline computacional claro.
+- Se excluyeron artículos de VR/AR cuando el foco fue clínico, psicológico, educativo o social sin método, sistema o evaluación HCI/VR suficientemente técnica.
+- `Emotion detection based on infrared thermography...` se aceptó porque el aporte es una revisión técnica de algoritmos ML/DL para reconocimiento de emociones con imagen térmica y la afiliación UNAM se verificó externamente.
+- `Efficient and reliable spike sorting...` se aceptó aunque aparece en una revista de biología porque el aporte central es procesamiento de señales neuronales, reducción dimensional no lineal y clustering para spike sorting.
+
+## Formato del archivo final
+- Se conservaron las 37 columnas originales de EBSCO y su orden.
+- No se renombraron columnas originales.
+- No se eliminaron columnas originales.
+- Se añadieron únicamente `Afiliacion1` y `Afiliacion2`, como instrucción especial para EBSCO, porque los CSV no exportan afiliaciones institucionales.
+- Toda la información de afiliación quedó en `Afiliacion1`; `Afiliacion2` se dejó vacía.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, subjects largos y caracteres especiales.
+
+## Archivo final generado
+- `ebsco_siav_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- EBSCO no exportó afiliaciones institucionales; las afiliaciones UNAM de los registros aceptados fueron recuperadas/verificadas externamente.
+- El lote SIAV tuvo muchos falsos positivos de teledetección, VR/AR clínico o educativo, sensores, instrumentación, biomedicina, ecología, geociencias y análisis ambiental.
+- Conviene mantener la regla global de aceptar VR/AR sólo si el aporte es sistema, interfaz, interacción, usabilidad o evaluación HCI/VR técnica; excluir usos puramente clínicos, educativos o psicológicos.
+- Conviene mantener la regla global de aceptar imagen biomédica sólo cuando el aporte central sea segmentación, reconstrucción, algoritmo, arquitectura DL, descriptor o pipeline computacional explícito.
+- Conviene deduplicar globalmente contra otros lotes EBSCO y contra Scopus/IEEE/ACM al consolidar todo el corpus.

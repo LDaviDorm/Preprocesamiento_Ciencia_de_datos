@@ -1,0 +1,599 @@
+REPORTE FINAL DE ACM DIGITAL LIBRARY
+Periodo del proyecto: marzo 2024 - diciembre 2025
+Fuente: ACM Digital Library
+Fecha de integración: 2026-05-17
+
+============================================================
+1. RESUMEN EJECUTIVO
+============================================================
+
+Se completó la fase de extracción canónica y depuración inicial de ACM Digital Library para las seis áreas del proyecto:
+
+1. ISBD  - Ingeniería de Software y Bases de Datos
+2. CC    - Computación Científica
+3. IA    - Inteligencia Artificial
+4. RS    - Redes y Seguridad en Cómputo
+5. TC    - Teoría de la Computación
+6. SIAV  - Señales, Imágenes y Ambientes Virtuales
+
+A diferencia de Scopus e IEEE, ACM Digital Library no permitió exportar directamente un CSV completo con todos los metadatos requeridos. Por ello, el flujo de ACM fue distinto:
+
+1. Se descargaron PDFs y referencias en formatos BibTeX, EndNote/RIS y, cuando aplicaba, ACM Reference Format.
+2. En una fase auxiliar se extrajeron y fusionaron metadatos al modelo canónico del proyecto.
+3. Posteriormente se depuraron los CSV canónicos de cada lote para conservar únicamente registros claramente pertenecientes a Ciencias de la Computación.
+4. No se asignaron áreas finales ni subáreas finales en esta fase.
+5. La clasificación final por área/subárea y la deduplicación global entre áreas quedan pendientes para una fase posterior.
+
+Los archivos finales de ACM conservan el modelo canónico de 14 columnas:
+
+indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract
+
+Resultado acumulado de ACM en la fase de depuración por lotes:
+
+- Total de registros recibidos en CSV canónicos ACM: 93
+- Duplicados eliminados dentro de los lotes ACM: 24
+- Artículos únicos después de deduplicación interna por lote: 69
+- Registros excluidos por estar fuera de periodo: 3
+- Registros excluidos por no tener afiliación UNAM clara: 3
+- Registros excluidos por no ser Ciencias de la Computación: 6
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados como Ciencias de la Computación: 57
+
+Indicadores acumulados:
+
+- Tasa de duplicación interna por lote: 25.8%
+- Tasa de aceptación sobre registros recibidos en CSV canónicos: 61.3%
+- Tasa de aceptación sobre registros únicos por lote: 82.6%
+- Tasa de rechazo por periodo sobre registros únicos por lote: 4.3%
+- Tasa de rechazo por afiliación UNAM no clara sobre registros únicos por lote: 4.3%
+- Tasa de rechazo por no ser CS sobre registros únicos por lote: 8.7%
+
+Este acumulado todavía NO representa una deduplicación global entre áreas ACM. Hay solapamiento importante entre ISBD, CC, IA, RS, TC y SIAV, especialmente en HCI/CSCW, optimización, concurrencia, estructuras de datos concurrentes, verificación, cómputo distribuido y artículos tipo "Hot off the Press".
+
+
+============================================================
+2. TABLA CONSOLIDADA POR ÁREA
+============================================================
+
+Área inicial | Registros recibidos | Duplicados internos/inter-lote | Únicos por lote | Fuera de periodo | Sin UNAM clara | No CS | Aceptados CS
+-------------|--------------------:|-------------------------------:|----------------:|-----------------:|---------------:|------:|------------:
+ISBD         | 26                  | 11                             | 15              | 1                | 0              | 2     | 12
+CC           | 6                   | 0                              | 6               | 0                | 0              | 0     | 6
+IA           | 13                  | 0                              | 13              | 0                | 1              | 1     | 11
+RS           | 16                  | 3                              | 13              | 1                | 1              | 1     | 10
+TC           | 23                  | 10                             | 13              | 0                | 1              | 1     | 11
+SIAV         | 9                   | 0                              | 9               | 1                | 0              | 1     | 7
+TOTAL        | 93                  | 24                             | 69              | 3                | 3              | 6     | 57
+
+
+============================================================
+3. ARCHIVOS FINALES GENERADOS POR LOTE
+============================================================
+
+ISBD:
+- acm_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+CC:
+- acm_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+IA:
+- acm_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+RS:
+- acm_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+TC:
+- acm_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+SIAV:
+- acm_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Todos los archivos finales quedaron en UTF-8 con BOM para facilitar su apertura en Excel con acentos y caracteres especiales.
+
+
+============================================================
+4. ALCANCE METODOLÓGICO DE ACM
+============================================================
+
+La metodología ACM tuvo dos particularidades importantes:
+
+4.1. Extracción canónica previa
+
+ACM no entregó un CSV completo con todos los campos requeridos. Por ello, antes de la depuración temática se realizó una extracción manual desde:
+
+- PDFs descargados desde ACM
+- BibTeX
+- EndNote/RIS
+- ACM Reference Format cuando estaba disponible
+
+Esa extracción generó CSV canónicos por área o por lote. En la fase actual no se reconvirtió nuevamente al modelo canónico; se depuraron los CSV ya canónicos.
+
+4.2. Depuración posterior
+
+La depuración posterior conservó únicamente registros claramente pertenecientes a Ciencias de la Computación, aunque no fueran estrictamente del área de búsqueda inicial. No se reasignaron áreas finales ni subáreas finales.
+
+Esto significa que un registro recuperado en ISBD, CC, IA, RS, TC o SIAV puede terminar clasificado después en otra área. La clasificación final se realizará cuando se consoliden todas las fuentes y se haga la deduplicación global.
+
+
+============================================================
+5. CRITERIOS APLICADOS
+============================================================
+
+En los seis lotes de ACM se aplicaron criterios homogéneos:
+
+- Periodo: marzo 2024 - diciembre 2025.
+- Afiliación: UNAM clara o variante inequívoca.
+- Tema: pertenencia clara a Ciencias de la Computación.
+- Revisión: título, abstract, keywords, DOI, afiliaciones y observaciones de reportes de extracción.
+- Exclusión: falsos positivos interdisciplinarios.
+- Deduplicación: principalmente DOI; si faltaba DOI, título normalizado + año + primer autor.
+- Formato: conservar columnas canónicas sin agregar ni eliminar columnas.
+- Clasificación: no asignar áreas finales ni subáreas finales.
+
+Cuando sólo existía el año 2024 o 2025 sin mes verificable, se conservó el registro. Cuando el reporte previo o ACM Reference Format indicaba una fecha específica fuera del periodo, se aplicó la exclusión temporal.
+
+
+============================================================
+6. RESULTADOS POR ÁREA
+============================================================
+
+------------------------------------------------------------
+6.1. ISBD - Ingeniería de Software y Bases de Datos
+------------------------------------------------------------
+
+Registros recibidos: 26
+Duplicados inter-lotes eliminados: 11
+Únicos después de deduplicación: 15
+Excluidos por fuera de periodo: 1
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 2
+Aceptados CS: 12
+
+El lote ISBD se formó a partir de dos CSV canónicos previos. La extracción previa reportó:
+
+- Lote 1: 11 PDFs, 11 registros BibTeX, 11 registros EndNote/RIS, 33 registros brutos detectados, 22 duplicados internos eliminados y 11 artículos únicos.
+- Lote 2: 15 PDFs, 15 registros BibTeX, 15 registros EndNote/RIS, 45 registros brutos detectados, 30 duplicados internos eliminados y 15 artículos únicos.
+
+Se aceptaron principalmente registros de:
+
+- HCI
+- CSCW
+- crowdsourcing
+- social computing
+- accesibilidad
+- tecnologías asistivas
+- interacción humano-IA
+- GenAI
+- asistentes de programación
+- lenguajes de programación
+- programación funcional
+- DSLs
+- verificación en sistemas distribuidos
+- concurrencia
+- estructuras de datos concurrentes
+
+Registros aceptados:
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Creative dialogue: evolving intent in designer-AI workflows
+- CSCW Contributions to Critical Futures of Work
+- Demo: A Geometric Approach to Generate Musical Rhythmic Patterns in Haskell
+- Designing Gig Worker Sousveillance Tools
+- Fostering Latin American-Centric CSCW Research and Practice
+- MouseClicker: Exploring Tactile Feedback and Physical Agency for People with Hand Motor Impairments
+- The Impact of Generative AI Coding Assistants on Developers Who Are Visually Impaired
+- Unveiling AI-Driven Collective Action for a Worker-Centric Future
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Modular Baskets Queue
+- Recent Advances on Principles of Concurrent Data Structures
+
+Registros excluidos o dudosos:
+- Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation: no CS; instrumentación/phantom biomédico para Doppler.
+- Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC): fuera de periodo por evento ACM/ICCBB 2023.
+- Leadership and Transformation in the Public Sector: An Empirical Exploration of AI Adoption and Efficiency during the Fourth Industrial Revolution: no CS; estudio administrativo/social sobre adopción de IA.
+
+Decisiones importantes:
+- Se aceptaron HCI/CSCW/social computing como Ciencias de la Computación, aunque no sean ISBD estricta.
+- Se aceptaron concurrencia, verificación, estructuras de datos y programación funcional aunque pertenezcan mejor a otras áreas.
+- Se excluyó el artículo PSoC Doppler por evidencia de evento en diciembre de 2023.
+- Se aceptó Recent Advances on Principles of Concurrent Data Structures aunque venía sin abstract ni keywords porque título, DOI y metadatos ACM justifican CS.
+
+
+------------------------------------------------------------
+6.2. CC - Computación Científica
+------------------------------------------------------------
+
+Registros recibidos: 6
+Duplicados eliminados en depuración: 0
+Únicos después de deduplicación: 6
+Excluidos por fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 0
+Aceptados CS: 6
+
+El reporte previo de extracción ACM CC indicó:
+
+- 7 cargas de PDF, equivalentes a 6 PDFs únicos.
+- 7 registros BibTeX.
+- 7 registros EndNote/RIS.
+- 0 registros ACM Ref/TXT.
+- 21 registros brutos detectados.
+- 15 duplicados eliminados durante la extracción canónica.
+- 6 artículos únicos en ACM_CC_canonico.csv.
+- Todos con DOI, abstract, keywords y afiliación UNAM clara.
+
+Todos los registros fueron aceptados porque pertenecen claramente a Ciencias de la Computación.
+
+Registros aceptados:
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Strong Linearizability using Primitives with Consensus Number 2
+- Solvability Characterization for General Three-Process Tasks
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Modular Baskets Queue
+
+Tipos de registros aceptados:
+- cómputo distribuido teórico
+- shared memory
+- wait-freedom
+- verificación de sistemas distribuidos
+- tolerancia a fallas
+- concurrencia
+- linealizabilidad
+- consenso
+- estructuras de datos concurrentes
+- HCI/CSCW
+
+Decisiones importantes:
+- Se conservó A Culturally-Aware AI Tool for Crowdworkers porque pertenece a HCI/CSCW, aunque no sea Computación Científica estricta.
+- No se eliminaron solapamientos contra otros lotes ACM; eso queda para deduplicación global.
+
+
+------------------------------------------------------------
+6.3. IA - Inteligencia Artificial
+------------------------------------------------------------
+
+Registros recibidos: 13
+Duplicados eliminados en depuración: 0
+Únicos después de deduplicación: 13
+Excluidos por fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 1
+Excluidos por no ser CS: 1
+Aceptados CS: 11
+
+El reporte previo de extracción ACM IA indicó:
+
+- 15 cargas de PDF.
+- 13 PDFs únicos por nombre.
+- 15 registros BibTeX.
+- 15 registros EndNote/RIS.
+- 45 registros brutos detectados.
+- 32 duplicados eliminados durante la extracción previa.
+- 13 artículos únicos.
+- 12 registros con afiliación UNAM clara y 1 sin afiliación UNAM clara.
+- Todos los registros tenían DOI, abstract y keywords.
+
+Registros aceptados:
+- Uncertainty Quantification of the Hypervolume for Evolutionary Multi-Objective Reinforcement Learning
+- The Impact of Generative AI Coding Assistants on Developers Who Are Visually Impaired
+- Benchmarking MOEAs for solving continuous multi-objective RL problems
+- Hot off the Press: Finding ϵ-Locally Optimal Solutions for Multi-Objective Multimodal Optimization
+- A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP
+- Finding the Set of Nearly Optimal Solutions of a Multi-objective Optimization Problem
+- MouseClicker: Exploring Tactile Feedback and Physical Agency for People with Hand Motor Impairments
+- Unveiling AI-Driven Collective Action for a Worker-Centric Future
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Creative dialogue: evolving intent in designer-AI workflows
+- Fostering Latin American-Centric CSCW Research and Practice
+
+Tipos de registros aceptados:
+- optimización evolutiva
+- optimización multiobjetivo
+- MORL
+- algoritmos metaheurísticos
+- asistentes generativos de programación
+- accesibilidad
+- desarrollo de software
+- HCI
+- CSCW
+- interacción humano-IA
+- crowdwork
+- social computing
+- co-creatividad con IA
+
+Registros excluidos:
+- Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives: tema computacional, pero afiliación UNAM no clara; la afiliación visible dice Universidad Morelia y sólo aparece un correo @enesmorelia.unam.mx.
+- Leadership and Transformation in the Public Sector: An Empirical Exploration of AI Adoption and Efficiency during the Fourth Industrial Revolution: estudio de adopción de IA en sector público sin contribución técnica de CS.
+
+Decisiones importantes:
+- Se conservaron registros de HCI/CSCW, accesibilidad, social computing y diseño/IA porque son CS, aunque no sean IA estricta.
+- Se dejó pendiente la deduplicación global contra otros lotes ACM, especialmente por registros repetidos como A Culturally-Aware AI Tool, The Impact of Generative AI Coding Assistants y Unveiling AI-Driven Collective Action.
+
+
+------------------------------------------------------------
+6.4. RS - Redes y Seguridad en Cómputo
+------------------------------------------------------------
+
+Registros recibidos: 16
+Duplicados inter-lotes eliminados: 3
+Únicos después de deduplicación: 13
+Excluidos por fuera de periodo: 1
+Excluidos por afiliación UNAM no clara: 1
+Excluidos por no ser CS: 1
+Aceptados CS: 10
+
+El lote RS se formó a partir de dos CSV canónicos previos. La extracción previa indicó:
+
+- Lote 1: 5 PDFs, 5 registros BibTeX y 5 registros EndNote/RIS; 5 artículos únicos.
+- Lote 2: 18 cargas de PDF, equivalentes a 11 PDFs únicos, y 18 registros EndNote/RIS; 11 artículos únicos.
+- Todos los registros tenían DOI.
+- En el lote 2, 10 registros tenían afiliación UNAM clara y 1 tenía afiliación UNAM no clara.
+
+Registros aceptados:
+- Recent Advances on Principles of Concurrent Data Structures
+- Solvability Characterization for General Three-Process Tasks
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Strong Linearizability using Primitives with Consensus Number 2
+- A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Modular Baskets Queue
+- Demo: A Geometric Approach to Generate Musical Rhythmic Patterns in Haskell
+- Designing Gig Worker Sousveillance Tools
+
+Tipos de registros aceptados:
+- concurrencia
+- estructuras de datos concurrentes
+- linealización
+- lock-freedom
+- wait-freedom
+- memoria compartida distribuida
+- verificación en tiempo de ejecución
+- sistemas distribuidos tolerantes a fallas
+- tareas distribuidas
+- computabilidad distribuida
+- optimización multiobjetivo
+- algoritmos de colonia de hormigas
+- HCI/CSCW
+- programación funcional
+- DSL en Haskell
+
+Registros excluidos:
+- Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation: instrumentación biomédica/Doppler, no CS.
+- Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC): fuera de periodo por evento ICCBB 2023.
+- Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives: afiliación visible Universidad Morelia; correo @enesmorelia.unam.mx no se tomó como afiliación UNAM clara.
+
+Duplicados inter-lote detectados:
+- Recent Advances on Principles of Concurrent Data Structures
+- Solvability Characterization for General Three-Process Tasks
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+
+Decisiones importantes:
+- Se conservaron trabajos no estrictamente RS, como HCI/CSCW, optimización y programación funcional, porque sí pertenecen a CS.
+- Se aplicó criterio estricto contra instrumentación biomédica/electrónica con software embebido o PSoC cuando el aporte principal no es computacional.
+
+
+------------------------------------------------------------
+6.5. TC - Teoría de la Computación
+------------------------------------------------------------
+
+Registros recibidos: 23
+Duplicados inter-lotes eliminados: 10
+Únicos después de deduplicación: 13
+Excluidos por fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 1
+Excluidos por no ser CS: 1
+Aceptados CS: 11
+
+El lote TC se formó a partir de dos CSV canónicos previos. La extracción previa indicó:
+
+- Lote 1: 16 cargas de PDF, 13 PDFs únicos, 16 registros BibTeX, 16 registros EndNote/RIS, 48 registros brutos detectados, 35 duplicados eliminados y 13 artículos únicos.
+- Lote 2: 15 cargas de PDF, 10 PDFs únicos, 15 registros BibTeX, 14 registros EndNote/RIS, 44 registros brutos detectados, 34 duplicados eliminados y 10 artículos únicos.
+- Ambos reportes previos indicaron solapamiento entre lotes ACM.
+
+Registros aceptados:
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Uncertainty Quantification of the Hypervolume for Evolutionary Multi-Objective Reinforcement Learning
+- Demo: A Geometric Approach to Generate Musical Rhythmic Patterns in Haskell
+- A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP
+- Strong Linearizability using Primitives with Consensus Number 2
+- Hot off the Press: Finding the Set of Nearly Optimal Solutions of a Multi-objective Optimization Problem
+- Hot off the Press: Finding ϵ-Locally Optimal Solutions for Multi-Objective Multimodal Optimization
+- Modular Baskets Queue
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+- Solvability Characterization for General Three-Process Tasks
+- Recent Advances on Principles of Concurrent Data Structures
+
+Tipos de registros aceptados:
+- teoría de cómputo distribuido
+- memoria compartida
+- wait-freedom
+- tareas distribuidas
+- modelos asíncronos
+- verificación en tiempo de ejecución
+- sistemas distribuidos tolerantes a fallas
+- algoritmos concurrentes
+- estructuras de datos concurrentes
+- linealizability
+- strong linearizability
+- consensus number
+- optimización multiobjetivo
+- optimización evolutiva
+- MORL
+- programación funcional
+- DSL en Haskell
+- geometría computacional aplicada a patrones rítmicos
+
+Registros excluidos:
+- Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives: afiliación visible no muestra UNAM; sólo aparece correo @enesmorelia.unam.mx.
+- On Stability Properties in a Stochastic Controlled Lotka-Volterra Model: trabajo de estabilidad/control estocástico Lotka-Volterra; aporte principal matemático/estadístico/biológico, no CS.
+
+Decisiones importantes:
+- Se conservó Recent Advances on Principles of Concurrent Data Structures aunque tiene Abstract=N/D y Keywords=N/D, porque el título, autores, DOI y metadatos son suficientes para justificar CS.
+- Se conservaron los registros Hot off the Press porque tienen DOI propio, afiliación UNAM clara y contenido computacional.
+- Varios registros aceptados probablemente serán reasignados en clasificación final a IA, CC, RS o lenguajes.
+
+
+------------------------------------------------------------
+6.6. SIAV - Señales, Imágenes y Ambientes Virtuales
+------------------------------------------------------------
+
+Registros recibidos: 9
+Duplicados eliminados en depuración: 0
+Únicos después de deduplicación: 9
+Excluidos por fuera de periodo: 1
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 1
+Aceptados CS: 7
+
+El reporte previo de extracción ACM SIAV indicó:
+
+- 13 cargas de PDF.
+- 9 PDFs únicos.
+- Archivos BibTeX: acm (6).bib y acm (7).bib.
+- Archivos EndNote/RIS: acm.enw y acm (1).enw.
+- 0 archivos ACM Ref/TXT.
+- 39 registros brutos detectados.
+- 30 duplicados eliminados durante la extracción manual.
+- 9 artículos únicos en ACM_SIAV_canonico.csv.
+- Los 9 artículos únicos tenían DOI, abstract, keywords y afiliación UNAM clara.
+
+Registros aceptados:
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Creative dialogue: evolving intent in designer-AI workflows
+- CSCW Contributions to Critical Futures of Work
+- Designing Gig Worker Sousveillance Tools
+- Fostering Latin American-Centric CSCW Research and Practice
+- MouseClicker: Exploring Tactile Feedback and Physical Agency for People with Hand Motor Impairments
+- Unveiling AI-Driven Collective Action for a Worker-Centric Future
+
+Tipos de registros aceptados:
+- HCI
+- CSCW
+- trabajo colaborativo asistido por tecnologías computacionales
+- interacción humano-IA
+- flujos creativos con GenAI
+- accesibilidad
+- interfaces
+- retroalimentación háptica
+- tecnologías asistivas
+- crowdwork
+- gig work
+- acción colectiva
+- experiencia de usuario
+
+Registros excluidos:
+- Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation: no CS; instrumentación biomédica Doppler.
+- Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC): fuera de periodo; evento ICCBB 2023, 11-13 de diciembre de 2023.
+
+Decisiones importantes:
+- Se conservaron HCI/CSCW, accesibilidad, trabajo digital e interacción humano-IA aunque no sean SIAV estricta.
+- Se excluyó instrumentación Doppler cuando el aporte central fue biomédico/instrumental.
+- Se aplicó estrictamente la evidencia del reporte previo para excluir el PSoC por evento en diciembre de 2023.
+
+
+============================================================
+7. PROBLEMAS GLOBALES DETECTADOS EN ACM
+============================================================
+
+7.1. ACM no exporta CSV completo
+
+ACM Digital Library no entregó directamente los metadatos en CSV completo para el modelo canónico. Fue necesario descargar y combinar PDFs, BibTeX, EndNote/RIS y referencias ACM. Esta diferencia metodológica debe quedar explícita en el reporte principal.
+
+7.2. Los CSV canónicos de ACM sólo contienen año
+
+Los CSV recibidos para depuración tienen la columna Año, pero no fecha completa con mes. En general, si sólo había año 2024 o 2025, se conservó el registro. Cuando los reportes previos aportaron evidencia específica de evento fuera de periodo, se excluyó.
+
+7.3. Discrepancia entre año exportado y fecha real del evento
+
+En varios lotes apareció el caso del artículo PSoC Doppler: ACM/BibTeX/EndNote podían reportar 2024, pero el evento ACM/ICCBB estaba documentado como diciembre de 2023. En los lotes donde apareció, se excluyó por fuera de periodo.
+
+7.4. Evidencia de afiliación UNAM por correo vs. afiliación visible
+
+El caso Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives fue excluido en varios lotes porque la afiliación visible decía Universidad Morelia, aunque aparecía un correo @enesmorelia.unam.mx. Se recomienda que el chat principal decida si un correo institucional puede contar como evidencia suficiente de afiliación UNAM cuando la afiliación textual no lo confirma.
+
+7.5. Instrumentación biomédica y electrónica
+
+Los artículos de instrumentación Doppler o PSoC fueron excluidos cuando el aporte principal era hardware, phantom, banco experimental, calibración o instrumentación biomédica, no un método computacional generalizable.
+
+7.6. Solapamiento fuerte entre áreas
+
+Hay solapamiento notable entre lotes ACM. Muchos registros aparecen en múltiples áreas: ISBD, CC, IA, RS, TC y SIAV. Esto es esperado porque las queries fueron diseñadas para alta recuperación, pero exige deduplicación global por DOI.
+
+7.7. HCI/CSCW aparece en varias áreas
+
+Muchos registros aceptados son de HCI, CSCW, social computing, accesibilidad, crowdwork, gig work e interacción humano-IA. En esta fase se conservaron porque son claramente Ciencias de la Computación, pero su área final debe decidirse después.
+
+7.8. Registros sin abstract ni keywords
+
+Recent Advances on Principles of Concurrent Data Structures fue aceptado en varios lotes aunque carece de abstract y keywords, porque el título, DOI, autores y metadatos permiten justificar claramente que es Ciencias de la Computación.
+
+
+============================================================
+8. REGLAS GLOBALES RECOMENDADAS PARA LA SIGUIENTE FASE
+============================================================
+
+1. Hacer deduplicación global ACM por DOI.
+   Los 57 registros aceptados son suma por lote, no total global único. Muchos se repiten entre áreas.
+
+2. Deduplicar también contra Scopus e IEEE.
+   ACM contiene artículos que pueden solaparse con las otras fuentes, especialmente trabajos de concurrencia, HCI/CSCW, optimización y sistemas distribuidos.
+
+3. Definir criterio temporal ACM.
+   Cuando año exportado y fecha real del evento difieren, se recomienda priorizar la fecha del evento o publicación documentada en PDF/ACM Reference Format.
+
+4. Definir criterio de afiliación por correo.
+   Decidir si un correo @enesmorelia.unam.mx basta para aceptar afiliación UNAM cuando la afiliación visible no dice UNAM.
+
+5. Mantener criterio conservador de CS.
+   No aceptar artículos sólo por tener software, sistema, algoritmo, instrumentación, hardware programable, IA o adquisición de datos si el aporte central pertenece a otra disciplina.
+
+6. Reasignar áreas en la fase final.
+   Muchos registros aceptados no corresponden estrictamente al área por la que fueron recuperados. Deben clasificarse posteriormente por aporte principal.
+
+7. Mantener el modelo canónico.
+   ACM ya está en modelo canónico de 14 columnas, pero debe revisarse si la columna Area/Subarea queda como PENDIENTE_REVISION o si se conserva como vino en los CSV antes de la clasificación final.
+
+8. Decidir si integrar CCS Concepts.
+   Los reportes indican que en algunos lotes no se integraron CCS Concepts a Keywords; podría evaluarse en una mejora posterior.
+
+
+============================================================
+9. ESTADO FINAL DE ACM
+============================================================
+
+Fuente: ACM Digital Library
+
+Áreas cubiertas:
+- ISBD: completado
+- CC: completado
+- IA: completado
+- RS: completado
+- TC: completado
+- SIAV: completado
+
+Registros recibidos en CSV canónicos ACM: 93
+Registros aceptados como Ciencias de la Computación por lote: 57
+
+Formato actual:
+- CSV canónico de 14 columnas.
+- UTF-8 con BOM.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Deduplicación global entre áreas pendiente.
+
+Pendiente:
+- Unir los seis CSV finales ACM.
+- Deduplicar globalmente por DOI.
+- Deduplicar contra Scopus e IEEE.
+- Validar reglas de fecha ACM vs. fecha de evento.
+- Validar regla de afiliación por correo institucional.
+- Asignar área final.
+- Asignar subárea final.
+- Integrar al repositorio/base principal del proyecto.
+
+
+============================================================
+10. NOTA EJECUTIVA PARA PEGAR EN EL CONTROL PRINCIPAL
+============================================================
+
+ACM Digital Library quedó completado para las seis áreas del proyecto. A diferencia de Scopus e IEEE, ACM no permitió descargar un CSV completo con los metadatos requeridos, por lo que se usó un flujo especial: descarga de PDFs y referencias en BibTeX/EndNote/RIS, extracción manual al modelo canónico y depuración posterior. Los seis lotes ACM recibieron 93 registros canónicos; después de deduplicación interna por lote quedaron 69 registros únicos por área. Se aceptaron 57 registros como Ciencias de la Computación, se excluyeron 3 por fuera de periodo, 3 por afiliación UNAM no clara y 6 por no ser Ciencias de la Computación. Los CSV finales ACM conservan el modelo canónico de 14 columnas y aún requieren deduplicación global entre áreas, deduplicación contra otras fuentes y asignación final de área/subárea. Se detectaron problemas metodológicos relevantes: discrepancias entre año exportado y fecha real del evento, casos de afiliación ambigua por correo @enesmorelia.unam.mx, solapamiento fuerte entre áreas y presencia recurrente de registros HCI/CSCW recuperados por varias queries.

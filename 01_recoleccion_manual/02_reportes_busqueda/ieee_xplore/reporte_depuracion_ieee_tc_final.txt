@@ -1,0 +1,111 @@
+# Reporte de depuración — IEEE Teoría de la Computación
+
+## Archivos recibidos
+- ieee_tc_q1_general_theory_computation_raw_2024-03_2025-12.csv
+- ieee_tc_q2_algorithms_complexity_graphs_raw_2024-03_2025-12.csv
+- ieee_tc_q3_automata_logic_computability_raw_2024-03_2025-12.csv
+- ieee_tc_q4_formal_verification_model_checking_raw_2024-03_2025-12.csv
+- ieee_tc_q5_finite_fields_coding_theory_raw_2024-03_2025-12.csv
+- ieee_tc_q7b_catalog_seed_authors_2_raw_2024-03_2025-12.csv
+- ieee_tc_q8_rescue_hybrid_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde IEEE para el lote de Teoría de la Computación y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de IEEE.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM mexicana clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, términos IEEE, afiliaciones y metadatos de fecha.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no había DOI, por título normalizado + año + primer autor.
+
+Nota: IEEE trae varias fechas (`Date Added To Xplore`, `Online Date`, `Issue Date` y `Meeting Date`). Para el periodo se usó `Issue Date` o `Meeting Date` como referencia principal cuando permitían verificar mes. `Date Added To Xplore` se trató como fecha de indexación; por eso se conservaron registros agregados a Xplore en 2026 cuando la publicación o congreso correspondía a 2025. No se detectaron registros de enero/febrero de 2024 ni registros publicados fuera del periodo después de aplicar este criterio.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 32
+- Registros duplicados eliminados: 13
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 4
+- Registros excluidos por no ser Ciencias de la Computación: 8
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 7
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- criptografía, cifrado, esteganografía y protección de imágenes digitales;
+- lógica modal, teoría de la demostración, razonamiento automatizado e hiper-secuentes;
+- optimización evolutiva, optimización multiobjetivo/multimodal y algoritmos de aproximación;
+- protocolos, modelos algorítmicos y sistemas descentralizados/blockchain.
+
+Registros aceptados:
+- `Symmetric Cipher for Grayscale Images Based on Quantum Differential Geometry` — criptografía/cifrado de imágenes con algoritmo configurable, campos finitos y operadores cuánticos
+- `A Reasoning System for Graded Modal Logic` — lógica modal graduada, sistema de deducción, hypersequents y razonamiento automatizado
+- `Color Image Protection via Quantum Encryption and HVS-Based Mini-Block Data Hiding` — protección de imágenes, esteganografía, cifrado y procesamiento digital de imágenes
+- `Finding ϵ-Locally Optimal Solutions for Multiobjective Multimodal Optimization` — optimización evolutiva multiobjetivo, aproximación y soluciones localmente óptimas
+- `Finding the Set of Nearly Optimal Solutions of a Multiobjective Optimization Problem` — optimización evolutiva multiobjetivo y algoritmos para soluciones casi óptimas
+- `An Evolutionary Approach for the Computation of ∈-Locally Optimal Solutions for Multi-Objective Multimodal Optimization` — algoritmo evolutivo para optimización multimodal multiobjetivo
+- `Invited Paper: Further Decentralizing Decentralized Finance: Loss vs Rebalancing Without a Shared Reference Market` — modelo algorítmico/protocolario para AMM, sistemas descentralizados y blockchain
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+- `Oscillation Source Location Assisted by the O-splines Filter`: filtrado aplicado a localización de oscilaciones en sistemas de potencia; contribución principal en ingeniería eléctrica/potencia.
+- `Brain Connectivity Hypergraphs`: hipergrafos aplicados a conectividad cerebral/MEG; contribución principal en neurociencia cognitiva.
+- `Graph Theory-Based Fault Location Method for Transmission Systems With Renewable Energy Sources`: teoría de grafos usada para localización de fallas en redes eléctricas; foco principal en potencia/energía.
+- `Modeling and Simulation of Water Distribution Networks using Nonlinear Oscillators`: modelado de redes de distribución de agua; grafo/simulación como herramienta de ingeniería hidráulica.
+- `Regional centres of inertia by clustering-based identification`: clustering y grafos aplicados a centros de inercia de redes eléctricas; foco principal en potencia.
+- `An approach to inertial distribution in power grids by a modularity index`: índice de modularidad aplicado a distribución de inercia en redes eléctricas; foco principal en potencia.
+- `Vulnerability assessment of power grids based on the centre-of-inertia`: vulnerabilidad de redes eléctricas basada en centro de inercia; no es ciberseguridad ni teoría computacional.
+- `Modeling the Impact of Public Transportation and Mitigation Strategies in COVID-19 Spread in Mexico City`: autómatas celulares y simulación aplicados a epidemiología/transporte público; contribución principal en salud pública/modelado urbano.
+
+También se excluyeron por afiliación no UNAM mexicana o ausencia de afiliación UNAM clara:
+- `Quasi-PT Symmetry: A Pathway to Better Laser Performance`: falso positivo institucional: `UNAM - Institute of Materials Science and Nanotechnology` corresponde a Bilkent University, Turquía, no a la UNAM mexicana; además el foco es fotónica/láseres.
+- `Performance and Characterization Comparison of QD SOA, QW SOA, Bulk SOA and PDFA for Multi-Tbps O-Band WDM Links`: no hay afiliación UNAM mexicana clara; afiliaciones principales de McGill/Innolume/Alfalume.
+- `Practical Fiber Dispersion-Induced Limitations for 1.6 Tbps (4× 400 Gbps/$\lambda$) O-Band IM/DD Transmission Systems Over 2, 10, 20 and 40 km`: no hay afiliación UNAM mexicana clara; afiliaciones principales de McGill/Keysight.
+- `Net 1.6 Tbps (4×400Gbps/λ) O-Band IM/DD Transmission Over 2 km Using Uncooled DFB Lasers on the LAN-WDM grid and Sub-1V Drive TFLN Modulators`: no hay afiliación UNAM mexicana clara; afiliaciones principales de McGill/Keysight.
+
+## Principales falsos positivos detectados
+- Artículos de ingeniería eléctrica y sistemas de potencia que usan teoría de grafos, clustering, filtros o métricas de vulnerabilidad como herramientas de análisis de redes eléctricas.
+- Artículos de hidráulica, transporte, epidemiología o neurociencia que usan modelado, simulación, hipergrafos o autómatas celulares como soporte, sin contribución computacional suficientemente clara.
+- Artículos de fotónica, láseres y comunicaciones ópticas recuperados por términos como `complexity`, `quantum`, `network`, `Ethernet`, `coding` o `datacenter`, pero cuyo aporte principal es físico/electrónico.
+- Falsos positivos institucionales por acrónimos `UNAM` que no corresponden a la Universidad Nacional Autónoma de México, especialmente Bilkent University/Turquía.
+
+## Decisiones importantes
+- Se conservaron registros no estrictamente de Teoría de la Computación cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo criptografía, protección de imágenes, optimización evolutiva y blockchain/protocolos descentralizados.
+- Se excluyeron trabajos que contenían términos como `graph theory`, `algorithm`, `automata`, `clustering`, `simulation`, `complexity`, `filtering`, `vulnerability` o `network` cuando esos términos funcionaban como herramientas secundarias de potencia eléctrica, agua, neurociencia, salud pública o fotónica.
+- Se mantuvo una frontera estricta para matemática/aplicaciones de grafos: se aceptaron contribuciones algorítmicas o computacionales claras y se excluyeron aplicaciones de dominio donde el grafo sólo modelaba una red física o biológica.
+- `Invited Paper: Further Decentralizing Decentralized Finance...` se conservó aunque su dominio es financiero, porque el aporte está formulado como modelo algorítmico/protocolario para AMM y aplicaciones descentralizadas/blockchain.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de IEEE: 28 columnas.
+- Los siete archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de IEEE después de la deduplicación.
+
+## Archivo final generado
+
+- `ieee_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- IEEE trae múltiples fechas; se usó `Issue Date`/`Meeting Date` como criterio principal y `Date Added To Xplore` sólo como fecha de indexación.
+- No hubo exclusiones por fuera de periodo; algunos registros aparecen agregados a Xplore en 2026, pero corresponden a publicaciones/congresos de 2025.
+- Hubo 13 duplicados eliminados sobre 32 registros recibidos.
+- Se detectó un falso positivo institucional por `UNAM - Institute of Materials Science and Nanotechnology` de Bilkent University, Turquía.
+- Conviene mantener como regla global que teoría de grafos/autómatas/clustering no basta por sí sola: debe haber aporte algorítmico/computacional y no sólo modelado de una red física, biológica o social.
+- Conviene conservar como CS los trabajos de criptografía, optimización evolutiva, razonamiento formal y protocolos descentralizados aunque el lote sea de Teoría de la Computación y la clasificación final se haga después.

@@ -1,0 +1,83 @@
+# Reporte de depuración — ProQuest ISBD
+
+## Archivos recibidos
+- ProQuestDocuments-2026-05-19.xls
+- ProQuestDocuments-2026-05-19 (1).xls
+
+## Objetivo
+Depurar registros descargados desde ProQuest para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de ProQuest.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, subject terms, fuente, afiliaciones, DOI y metadatos ProQuest.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; si no hubiera DOI, por título normalizado + año + primer autor.
+
+Para ProQuest se usó `pubdate`/`year` como fecha bibliográfica principal. `elecPubDate` se revisó como metadato auxiliar, pero no se usó para excluir cuando `pubdate` estaba claramente dentro de marzo 2024–diciembre 2025. Existe una decisión temporal revisable listada en Decisiones importantes.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 34
+- Registros duplicados eliminados: 17
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 0
+- Registros excluidos por no ser Ciencias de la Computación: 16
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 1
+
+## Registros aceptados
+Se conservó el registro cuyo aporte principal es claramente de Ciencias de la Computación por tratarse de una aplicación interactiva de realidad aumentada, desarrollo de interfaz/sistema con Unity 3D y AR Foundation, e integración/evaluación de la experiencia de usuario en un entorno educativo.
+
+- Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+- Facilitating public scrutiny of EIA reports with open data and artificial intelligence: integra open data e IA para evaluación ambiental, pero el aporte principal es de EIA/sustentabilidad y escrutinio público, no un método, algoritmo o sistema generalizable de CS.
+- Generation of Hydrogeological Units for 3D Modelling Using Open‐Source Tools in the Mexico Basin: usa Python/GIS y repositorios abiertos, pero el aporte principal es un dataset/modelado hidrogeológico.
+- A global database of tsunami deposits: recurso de datos geocientífico; no se observó aporte de sistemas de bases de datos, recuperación de información o ingeniería de software.
+- Methodology for the design of a nanosatellite telecommunication system in S-Band based on Software for Digital Mission Engineering: usa STK para diseño de enlace; el foco es ingeniería aeroespacial/telecomunicaciones, no CS.
+- DIALOGUE: A Generative AI-Based Pre–Post Simulation Study...: IA generativa como herramienta de simulación en educación médica, sin aporte técnico claro de IA/CS.
+- Bistable magnetic nanowires: memoria no volátil desde materiales/física; no se consideró CS.
+
+## Principales falsos positivos detectados
+- Artículos de geociencias, geografía, hidrología, ecología y conservación que usan GIS, drones, modelado, bases de datos o software como herramientas de dominio.
+- Artículos biomédicos/químicos que mencionan IA, in silico, bases de datos o drug repurposing como apoyo secundario.
+- Artículos de educación, salud o administración que usan IA generativa o software como instrumento pedagógico o metodológico.
+- Bases de datos de dominio geocientífico o biológico sin contribución clara de DBMS, recuperación de información, arquitectura de datos o ingeniería de software.
+- Artículos de ingeniería/materiales con términos como memoria, software, simulación o sistemas, pero cuyo aporte principal no es computacional.
+
+## Decisiones importantes
+- Se mantuvo un criterio conservador para ProQuest: menciones a `software`, `database`, `GIS`, `AI`, `open data`, `simulation`, `model`, `nanosatellite`, `memory` o `digital mission engineering` no fueron suficientes para aceptar un registro.
+- El artículo de realidad aumentada aplicado a mapas híbridos de suelos sí se conservó porque el objeto central del trabajo es una aplicación AR interactiva desarrollada con Unity 3D/AR Foundation y evaluada como herramienta de interacción/visualización.
+- No se agregaron columnas nuevas ni se convirtió al modelo canónico.
+
+- Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico: `pubdate` = May 2024; `elecPubDate` =  2023-11-03. Se conservó porque el campo bibliográfico principal de ProQuest (`pubdate`) está dentro del periodo; esta decisión es revisable si el chat principal decide usar siempre fecha electrónica/early access.
+
+## Formato del archivo final
+- Los dos archivos ProQuest tenían encabezados idénticos: 29 columnas.
+- Se conservó exactamente el mismo diseño de columnas de ProQuest.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para que los acentos sean legibles en Excel.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, afiliaciones y keywords largos.
+
+## Archivo final generado
+- `proquest_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ProQuest exportó dos archivos con los mismos 17 artículos; se eliminaron 17 duplicados por DOI.
+- La señal temática fue muy ruidosa: sólo 1 de 17 artículos únicos pasó el filtro estricto de Ciencias de la Computación.
+- Conviene confirmar si en ProQuest se debe usar siempre `pubdate` como fecha principal o si `elecPubDate` debe excluir artículos con early online anterior a marzo de 2024. En este lote, el único artículo aceptado tiene `pubdate` dentro del periodo y `elecPubDate` anterior.
+- Conviene mantener la regla global de excluir bases de datos y datasets de dominio cuando no tengan aporte claro de sistemas de bases de datos, recuperación de información o ingeniería de software.

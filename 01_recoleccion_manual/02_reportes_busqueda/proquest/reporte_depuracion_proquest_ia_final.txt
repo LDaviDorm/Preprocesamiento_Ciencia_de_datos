@@ -1,0 +1,104 @@
+# Reporte de depuración — ProQuest IA
+
+## Archivos recibidos
+- ProQuestDocuments-2026-05-19.xls
+- ProQuestDocuments-2026-05-19 (1).xls
+
+## Objetivo
+Depurar registros descargados desde ProQuest para el lote inicial IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas de los archivos originales de ProQuest y sin convertir al modelo canónico.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo obligatorio marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en el campo `AuthorAffiliation`.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de `Title`, `Abstract`, `identifierKeywords`, `subjectTerms`, `subjects`, `pubtitle`, `documentType`, `AuthorAffiliation`, DOI y metadatos de fecha.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no hubiera DOI, por título normalizado + año + primer autor.
+
+Nota sobre fechas: para ProQuest se usó `pubdate` como fecha bibliográfica principal y `elecPubDate` como apoyo. Esta es la misma regla aplicada en los lotes anteriores de ProQuest. No se detectaron registros fuera del periodo obligatorio bajo este criterio.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 38
+- Artículos únicos después de deduplicación: 37
+- Registros duplicados eliminados: 1
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser claramente Ciencias de la Computación: 29
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 7
+
+## Registros aceptados
+Se conservaron registros donde el aporte principal es claramente computacional, principalmente de:
+
+- aprendizaje profundo, modelos híbridos y clasificación automática de imágenes/señales biomédicas;
+- algoritmos genéticos para reconstrucción de sistemas dinámicos;
+- transferencia de aprendizaje y redes neuronales para generación/inversión de perfiles espectrales;
+- sistemas expertos, planeación de tareas y robótica de servicio;
+- optimización multiobjetivo de hiperparámetros y memorias asociativas;
+- segmentación automática 3D con modelos estadísticos de forma, YOLO y algoritmos genéticos;
+- algoritmos para problemas de localización, árboles capacitados y diseño de redes.
+
+Registros aceptados en el CSV final:
+
+- `Improved predictive diagnosis of diabetic macular edema based on hybrid models: An observational study`
+- `Reconstruction of dynamic systems using genetic algorithms with dynamic search limits`
+- `Transfer learning technique applied to polarized spectral lines`
+- `Complex Task Planning for General-Purpose Service Robots`
+- `On the multi-objective hyperparameter optimization of the weighted entropic associative memory`
+- `3D statistical shape models for automatic segmentation of the fetal cerebellum in ultrasound images`
+- `Solution Algorithms for the Capacitated Location Tree Problem with Interconnections`
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con razón breve:
+
+- `Application of Classical and Quantum-Inspired Methods Through Multi-Objective Optimization for Parameter Identification of a Multi-Story Prototype Building`: caso frontera; usa algoritmos clásicos y quantum-inspired, pero el aporte principal se presenta como identificación de parámetros de un prototipo estructural bajo excitación sísmica. Se excluyó por criterio conservador.
+- `Prediction of Sonic Well Logs Using Deep Neural Network: Application to Petroleum Reservoir Characterization in Mexico`: DNN aplicado a caracterización de yacimientos; aporte principal geocientífico/petrolero.
+- `Facilitating public scrutiny of EIA reports with open data and artificial intelligence`: IA y datos abiertos aplicados a evaluación de impacto ambiental; aporte principal ambiental/político-metodológico.
+- `Automatic Detection of Railway Faults Using Neural Networks`: detección de fallas ferroviarias con modelos estándar de visión; se consideró aplicación de dominio más que contribución CS generalizable.
+- `AI-Driven Plant Health Assessment: A Comparative Analysis of Inception V3, ResNet-50 and ViT with SHAP for Accurate Disease Identification in Taro`: clasificación agrícola con arquitecturas conocidas y XAI; aporte principal agronómico.
+- `Indoor occupancy monitoring using environmental feature fusion and semi-supervised machine learning models`: monitoreo de ocupación en edificios; ML como herramienta para eficiencia/edificación.
+- `Optimization of shunt reactor design using evolutionary algorithms: PSO and DE`: optimización de diseño eléctrico; PSO/DE usados como herramientas de ingeniería eléctrica.
+- `Optimization of vibration control using a hybrid scheme with sliding-mode and positive position feedback`: control/vibraciones; optimización como herramienta de control mecánico.
+- `Optimization of a Horizontal Washing Machine Suspension System...`: optimización mecánica de suspensión mediante algoritmo genético; aporte principal de ingeniería mecánica.
+- `Plingo: A System for Probabilistic Reasoning in Answer Set Programming`: claramente de Ciencias de la Computación, pero no se incluyó porque ProQuest no muestra afiliación institucional UNAM clara; sólo aparece un correo con dominio `ciencias.unam.mx`, lo cual no se tomó como afiliación institucional suficiente.
+
+## Principales falsos positivos detectados
+- Artículos de geociencias, ecología, hidrología, biología, salud, energía, ingeniería civil, ingeniería eléctrica, agricultura, política pública y ciencias sociales que sólo usan IA/ML como herramienta.
+- Estudios con `Random Forest`, `XGBoost`, `deep learning`, `CNN`, `YOLO`, `genetic algorithm`, `PSO`, `DE` o `AI` aplicados a un dominio, sin aporte computacional claro.
+- Herramientas web, bases de datos o datasets de dominio ambiental/biológico sin contribución clara de bases de datos, recuperación de información, ingeniería de software o sistemas de información.
+- Artículos de optimización de diseño físico, estructuras, control o energía donde el método computacional no es el objetivo principal.
+- Registros biomédicos o clínicos donde IA/ML aparece como apoyo diagnóstico sin suficiente aporte metodológico computacional.
+
+## Decisiones importantes
+- Se aplicó un umbral estricto por tratarse de ProQuest, ya que el lote presentaba mucho ruido temático.
+- Se conservaron artículos aplicados sólo cuando el método, algoritmo, sistema, pipeline, arquitectura o problema computacional era el aporte central.
+- Se excluyeron artículos aunque incluyeran términos como `artificial intelligence`, `machine learning`, `deep learning`, `neural networks`, `genetic algorithm`, `optimization`, `database`, `web tool` o `open data` cuando esos elementos funcionaban principalmente como herramientas de otra disciplina.
+- Se excluyó `Plingo` por afiliación UNAM no clara, aunque temáticamente sí pertenece a Ciencias de la Computación.
+- Se conservó `Improved predictive diagnosis of diabetic macular edema...` porque el aporte central es un pipeline computacional de clasificación híbrida con CNN, transferencia de aprendizaje y señales/imágenes biomédicas; aun así, debe revisarse en la fase de clasificación final.
+
+## Formato del archivo final
+- No se convirtió al modelo canónico.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- Los dos archivos no tenían exactamente el mismo encabezado: uno tenía 28 columnas y otro 31 columnas.
+- Para no perder metadatos, se usó la unión de columnas originales de ProQuest, tomando como base el encabezado completo de 31 columnas.
+- Las columnas adicionales (`AlternateTitle`, `companies`, `originalTitle`) quedan vacías para registros procedentes del archivo que no las exportó.
+- Se conservaron acentos y caracteres especiales.
+- El CSV final está codificado en UTF-8 con BOM para que Excel muestre correctamente los acentos.
+
+## Archivo final generado
+- `proquest_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ProQuest IA fue un lote muy ruidoso: sólo 7 de 37 artículos únicos fueron aceptados.
+- Conviene mantener el criterio conservador para ProQuest: no aceptar IA/ML aplicado si el aporte principal es de otra disciplina.
+- Conviene decidir una regla global para casos como optimización estructural o eléctrica con algoritmos evolutivos; aquí se excluyeron cuando el algoritmo era herramienta de dominio.
+- Conviene revisar globalmente la regla de fecha de ProQuest: se usó `pubdate` como fecha bibliográfica principal y `elecPubDate` como apoyo, como en los lotes ProQuest previos.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO, Engineering Village, Web of Science y ScienceDirect al consolidar el corpus completo.

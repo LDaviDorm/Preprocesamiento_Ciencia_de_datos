@@ -1,0 +1,153 @@
+# Reporte de depuración — Scopus IA
+
+## Archivos recibidos
+- scopus_ia_q1_general_comp_raw_2024-03_2025-12.csv
+- scopus_ia_q2_machine_deep_learning_llm_raw_2024-03_2025-12.csv
+- scopus_ia_q3_nlp_computational_linguistics_raw_2024-03_2025-12.csv
+- scopus_ia_q4_agents_knowledge_reasoning_raw_2024-03_2025-12.csv
+- scopus_ia_q5_computational_intelligence_evolutionary_raw_2024-03_2025-12.csv
+- scopus_ia_q6_catalog_seed_authors_comp_raw_2024-03_2025-12.csv
+- scopus_ia_q7_rescue_no_subjarea_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde Scopus para el lote inicial IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Scopus.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor; además se eliminaron duplicados evidentes por variantes de DOI con el mismo título y autores.
+
+Nota: los archivos recibidos sólo traen `Year`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 1356
+- Registros duplicados eliminados: 655
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 10
+- Registros excluidos por no ser Ciencias de la Computación: 508
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 183
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- NLP, LLM, lingüística computacional, extracción de información, detección de subjetividad, autoría, fact-checking, análisis de sentimiento y recursos/corpus lingüísticos;
+- aprendizaje automático, aprendizaje profundo, redes neuronales, aprendizaje por refuerzo, adaptación de dominio, privacidad en ML, modelos generativos y evaluación de LLM;
+- visión por computadora, segmentación, clasificación de imágenes, imágenes médicas, imágenes 3D, reconstrucción, señales EEG/ECG/EMG, audio y termografía;
+- robótica, planeación de tareas, interacción humano-robot, interfaces conversacionales, HCI, accesibilidad, realidad virtual y háptica;
+- seguridad, privacidad, cifrado homomórfico, verificación formal, IoT y redes/sensado inalámbrico;
+- teoría, grafos, optimización evolutiva, algoritmos, cómputo distribuido, información, quantum computing y cómputo científico/numerical cuando el aporte metodológico fue claro.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `PQ-SyDa: Power Quality Synthetic Disturbances DataSet`: dataset/toolbox de eventos de calidad de energía; foco principal en ingeniería eléctrica.
+- `A modelling study to explore the effects of regional socio-economics on the spreading of epidemics`: modelado epidémico socioeconómico; contribución principal en salud pública/ciencias sociales.
+- `Development of artificial neural networks for the prediction of the pressure field along a horizontal pipe conveying high-viscosity two-phase flow`: red neuronal usada para predecir presión en flujo bifásico; dominio de mecánica de fluidos.
+- `Estimation of the Performance of Photovoltaic Cells by Means of an Adaptative Neural Fuzzy Inference Model`: ANFIS aplicado a celdas fotovoltaicas; aporte principal energético/fotovoltaico.
+- `Development of a Digital Twin Driven by a Deep Learning Model for Fault Diagnosis of Electro-Hydrostatic Actuators`: digital twin para diagnóstico de actuadores; se consideró más ingeniería/control que CS.
+- `Assessment of machine learning strategies for simplified detection of autism spectrum disorder based on the gut microbiome composition`: detección de autismo con microbioma; ML como apoyo biomédico.
+- `Efficient decoy selection to improve virtual screening using machine learning models`: selección de decoys para screening virtual; foco químico/farmacológico.
+- `Stock Market Forecasting Using a Neural Network Through Fundamental Indicators, Technical Indicators and Market Sentiment Analysis`: forecasting bursátil; aplicación económica con red neuronal.
+- `Filtering of Geophysical Data Using Unsupervised Methods and Multiresolution Analysis`: filtrado de datos geofísicos; método usado en geociencias sin aporte CS suficientemente general.
+- `Automatic Classification of Synthetic Jovian Radio Emissions Using Spectrogram Analysis and Machine Learning`: clasificación de emisiones jovianas; aplicación astronómica con ML.
+- `Enhancing Solar Cell Classification Using Mamdani Fuzzy Logic Over Electroluminescence Images: A Comparative Analysis with Machine Learning Methods`: clasificación de celdas solares; aplicación fotovoltaica.
+- `Evaluation Study of Pavement Condition Using Digital Twins and Deep Learning on IMU Signals`: evaluación de pavimento con digital twins/IMU; dominio civil/infraestructura.
+- `Semi-Supervised Training for (Pre-Stack) Seismic Data Analysis`: semi-supervised training para sísmica; dominio geofísico.
+- `Framework for Training and Deployment Machine Learning Methods in Real-Time Simulator: Short-Term Kinetic Energy Forecasting in Power Systems`: framework ML para energía cinética en sistemas eléctricos; dominio eléctrico.
+- `Simulation Model to the Online Course Advising`: simulación de asesoría de cursos; dominio educativo.
+- `AI as an element to overcome creative fixation in design teams`: uso de IA en equipos de diseño; enfoque de diseño/creatividad, no CS claro.
+- `Spatial Analysis of Student Feedback on Learning Management Systems in Mathematics: Leveraging GIS for Enhanced Insights`: LMS y GIS para retroalimentación estudiantil; dominio educativo.
+- `Expert system for the parabolic trough collector control through classical and conformable transfer functions in ANNi-PSO`: control de colector solar; expert system como herramienta de ingeniería energética.
+- `Improving Lactation Curve Estimation in Sheep: A Comparative Analysis of Machine Learning Algorithms Across Milk Recording Schemes`: estimación de lactancia en ovejas; ML aplicado a producción animal.
+- `Classification of Academic Achievement in Upper-Middle Education in Veracruz, Mexico: A Computational Intelligence Approach`: rendimiento académico; aplicación educativa.
+- `Seismic optimization of buckling-restrained brace mid-rise frames by metaheuristics and machine learning surrogative models`: optimización sísmica de estructuras; dominio civil.
+- `An Intelligent Method for Day-Ahead Regional Load Demand Forecasting via Machine-Learning Analysis of Energy Consumption Patterns Across Daily, Weekly, and Annual Scales`: pronóstico de demanda energética regional; dominio eléctrico.
+- `Outlet Pressure Regulation in a High-Viscosity Two-Phase Flow Horizontal Pipeline Using Inverse ANN and PSO`: regulación de presión en tubería con ANN/PSO; dominio de control de fluidos.
+- `A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets`: concrete softening law prediction; dominio de ingeniería civil.
+- `Calibration of Friction and Roughness in an Urban Water Distribution Network Using an LSTM Neural Network-Based Framework`: calibración de red urbana de agua con LSTM; dominio hidráulico.
+- `Load Demand Forecasting Using a Long-Short Term Memory Neural Network`: load demand forecasting; dominio energético.
+- `A Bayesian Machine Learning Model for Predicting Uncontrolled Type 2 Diabetes Mellitus`: predicción clínica de diabetes; ML como apoyo biomédico.
+- `Machine Learning for Digital Shadow Design in Health Insurance Sector`: digital shadow en seguros de salud; foco organizacional/sector salud.
+- `Application of Long Short-Term Memory Networks to Predict Electrical Frequency in El Salvador`: predicción de frecuencia eléctrica; dominio de red eléctrica.
+- `Evaluating ChatGPT-Generated Linear Algebra Formative Assessments`: ChatGPT para evaluación formativa de álgebra; estudio educativo.
+- `Data-Driven Decision-Making for Product Design: A Descriptive Feedback and Physiological Metadata Analysis`: diseño de producto con metadatos fisiológicos; enfoque de diseño, no CS claro.
+- `A Hierarchical Approach to a Tri-Objective Portfolio Optimization Problem Considering an ESG Index`: optimización de portafolio ESG; aplicación financiera.
+- `Occupation density of every chess piece by phases, levels of game, outcomes and phase-space according to their entropy differences`: análisis de ajedrez por entropía; se dejó fuera por frontera física/estadística no CS clara.
+- `The mode of computing`: ensayo/conceptual sobre computación; metadatos insuficientes para aporte técnico CS.
+- `CPSMI2025: A curated dataset of conventional Pap smear microscopy images for deep learning-based cervical cancer screening`: dataset Pap smear para cribado; recurso biomédico sin método CS principal.
+- `MuTATE: an interpretable multi-endpoint machine learning framework for automated molecular subtyping in cancer`: framework de subtipificación molecular en cáncer; foco biomédico.
+- `Insights from the reciprocal space revealed by a convolutional neural network and transfer learning`: CNN para espacio recíproco en materiales; dominio físico/materiales.
+- `Identifying illumination configurations that optimize the classification of mountainous forest types in satellite images: An approach based on 3D modelling; [Identificando configuraciones de iluminación que optimizan la clasificación de tipos de bosque montañoso en imágenes satelitales: Una aproximación basada en modelización 3D]`: clasificación de bosque en imágenes satelitales; dominio forestal/remoto.
+- `Calibration of wavefront aberrations using supervised learning and deep learning for a Shack-Hartmann wavefront sensor`: calibración óptica con aprendizaje supervisado; dominio de instrumentación óptica.
+- `Operational ozone forecasting system in Mexico City: A machine learning framework integrating forecasted weather and historical ozone data`: ozono operacional con ML; aplicación ambiental.
+- `Classification of SERS spectra for agrochemical detection using a neural network with engineered features`: clasificación de espectros SERS; dominio fotónico/químico.
+- `An integrated monitoring system based on deep learning tools for industrial process`: monitorización industrial con DL; aplicación de control/proceso.
+- `Fog Computing and Industry 4.0 for Newsvendor Inventory Model Using Attention Mechanism and Gated Recurrent Unit`: fog/GRU para inventario; foco logístico/operaciones.
+- `Deep learning and genetic algorithms for cosmological Bayesian inference speed-up`: inferencia cosmológica acelerada; dominio físico/cosmológico.
+- `Using active learning to improve quasar identification for the DESI spectra processing pipeline`: active learning para identificación de quásares; dominio astronómico.
+- `Weighted–VAE: A deep learning approach for multimodal data generation applied to experimental T. cruzi infection`: VAE aplicado a infección T. cruzi; dominio biomédico.
+- `A conceptual and computational framework for modeling the complex, adaptive dynamics of epidemics: The case of the SARS-CoV-2 pandemic in Mexico`: framework computacional para epidemias; foco salud pública/epidemiología.
+- `Deep learning for the identification of Candida spp. directly from blood culture gram stains from candidemia patients`: identificación de Candida en muestras clínicas; aplicación biomédica.
+- `Acoustic 2-D Full-Waveform Inversion with Non-Balanced Finite differences and Adaptive Weight Decay Methods`: full-waveform inversion geofísica; dominio geocientífico.
+- `Directed graph theory for the analysis of biological regulatory networks`: teoría de grafos para redes regulatorias biológicas; foco biológico.
+- `A low-cost platform for automated cervical cytology: addressing health and socioeconomic challenges in low-resource settings`: plataforma de citología cervical; foco dispositivo/biomédico.
+- `Automated seismo-volcanic event detection applied to popocatépetl using machine learning`: detección seismo-volcánica con ML; dominio geocientífico.
+- `Ctapipe - Prototype Open Event Reconstruction Pipeline for the Cherenkov Telescope Array`: pipeline de reconstrucción CTA; software científico astronómico no CS claro.
+- `A machine learning approach for the design optimization of a multiple magnetic and inertial sensors wearable system for the spine mobility assessment`: optimización de sensores wearables para movilidad de columna; dominio biomédico.
+- `Accelerated computational design of BCC refractory high entropy alloys using metaheuristics, CALPHAD, and artificial neural networks`: diseño de aleaciones con metaheurísticas/ANN; dominio de materiales.
+- `Utilizing Wyckoff Sites to Construct Machine-Learning-Driven Interatomic Potentials for Crystalline Materials: A Case Study on α-Alumina`: potenciales interatómicos ML; dominio de materiales.
+- `“Chaac”: Harnessing Machine Learning for Intelligent Combustion Control and Sustainable Propellants in Liquid Propellant Rocketry`: control de combustión de cohetes con ML; dominio aeroespacial.
+- `DNI Nowcasting Applying a Differential Approach Method into Sky Camera Images`: nowcasting solar con sky cameras; aplicación energética/remota.
+- `Feature-based 3D+t descriptors of hyperactivated human sperm beat patterns`: descriptores de esperma humano; dominio biológico, aunque con clasificación no supervisada.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos, clínicos o de salud pública que sólo aplican ML/IA para predicción, diagnóstico o supervivencia sin una contribución computacional clara.
+- Artículos de química, materiales, farmacología y descubrimiento de fármacos que usan redes neuronales, QSAR, docking, screening virtual o modelos predictivos como herramienta de dominio.
+- Artículos de astronomía, astrofísica y física de altas energías que usan deep learning, active learning o pipelines computacionales para análisis de datos de observatorios sin aportar un método CS generalizable claro.
+- Artículos de geología, hidrología, geofísica, energía, ingeniería civil y ciencias ambientales donde ML se usa para predicción, monitoreo o calibración de variables de dominio.
+- Estudios educativos, bibliotecológicos, jurídicos, administrativos o sociales sobre el uso, percepción o impacto de IA/ChatGPT sin contribución técnica de CS.
+- Repositorios, catálogos, bases de datos o datasets de dominio biológico/químico/astronómico sin aporte de DBMS, IR, HCI, ingeniería de software o método computacional central.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `artificial intelligence`, `machine learning`, `deep learning`, `algorithm`, `data science`, `software`, `database`, `model` o `simulation`.
+- Se conservaron trabajos aplicados cuando el objeto central era un método, arquitectura, algoritmo, sistema, interfaz, protocolo, framework o técnica computacional, no sólo el resultado de dominio.
+- Se aceptaron artículos no estrictamente IA cuando pertenecían claramente a Ciencias de la Computación, por ejemplo verificación formal, privacidad diferencial, grafos, cómputo distribuido, optimización, robótica, HCI, visión, señales, quantum computing y cómputo científico.
+- Se aceptaron algunos trabajos biomédicos únicamente cuando el aporte principal era visión por computadora, procesamiento de señales, NLP biomédico, BCI, segmentación, reconstrucción o arquitectura de aprendizaje profundo claramente técnica.
+- Se excluyeron trabajos de ML aplicado en medicina, química, geología, energía, astronomía, educación, economía y ciencias sociales cuando el aporte principal era de la disciplina de aplicación.
+- Se trató como falso positivo institucional `UNAM-National Nanotechnology Research Center` de Bilkent University, Turquía, y variantes no claras como `Universidad Nacional Autónoma de la Ciudad de México`.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Scopus: 27 columnas.
+- Los siete archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de Scopus después de la deduplicación.
+
+## Archivo final generado
+
+- `scopus_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Los archivos de Scopus no traían mes ni columna `Subject Area`; el filtro temporal se aplicó con `Year`, conservando 2024 cuando no había mes verificable.
+- El lote tuvo muchísimo solapamiento entre queries: más de la mitad de las filas descargadas eran duplicados claros.
+- El filtro fue deliberadamente estricto contra artículos de ML aplicado en dominios externos; esto puede sacrificar algo de recall, pero reduce el riesgo de incluir artículos que no sean de Ciencias de la Computación.
+- Conviene confirmar una regla global para trabajos de bioinformática/cheminformática: aquí se conservaron sólo los que presentaban un modelo, herramienta, algoritmo o arquitectura computacional central, y se excluyeron recursos o aplicaciones de dominio sin aporte CS claro.
+- También conviene confirmar si el chat principal desea tratar como CS ciertos casos de cómputo científico aplicado en astronomía/geofísica/materiales; en este lote se excluyeron conservadoramente cuando el método parecía auxiliar al dominio.

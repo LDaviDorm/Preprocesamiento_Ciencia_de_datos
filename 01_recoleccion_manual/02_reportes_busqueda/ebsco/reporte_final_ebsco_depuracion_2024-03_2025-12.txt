@@ -1,0 +1,383 @@
+REPORTE FINAL DE EBSCO — DEPURACIÓN POR ÁREAS
+Periodo del proyecto: marzo de 2024 a diciembre de 2025
+Fuente / editorial: EBSCO Academic Search Ultimate
+Fecha de integración del reporte: 2026-05-17
+
+============================================================
+1. RESUMEN EJECUTIVO
+============================================================
+
+Se completó la fase de búsqueda, descarga y depuración inicial en EBSCO para las seis áreas del proyecto:
+
+1. ISBD — Ingeniería de Software y Bases de Datos
+2. CC — Computación Científica
+3. IA — Inteligencia Artificial
+4. RS — Redes y Seguridad en Cómputo
+5. TC — Teoría de la Computación
+6. SIAV — Señales, Imágenes y Ambientes Virtuales
+
+En esta fase NO se convirtió al modelo canónico, NO se asignaron áreas finales y NO se asignaron subáreas finales. El objetivo fue conservar únicamente registros claramente pertenecientes a Ciencias de la Computación, aunque no fueran estrictamente del área inicial de búsqueda.
+
+A diferencia de Scopus, IEEE y ACM, EBSCO presentó una limitación importante: los CSV exportados no incluyeron afiliaciones institucionales de autores. Por eso, para los registros aceptados se verificó o recuperó la afiliación UNAM fuera del CSV, usando páginas editoriales, DOI, páginas de revista, fuentes institucionales o verificaciones externas. Como ajuste especial para EBSCO, se conservaron las columnas originales del CSV y se agregaron únicamente las columnas Afiliacion1 y Afiliacion2. Toda la información de afiliación quedó concentrada en Afiliacion1, indicando qué autor corresponde a qué afiliación; Afiliacion2 se dejó vacía.
+
+Resultado acumulado de EBSCO:
+
+Total raw recibido en EBSCO: 1013 registros
+Duplicados eliminados dentro de cada lote: 38
+Registros únicos después de deduplicación por lote: 975
+Registros aceptados como Ciencias de la Computación: 129
+Registros excluidos por fuera de periodo: 327
+Registros excluidos por afiliación UNAM no clara: 3
+Registros excluidos por no ser Ciencias de la Computación: 516
+Registros excluidos por metadatos insuficientes: 0
+
+Indicadores acumulados:
+
+Tasa de duplicación acumulada por lote: 3.8%
+Tasa de aceptación sobre registros raw: 12.7%
+Tasa de aceptación sobre registros únicos por lote: 13.2%
+Tasa de exclusión por fuera de periodo sobre únicos por lote: 33.5%
+Tasa de exclusión por no ser CS sobre únicos por lote: 52.9%
+
+Este acumulado todavía NO representa una deduplicación global entre áreas de EBSCO. La deduplicación realizada hasta ahora fue interna por lote/área. Existe solapamiento fuerte entre IA, RS y TC, y también solapamiento con ISBD, CC y SIAV. La siguiente fase debe unir los seis CSV finales y deduplicar globalmente por DOI; si no hay DOI, por título normalizado + año + primer autor.
+
+============================================================
+2. TABLA CONSOLIDADA POR ÁREA
+============================================================
+
+Área inicial | Raw recibidos | Duplicados eliminados | Únicos por lote | Excluidos fuera de periodo | Excluidos afiliación | Excluidos no CS | Aceptados CS
+ISBD         | 71            | 1                      | 70              | 0                          | 0                   | 61              | 9
+CC           | 98            | 10                     | 88              | 0                          | 0                   | 73              | 15
+IA           | 241           | 8                      | 233             | 93                         | 1                   | 107             | 32
+RS           | 211           | 8                      | 203             | 63                         | 1                   | 107             | 32
+TC           | 211           | 8                      | 203             | 63                         | 1                   | 107             | 32
+SIAV         | 181           | 3                      | 178             | 108                        | 0                   | 61              | 9
+TOTAL        | 1013          | 38                     | 975             | 327                        | 3                   | 516             | 129
+
+Nota: en ISBD el reporte no nombra explícitamente "artículos únicos después de deduplicación", pero se infiere de 71 registros recibidos menos 1 duplicado eliminado, es decir, 70 únicos por lote.
+
+============================================================
+3. ARCHIVOS FINALES GENERADOS POR LOTE
+============================================================
+
+ISBD:
+ebsco_isbd_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+CC:
+ebsco_cc_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+IA:
+ebsco_ia_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+RS:
+ebsco_rs_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+TC:
+ebsco_tc_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+SIAV:
+ebsco_siav_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+Formato final de los CSV EBSCO:
+- Se conservaron las 37 columnas originales de EBSCO.
+- No se renombraron columnas originales.
+- No se eliminaron columnas originales.
+- Se agregaron únicamente Afiliacion1 y Afiliacion2 al final.
+- Toda la afiliación recuperada externamente quedó en Afiliacion1.
+- Afiliacion1 usa el formato: Autor — Afiliación | Autor — Afiliación.
+- Si un autor tiene más de una afiliación, las afiliaciones se conservaron en la misma entrada del autor separadas por punto y coma.
+- Afiliacion2 se conserva como columna, pero queda vacía.
+- Los CSV finales están codificados en UTF-8 con BOM.
+- Las comillas del CSV fueron generadas para preservar abstracts, subjects largos, caracteres especiales y afiliaciones extensas.
+
+============================================================
+4. CRITERIOS GENERALES APLICADOS
+============================================================
+
+En los seis lotes EBSCO se aplicaron los siguientes criterios:
+
+Periodo:
+- Marzo de 2024 a diciembre de 2025.
+- EBSCO sí exportó publicationDate, por lo que el filtro temporal pudo aplicarse con mayor precisión que en Scopus.
+- Se excluyeron registros de enero/febrero de 2024 cuando la fecha era verificable.
+- Se excluyeron registros de 2026 y registros anteriores a marzo de 2024.
+
+Afiliación:
+- Se exigió afiliación UNAM clara.
+- EBSCO no exportó afiliaciones institucionales.
+- Para los registros aceptados, la afiliación fue verificada o recuperada externamente.
+- La presencia de UNAM en el texto, subject, dataset, caso de estudio, institución analizada o corpus no se consideró suficiente para validar afiliación de autor.
+- Los registros sin afiliación UNAM verificable fueron excluidos del CSV final.
+
+Pertenencia temática:
+- Se conservaron únicamente registros claramente pertenecientes a Ciencias de la Computación.
+- No se aceptó un registro sólo porque mencionara software, database, AI, machine learning, model, simulation, algorithm, network, security, signal, image, VR, platform, web tool o data analysis.
+- Se aceptaron registros aplicados sólo cuando el aporte principal era método, algoritmo, arquitectura, framework, sistema, herramienta computacional, software científico, pipeline, procesamiento, protocolo, interfaz o técnica computacional generalizable.
+
+Deduplicación:
+- Primero por DOI.
+- Si no había DOI, por título normalizado + año + primer autor.
+- En esta fase la deduplicación fue interna por área/lote.
+- La deduplicación global entre áreas de EBSCO queda pendiente.
+
+============================================================
+5. RESULTADOS POR ÁREA
+============================================================
+
+------------------------------------------------------------
+5.1 ISBD — Ingeniería de Software y Bases de Datos
+------------------------------------------------------------
+
+Raw recibidos: 71
+Duplicados eliminados: 1
+Únicos por lote: 70
+Excluidos fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 61
+Aceptados CS: 9
+
+Registros aceptados principalmente:
+- software científico y cómputo científico cuando el aporte central fue una suite computacional open-source;
+- cifrado de imágenes y criptografía aplicada;
+- aprendizaje automático, optimización multiobjetivo e hiperparámetros;
+- síntesis de programas, NLP y generación automática de software;
+- HCI, experiencia de usuario, interacción humano-robot, interfaces embebidas y realidad virtual;
+- ingeniería de software, integración de bases de datos y estimación de esfuerzo;
+- IoT, lógica difusa, verificación formal y programación por usuarios finales;
+- creatividad computacional y diseño colaborativo de videojuegos.
+
+Decisiones relevantes:
+- DensToolKit2 se aceptó como caso frontera porque el aporte central es una suite computacional open-source, cross-platform, con programas, GUI y código liberado.
+- MetAP DB and Metal-FP se excluyó por predominio de química computacional/drug discovery, aunque tenía afiliación UNAM y componentes de base de datos/fingerprints.
+- Se excluyeron bases de datos, repositorios, catálogos o herramientas web de dominio cuando no había aporte claro de DBMS, IR, HCI o ingeniería de software.
+
+Archivo final:
+ebsco_isbd_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+------------------------------------------------------------
+5.2 CC — Computación Científica
+------------------------------------------------------------
+
+Raw recibidos: 98
+Duplicados eliminados: 10
+Únicos por lote: 88
+Excluidos fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 73
+Aceptados CS: 15
+
+Registros aceptados principalmente:
+- métodos numéricos y diferencias finitas para modelado e inversión;
+- inversión bayesiana, inversión de campos potenciales, optimización e inferencia computacional;
+- elementos finitos y estimaciones de error con implementación numérica;
+- software/código científico explícito;
+- algoritmos paralelos/distribuidos y work-stealing;
+- modelos de aprendizaje profundo/refuerzo y redes neuronales cuando el objeto central era computacional;
+- reconstrucción, señales e inversión regularizada;
+- PINNs y métodos de aprendizaje profundo para ecuaciones diferenciales.
+
+Decisiones relevantes:
+- Se aceptó Finite element software for calculating fluid flow and heat transport for seamounts porque el aporte explícito es software de elementos finitos.
+- Se aceptó Validation of the New TLANESY Thermal–Hydraulic Code como caso frontera porque el aporte central reportado es un código nuevo con métodos numéricos rápidos.
+- Se excluyeron artículos de geociencias, biología, neurociencia, energía, química o fluidos cuando el modelado o simulación era herramienta de dominio.
+
+Archivo final:
+ebsco_cc_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+------------------------------------------------------------
+5.3 IA — Inteligencia Artificial
+------------------------------------------------------------
+
+Raw recibidos: 241
+Duplicados eliminados: 8
+Únicos por lote: 233
+Excluidos fuera de periodo: 93
+Excluidos por afiliación UNAM no clara: 1
+Excluidos por no ser CS: 107
+Aceptados CS: 32
+
+Registros aceptados principalmente:
+- NLP, LLM, RAG, clasificación multilabel, análisis de sentimiento y chatbots;
+- aprendizaje profundo, redes neuronales, optimización de hiperparámetros, KAN-RNN, wavelet-CNN y modelos híbridos;
+- visión/imágenes biomédicas o biológicas cuando el aporte principal fue segmentación, arquitectura CNN/DL o procesamiento computacional;
+- ingeniería de software, estimación de software, síntesis de programas y medición funcional con LLM;
+- cómputo científico, diferencias finitas, elementos finitos, inversión numérica, reconstrucción y cómputo paralelo/distribuido;
+- seguridad/criptografía, HCI, VR/usabilidad, IoT con verificación formal y diseño colaborativo.
+
+Decisiones relevantes:
+- Se excluyó un registro técnicamente computacional de imágenes médicas porque no se verificó afiliación UNAM; el uso de un dataset UNAM no se consideró afiliación.
+- Se excluyeron registros de IA/ML aplicada en medicina, química, geociencias, astronomía, energía, educación, economía, política pública o ciencias sociales cuando el aporte principal era de dominio.
+- Se conservaron modelos o herramientas computacionales centrales como DeepReg y VirDetect-AI, pero se excluyeron bases de datos o recursos de dominio sin aporte CS suficiente.
+
+Archivo final:
+ebsco_ia_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+------------------------------------------------------------
+5.4 RS — Redes y Seguridad en Cómputo
+------------------------------------------------------------
+
+Raw recibidos: 211
+Duplicados eliminados: 8
+Únicos por lote: 203
+Excluidos fuera de periodo: 63
+Excluidos por afiliación UNAM no clara: 1
+Excluidos por no ser CS: 107
+Aceptados CS: 32
+
+Registros aceptados principalmente:
+- seguridad, criptografía, cifrado de imágenes, IoT, lógica difusa, verificación formal y programación por usuarios finales;
+- cómputo distribuido, concurrencia y work-stealing;
+- ingeniería de software, síntesis de programas, estimación de software y medición funcional con LLM;
+- NLP, LLM, clasificación multilabel, análisis de sentimiento, chatbots y procesamiento de texto;
+- aprendizaje profundo, redes neuronales, optimización de hiperparámetros y modelos híbridos;
+- cómputo científico, diferencias finitas, elementos finitos, inversión numérica y software/código científico;
+- visión/imágenes biomédicas o biológicas con segmentación, arquitectura DL/CNN o procesamiento computacional;
+- HCI, realidad virtual, simulación de navegación y diseño colaborativo.
+
+Decisiones relevantes:
+- Se mantuvo la regla de no aceptar network si se refiere a redes biológicas, ecológicas, sociales, geográficas o de transporte.
+- Se excluyeron bases de datos/repositorios de dominio si no había aporte claro de DBMS, IR, ingeniería de software, HCI o método computacional generalizable.
+- Hay solapamiento fuerte con IA y TC; este lote requerirá deduplicación global.
+
+Archivo final:
+ebsco_rs_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+------------------------------------------------------------
+5.5 TC — Teoría de la Computación
+------------------------------------------------------------
+
+Raw recibidos: 211
+Duplicados eliminados: 8
+Únicos por lote: 203
+Excluidos fuera de periodo: 63
+Excluidos por afiliación UNAM no clara: 1
+Excluidos por no ser CS: 107
+Aceptados CS: 32
+
+Registros aceptados principalmente:
+- teoría/formalización computacional, descripción lógica difusa, verificación formal y programación por usuarios finales;
+- síntesis de programas, medición funcional de software, estimación de software y bases/fuentes de datos para modelos de software;
+- algoritmos, optimización, estructuras de datos, cómputo paralelo/distribuido y work-stealing;
+- criptografía/cifrado de imágenes y privacidad/seguridad computacional;
+- NLP, LLM, clasificación multietiqueta de textos, análisis de sentimiento, chatbots y técnicas de IA;
+- cómputo científico/numerical, software científico, diferencias finitas, FEM, inversión y reconstrucción computacional;
+- HCI, experiencia de usuario, simulación en ambientes virtuales y sistemas interactivos.
+
+Decisiones relevantes:
+- Se excluyó el artículo de MRI/TLE aunque el contenido era computacional, porque no se encontró afiliación UNAM verificable.
+- Se excluyeron bases de datos de dominio y recursos científicos cuando el aporte principal era biológico, químico, geográfico, astronómico o documental.
+- Se conservaron casos no estrictamente TC, como IA, HCI, cómputo científico, seguridad e ingeniería de software, porque esta fase filtra CS vs. no CS.
+
+Archivo final:
+ebsco_tc_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+------------------------------------------------------------
+5.6 SIAV — Señales, Imágenes y Ambientes Virtuales
+------------------------------------------------------------
+
+Raw recibidos: 181
+Duplicados eliminados: 3
+Únicos por lote: 178
+Excluidos fuera de periodo: 108
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 61
+Aceptados CS: 9
+
+Registros aceptados principalmente:
+- procesamiento/reconstrucción de imágenes y señales;
+- visión por computadora;
+- extracción de características con CNN/wavelets;
+- clasificación/segmentación de imágenes médicas;
+- reducción dimensional y clustering para señales neuronales;
+- realidad virtual, HCI y evaluación de interfaces en entornos virtuales.
+
+Decisiones relevantes:
+- Se aceptó Emotion detection based on infrared thermography porque el aporte es una revisión técnica de algoritmos ML/DL para reconocimiento de emociones con imagen térmica.
+- Se aceptó Efficient and reliable spike sorting aunque apareció en una revista de biología, porque el aporte central es procesamiento de señales neuronales, UMAP y clustering.
+- Se excluyeron artículos de VR/AR cuando el foco fue clínico, psicológico, educativo o social sin método, sistema o evaluación HCI/VR técnica.
+- Se excluyeron teledetección, ecología, sensores, instrumentación, biomedicina y análisis ambiental cuando el aporte computacional era instrumental.
+
+Archivo final:
+ebsco_siav_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv
+
+============================================================
+6. PROBLEMAS GLOBALES DETECTADOS EN EBSCO
+============================================================
+
+1. EBSCO no exporta afiliaciones institucionales de autores en los CSV.
+Esto obligó a verificar afiliaciones UNAM externamente para los registros aceptados. En los CSV finales se añadieron Afiliacion1 y Afiliacion2, y toda la información recuperada quedó en Afiliacion1.
+
+2. EBSCO recupera muchos falsos positivos por texto completo, subjects o menciones generales.
+Palabras como software, AI, machine learning, database, platform, network, security, model, simulation, image, signal o data mining suelen aparecer en artículos de dominio externo.
+
+3. El campo CO / Entidad de la empresa no equivale a afiliación de autor.
+Puede ayudar a recuperar candidatos, pero no valida que un autor sea de la UNAM.
+
+4. El campo publicationDate permite una depuración temporal más estricta.
+A diferencia de Scopus, EBSCO sí permitió excluir muchos registros fuera de marzo 2024–diciembre 2025. Esto explica la alta cantidad de exclusiones por periodo en IA, RS, TC y SIAV.
+
+5. Hay mucho solapamiento entre áreas.
+Especialmente IA, RS y TC presentan resultados muy similares o idénticos. La deduplicación global es indispensable antes de contabilizar el corpus final.
+
+6. EBSCO mezcla artículos académicos de CS con publicaciones de muchas disciplinas.
+Se detectaron falsos positivos en medicina, biología, química, farmacología, geociencias, astronomía, energía, potencia eléctrica, hidráulica, ecología, agricultura, educación, política pública, economía, administración, psicología, VR clínica, sensores e instrumentación.
+
+============================================================
+7. REGLAS GLOBALES RECOMENDADAS PARA LA SIGUIENTE FASE
+============================================================
+
+1. Hacer deduplicación global entre áreas EBSCO.
+Los 129 registros aceptados son suma por lote, no un total global único. Deben unirse los seis CSV finales y deduplicarse por DOI; si no hay DOI, por título normalizado + año + primer autor.
+
+2. No convertir todavía en esta etapa si se conserva el flujo actual.
+Los CSV EBSCO finales mantienen 37 columnas originales + Afiliacion1 + Afiliacion2. La conversión al modelo canónico se debe hacer después, junto con la deduplicación global.
+
+3. Mantener afiliación UNAM como criterio obligatorio.
+Si EBSCO no exporta afiliación, la afiliación debe comprobarse en PDF, DOI, página editorial, página de revista, ORCID o fuente institucional. No basta que UNAM aparezca como dataset, corpus, caso de estudio, institución analizada o mención textual.
+
+4. Mantener criterio conservador de Ciencias de la Computación.
+Aceptar sólo si el aporte principal es computacional: método, algoritmo, arquitectura, framework, software, sistema, protocolo, pipeline, interfaz, evaluación técnica, procesamiento, verificación, optimización, cómputo científico o técnica generalizable.
+
+5. Rechazar repositorios/bases de datos de dominio si no hay aporte CS.
+Bases de datos biológicas, químicas, geográficas, astronómicas, paleomagnéticas, ecológicas o médicas no deben aceptarse salvo que haya contribución clara de DBMS, IR, HCI, ingeniería de software o método computacional.
+
+6. Aceptar casos biomédicos, geofísicos o ambientales sólo cuando el método computacional sea central.
+Por ejemplo, segmentación, reconstrucción, arquitectura DL, procesamiento de señales, software científico, inversión numérica, descriptor computacional o pipeline explícito.
+
+7. Revisar casos frontera en la consolidación global.
+Casos como DensToolKit2, TLANESY, VirDetect-AI, DeepReg, Efficient spike sorting y Emotion detection by infrared thermography fueron aceptados porque el aporte computacional fue considerado central; conviene mantenerlos marcados para clasificación final.
+
+============================================================
+8. ESTADO FINAL DE EBSCO
+============================================================
+
+Fuente: EBSCO Academic Search Ultimate
+Áreas cubiertas: 6/6
+ISBD: completado
+CC: completado
+IA: completado
+RS: completado
+TC: completado
+SIAV: completado
+
+Registros raw procesados: 1013
+Registros únicos por lote después de deduplicación interna: 975
+Registros aceptados como Ciencias de la Computación por lote: 129
+
+Formato de salida actual:
+CSV con columnas originales de EBSCO, 37 columnas + Afiliacion1 + Afiliacion2.
+
+Pendiente:
+- Unión de los seis CSV finales.
+- Deduplicación global entre áreas EBSCO.
+- Deduplicación contra Scopus, IEEE y ACM.
+- Conversión al modelo canónico.
+- Asignación final de área.
+- Asignación final de subárea.
+- Perfilado de calidad del conjunto integrado.
+
+============================================================
+9. NOTA EJECUTIVA PARA PEGAR EN EL CHAT PRINCIPAL
+============================================================
+
+EBSCO quedó completado para las seis áreas del proyecto. Se procesaron 1013 registros raw distribuidos en ISBD, Computación Científica, Inteligencia Artificial, Redes y Seguridad, Teoría de la Computación y Señales/Imágenes/Ambientes Virtuales. Después de deduplicación interna por lote se obtuvieron 975 registros únicos por área; de ellos, 129 fueron aceptados como claramente pertenecientes a Ciencias de la Computación, 516 fueron rechazados por no ser CS, 327 por estar fuera del periodo marzo 2024–diciembre 2025 y 3 por no tener afiliación UNAM clara. A diferencia de Scopus/IEEE, EBSCO no exportó afiliaciones institucionales en sus CSV, por lo que las afiliaciones UNAM de los registros aceptados se recuperaron externamente y se colocaron en Afiliacion1 con formato autor — afiliación. Los CSV finales conservan las 37 columnas originales de EBSCO y añaden únicamente Afiliacion1 y Afiliacion2. La siguiente fase debe unir los seis CSV finales, deduplicar globalmente por DOI/título y convertir al modelo canónico del proyecto.

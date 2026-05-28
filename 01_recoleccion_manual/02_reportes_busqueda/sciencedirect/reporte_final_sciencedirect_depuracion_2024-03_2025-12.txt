@@ -1,0 +1,414 @@
+REPORTE FINAL DE SCIENCEDIRECT — DEPURACIÓN 2024-03 A 2025-12
+
+1. RESUMEN EJECUTIVO
+
+Se completó la revisión y depuración de ScienceDirect para las seis áreas del proyecto:
+
+1) ISBD — Ingeniería de Software y Bases de Datos
+2) CC — Computación Científica
+3) IA — Inteligencia Artificial
+4) RS — Redes y Seguridad en Cómputo
+5) TC — Teoría de la Computación
+6) SIAV — Señales, Imágenes y Ambientes Virtuales
+
+A diferencia de Scopus, IEEE, EBSCO, Engineering Village y Web of Science, en ScienceDirect no se trabajó con CSV estructurados completos. La fuente proporcionó principalmente PDFs, por lo que la depuración consistió en revisar cada PDF, extraer sus metadatos y convertir únicamente los artículos aceptados al modelo canónico del proyecto.
+
+La fase realizada en ScienceDirect tuvo estos objetivos:
+
+- verificar periodo marzo 2024–diciembre 2025;
+- verificar afiliación UNAM clara en los PDFs;
+- distinguir artículos claramente pertenecientes a Ciencias de la Computación;
+- excluir falsos positivos interdisciplinarios;
+- convertir los artículos aceptados al modelo canónico;
+- conservar artículos de Ciencias de la Computación aunque no fueran estrictamente del área inicial del lote;
+- dejar pendiente la clasificación final por área y subárea;
+- dejar pendiente la deduplicación global entre áreas y editoriales.
+
+Resultado global por suma de lotes:
+
+- Áreas cubiertas en ScienceDirect: 6/6
+- Cargas PDF reportadas directamente en los seis reportes: 71
+- Registros aceptados finales por suma de lotes: 43
+
+Nota importante:
+El conteo de 43 aceptados corresponde a la suma por lotes y todavía NO representa un total único global. Hay solapamiento entre áreas de ScienceDirect y también con otras editoriales. Por ejemplo, varios títulos aceptados aparecen en más de un lote. La deduplicación global debe hacerse posteriormente por DOI y, cuando no haya DOI, por título normalizado + año + primer autor.
+
+Además, el conteo de cargas PDF reportadas debe leerse con cuidado: el reporte de Computación Científica recibido corresponde al lote 2 y al consolidado final de CC, por lo que el número bruto completo del lote 1 de CC no queda descrito en el reporte final recibido. Sí queda confirmado que el consolidado ScienceDirect CC terminó con 16 registros aceptados.
+
+
+2. TABLA CONSOLIDADA POR ÁREA
+
+Área | Cargas PDF reportadas | Artículos únicos / detalle | Excluidos fuera de periodo | Excluidos sin afiliación UNAM clara | Excluidos no CS | Aceptados finales
+--- | ---: | --- | ---: | ---: | ---: | ---:
+ISBD | 16 | 14 únicos | 2 | 0 | 8 | 4
+CC | 11 en lote 2 | consolidado lotes 1+2: 16 aceptados; lote 2: 11 únicos | 0 en lote 2 | 1 en lote 2 | 1 en lote 2 | 16
+IA | 22 | 20 únicos | 2 | 1 | 4 | 13
+RS | 9 | 9 únicos | 1 | 0 | 6 | 2
+TC | 6 | 6 únicos | 2 | 0 | 1 | 3
+SIAV | 7 | 7 únicos | 2 | 0 | 0 | 5
+
+Totales útiles:
+- Cargas PDF reportadas directamente: 71
+- Aceptados finales por suma de lotes: 43
+- Duplicados internos reportados directamente en los lotes: 4
+- Excluidos fuera de periodo reportados directamente: 9
+- Excluidos por afiliación UNAM no clara reportados directamente: 2
+- Excluidos por no ser claramente Ciencias de la Computación reportados directamente: 20
+
+Aclaración:
+Los totales de exclusión anteriores usan los conteos declarados en cada reporte recibido. En CC, esos conteos se refieren al lote 2, mientras que el total de aceptados corresponde al consolidado lotes 1+2. Por eso, para ScienceDirect se recomienda usar como cifra principal el total de aceptados finales por lote y realizar la deduplicación global posteriormente.
+
+
+3. ARCHIVOS FINALES GENERADOS POR ÁREA
+
+ISBD:
+- sciencedirect_isbd_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+
+CC:
+- sciencedirect_cc_lote2_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+- sciencedirect_cc_lotes1_2_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+
+IA:
+- sciencedirect_ia_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+
+RS:
+- sciencedirect_rs_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+
+TC:
+- sciencedirect_tc_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+
+SIAV:
+- sciencedirect_siav_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv
+
+
+4. FORMATO Y MODELO DE DATOS
+
+Como ScienceDirect no entregó un CSV estructurado completo, los registros aceptados se extrajeron desde PDFs y se generaron en el modelo canónico del proyecto.
+
+Columnas canónicas usadas:
+
+indice,Titulo,Año,Autor_norm,Afiliacion1,Afiliacion2,ISBN,ISSN,Doi,URL,Area,Subarea,Keywords,Abstract
+
+Reglas aplicadas:
+
+- Se extrajeron metadatos desde PDFs.
+- Se conservaron autores, afiliaciones, DOI, URL, keywords y abstract cuando estaban disponibles.
+- ISBN se dejó como N/D cuando no estaba reportado.
+- Afiliacion1 contiene la relación autor–afiliación cuando fue posible extraerla.
+- Afiliacion2 se dejó vacía en los lotes ScienceDirect.
+- Area se llenó con el área del lote inicial, por trazabilidad; no es clasificación final.
+- Subarea se dejó vacía.
+- Los CSV finales están codificados en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- No se inventaron metadatos faltantes.
+
+
+5. RESULTADOS POR ÁREA
+
+5.1 ISBD — Ingeniería de Software y Bases de Datos
+
+Archivos revisados:
+- 16 cargas PDF
+- 14 artículos únicos después de deduplicación
+- 2 duplicados eliminados
+- 2 excluidos por fuera de periodo
+- 0 excluidos por afiliación UNAM no clara
+- 8 excluidos por no ser Ciencias de la Computación
+- 4 aceptados finales
+
+Registros aceptados:
+- AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory.
+- text2graphAPI: A library to transform text documents into different graph representations.
+- HV-Inv: A MATLAB-based graphical tool for the direct and inverse problems of the horizontal-to-vertical spectral ratio under the diffuse field theory.
+- FEM for 1D-problems involving the logarithmic Laplacian: Error estimates and numerical implementation.
+
+Tipos de artículos conservados:
+- supercómputo, HPC, GPU e IA aplicada al procesamiento intensivo de datos;
+- software/NLP para transformación de texto en grafos;
+- software científico con interfaz gráfica;
+- métodos numéricos, FEM, análisis de error e implementación computacional.
+
+Decisiones relevantes:
+- Se aceptó AI-Enhanced Supercomputing porque el aporte central fue arquitectura HPC/GPU/IA, no astronomía como resultado de dominio.
+- Se aceptó text2graphAPI porque es una publicación de software con Python API, NLP y representación de textos como grafos.
+- Se aceptó HV-Inv como caso frontera de software/cómputo científico.
+- Se excluyó LAPOD porque se consideró base de datos de dominio paleomagnético sin aporte claro de DBMS/IR/HCI/ingeniería de software.
+- Se excluyó Read/write fence-free work-stealing with multiplicity únicamente por periodo, ya que el PDF indica disponibilidad en línea el 19 de diciembre de 2023.
+
+
+5.2 CC — Computación Científica
+
+El reporte recibido corresponde al lote 2 y al consolidado final de Computación Científica.
+
+Lote 2:
+- 11 cargas PDF
+- 11 artículos únicos
+- 0 duplicados internos
+- 0 excluidos por fuera de periodo
+- 1 excluido por afiliación UNAM no clara
+- 1 excluido por no ser Ciencias de la Computación
+- 9 aceptados en el CSV canónico de lote 2
+- 1 aceptado del lote 2 ya estaba presente en lote 1
+- 8 registros nuevos agregados al consolidado
+
+Consolidado ScienceDirect CC:
+- 16 registros aceptados finales en lotes 1+2
+
+Registros aceptados en lote 2:
+- Advanced Algorithm Combinations for Safe Human-Robot Collaboration: A Review and Research Proposal.
+- AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory.
+- A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets.
+- Applications and methodologies of Internet of Things in warehouses and inventory management: A systematic literature review.
+- CUDA code to generate computational models and predict mechanical properties for metallic surface nanocoatings.
+- Error Compensation Method during Welding Operations using the Enhanced Wagner-Hagras Interval Type-3 NSFLS-1.
+- On the orthogonal Grünbaum partition problem in dimension three.
+- Optimizing Automated Manufacturing Processes Using a Hybrid BRKGA Algorithm: A Case Study on Flexible Job-Shop Scheduling.
+- Realizable signatures in upward pointset embeddings of directed paths.
+
+Tipos de artículos conservados:
+- robótica colaborativa, HRI, aprendizaje por refuerzo y arquitecturas de IA;
+- HPC, GPU, supercómputo y flujos de trabajo de datos;
+- análisis inverso con aprendizaje automático;
+- IoT y metodologías para gestión de almacenes;
+- software científico y código CUDA/C++;
+- lógica difusa, visión, robótica y control inteligente;
+- geometría computacional, embeddings planares, scheduling y optimización metaheurística.
+
+Decisiones relevantes:
+- Dynamic modelling framework for the analysis of fair-sized DC microgrids se mantuvo excluido por considerarse principalmente ingeniería eléctrica/potencia.
+- Machine learning in AIRR diagnostics se excluyó por falso positivo institucional: UNAM – National Nanotechnology Research Center, Bilkent University, Turquía.
+- CUDA code... se aceptó en lote 2 pero no se agregó como registro nuevo porque ya estaba en lote 1.
+- El consolidado CC quedó con 16 registros aceptados.
+
+
+5.3 IA — Inteligencia Artificial
+
+Archivos revisados:
+- 22 cargas PDF
+- 20 artículos únicos después de deduplicación
+- 2 duplicados eliminados
+- 2 excluidos por fuera de periodo
+- 1 excluido por afiliación UNAM no clara
+- 4 excluidos por no ser Ciencias de la Computación
+- 13 aceptados finales
+
+Registros aceptados:
+- Optimizing Automated Manufacturing Processes Using a Hybrid BRKGA Algorithm: A Case Study on Flexible Job-Shop Scheduling.
+- Real-time multi-label event categorization in the Brazilian interconnected power system.
+- Modeling responsible technologies using multiagent system for climate crisis and sustainability.
+- Advanced Algorithm Combinations for Safe Human-Robot Collaboration: A Review and Research Proposal.
+- Advanced Dual-Branch U-Net Decoder for Precise and Robust Surgical Instrument and Organ Segmentation.
+- AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory.
+- A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets.
+- Error Compensation Method during Welding Operations using the Enhanced Wagner-Hagras Interval Type-3 NSFLS-1.
+- Mammography reporting dataset with BI-RADS system for natural language processing applications: Addressing public data gaps in Spanish.
+- Multi-modal supervised domain adaptation with a multi-level alignment strategy and consistent decision boundaries for cross-subject emotion recognition from EEG and eye movement signals.
+- Neuroevolution-based multiobjective algorithm for feature selection and binary classification of DNA microarrays.
+- Simulation of an individual with motor disabilities by a deep reinforcement learning model.
+- text2graphAPI: A library to transform text documents into different graph representations.
+
+Tipos de artículos conservados:
+- optimización, scheduling y manufactura inteligente;
+- clasificación multietiqueta con CNN, DWT y DNN;
+- sistemas multiagente, HRI, robótica colaborativa y reinforcement learning;
+- visión por computadora, segmentación y deep learning médico;
+- HPC, GPU y supercómputo;
+- ingeniería de software científico y NLP;
+- domain adaptation, emoción multimodal, EEG/eye-tracking;
+- neuroevolución y selección de características;
+- datasets/corpus para NLP y aprendizaje automático.
+
+Decisiones relevantes:
+- Addressing multidimensional highly correlated data... se excluyó porque el foco principal fue apicultura de precisión.
+- Analysis of an electrically responsive drug delivery system... se excluyó por dominio farmacéutico/químico.
+- Connectivity and stochastic robustness... y Improved predictive diagnosis... se excluyeron por fechas de enero/febrero de 2024, aunque eran claramente computacionales.
+- Machine learning in AIRR diagnostics se excluyó por falso positivo institucional de Bilkent/Turquía.
+- The importance of spatial scale... se excluyó por ecología/remote sensing aplicado.
+
+
+5.4 RS — Redes y Seguridad en Cómputo
+
+Archivos revisados:
+- 9 PDFs
+- 9 artículos únicos
+- 0 duplicados
+- 1 excluido por fuera de periodo
+- 0 excluidos por afiliación UNAM no clara
+- 6 excluidos por no ser Ciencias de la Computación
+- 2 aceptados finales
+
+Registros aceptados:
+- Applications and methodologies of Internet of Things in warehouses and inventory management: A systematic literature review.
+- An integrated monitoring system based on deep learning tools for industrial process.
+
+Tipos de artículos conservados:
+- IoT, arquitecturas IoT, gestión de inventarios/almacenes y metodologías computacionales;
+- ciberseguridad industrial, detección de ciberataques y fallas con deep learning.
+
+Decisiones relevantes:
+- Se excluyó Read/write fence-free work-stealing with multiplicity únicamente por periodo, aunque es claramente CS.
+- Se excluyó IoT smartwatch... por tratarse de dispositivo/sensado de confort térmico, no de arquitectura, protocolo, seguridad o middleware generalizable.
+- Se excluyó Blockchain aplicado en afecciones mamarias por ser revisión biomédica/ética sin aporte técnico de blockchain o seguridad.
+- Se mantuvo criterio conservador para IoT/sensores de dominio.
+
+
+5.5 TC — Teoría de la Computación
+
+Archivos revisados:
+- 6 cargas PDF
+- 6 artículos únicos
+- 0 duplicados
+- 2 excluidos por fuera de periodo
+- 0 excluidos por afiliación UNAM no clara
+- 1 excluido por no ser Ciencias de la Computación
+- 3 aceptados finales
+
+Registros aceptados:
+- Fast procedure to compute empirical and Bernstein copulas.
+- On some congruences and exponential sums.
+- AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory.
+
+Tipos de artículos conservados:
+- algoritmos eficientes para cómputo de copulas empíricas y de Bernstein;
+- fundamentos matemáticos relacionados con campos finitos, congruencias, sumas exponenciales y sumas de caracteres;
+- supercómputo, HPC, GPU, IA y procesamiento de grandes volúmenes de datos.
+
+Decisiones relevantes:
+- Verified propagation of imprecise probabilities... y Read/write fence-free work-stealing... se excluyeron por disponibilidad en línea en 2023, aunque eran computacionales.
+- Dynamic modelling framework... se excluyó por considerarse ingeniería eléctrica/potencia.
+- Fast procedure... se aceptó por su aporte algorítmico eficiente con pseudocódigo y evaluación de desempeño.
+- On some congruences... se aceptó por relación con campos finitos y fundamentos matemáticos útiles para teoría/codificación/criptografía.
+
+
+5.6 SIAV — Señales, Imágenes y Ambientes Virtuales
+
+Archivos revisados:
+- 7 cargas PDF
+- 7 artículos únicos
+- 0 duplicados
+- 2 excluidos por fuera de periodo
+- 0 excluidos por afiliación UNAM no clara
+- 0 excluidos por no ser Ciencias de la Computación
+- 5 aceptados finales
+
+Registros aceptados:
+- Emotion detection based on infrared thermography: A review of machine learning and deep learning algorithms.
+- Real-time multi-label event categorization in the Brazilian interconnected power system.
+- Advanced Dual-Branch U-Net Decoder for Precise and Robust Surgical Instrument and Organ Segmentation.
+- An integrated monitoring system based on deep learning tools for industrial process.
+- Improving CNN interpretability and evaluation via alternating training and regularization in chest CT scans.
+
+Tipos de artículos conservados:
+- visión por computadora, segmentación y deep learning para imágenes médicas;
+- machine learning/deep learning aplicado a termografía, señales y reconocimiento de emociones;
+- clasificación multietiqueta de eventos en señales de sistemas eléctricos;
+- detección/localización de fallas y ciberataques con deep learning;
+- interpretabilidad y evaluación de CNN en imágenes médicas.
+
+Decisiones relevantes:
+- Improved predictive diagnosis of diabetic macular edema... se excluyó por fecha de enero de 2024.
+- Feature-based 3D+t descriptors... se excluyó por fecha de febrero de 2024.
+- Real-time multi-label event categorization... se conservó aunque el dominio sea sistemas eléctricos, porque el aporte principal es clasificación computacional de señales en tiempo real.
+- No se detectaron falsos positivos temáticos aceptados por error en este lote.
+
+
+6. PROBLEMAS Y LIMITACIONES GLOBALES DE SCIENCEDIRECT
+
+6.1 ScienceDirect no entregó CSV estructurado
+
+La principal diferencia metodológica de ScienceDirect fue que no se trabajó con archivos tabulares exportados, sino con PDFs. Por eso, el procesamiento implicó revisión manual/asistida de cada PDF, extracción de metadatos y conversión al modelo canónico.
+
+6.2 Criterio temporal estricto por fecha visible en PDF
+
+En ScienceDirect se aplicó estrictamente la fecha verificable del PDF cuando estaba disponible. Esto llevó a excluir artículos claramente computacionales si el PDF indicaba disponibilidad en línea en 2023 o en enero/febrero de 2024, aunque el volumen o la publicación editorial apareciera como 2024.
+
+Casos relevantes excluidos por periodo:
+- Read/write fence-free work-stealing with multiplicity.
+- Verified propagation of imprecise probabilities in non-linear ODEs.
+- Connectivity and stochastic robustness of synchronized multi-drone systems.
+- Improved predictive diagnosis of diabetic macular edema based on hybrid models.
+- Feature-based 3D+t descriptors of hyperactivated human sperm beat patterns.
+
+6.3 Falsos positivos institucionales
+
+Se detectó nuevamente el falso positivo institucional por `UNAM – National Nanotechnology Research Center`, asociado a Bilkent University, Ankara, Turquía. No se consideró afiliación válida de la Universidad Nacional Autónoma de México.
+
+6.4 Diferencia entre herramienta de dominio y aporte computacional
+
+En ScienceDirect se excluyeron trabajos donde términos como AI, ML, software, database, IoT, simulation, model, graph theory, sensor, blockchain o data-driven aparecían como herramientas de otra disciplina, sin que el aporte principal fuera de Ciencias de la Computación.
+
+Principales dominios generadores de falsos positivos:
+- ingeniería eléctrica y microredes;
+- materiales, fotónica y sensores;
+- biomedicina, farmacología y salud;
+- ecología y remote sensing aplicado;
+- geociencias, paleomagnetismo e hidráulica;
+- administración pública y estudios sociales de IA;
+- bases de datos científicas de dominio sin aporte DBMS/IR/HCI.
+
+6.5 Solapamiento entre áreas
+
+ScienceDirect presenta solapamiento importante entre lotes. Algunos títulos se aceptaron en más de un área inicial, por ejemplo:
+- AI-Enhanced Supercomputing...
+- text2graphAPI...
+- An integrated monitoring system...
+- Advanced Algorithm Combinations...
+- Real-time multi-label event categorization...
+
+Esto es correcto para esta fase, pero debe resolverse en la deduplicación global.
+
+
+7. REGLAS RECOMENDADAS PARA LA SIGUIENTE FASE
+
+1. Realizar deduplicación global de ScienceDirect.
+   Usar DOI como clave principal. Si no hay DOI, usar título normalizado + año + primer autor.
+
+2. Deduplicar ScienceDirect contra todas las demás fuentes.
+   Comparar contra Scopus, IEEE, ACM, EBSCO, Engineering Village y Web of Science.
+
+3. Revisar los artículos excluidos sólo por fecha si el comité decide usar año de volumen y no fecha online.
+   En esta depuración se aplicó la fecha visible del PDF de forma estricta.
+
+4. Reclasificar áreas.
+   El campo Area en los CSV canónicos de ScienceDirect sólo indica el lote de búsqueda inicial, no la clasificación final.
+
+5. Mantener criterio conservador.
+   No aceptar artículos de dominio externo sólo porque usen software, IA, base de datos, simulación, sensores, imágenes o modelos como herramientas.
+
+6. Verificar afiliación UNAM real.
+   En especial, descartar falsos positivos institucionales con siglas UNAM que no correspondan a la Universidad Nacional Autónoma de México.
+
+
+8. ESTADO FINAL DE SCIENCEDIRECT
+
+Fuente:
+ScienceDirect
+
+Áreas cubiertas:
+6/6
+
+Estado por área:
+- ISBD: completado
+- CC: completado con consolidado lotes 1+2
+- IA: completado
+- RS: completado
+- TC: completado
+- SIAV: completado
+
+Formato de salida:
+CSV canónico de 14 columnas para registros aceptados.
+
+Registros aceptados por suma de lotes:
+43
+
+Pendiente:
+- deduplicación global entre áreas ScienceDirect;
+- deduplicación global contra otras editoriales;
+- conversión/integración al corpus maestro;
+- asignación final de área;
+- asignación final de subárea;
+- revisión de casos frontera por fecha online vs. año de volumen.
+
+
+9. NOTA EJECUTIVA PARA PEGAR EN EL CHAT PRINCIPAL
+
+ScienceDirect quedó completado para las seis áreas del proyecto. A diferencia de otras fuentes, ScienceDirect no entregó CSV estructurado; por ello, los registros se trabajaron desde PDFs y los artículos aceptados se convirtieron al modelo canónico de 14 columnas. En total, los reportes disponibles documentan al menos 71 cargas PDF revisadas directamente y 43 registros aceptados por suma de lotes, antes de deduplicación global entre áreas. Computación Científica quedó como consolidado de lotes 1+2 con 16 registros aceptados. La depuración aplicó periodo marzo 2024–diciembre 2025, afiliación UNAM clara y pertenencia a Ciencias de la Computación. Se excluyeron falsos positivos de dominio donde software, IA, bases de datos, IoT, sensores, imágenes, modelos o simulación eran sólo herramientas secundarias. La siguiente fase debe deduplicar globalmente ScienceDirect contra el resto de las editoriales y reclasificar cada artículo por área y subárea final.

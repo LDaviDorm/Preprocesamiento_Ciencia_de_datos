@@ -1,0 +1,91 @@
+# Reporte de depuración — ProQuest SIAV
+
+## Archivos recibidos
+- ProQuestDocuments-2026-05-19 (1).xls
+- ProQuestDocuments-2026-05-19 (2).xls
+- ProQuestDocuments-2026-05-19.xls
+
+## Objetivo
+Depurar registros descargados desde ProQuest para el lote inicial SIAV — Señales, Imágenes y Ambientes Virtuales, conservando únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de ProQuest y sin convertir al modelo canónico.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de SIAV.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en los metadatos de ProQuest.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, afiliación, revista y DOI.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, si faltara DOI, por título normalizado + año.
+
+Nota de periodo para ProQuest: se usó `pubdate` como fecha bibliográfica principal, manteniendo el criterio aplicado en los lotes anteriores de ProQuest. `elecPubDate` se revisó como apoyo. En este lote no se excluyeron registros por periodo. La decisión más revisable es `Augmented reality to the creation of hybrid maps...`, que tiene `pubdate = May 2024` pero `elecPubDate = 2023-11-03`; se conservó por usar `pubdate` como fecha principal.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 7
+- Artículos únicos después de deduplicación: 7
+- Registros duplicados eliminados: 0
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 5
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 2
+
+## Registros aceptados
+Se conservaron registros de:
+- realidad aumentada, visualización interactiva, Unity 3D/AR Foundation e interacción con mapas híbridos;
+- aprendizaje profundo, CNN, transferencia de aprendizaje, procesamiento de imágenes médicas y señales ERG/OCT/fundus.
+
+Registros aceptados:
+- Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico
+- Improved predictive diagnosis of diabetic macular edema based on hybrid models: An observational study
+
+## Registros dudosos
+- Reducing syndemics of non-communicable chronic diseases in Mayan Indigenous population through community-based participatory research: a mixed-methods study protocol: Protocolo de salud pública/participación comunitaria; análisis estadístico y redes sociales como herramientas, no CS.
+- Association of HMGB1, IL-1β, IL-8, IL-10, and MCP-1 with the Development of Systemic Inflammatory Response Syndrome in Pediatric Patients with Recently Diagnosed Acute Lymphoblastic Leukemia: Biomedicina/hematología; biomarcadores inflamatorios, sin aporte computacional central.
+- Comparison of Tomographic Findings in Patients with Influenza A (H1N1) and COVID-19: Comparación clínica de hallazgos tomográficos; no propone procesamiento de imágenes, visión o algoritmo computacional.
+- Genomic and environmental insights and conservation challenges for two hybridizing iconic crocodile species across Mexico: Crocodylus acutus and C. moreletii: Conservación/genómica/ecología; modelado/analítica como herramienta de dominio, sin contribución CS central.
+- Building momentum through networks: Bioimaging across the Americas: Reporte/comunidad de redes de bioimagen; no presenta método computacional de imágenes/señales.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos o clínicos donde las imágenes, tomografías o biomarcadores son objeto médico, no una contribución computacional.
+- Artículos de salud pública con análisis estadístico, redes sociales o Markov como herramientas auxiliares.
+- Artículos de ecología, genómica y conservación con modelado o análisis de datos como apoyo de dominio.
+- Reportes de redes/comunidades de bioimagen que no presentan procesamiento de imágenes, algoritmos, software ni método computacional nuevo.
+- Artículos que mencionan IA, modelos, redes, imágenes o datos, pero cuyo aporte principal pertenece a medicina, salud pública, ecología o biología.
+
+## Decisiones importantes
+- Se mantuvo `Augmented reality to the creation of hybrid maps...` porque el aporte central incluye una aplicación interactiva de realidad aumentada desarrollada con Unity 3D y AR Foundation, además de evaluación de interacción/uso.
+- Se mantuvo `Improved predictive diagnosis of diabetic macular edema...` porque propone y evalúa modelos CNN/transfer learning e integración de OCT, fundus, scalograms y spectrograms; el aporte principal es computacional aunque el dominio sea médico.
+- Se excluyó `Comparison of Tomographic Findings...` porque compara hallazgos clínicos de tomografía; no hay aporte de procesamiento de imagen, visión computacional o modelo computacional.
+- Se excluyó `Building momentum through networks...` porque es un reporte de comunidad/redes de bioimagen, no un artículo de método computacional.
+- Se aplicó un criterio estricto: no se aceptaron registros sólo por contener términos como `tomographic`, `bioimaging`, `network`, `AI`, `model`, `data`, `classification` o `analysis`.
+
+## Formato del archivo final
+- No se convirtió al modelo canónico.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- Los archivos ProQuest tenían encabezados distintos: dos archivos tenían 26 columnas y uno tenía 29 columnas.
+- Para no perder metadatos, se usó la unión de columnas originales de ProQuest, con diseño final de 29 columnas.
+- Se tomó como base el encabezado más completo de ProQuest.
+- Las columnas que no existían en algunos archivos quedan vacías en esos registros.
+- El CSV final está en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+Encabezados recibidos:
+- ProQuestDocuments-2026-05-19 (1).xls: 26 columnas
+- ProQuestDocuments-2026-05-19 (2).xls: 26 columnas
+- ProQuestDocuments-2026-05-19.xls: 29 columnas
+
+## Archivo final generado
+- `proquest_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ProQuest SIAV tuvo pocos registros, pero la mayoría fueron falsos positivos temáticos.
+- Se aceptaron sólo 2 de 7 registros únicos.
+- La decisión temporal revisable sigue siendo usar `pubdate` como fecha principal en ProQuest cuando `elecPubDate` sea anterior al periodo; esto afecta al artículo de realidad aumentada.
+- Conviene deduplicar globalmente contra ProQuest ISBD/RS/IA y contra las demás editoriales, porque `Augmented reality...` e `Improved predictive diagnosis...` ya aparecieron en otros lotes.

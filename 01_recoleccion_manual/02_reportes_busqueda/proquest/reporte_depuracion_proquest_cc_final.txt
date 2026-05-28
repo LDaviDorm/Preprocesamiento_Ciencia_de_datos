@@ -1,0 +1,93 @@
+# Reporte de depuración — ProQuest Computación Científica
+
+## Archivos recibidos
+- ProQuestDocuments-2026-05-19.xls
+- ProQuestDocuments-2026-05-19 (1).xls
+
+## Objetivo
+Depurar registros descargados desde ProQuest para el lote de Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de los archivos recibidos y sin convertir al modelo canónico.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+- Se aplicó un criterio estricto, dado que el lote ProQuest contenía mucho ruido temático.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM mexicana clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, subjects, afiliaciones, DOI y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, si no había DOI, por título normalizado + año + primer autor.
+
+Nota sobre fecha: ProQuest exportó `pubdate`, `elecPubDate`, `entryDate` y `year`. Se usó `pubdate` como fecha bibliográfica principal, de forma consistente con el lote ProQuest anterior; `elecPubDate` se consideró fecha electrónica/adelanto cuando entraba en conflicto con la fecha bibliográfica principal. No hubo exclusiones temporales usando `pubdate`.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 24
+- Artículos únicos después de deduplicación: 24
+- Registros duplicados eliminados: 0
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 2
+- Registros excluidos por no ser claramente Ciencias de la Computación: 18
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 4
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- cómputo científico y métodos numéricos para inversión/modelado;
+- geometría computacional y algoritmos;
+- ambientes virtuales/realidad aumentada cuando el sistema o interfaz computacional era el aporte central.
+
+Registros aceptados:
+- `Augmented reality to the creation of hybrid maps applied in soil sciences...`: aplicación AR/Unity/AR Foundation e interacción con mapas híbridos; se conserva como CS aunque no sea CC final.
+- `Three-dimensional joint inversion of potential field datasets constrained by cross-gradient and depth weighting`: algoritmo de inversión 3D con restricción cross-gradient, gradiente conjugado y ponderación por profundidad; cómputo científico claro.
+- `A time-domain SGFD-FK hybrid method for 2D teleseismic elastic wave modeling and inversion`: método híbrido SGFD-FK para modelado e inversión de ondas elásticas; contribución numérica/computacional central.
+- `Rectilinear convex hull of points in 3D and applications`: algoritmo óptimo para casco convexo rectilíneo 3D y análisis combinatorio; claramente CS/algoritmos.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+- `DIALOGUE: A Generative AI-Based Pre–Post Simulation Study...`: excluido; usa GenAI/ChatGPT en simulación educativa médica, pero el aporte principal es pedagógico y clínico.
+- `Generation of Hydrogeological Units for 3D Modelling Using Open-Source Tools...`: excluido; usa Python/GIS y repositorios, pero el producto es dataset/modelado hidrogeológico de dominio.
+- `A global database of tsunami deposits`: excluido; base de datos geocientífica de dominio, sin contribución de DBMS/IR/sistemas.
+- `Methodology for the design of a nanosatellite telecommunication system...`: excluido; diseño de enlace con STK, no aporte técnico de redes/sistemas computacionales.
+- `Modal finite element correlation for computer aided engineering education`: excluido; CAE/FEM en educación de ingeniería, no método computacional central.
+- `Numerical Simulation of Gravitactic Bioconvection with Nanoparticles...`: excluido; simulación de dominio físico-biológico con finite differences como herramienta.
+- `Numerical Analysis and Design of a High-Frequency Surface Acoustic Wave Transducer...`: excluido; diseño de transductor/piezoeléctricos con FEM como herramienta.
+
+## Principales falsos positivos detectados
+- Artículos de geociencias, ecología, arqueología, hidrología, geodiversidad, energía, materiales, salud y educación que usaban GIS, bases de datos, modelos, simulación o software sólo como herramienta.
+- Bases de datos o datasets de dominio, como depósitos de tsunamis o datos hidrogeológicos, sin aporte claro de DBMS, recuperación de información, arquitectura de datos o ingeniería de software.
+- Simulaciones numéricas de dominio con FEM, finite differences, RUSLE, GIS, ALOHA, STK, ABAQUS o herramientas similares, donde el aporte principal no era un método computacional nuevo o generalizable.
+- Falsos positivos institucionales por acrónimos parecidos a UNAM: `UNAM - National Nanotechnology Research Center` de Bilkent University, Turquía, y `Universidad Nacional de Misiones`/`UNaM`, Argentina.
+- Artículos de IA/GenAI aplicados a educación médica, salud pública o evaluación ambiental donde el aporte principal fue del dominio aplicado.
+
+## Decisiones importantes
+- Se aceptó `Three-dimensional joint inversion...` porque presenta explícitamente un algoritmo de inversión 3D y metodología computacional para datos potenciales.
+- Se aceptó `A time-domain SGFD-FK hybrid method...` porque el aporte principal es un método híbrido de simulación/inversión de ondas elásticas.
+- Se aceptó `Rectilinear convex hull of points in 3D and applications` por su aporte algorítmico claro.
+- Se aceptó `Augmented reality to the creation of hybrid maps...` aunque no sea Computación Científica final, porque en esta fase se filtra Ciencias de la Computación vs. no CS.
+- Se excluyeron registros aunque contenían términos como `AI`, `software`, `database`, `open-source tools`, `GIS`, `simulation`, `finite element`, `computer aided engineering` o `modeling` cuando esos términos funcionaban como herramientas auxiliares de otra disciplina.
+
+## Formato del archivo final
+- Los archivos ProQuest no tenían exactamente el mismo encabezado.
+- `ProQuestDocuments-2026-05-19.xls` tenía 29 columnas.
+- `ProQuestDocuments-2026-05-19 (1).xls` tenía 28 columnas y no exportó la columna `companies`.
+- Para no perder metadatos, el CSV final conserva la unión de columnas originales de ProQuest, usando el encabezado completo de 29 columnas.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se convirtió al modelo canónico.
+- La columna `companies` queda vacía en los registros procedentes del archivo que no la exportó.
+- El CSV final está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `proquest_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- El lote ProQuest CC fue muy ruidoso: sólo 4 de 24 artículos únicos fueron aceptados.
+- Conviene mantener una regla estricta: simulación, GIS, FEM, STK, modelos o bases de datos de dominio no bastan para aceptar un registro como CS.
+- Se debe confirmar si en ProQuest se seguirá usando `pubdate` como fecha bibliográfica principal cuando `elecPubDate` sea anterior; esta fue la regla usada también en el lote ProQuest ISBD.
+- Conviene deduplicar globalmente contra los lotes previos de ProQuest, ScienceDirect y las demás editoriales, porque algunos títulos aceptados pueden aparecer en otras fuentes.

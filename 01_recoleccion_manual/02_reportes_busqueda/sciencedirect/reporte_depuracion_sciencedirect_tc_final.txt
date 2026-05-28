@@ -1,0 +1,87 @@
+# Reporte de depuración — ScienceDirect TC
+
+## Archivos recibidos
+- 1-s2.0-S0888613X23001755-main.pdf
+- 1-s2.0-S0096300324002881-main.pdf
+- 1-s2.0-S107157972400090X-main.pdf
+- 1-s2.0-S0142061524001339-main.pdf
+- 1-s2.0-S0743731523001867-main.pdf
+- 1-s2.0-S1877050925023245-main.pdf
+
+## Objetivo
+Depurar documentos descargados desde ScienceDirect para el lote inicial TC — Teoría de la Computación y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación. Como ScienceDirect no entregó un CSV estructurado para este lote, los artículos aceptados se convirtieron al modelo canónico usado en los lotes manuales previos.
+
+## Alcance de esta fase
+- Se revisaron PDFs individuales descargados desde ScienceDirect.
+- Se filtró Ciencias de la Computación vs. no Ciencias de la Computación.
+- Se convirtió únicamente la información de los artículos aceptados al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en el PDF.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, revista, DOI y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y título.
+
+Nota: al trabajar con PDFs de ScienceDirect, cuando el PDF indicaba una fecha verificable de disponibilidad en línea o aceptación, se aplicó estrictamente el periodo marzo 2024–diciembre 2025.
+
+## Resultados cuantitativos
+- Total de cargas PDF recibidas: 6
+- Artículos únicos después de deduplicación: 6
+- Registros duplicados eliminados: 0
+- Registros excluidos por estar fuera de periodo: 2
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 1
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 3
+
+## Registros aceptados
+Se conservaron registros de:
+
+- algoritmos y cómputo eficiente para copulas empíricas y de Bernstein, con pseudocódigo, evaluación de desempeño y mejora computacional;
+- teoría matemática relacionada con campos finitos, congruencias, sumas exponenciales y sumas de caracteres;
+- supercómputo, HPC, GPU, IA y procesamiento de grandes volúmenes de datos astronómicos.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Verified propagation of imprecise probabilities in non-linear ODEs`: claramente computacional por reachability analysis y verificación formal, pero el PDF indica `Available online 12 October 2023`; se excluyó por estar fuera del periodo obligatorio.
+- `Read/write fence-free work-stealing with multiplicity`: claramente de Ciencias de la Computación, concurrencia y cómputo distribuido, pero el PDF indica `Available online 19 December 2023`; se excluyó por estar fuera del periodo obligatorio.
+- `Dynamic modelling framework for the analysis of fair-sized DC microgrids`: tiene métodos numéricos y reducción de costo computacional, pero el aporte principal es modelado de sistemas eléctricos/potencia; se excluyó por no ser claramente Ciencias de la Computación.
+
+## Principales falsos positivos detectados
+- Artículos de ingeniería eléctrica/potencia que usan métodos numéricos, Newton–Raphson, integración trapezoidal o simulación como herramienta de dominio.
+- Artículos claramente computacionales pero con fecha verificable fuera del periodo obligatorio.
+- Registros que podrían aparecer en otras bases por año de volumen 2024, pero cuyo PDF de ScienceDirect permite verificar disponibilidad en línea en 2023.
+
+## Decisiones importantes
+- Se aceptó `Fast procedure to compute empirical and Bernstein copulas` porque el aporte central es un algoritmo eficiente, presentado en pseudocódigo e implementable en cualquier lenguaje, con mejoras de velocidad reportadas.
+- Se aceptó `On some congruences and exponential sums` porque el criterio de Teoría de la Computación incluye campos finitos, congruencias, sumas de caracteres y fundamentos matemáticos relacionados con teoría computacional/codificación.
+- Se aceptó `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America...` aunque no sea TC estricta, porque el aporte principal es infraestructura de supercómputo, GPU, IA y procesamiento computacional de datos.
+- Se excluyeron los registros fuera de periodo aunque fueran claramente de Ciencias de la Computación, para mantener consistencia con la regla temporal estricta aplicada a PDFs de ScienceDirect.
+- No se deduplicó globalmente contra otros lotes o editoriales; sólo se revisó duplicación interna del lote.
+
+## Formato del archivo final
+- ScienceDirect no proporcionó CSV estructurado; se construyó un CSV en modelo canónico.
+- El CSV final tiene 14 columnas canónicas:
+  `indice`, `Titulo`, `Año`, `Autor_norm`, `Afiliacion1`, `Afiliacion2`, `ISBN`, `ISSN`, `Doi`, `URL`, `Area`, `Subarea`, `Keywords`, `Abstract`.
+- `Area` se llenó como `TC` porque corresponde al lote inicial indicado por el usuario, no como clasificación final.
+- `Subarea` se dejó vacía.
+- `ISBN` se dejó como `N/D` cuando no estaba disponible.
+- `Afiliacion1` contiene la relación autor-afiliación.
+- `Afiliacion2` se dejó vacía.
+- El archivo está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `sciencedirect_tc_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Dos artículos claramente computacionales fueron excluidos únicamente por fecha verificable fuera de periodo: `Verified propagation...` y `Read/write fence-free work-stealing...`.
+- `Fast procedure to compute empirical and Bernstein copulas` es más cercano a cómputo/estadística computacional o IA metodológica que a TC final, pero se conservó por ser claramente CS.
+- `AI-Enhanced Supercomputing...` no es TC final; deberá reclasificarse posteriormente, pero se conserva por ser claramente CS.
+- Conviene deduplicar este CSV contra ScienceDirect ISBD/CC/RS y contra Scopus, IEEE, ACM, EBSCO, Engineering Village y WoS al consolidar todo el corpus.

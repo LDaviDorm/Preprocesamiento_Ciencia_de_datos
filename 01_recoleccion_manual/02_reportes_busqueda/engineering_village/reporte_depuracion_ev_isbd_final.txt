@@ -1,0 +1,104 @@
+# Reporte de depuración — Engineering Village ISBD
+
+## Archivos recibidos
+- Engineering_Village_abstract_5-17-2026_225622549.csv (33 columnas)
+- Engineering_Village_abstract_5-17-2026_225751107.csv (27 columnas)
+- Engineering_Village_abstract_5-17-2026_225912360.csv (31 columnas)
+- Engineering_Village_abstract_5-17-2026_225945486.csv (33 columnas)
+- Engineering_Village_abstract_5-17-2026_23016999.csv (33 columnas)
+
+## Objetivo
+Depurar registros descargados desde Engineering Village para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el formato de columnas original de Engineering Village en la medida posible.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en `Author affiliation`.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de `Title`, `Abstract`, `Controlled/Subject terms`, `Uncontrolled terms`, `Main Heading`, `Source`, `DOI` y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, adicionalmente, por título normalizado + año cuando hubo duplicados claros con DOI distinto.
+
+Notas temporales: varios registros de Engineering Village no tenían `Publication year`, pero sí `Issue date` o `Conference date`. Cuando sólo había año 2024/2025 sin mes, se conservó el registro. Cuando `Issue date` o `Conference date` permitían verificar mes, se aplicó estrictamente el periodo marzo 2024–diciembre 2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 114
+- Registros duplicados eliminados: 58
+- Registros excluidos por estar fuera de periodo: 3
+- Registros excluidos por no tener afiliación UNAM clara: 6
+- Registros excluidos por no ser claramente Ciencias de la Computación: 36
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 11
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- interfaces conversacionales, HCI, CSCW y accesibilidad;
+- chatbots educativos y revisión de arquitecturas/tecnologías de chatbot;
+- interfaces web, IoT, robótica, interacción humano-robot y sistemas hápticos;
+- seguridad, privacidad, cifrado homomórfico, watermarking y protección de información;
+- NLP/software para representación espectral de texto;
+- arquitectura/workflow de supercómputo, GPU e IA para procesamiento intensivo de datos.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+- `PQ-SyDa: Power Quality Synthetic Disturbances DataSet`: toolbox/dataset de eventos de calidad de energía; foco principal en ingeniería eléctrica, no CS general.
+- `Harmonizing the Generation and Pre-publication Stewardship of FAIR Image Data`: gestión/estandarización de datos de bioimagen; aporte principal de dominio de ciencias de la vida.
+- `Generating a database for deep learning-based applications in multimodal tomography of the human brain`: base de datos biomédica y procesamiento de imágenes clínicas sin método CS principal suficientemente claro.
+- `Substellar candidates at the earliest stages: the SUCANES database`: base de datos astronómica con GUI/código como soporte de dominio.
+- `Model proposal of libraries functions to implement open science`: bibliotecología/open science; no aporte técnico de IR/sistemas de información.
+- `Models of Opinion Dynamics with Random Parametrisation`: modelo matemático/social de dinámica de opinión; no teoría de computación o algoritmo CS claro.
+- `Machine Learning Algorithms for Solar Irradiance Forecasting...`: ML aplicado a irradiancia solar; dominio energético.
+- `Data-driven geothermal exploration using Machine learning...`: ML aplicado a geotermia/geociencias; dominio geológico.
+
+
+## Principales falsos positivos detectados
+- Artículos de química, materiales, nanomateriales, biotecnología, alimentos, minería y energía que sólo usan software, modelado o análisis de datos como herramienta secundaria.
+- Artículos de energía/geociencias que aplican ML, geospatial analysis o simulación sin aporte computacional principal.
+- Bases de datos o programas de dominio astronómico/biomédico sin contribución clara de DBMS, IR, arquitectura de datos, visión por computadora o ingeniería de software generalizable.
+- Artículos de bibliotecología, gobierno digital, política pública o open science con términos como `information retrieval`, `database`, `digital` o `open data`, pero sin aporte técnico de CS.
+- Artículos de física/astronomía con monitoreo, producción de datos o Monte Carlo como parte operativa de un observatorio.
+- Artículos de ingeniería civil, estructuras, materiales o salud donde el análisis computacional no era el objeto principal.
+- Registros claramente de CS pero sin afiliación UNAM en los metadatos exportados.
+
+## Decisiones importantes
+- Se aceptaron artículos no estrictamente ISBD cuando eran claramente de Ciencias de la Computación, por ejemplo HCI, robótica, seguridad, NLP, watermarking, supercómputo e interfaces.
+- Se excluyó `Q-COSMIC: Quantum Software Metrics Based on COSMIC (ISO/IEC19761)` aunque es claramente CS, porque `Issue date` indica February 13, 2024, fuera del periodo obligatorio.
+- Se excluyeron `Exertion Trainer...` y `Data-Driven Decision-Making for Product Design...` por fechas de conferencia de 2023, aunque Engineering Village los exportó con año 2024.
+- Se aceptó `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing...` porque el aporte descrito se centra en arquitectura HPC/GPU, flujo de procesamiento y supercómputo con IA, aunque el caso de uso sea astronómico.
+- Se aceptó `Human-robot physical interaction system as a tool for neurocognitive stimulation...` porque el objeto central es un sistema de interacción humano-robot/háptica con entorno virtual y métricas computacionales, aunque la aplicación sea clínica.
+- Se excluyeron registros aunque contenían `software`, `database`, `machine learning`, `simulation`, `data analysis`, `GUI`, `information retrieval` o `digital` cuando esos elementos eran instrumentales para otra disciplina.
+- Se eliminaron como duplicados claros con DOI distinto: `Expanding the Pierre Auger Observatory Open Data program` y `Modelling/Modeling Evolutionary Power Spectral Density Functions of Strong Earthquakes Via Copulas`.
+
+## Formato del archivo final
+- Los archivos no tenían exactamente el mismo diseño de columnas.
+- Engineering_Village_abstract_5-17-2026_225622549.csv: 33 columnas; coincide con el diseño completo.
+- Engineering_Village_abstract_5-17-2026_225751107.csv: 27 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: Sponsor, Monograph title, Article number, Funding details, Funding text, Open Access type(s).
+- Engineering_Village_abstract_5-17-2026_225912360.csv: 31 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: Sponsor, Monograph title.
+- Engineering_Village_abstract_5-17-2026_225945486.csv: 33 columnas; coincide con el diseño completo.
+- Engineering_Village_abstract_5-17-2026_23016999.csv: 33 columnas; coincide con el diseño completo.
+- El CSV final conserva la unión de columnas originales de Engineering Village: 33 columnas.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se convirtió al modelo canónico.
+- Las columnas ausentes en algunos archivos se dejaron vacías al integrarlas.
+- Se conservó el orden del encabezado completo de Engineering Village.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de deduplicación.
+
+## Archivo final generado
+- `ev_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Engineering Village exportó archivos con 27, 31 y 33 columnas; se usó la unión de 33 columnas originales para no perder metadatos.
+- Algunos registros no tenían `Publication year`, por lo que se usaron `Issue date` y `Conference date` para el filtro temporal.
+- Hubo duplicados claros con DOI distinto; se trataron como duplicados evidentes y se conservó el registro con más metadatos.
+- La frontera más delicada fue entre datos/software de dominio y contribución computacional; se excluyeron bases de datos astronómicas/biomédicas y datasets de ingeniería cuando no había aporte CS principal.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM y EBSCO, porque varios títulos aceptados ya aparecieron en lotes anteriores.

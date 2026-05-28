@@ -1,0 +1,110 @@
+# Reporte de depuración — ACM ISBD
+
+## Archivos recibidos
+- ACM_ISBD_lote1_canonico.csv
+- ACM_ISBD_lote2_canonico.csv
+- reporte_extraccion_ACM_ISBD_lote1.txt
+- reporte_extraccion_ACM_ISBD_lote2.txt
+
+## Objetivo
+Depurar registros de ACM para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo diseño de columnas de los CSV recibidos.
+
+## Alcance de esta fase
+- No se convirtió nuevamente al modelo canónico; los CSV recibidos ya venían en formato canónico por la extracción manual previa.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- Se unieron los dos lotes de ACM en un solo CSV final.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Información incorporada de reportes previos de extracción ACM
+Se incorporó la información de los reportes previos de extracción manual:
+- Lote 1: 11 PDFs, 11 registros BibTeX y 11 registros EndNote/RIS; 33 registros brutos detectados, 22 duplicados internos eliminados y 11 artículos únicos en el CSV canónico inicial.
+- Lote 2: 15 PDFs, 15 registros BibTeX y 15 registros EndNote/RIS; 45 registros brutos detectados, 30 duplicados internos eliminados y 15 artículos únicos en el CSV canónico inicial.
+- En ambos lotes, los reportes indicaban que la extracción no filtró artículos por pertenencia a Ciencias de la Computación y que la depuración temática quedaba pendiente.
+- Los reportes previos indicaban URLs DOI normalizadas, afiliaciones UNAM claras en todos los registros conservados de extracción y campos incompletos marcados como N/D.
+- El reporte del lote 2 ya advertía solapamiento con el lote 1, por lo que en esta fase se aplicó deduplicación inter-lotes.
+
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos disponibles.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; cuando no hay DOI, por título normalizado + año + primer autor.
+
+Nota sobre periodo: los CSV canónicos de ACM traen columna `Año`, pero los reportes previos aportaron información adicional de fecha para casos con discrepancias. Por ello, se excluyó el registro de `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)` porque el reporte previo lo asocia con el evento de December 11–13, 2023, fuera del periodo obligatorio si se toma la fecha de conferencia.
+
+## Resultados cuantitativos
+- Total de registros recibidos en los CSV ACM: 26
+- Artículos únicos después de deduplicación inter-lotes: 15
+- Registros duplicados inter-lotes eliminados: 11
+- Registros excluidos por estar fuera de periodo: 1
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser Ciencias de la Computación: 2
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 12
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+- HCI, CSCW, crowdsourcing, social computing, accesibilidad y tecnologías asistivas;
+- interacción humano-IA, GenAI, asistentes de programación y herramientas centradas en usuarios;
+- lenguajes de programación, programación funcional y DSLs;
+- verificación en sistemas distribuidos, concurrencia y estructuras de datos concurrentes.
+
+
+Registros aceptados:
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Creative dialogue: evolving intent in designer-AI workflows
+- CSCW Contributions to Critical Futures of Work
+- Demo: A Geometric Approach to Generate Musical Rhythmic Patterns in Haskell
+- Designing Gig Worker Sousveillance Tools
+- Fostering Latin American-Centric CSCW Research and Practice
+- MouseClicker: Exploring Tactile Feedback and Physical Agency for People with Hand Motor Impairments
+- The Impact of Generative AI Coding Assistants on Developers Who Are Visually Impaired
+- Unveiling AI-Driven Collective Action for a Worker-Centric Future
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Modular Baskets Queue
+- Recent Advances on Principles of Concurrent Data Structures
+
+## Registros dudosos o excluidos
+- `Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation`: no CS. instrumentación/phantom biomédico para Doppler; la contribución principal no es de CS.
+- `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)`: fuera de periodo. evento ACM/ICCBB reportado como December 11–13, 2023; fuera de marzo 2024–diciembre 2025 si se toma la fecha de conferencia.
+- `Leadership and Transformation in the Public Sector: An Empirical Exploration of AI Adoption and Efficiency during the Fourth Industrial Revolution`: no CS. estudio de liderazgo y adopción de IA en sector público; enfoque administrativo/social, no contribución técnica de CS.
+
+## Principales falsos positivos detectados
+- Instrumentación biomédica o médica que usa electrónica programable, adquisición de señales o procesamiento posterior, pero cuyo aporte principal es hardware/instrumentación de dominio.
+- Estudios de adopción de IA en gobierno o sector público con enfoque organizacional, administrativo o social, sin contribución técnica de Ciencias de la Computación.
+- Registros ACM con discrepancia entre año exportado y fecha real del evento; cuando el reporte previo permitió verificar fecha fuera de periodo, se excluyó conservadoramente.
+
+## Decisiones importantes
+- Se aceptaron registros de HCI/CSCW/social computing por pertenecer claramente a Ciencias de la Computación, aunque no sean estrictamente ISBD.
+- Se aceptaron trabajos de concurrencia, verificación, estructuras de datos y programación funcional aunque pertenezcan mejor a Teoría o Sistemas, porque esta fase sólo filtra CS vs. no CS.
+- Se excluyó `Leadership and Transformation in the Public Sector...` aunque menciona IA, porque el aporte principal es liderazgo/adopción en sector público, no método, sistema, algoritmo, interfaz o arquitectura computacional.
+- Se excluyó `Blood Flow Emulator...` porque la contribución principal es instrumentación biomédica y plataforma física de prueba/calibración, no un método computacional central.
+- Se excluyó `Design of a Pulsed-Wave Doppler ultrasound blood flow detector...` por la fecha de conferencia de 2023 reportada previamente; además, su contribución principal parecía de instrumentación biomédica/electrónica, no de CS.
+- `Recent Advances on Principles of Concurrent Data Structures` se conservó aunque tiene `Abstract=N/D` y `Keywords=N/D`, porque el título y metadatos disponibles justifican claramente que pertenece a Ciencias de la Computación.
+
+## Formato del archivo final
+- Se conservó el mismo diseño de columnas de los CSV ACM recibidos: 14 columnas.
+- Los dos CSV tenían encabezados idénticos.
+- No se agregaron columnas nuevas.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- La columna `indice` se reenumeró consecutivamente porque se unieron dos CSV con índices locales por lote.
+- Las columnas `Area` y `Subarea` se conservaron como venían; no se asignaron áreas ni subáreas finales.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Se corrigió una secuencia LaTeX evidente en `Autor_norm` (`Rodr\'\iguez` → `Rodríguez`) para que el acento sea legible, sin cambiar el diseño de columnas.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+- `acm_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Para ACM conviene fijar una regla global sobre si debe prevalecer el año exportado por BibTeX/EndNote o la fecha del ACM Reference Format/PDF cuando difieren.
+- En este lote se excluyó el PSoC Doppler por fecha de conferencia 2023; conviene confirmar si esa decisión debe aplicarse igual en todos los lotes ACM.
+- Se aceptaron HCI/CSCW/social computing como Ciencias de la Computación aunque no sean ISBD; la asignación final de área quedará para una fase posterior.
+- Se aceptó `Recent Advances on Principles of Concurrent Data Structures` aunque venía sin abstract ni keywords porque el título y DOI/metadata ACM eran suficientes para justificar CS.
+- Se detectó solapamiento fuerte entre los lotes manuales de ACM; la deduplicación inter-lotes debe mantenerse en consolidaciones futuras.

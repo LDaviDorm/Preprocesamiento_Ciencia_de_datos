@@ -1,0 +1,90 @@
+# Reporte de depuración y extracción canónica — ScienceDirect RS
+
+## Archivos recibidos
+- 1-s2.0-S021415822400080X-main.pdf
+- 1-s2.0-S0360544225020675-main.pdf
+- 1-s2.0-S0743731523001867-main.pdf
+- 1-s2.0-S0967066125000255-main.pdf
+- 1-s2.0-S1877050925001930-main.pdf
+- An-integrated-monitoring-system-based-on-deep-learning-tools-for-in_2024_IFA.pdf
+- Eco-friendly--compact--and-cost-efficient-triboelectric-nanogenerat_2024_Hel.pdf
+- IoT-smartwatch-based-on-open-technologies-for-the-collection-of-_2025_Hardwa.pdf
+- Surface-engineered-MXenes-for-next-generation-sensors--Des_2025_Ceramics-Int.pdf
+
+## Objetivo
+Revisar los PDFs descargados desde ScienceDirect para el lote inicial RS — Redes y Seguridad en Cómputo, conservar sólo artículos que pertenezcan claramente a Ciencias de la Computación y convertir los registros aceptados al modelo canónico usado en los lotes manuales de ScienceDirect/ACM.
+
+## Alcance de esta fase
+- Se revisaron PDFs de ScienceDirect, no archivos tabulares exportados.
+- Se convirtió únicamente la información de los registros aceptados al modelo canónico.
+- No se asignaron áreas finales ni subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en el PDF.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, afiliaciones, DOI y metadatos visibles en portada.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado.
+
+## Resultados cuantitativos
+- Total de PDFs recibidos/cargados: 9
+- Artículos únicos después de deduplicación: 9
+- Registros duplicados eliminados: 0
+- Registros excluidos por estar fuera de periodo: 1
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 6
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 2
+
+## Registros aceptados
+Se conservaron registros claramente relacionados con:
+
+- Internet de las Cosas, arquitecturas IoT, gestión de inventarios/almacenes y revisión sistemática de metodologías de IoT;
+- ciberseguridad industrial, detección de ciberataques y fallas mediante herramientas de deep learning en procesos industriales.
+
+Registros aceptados:
+- `Applications and methodologies of Internet of Things in warehouses and inventory management: A systematic literature review`
+- `An integrated monitoring system based on deep learning tools for industrial process`
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `On the attitude consensus of rigid bodies using exponential coordinates`: aunque usa consenso, comunicación entre agentes y redes de cuerpos rígidos, el aporte principal es control automático/robótica de cuerpos rígidos, no Ciencias de la Computación.
+- `IoT smartwatch based on open technologies for the collection of thermal comfort data`: aunque usa IoT y plataforma de datos, el aporte central es hardware/sensado para confort térmico y construcción de una base de datos de dominio, no arquitectura, protocolo, seguridad o sistema computacional generalizable.
+- `Blockchain aplicado en afecciones mamarias: desafíos y consideraciones éticas`: revisión biomédica/ética sobre blockchain en senología; no presenta contribución técnica de blockchain, seguridad, protocolos, sistemas distribuidos o bases de datos.
+
+## Principales falsos positivos detectados
+- Artículos de salud, energía, materiales, fotónica, sensores, control automático y geociencias que mencionan `blockchain`, `security`, `IoT`, `network`, `sensor`, `optimization`, `deep learning`, `model` o `platform` como herramienta o contexto de dominio.
+- Artículos de ingeniería energética o materiales donde `IoT` o `sensor` aparece como aplicación potencial, no como contribución computacional.
+- Revisiones de dominio que usan términos de seguridad o tecnología digital, pero sin aporte técnico de Ciencias de la Computación.
+- Sistemas de monitoreo o dispositivos de sensado cuyo foco principal es la aplicación física/ambiental y no el protocolo, arquitectura, seguridad, middleware o software generalizable.
+
+## Decisiones importantes
+- Se aceptó `Applications and methodologies of Internet of Things in warehouses and inventory management...` porque el centro del artículo es IoT, sus arquitecturas, metodologías, tecnologías, modelos, algoritmos y categorías de análisis dentro de almacenes e inventario.
+- Se aceptó `An integrated monitoring system based on deep learning tools for industrial process` porque propone una estrategia de monitoreo para detectar y localizar fallas y ciberataques con algoritmos de deep learning; la ciberseguridad industrial y el método computacional son parte central del aporte.
+- Se excluyó `Read/write fence-free work-stealing with multiplicity` aunque es claramente Ciencias de la Computación, porque el PDF indica `Available online 19 December 2023`, fuera del periodo obligatorio. La fecha editorial del volumen es 2024, pero como el mes verificable es diciembre de 2023 se aplicó el criterio temporal estricto.
+- Se excluyó `IoT smartwatch...` aunque contiene IoT y open-source hardware porque se trató como dispositivo/sensado de confort térmico de dominio, no como contribución principal de redes, seguridad, sistemas o arquitectura computacional.
+
+## Formato del archivo final
+- Como ScienceDirect sólo proporcionó PDFs, se construyó un CSV en el modelo canónico usado previamente para lotes manuales.
+- El CSV final conserva 14 columnas canónicas:
+  `indice`, `Titulo`, `Año`, `Autor_norm`, `Afiliacion1`, `Afiliacion2`, `ISBN`, `ISSN`, `Doi`, `URL`, `Area`, `Subarea`, `Keywords`, `Abstract`.
+- No se agregaron columnas de clasificación final.
+- `Area` se dejó como `RS` por corresponder al lote de búsqueda inicial.
+- `Subarea` se dejó vacía.
+- `ISBN` se dejó como `N/D` porque los artículos revisados no reportan ISBN.
+- `Afiliacion1` contiene la relación autor: afiliación.
+- `Afiliacion2` se conserva vacía para mantener el diseño canónico.
+- El archivo final está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `sciencedirect_rs_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ScienceDirect no entregó CSV estructurado; la extracción se hizo desde PDF y se convirtió al modelo canónico.
+- El caso `Read/write fence-free work-stealing with multiplicity` es computacionalmente válido, pero quedó fuera por fecha verificable de disponibilidad en diciembre de 2023.
+- Conviene mantener la regla global de que dispositivos IoT/sensores de dominio sólo se acepten si el aporte principal es protocolo, arquitectura, middleware, seguridad, software generalizable o método computacional.
+- Conviene deduplicar globalmente contra los lotes de ScienceDirect ISBD/CC y contra Scopus, IEEE, ACM, EBSCO, Engineering Village y Web of Science.

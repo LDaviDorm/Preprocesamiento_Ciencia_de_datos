@@ -1,0 +1,115 @@
+# Reporte de depuración — IEEE ISBD
+
+## Archivos recibidos
+- ieee_isbd_q1_software_engineering_architecture_raw_2024-03_2025-12.csv
+- ieee_isbd_q2_database_systems_transactions_raw_2024-03_2025-12.csv
+- ieee_isbd_q4_data_management_information_retrieval_raw_2024-03_2025-12.csv
+- ieee_isbd_q5_hci_interfaces_usability_raw_2024-03_2025-12.csv
+- ieee_isbd_q6_seed_authors_raw_2024-03_2025-12.csv
+- ieee_isbd_q7_rescue_broad_isbd_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde IEEE para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de IEEE.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, author keywords, IEEE terms, publicación y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor; se conservó el registro con más metadatos completos.
+
+Nota sobre fechas: los archivos IEEE incluyen `Publication Year`, `Issue Date`, `Meeting Date`, `Online Date` y `Date Added To Xplore`. Para aplicar el periodo se priorizó la fecha de publicación/reunión (`Issue Date` o `Meeting Date`) cuando tenía mes. Si esas fechas no tenían mes, se revisó `Online Date`. `Date Added To Xplore` se trató como fecha de indexación, no como fecha principal de publicación. Por eso se incluyeron registros de 2025 agregados a Xplore en 2026 cuando su `Issue Date` o `Meeting Date` estaba dentro de julio/diciembre de 2025, y se excluyeron registros de enero/febrero de 2024 cuando la fecha verificable lo indicaba.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 57
+- Registros duplicados eliminados: 17
+- Registros excluidos por estar fuera de periodo: 2
+- Registros excluidos por no tener afiliación UNAM: 0
+- Registros excluidos por no ser Ciencias de la Computación: 16
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 22
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- artículos de razonamiento automatizado, lógica modal graduada y verificación/formalización;
+- artículos de ingeniería de software, generación automática de código, sistemas multiagente y LLM;
+- artículos de minería de datos, modelado dinámico de usuarios, process mining y data stream mining;
+- artículos de aprendizaje automático, adaptación de dominio, reconocimiento afectivo multimodal y modelos de neural computation;
+- artículos de visión, procesamiento de imágenes médicas, segmentación, mejora de imágenes y señales EMG/EEG;
+- artículos de criptografía, privacidad, cifrado homomórfico, watermarking, data hiding y esteganografía;
+- artículos de robótica, interacción humano-robot, interfaces web/IoT, realidad extendida y ambientes virtuales;
+- artículos de optimización evolutiva, algoritmos multiobjetivo y aproximación de soluciones localmente/casi óptimas.
+
+## Registros dudosos
+Lista de decisiones fronterizas relevantes:
+
+- `Network Based Machine Learning Description of the Antidepressive ADR Landscape`: excluido: usa graph embeddings/ML en farmacología y reacciones adversas; no se observó aporte CS principal.
+- `Development Of An Algorithm For Strength Training With Use Haptic Feedback And Artificial Intelligence (AI) Based Enhancement`: excluido: sistema de asistencia para entrenamiento físico/biomecánica con IA/haptics, pero el aporte central no fue claramente CS.
+- `Modeling Higher-Order Interactions in Sparse and Heavy-Tailed Neural Population Activity`: incluido: aunque es fronterizo con neurociencia computacional, se conservó por el modelado formal de patrones binarios, análisis de RNN y vínculo explícito con spike-based learning machines.
+- `XR for educational anatomy: an Immersive human atlas with chatbot`: incluido: aunque es de anatomía educativa, el aporte es una plataforma XR/3D con interacción por LLM.
+- `Human-robot physical interaction system as a tool for neurocognitive stimulation in children with ADHD in Mexico`: incluido: aunque aplicado a salud, el centro del trabajo es interacción físico-humana con robot, entorno virtual, control háptico y métricas de interacción.
+- `PQ-SyDa: Power Quality Synthetic Disturbances DataSet`: excluido: toolbox/dataset de calidad de energía; dominio eléctrico.
+- `MexSIC, a Data Acquisition Channel for SiPMs`: excluido: DAQ/ASIC/FPGA para instrumentación nuclear; la GUI/procesamiento no fue suficiente para clasificarlo como CS.
+
+## Principales falsos positivos detectados
+Se detectaron estos patrones de falsos positivos:
+
+- artículos biomédicos, farmacológicos o de salud que usan ML/IA como herramienta auxiliar sin aporte computacional central;
+- artículos de sensores, electrónica, instrumentación, fotónica, materiales, química o energía que mencionan procesamiento, GUI, simulación o datos como componentes secundarios;
+- artículos de sistemas de potencia o monitoreo ambiental con ML/data-driven como herramienta de predicción de dominio;
+- artículos de urbanismo, movilidad o educación donde `data science`, `AI`, `software`, `system` o `platform` no implican una contribución técnica de Ciencias de la Computación;
+- registros con interfaz, dashboard, software o toolbox de dominio que no presentan aporte claro de ingeniería de software, bases de datos, HCI, IR o sistemas computacionales generalizables.
+
+Ejemplos representativos excluidos:
+
+- `Network Based Machine Learning Description of the Antidepressive ADR Landscape`: ML/graph embeddings aplicados a reacciones adversas de antidepresivos; foco biomédico/farmacológico.
+- `Democratizing Air Quality Monitoring: The Role of Low-Cost PM2.5 Sensors in Community Decision- Making`: sensores de bajo costo para monitoreo ambiental; contribución de instrumentación/gestión ambiental.
+- `Development Of An Algorithm For Strength Training With Use Haptic Feedback And Artificial Intelligence (AI) Based Enhancement`: IA y haptics aplicados a entrenamiento físico/biomecánica; no se observa aporte computacional suficientemente generalizable.
+- `Design of Polymer Optical Waveguides for the Detection of Azo Dye Water Contaminants`: diseño de guías de onda/polímeros para detección de contaminantes; materiales/fotónica.
+- `Cost-Effective Piezoresistive-Based Sensor for Evaluating Thin Polymeric Membranes on Au Metallic Surfaces`: sensor piezorresistivo para membranas poliméricas; instrumentación/materiales.
+- `Photocatalytic Hydrogen Production and CO2 Reduction Using ZnO-GO Composites: A Sustainable Microwave-Assisted Synthesis via Orange Peel Extract`: fotocatálisis y materiales para producción de hidrógeno/CO2; química/materiales.
+- `Eco-Friendly BiVO4 Photocatalysts Via Orange Peel-Mediated Solvothermal Synthesis: Applications in H2 Production and CO2 Conversion`: fotocatalizadores BiVO4; química/materiales.
+- `Enhancement of Mechanical Properties In Fiber-Reinforced Epoxy Composites With Luffa Aegyptiaca`: propiedades mecánicas de compuestos de fibra; materiales/ingeniería química.
+- `Application of Long Short-Term Memory Networks to Predict Electrical Frequency in El Salvador`: LSTM aplicado a frecuencia eléctrica; dominio de sistemas de potencia.
+- `Development of a Remote-Controlled Boat for Real-Time Water Quality Monitoring, Bathymetry, In-Situ Sampling in Dams and Lakes of Mexico`: bote/sistema de sensores para monitoreo de agua; plataforma de dominio ambiental.
+
+## Decisiones importantes
+- Se conservaron registros no estrictamente ISBD cuando sí eran claramente de Ciencias de la Computación, por ejemplo optimización evolutiva, razonamiento formal, visión médica, reconocimiento afectivo, robótica, XR, interfaces web/IoT y seguridad de información.
+- Se excluyeron registros aunque contenían términos como `software`, `AI`, `machine learning`, `database`, `data-driven`, `toolbox`, `GUI`, `sensor`, `system` o `platform` cuando esos términos funcionaban como soporte de otra disciplina.
+- Se aceptaron artículos aplicados cuando el objeto central era un método, framework, algoritmo, arquitectura, sistema, interfaz, protocolo o técnica computacional.
+- Se excluyeron aplicaciones de dominio cuando el aporte principal era ambiental, energético, químico, electrónico, biomédico/farmacológico, urbano/social o de materiales.
+- Se excluyeron dos registros de 2024 por periodo verificable enero/febrero: uno con `Online Date` en febrero de 2024 y otro con `Issue Date/Meeting Date` en enero de 2024.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de IEEE: 28 columnas.
+- Los seis archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de IEEE después de la deduplicación.
+
+## Archivo final generado
+
+- `ieee_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- IEEE trae varias fechas: `Issue Date`, `Meeting Date`, `Online Date` y `Date Added To Xplore`. Para este lote conviene mantener como regla que `Date Added To Xplore` sea sólo fecha de indexación.
+- Se incluyeron registros agregados a Xplore en 2026 cuando la reunión o publicación correspondía a 2025.
+- Se excluyeron registros de enero/febrero de 2024 cuando el mes era verificable.
+- La frontera más delicada fue distinguir sistemas/herramientas de dominio contra aportes computacionales. En este lote se excluyeron conservadoramente sensores ambientales, power systems, materiales, fotónica, DAQ/ASIC y urbanismo cuando la parte computacional no era central.
+- Se conservaron trabajos aplicados de XR, robótica, imágenes médicas y reconocimiento afectivo porque el método, sistema o interfaz computacional era el aporte principal.

@@ -1,0 +1,115 @@
+# Reporte de depuración — ACM RS
+
+## Archivos recibidos
+- ACM_RS_lote1_canonico.csv
+- ACM_RS_lote2_canonico.csv
+- reporte_extraccion_ACM_RS_lote1.txt
+- reporte_extraccion_ACM_RS_lote2.txt
+
+## Objetivo
+Depurar y consolidar registros de ACM correspondientes al lote inicial RS — Redes y Seguridad en Cómputo, conservando únicamente registros que pertenezcan claramente a Ciencias de la Computación, aunque no sean estrictamente de RS, y manteniendo el diseño de columnas de los CSV recibidos.
+
+## Alcance de esta fase
+- No se volvió a convertir al modelo canónico.
+- Los CSV recibidos ya venían en un formato canónico derivado de extracción manual ACM; se mantuvo ese diseño.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Información incorporada de reportes previos de extracción manual
+- El lote 1 provenía de 5 PDFs, 5 registros BibTeX y 5 registros EndNote/RIS; la extracción previa produjo 5 artículos únicos, todos con DOI y afiliación UNAM clara.
+- El lote 2 provenía de 18 cargas de PDF, equivalentes a 11 PDFs únicos, y 18 registros EndNote/RIS; la extracción previa produjo 11 artículos únicos, todos con DOI, con 10 registros de afiliación UNAM clara y 1 registro con afiliación UNAM no clara.
+- Ambos reportes previos indican que las URL DOI con proxy institucional fueron normalizadas a URL DOI estándar.
+- Los reportes previos documentan solapamiento entre lotes ACM y con áreas ACM previas.
+- Los reportes previos documentan que `Recent Advances on Principles of Concurrent Data Structures` no tenía abstract ni keywords visibles, pero sí metadatos suficientes para identificarlo como artículo de estructuras de datos concurrentes.
+- El reporte del lote 1 documenta que `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)` está asociado al evento ICCBB 2023, con fechas 11–13 de diciembre de 2023, aunque el registro ACM exportado indica 2024.
+- El reporte del lote 2 documenta que `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives` muestra como afiliación visible `Universidad Morelia`; el correo `@enesmorelia.unam.mx` se reportó como duda, no como afiliación UNAM clara.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, DOI, afiliaciones y observaciones de los reportes previos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; si no hubiera DOI, por título normalizado + año + primer autor.
+
+Nota: los CSV recibidos sólo traen `Año`, no mes. En general, los registros 2024–2025 se conservaron cuando no había mes verificable. Cuando el reporte previo sí indicaba una fecha/evento fuera del periodo, se aplicó estrictamente la regla temporal.
+
+## Resultados cuantitativos
+- Total de registros recibidos en los CSV ACM: 16
+- Artículos únicos después de deduplicación inter-lotes: 13
+- Registros duplicados inter-lotes eliminados: 3
+- Registros excluidos por estar fuera de periodo: 1
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser claramente Ciencias de la Computación: 1
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 10
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+- concurrencia, estructuras de datos concurrentes, linealización, lock-freedom, wait-freedom y memoria compartida distribuida;
+- verificación en tiempo de ejecución para sistemas distribuidos tolerantes a fallas;
+- teoría de tareas distribuidas y computabilidad distribuida;
+- optimización multiobjetivo y algoritmos de colonia de hormigas;
+- HCI/CSCW, herramientas para crowdworkers y gig workers, y diseño de herramientas digitales;
+- programación funcional, DSL embebido en Haskell y generación algorítmica de patrones rítmicos.
+
+Registros aceptados:
+- Recent Advances on Principles of Concurrent Data Structures
+- Solvability Characterization for General Three-Process Tasks
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Strong Linearizability using Primitives with Consensus Number 2
+- A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP
+- A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles
+- Modular Baskets Queue
+- Demo: A Geometric Approach to Generate Musical Rhythmic Patterns in Haskell
+- Designing Gig Worker Sousveillance Tools
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+- `Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation`: Instrumentación biomédica/Doppler y emulador de flujo sanguíneo; no se identificó aporte principal de Ciencias de la Computación.
+- `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)`: Evento ICCBB 2023, diciembre 11–13 de 2023; fuera del periodo obligatorio marzo 2024–diciembre 2025.
+- `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives`: Afiliación visible: Universidad Morelia; el correo @enesmorelia.unam.mx no se tomó como afiliación UNAM clara.
+
+## Principales falsos positivos detectados
+- Artículos de instrumentación biomédica o ultrasonido Doppler donde el aporte principal es hardware, banco experimental, emulador físico o sistema de medición, no un método o sistema computacional generalizable.
+- Registros con año ACM exportado dentro de 2024 pero con evento documentado fuera del periodo obligatorio.
+- Registros computacionales con afiliación UNAM ambigua o no explícita.
+- Solapamiento entre lotes ACM RS y otros lotes ACM ya procesados.
+
+## Decisiones importantes
+- Se conservaron artículos que no son estrictamente de Redes y Seguridad, por ejemplo HCI/CSCW, optimización y programación funcional, porque sí pertenecen claramente a Ciencias de la Computación.
+- Se excluyó `Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation` aunque tiene afiliación UNAM, porque el aporte principal es instrumentación biomédica/Doppler.
+- Se excluyó `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)` por la fecha de evento documentada en diciembre de 2023; además, su aporte principal es instrumentación biomédica/electrónica.
+- Se excluyó `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives` por no tener afiliación UNAM clara en el campo visible, aunque temáticamente sí es computacional.
+- `Recent Advances on Principles of Concurrent Data Structures` se conservó aunque no tenía abstract ni keywords, porque el título, DOI, autores y contexto de extracción permiten identificarlo claramente como Ciencias de la Computación.
+
+## Duplicados inter-lote detectados
+- Recent Advances on Principles of Concurrent Data Structures
+- Solvability Characterization for General Three-Process Tasks
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+
+## Formato del archivo final
+- Se conservó el mismo diseño de columnas de los CSV ACM recibidos: 14 columnas.
+- Columnas conservadas: indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- No se renombraron columnas.
+- No se llenaron áreas ni subáreas finales nuevas.
+- La columna `Area` se dejó como venía en los archivos recibidos.
+- La columna `Subarea` se dejó como venía en los archivos recibidos.
+- Para el CSV consolidado final, la columna `indice` se reenumeró de 1 a 10 para evitar índices repetidos de los lotes originales.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+- acm_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Confirmar si para artículos ACM debe prevalecer el año exportado por ACM o la fecha del evento cuando difieren; aquí se usó la fecha del evento cuando estaba documentada y caía fuera del periodo.
+- Confirmar si el correo `@enesmorelia.unam.mx` debe bastar como evidencia de afiliación UNAM cuando la afiliación visible dice otra institución; aquí no se tomó como afiliación UNAM clara.
+- Deduplicar globalmente contra otros lotes ACM, porque RS se solapa con ISBD, CC e IA.
+- Mantener como regla global que instrumentos biomédicos/electrónicos con software embebido o PSoC no pasan automáticamente como Ciencias de la Computación si el aporte principal no es computacional.
+- Reasignar en una fase posterior los registros conservados que no son estrictamente RS, como HCI/CSCW, optimización o programación funcional.

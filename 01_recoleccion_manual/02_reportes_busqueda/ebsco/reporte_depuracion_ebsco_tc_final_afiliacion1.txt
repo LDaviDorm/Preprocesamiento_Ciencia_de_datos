@@ -1,0 +1,99 @@
+# Reporte de depuración — EBSCO TC
+
+## Archivos recibidos
+- EBSCO-Metadata-17_05_2026 (1).csv
+- EBSCO-Metadata-17_05_2026 (2).csv
+- EBSCO-Metadata-17_05_2026 (3).csv
+- EBSCO-Metadata-17_05_2026 (4).csv
+- EBSCO-Metadata-17_05_2026 (5).csv
+- EBSCO-Metadata-17_05_2026.csv
+
+## Objetivo
+Depurar registros descargados desde EBSCO para el lote inicial TC — Teoría de la Computación y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de EBSCO y agregando sólo las columnas de afiliación requeridas para esta editorial.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+- Para optimizar el trabajo en EBSCO, primero se aplicó el filtro temático CS vs. no CS y después se usaron afiliaciones recuperadas/verificadas externamente sólo para los registros candidatos.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara, recuperada fuera del CSV de EBSCO cuando EBSCO no exportó afiliación.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, subjects, fuente, DOI y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, si no había DOI, por título normalizado + año + primer autor.
+- Conservación del registro con más metadatos completos cuando se detectaron duplicados.
+
+Nota: EBSCO sí exportó `publicationDate`, por lo que se aplicó estrictamente el filtro temporal cuando la fecha incluía mes. Se excluyeron registros de 2026 y registros históricos anteriores a marzo de 2024.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 211
+- Artículos únicos después de deduplicación: 203
+- Registros duplicados eliminados: 8
+- Registros excluidos por estar fuera de periodo: 63
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser claramente Ciencias de la Computación: 107
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 32
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- teoría/formalización computacional, descripción lógica difusa, verificación formal y programación de usuario final;
+- síntesis de programas, medición funcional de software, estimación de software y bases/fuentes de datos para modelos de software;
+- algoritmos, optimización, estructuras de datos, cómputo paralelo/distribuido y work-stealing;
+- criptografía/cifrado de imágenes y privacidad/seguridad computacional;
+- NLP, LLM, clasificación multietiqueta de textos, análisis de sentimiento, chatbots y técnicas de IA;
+- cómputo científico/numerical, software científico, métodos de diferencias finitas, FEM, inversión y reconstrucción computacional;
+- HCI, experiencia de usuario, simulación en ambientes virtuales y sistemas interactivos.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `MRI based early Temporal Lobe Epilepsy detection using DGWO based optimized HAETN and Fuzzy-AAL Segmentation Framework (FASF)`: El contenido es computacional/IA médica, pero EBSCO no exportó afiliación y no se encontró evidencia externa suficiente de afiliación UNAM.
+- `Web-based wide-area monitoring platform for ringdown and clustering analytics in power systems`: Plataforma y analítica para sistemas eléctricos; se consideró aplicación de dominio de potencia, no contribución CS suficientemente generalizable.
+- `Real-time multi-label event categorization in the Brazilian interconnected power system`: CNN y clasificación multietiqueta aplicadas a eventos de sistemas eléctricos; se excluyó como aplicación de dominio.
+- `AI-Driven Plant Health Assessment: A Comparative Analysis of Inception V3, ResNet-50 and ViT with SHAP for Accurate Disease Identification in Taro`: Visión/IA aplicada a fitopatología; aporte principal agrícola.
+- `MetAP DB and Metal-FP: a database and fingerprint framework for advancing metal-based drug discovery`: Base de datos/fingerprint de descubrimiento de fármacos; se consideró recurso de dominio químico/farmacológico.
+- `Type Genomics: A Framework for Integrating Genomic Data into Biodiversity and Taxonomic Research`: Framework de biodiversidad/taxonomía; aporte principal biológico.
+
+## Principales falsos positivos detectados
+- Bases de datos, repositorios y catálogos de biología, ecología, geociencias, suelos, astronomía, paleomagnetismo, biodiversidad o química que no aportan DBMS, IR, HCI ni sistemas de información generalizables.
+- Artículos biomédicos, clínicos o de salud pública donde IA, modelos, big data o análisis de datos se usan como herramientas auxiliares.
+- Artículos de astronomía, geofísica, energía, potencia eléctrica, materiales, fluidos, química y biología con simulación, minería de datos o machine learning aplicado al dominio.
+- Estudios de educación, bibliotecología, política pública, geografía humana o ciencias sociales sobre IA, acceso abierto, datos o plataformas sin contribución técnica CS.
+- Trabajos matemáticos/físicos de ecuaciones, ondas, control, fluidos o sistemas dinámicos sin vínculo claro con algoritmos, complejidad, verificación, software o cómputo científico generalizable.
+
+## Decisiones importantes
+- Se conservó cualquier registro claramente de Ciencias de la Computación, aunque no fuera estrictamente TC.
+- Se reutilizaron verificaciones externas de afiliación ya recuperadas en lotes EBSCO anteriores cuando el DOI coincidía; no se buscó afiliación para registros descartados temáticamente como no CS.
+- Se excluyó el artículo de MRI/TLE aunque el contenido es computacional, porque EBSCO no exportó afiliación y no se encontró evidencia externa suficiente de afiliación UNAM.
+- Se excluyeron bases de datos de dominio y recursos científicos cuando el aporte principal era biológico, químico, geográfico, astronómico o documental, aunque contuvieran palabras como `database`, `web tool`, `data`, `model`, `algorithm` o `machine learning`.
+- Se conservaron casos de cómputo científico cuando el aporte principal fue software, método numérico, algoritmo, reconstrucción/inversión, o infraestructura computacional.
+
+## Formato del archivo final
+- Los seis archivos tenían las mismas 37 columnas originales de EBSCO y el mismo orden.
+- Se conservaron esas 37 columnas originales sin renombrarlas ni eliminarlas.
+- Por la regla especial de EBSCO, se agregaron únicamente `Afiliacion1` y `Afiliacion2` al final.
+- Toda la información de afiliación quedó en `Afiliacion1`.
+- `Afiliacion1` indica explícitamente qué autor corresponde a qué afiliación con el formato `Autor — Afiliación | Autor — Afiliación`.
+- `Afiliacion2` se conserva como columna, pero queda vacía.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, subjects largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de EBSCO después de la deduplicación.
+
+## Archivo final generado
+
+- `ebsco_tc_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Este lote TC de EBSCO se solapa fuertemente con los lotes EBSCO ISBD, CC, IA, RS y SIAV; conviene deduplicar globalmente por DOI al consolidar toda la editorial.
+- EBSCO no exportó afiliaciones institucionales; las afiliaciones de registros aceptados fueron recuperadas o reutilizadas desde verificaciones externas previas.
+- El filtro temporal fue más estricto que en Scopus porque `publicationDate` sí permitió verificar mes y año.
+- La frontera más delicada fue distinguir teoría/matemática aplicada o modelos físicos de contribuciones reales de CS; se mantuvo un criterio conservador.
+- Se conservaron registros no estrictamente TC, como IA, HCI, cómputo científico, seguridad e ingeniería de software, porque esta fase sólo filtra Ciencias de la Computación vs. no Ciencias de la Computación.

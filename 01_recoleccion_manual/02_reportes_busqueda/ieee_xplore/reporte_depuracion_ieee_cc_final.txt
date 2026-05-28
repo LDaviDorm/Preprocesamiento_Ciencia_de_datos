@@ -1,0 +1,101 @@
+# Reporte de depuración — IEEE Computación Científica
+
+## Archivos recibidos
+- ieee_cc_q1_general_scientific_computing_raw_2024-03_2025-12.csv
+- ieee_cc_q2_numerical_linear_algebra_solvers_raw_2024-03_2025-12.csv
+- ieee_cc_q3_pde_discretization_modeling_raw_2024-03_2025-12.csv
+- ieee_cc_q4_hpc_gpu_parallel_computing_raw_2024-03_2025-12.csv
+- ieee_cc_q5_numerical_global_optimization_raw_2024-03_2025-12.csv
+- ieee_cc_q7_rescue_hybrid_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde IEEE para el lote de Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de IEEE.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, author keywords, IEEE terms, publicación, afiliaciones y DOI cuando ayudaban a identificar el tema.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; cuando no había DOI, por título normalizado + año + primer autor.
+
+Nota sobre fechas IEEE: se usaron `Issue Date` y `Meeting Date` como evidencia principal de fecha de publicación/congreso. `Date Added To Xplore` se trató como fecha de indexación; por eso no se excluyeron trabajos de 2025 agregados a Xplore en 2026. Cuando el registro sólo indicaba año 2024 o 2025 sin mes verificable, se conservó para evaluación temática. Se excluyeron los registros de enero de 2024 cuando el mes era verificable.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 131
+- Registros duplicados eliminados: 43
+- Registros excluidos por estar fuera de periodo: 3
+- Registros excluidos por no tener afiliación UNAM: 11
+- Registros excluidos por no ser Ciencias de la Computación: 52
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 22
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- aprendizaje automático, deep learning, visión por computadora, segmentación e imagen médica cuando el aporte central fue el método computacional;
+- razonamiento automático, lógica modal, lógica descriptiva e IoT consistente;
+- seguridad, esteganografía paralela y detección de ataques en redes;
+- minería de datos, process mining y modelado dinámico de usuario;
+- reconstrucción de redes dinámicas, optimización numérica, optimización evolutiva y algoritmos de optimización multiobjetivo;
+- cómputo científico/numerical cuando el aporte principal fue el método de identificación, integración, simulación o reducción de modelos;
+- planeación/ruteo computacional y análisis probabilístico de alcanzabilidad para vehículos autónomos;
+- modelos, protocolos y análisis algorítmico en finanzas descentralizadas.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+- `Cloud Computing Integration for Leak Diagnosis Using Meta-Heuristic Methods for Water Distribution Networks`: cloud/metaheurística aplicados a diagnóstico hidráulico; aporte principal de red de agua.
+- `Novel VSC-Based STATCOM Model Based on Dynamic Phasors for Unbalanced Distribution Networks`: modelo eficiente para convertidores/redes eléctricas; dominio de potencia, no CS general.
+- `Power System Stabilizers’ Design Through The Eigensystem Realization Algorithm`: identificación y control de sistemas eléctricos; algoritmo como herramienta de ingeniería eléctrica.
+- `ATP-EMTP-Based Energy Storage System Model for High-Performance Transient Simulation in Power Grids`: simulación de sistema de almacenamiento en red eléctrica, sin aporte de método computacional general.
+- `Automatic Classification of Synthetic Jovian Radio Emissions Using Spectrogram Analysis and Machine Learning`: ML aplicado a emisiones jovianas; se mantuvo criterio conservador de dominio astronómico.
+- `Spatio-temporal Data-Driven and Machine Learning based Applications for Transmission Systems`: revisión/aplicación de ML para sistemas eléctricos de transmisión.
+- `Outlet Pressure Regulation in a High-Viscosity Two-Phase Flow Horizontal Pipeline Using Inverse ANN and PSO`: ANN/PSO aplicados a regulación de presión en tuberías; dominio de fluidos/control.
+- `Students’ Collaborative Learning through Programming Computational Intelligence Algorithms: A Mixed Methods Approach Applied to a Case Study on Energy and Buildings`: estudio educativo sobre aprendizaje colaborativo; no contribución computacional principal.
+- `Electrochemical Sensor With Dynamic Self-Calibration for Acetaminophen Detection in Water`: sensor electroquímico; calibración dinámica como componente instrumental.
+- `FDTD Simulations on The Single-Mode Operation of SiON-Doped Si Waveguides for LIDAR Applications`: además de no tener afiliación UNAM mexicana clara, es fotónica/dispositivo.
+
+## Principales falsos positivos detectados
+- Artículos de ingeniería eléctrica, electrónica de potencia, control automático, convertidores, microredes y estabilidad de sistemas eléctricos donde el modelado o la simulación era herramienta de dominio.
+- Trabajos de sensores, MEMS, fotónica, guías de onda, materiales, celdas solares y química donde el uso de simulación o software no constituía una contribución de Ciencias de la Computación.
+- Aplicaciones de ML/IA en potencia, astronomía, fluidos, química, biomedicina o educación donde el aporte principal era de la disciplina de aplicación y no un método computacional generalizable.
+- Estudios educativos sobre programación o computational intelligence donde el foco era pedagógico, no técnico.
+- Registros con `UNAM` que no correspondían a la Universidad Nacional Autónoma de México, especialmente `UNAM - National Nanotechnology Research Center` de Bilkent University, Turquía, y `UNaM` de la Universidad Nacional de Misiones, Argentina.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `simulation`, `model`, `algorithm`, `optimization`, `Python`, `AI`, `machine learning`, `finite element`, `cloud computing` o `computational`.
+- Se aceptaron trabajos aplicados únicamente cuando el objeto central era un método, algoritmo, framework, sistema, protocolo, arquitectura o técnica computacional.
+- Se excluyeron numerosos artículos de control y potencia aunque presentaban modelos matemáticos, simulaciones o algoritmos, porque el aporte principal era ingeniería eléctrica/control y no Ciencias de la Computación.
+- Se conservaron trabajos biomédicos de imagen/señal sólo cuando la contribución central fue segmentación, reconstrucción, deep learning, visión por computadora o estimación computacional.
+- Se conservaron trabajos no estrictamente de Computación Científica cuando eran claramente de Ciencias de la Computación, por ejemplo seguridad, lógica, IoT, visión, minería de datos y optimización evolutiva.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de IEEE: 28 columnas.
+- Los seis archivos tenían encabezados idénticos.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de IEEE después de la deduplicación.
+
+## Archivo final generado
+
+- `ieee_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- IEEE trae varias columnas de fecha; para esta depuración se consideró publicación/congreso (`Issue Date`/`Meeting Date`) y no la fecha de indexación en Xplore.
+- Se detectaron 43 duplicados entre queries.
+- Se excluyeron 3 registros de enero de 2024 porque el mes sí era verificable.
+- Se detectaron falsos positivos institucionales por `UNAM` que no corresponden a la UNAM mexicana.
+- La frontera más delicada fue control/potencia vs. computación científica: se aceptaron sólo los casos con método computacional central y se excluyeron simulaciones/modelos de ingeniería como aportes de dominio.

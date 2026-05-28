@@ -1,0 +1,109 @@
+# Reporte de depuración y extracción canónica — ScienceDirect ISBD
+
+## Archivos recibidos
+- Super-twisting-based-sliding-mode-control-of-hydrauli_2024_Control-Engineeri.pdf
+- Facile-synthesis-of-the-Bi2S3-rGO-composite-via-chemical-pr_2025_Journal-of-.pdf
+- Pipe-roughness-calibration-approach-for-water-distribution_2024_Results-in-E.pdf
+- Process-design-and-economic-evaluation-for-methane-and-e_2024_Energy-Convers.pdf
+- AI-Enhanced-Supercomputing-for-Next-Generation-Astronomical_2025_Procedia-Co.pdf
+- text2graphAPI--A-library-to-transform-text-documents-into-differ_2024_Softwa.pdf
+- The-Caminhos-dos-C-nions-do-Sul-UNESCO-Global-Ge_2025_International-Journal-.pdf
+- Comments-to-Olvera-Garc-a--E---Avila-Olivera--J-A---Figueroa-Soto--_2025_Geo.pdf
+- LAPOD--Latin-American-paleomagnetic-online-database--_2024_Journal-of-South-.pdf
+- text2graphAPI--A-library-to-transform-text-documents-into-differ_2024_Softwa.pdf (carga duplicada)
+- 1-s2.0-S2665963824000940-main.pdf
+- 1-s2.0-S0272884224052532-main.pdf
+- 1-s2.0-S0212656724001938-main.pdf
+- 1-s2.0-S2577444125000188-main.pdf
+- 1-s2.0-S0898122125002093-main.pdf
+- 1-s2.0-S0743731523001867-main.pdf
+
+## Objetivo
+Revisar PDFs descargados desde ScienceDirect para el lote inicial ISBD, conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación y convertir los registros aceptados al modelo canónico usado en lotes anteriores.
+
+## Alcance de esta fase
+- Se revisaron PDFs, no archivos CSV estructurados de ScienceDirect.
+- Se convirtió a modelo canónico porque el usuario lo solicitó explícitamente para ScienceDirect.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en al menos un autor.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, afiliaciones, revista, DOI y contenido visible del PDF.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado.
+- Conversión a columnas canónicas: indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract.
+
+Nota temporal: varios PDFs muestran tanto año de volumen como fecha "Available online". Cuando la fecha en PDF permitió verificar mes, se aplicó la regla estricta del periodo. Por eso se excluyeron registros disponibles en 2023, aunque aparezcan en volumen 2024.
+
+## Resultados cuantitativos
+- Total de cargas PDF recibidas: 16
+- Artículos únicos después de deduplicación: 14
+- Registros duplicados eliminados: 2
+- Registros excluidos por estar fuera de periodo: 2
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 8
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 4
+
+## Registros aceptados
+Se conservaron registros de:
+
+- supercómputo, HPC, GPU, arquitectura computacional e IA aplicada al procesamiento de datos astronómicos;
+- software/NLP para transformación de texto a grafos, representación de documentos, graph neural networks e information retrieval;
+- software científico con interfaz gráfica para problemas directos e inversos, métodos de inversión y cálculo computacional;
+- métodos numéricos/FEM, análisis de error, implementación numérica y problemas discretos asociados al operador logarítmico.
+
+Registros aceptados en el CSV final:
+- `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory`.
+- `text2graphAPI: A library to transform text documents into different graph representations`.
+- `HV-Inv: A MATLAB-based graphical tool for the direct and inverse problems of the horizontal-to-vertical spectral ratio under the diffuse field theory`.
+- `FEM for 1D-problems involving the logarithmic Laplacian: Error estimates and numerical implementation`.
+
+## Registros dudosos o relevantes que NO fueron incluidos
+- `Read/write fence-free work-stealing with multiplicity`: claramente de Ciencias de la Computación, pero excluido porque el PDF indica `Available online 19 December 2023`, fuera del periodo obligatorio.
+- `Super-twisting based sliding mode control of hydraulic actuator without velocity state`: fuera de periodo por fecha `Available online 25 October 2023`; además, el aporte principal es control de actuadores hidráulicos.
+- `Pipe roughness calibration approach for water distribution network models using a nonlinear state observer`: usa graph theory, observadores y simulación, pero el aporte principal es calibración hidráulica/control de redes de agua, no CS.
+- `LAPOD, Latin-American paleomagnetic online database`: base de datos e interfaz web de paleomagnetismo; se consideró recurso de dominio geocientífico, sin contribución clara de DBMS, IR o ingeniería de software.
+- `HV-Inv...`: se aceptó como caso frontera porque el aporte central es una herramienta/software científico con métodos de inversión y cálculo computacional, no sólo el uso de software como apoyo.
+
+## Principales falsos positivos detectados
+- Artículos de control, hidráulica o ingeniería de procesos que usan algoritmos, simulación o modelos matemáticos como herramienta de dominio.
+- Artículos de energía, materiales, fotónica, geociencias, salud pública y diabetes con poca o nula contribución computacional.
+- Bases de datos científicas de dominio que funcionan como repositorios o interfaces de consulta, sin aporte claro de sistemas de bases de datos.
+- Revisiones bibliométricas o de literatura que usan bases de datos o software de análisis, pero cuyo aporte principal pertenece a otra disciplina.
+- Artículos con términos como `AI`, `database`, `data-driven`, `software`, `simulation`, `graph theory`, `model` o `algorithm` usados de forma instrumental.
+
+## Decisiones importantes
+- Se aceptó `AI-Enhanced Supercomputing...` aunque el dominio sea astronomía porque la contribución central es arquitectura de supercómputo/IA/HPC para procesamiento de datos.
+- Se aceptó `text2graphAPI...` porque es una publicación de software con Python API, NLP, representación de textos como grafos y tareas computacionales.
+- Se aceptó `HV-Inv...` como cómputo científico/software científico porque presenta una herramienta MATLAB/FORTRAN para problemas directos e inversos, con métodos de inversión global/local.
+- Se aceptó `FEM for 1D-problems...` por su aporte de análisis numérico, implementación FEM y convergencia de problemas discretos.
+- Se excluyó `LAPOD...` aunque contiene base de datos, filtros, MySQL e interfaz web porque el foco principal es paleomagnetismo y curación/visualización de datos de dominio.
+- Se excluyó `Read/write fence-free work-stealing with multiplicity` sólo por periodo; temáticamente sí es Ciencias de la Computación.
+
+## Formato del archivo final
+- No había un CSV de ScienceDirect que preservar; los archivos recibidos eran PDFs.
+- Se generó un CSV en modelo canónico, siguiendo el formato usado previamente para editoriales con extracción manual.
+- El CSV final tiene 14 columnas canónicas.
+- No se agregaron columnas de clasificación final.
+- `Area` se dejó como `ISBD` únicamente por lote inicial de búsqueda, no como clasificación final.
+- `Subarea` se dejó vacía.
+- `Afiliacion1` contiene la correspondencia autor–afiliación cuando fue posible extraerla del PDF.
+- `Afiliacion2` se conserva como columna canónica y queda vacía en estos registros.
+- ISBN se dejó como `N/D` cuando el PDF no lo reporta.
+- El CSV final está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `sciencedirect_isbd_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ScienceDirect no proporcionó CSV estructurado en este lote; la extracción se hizo desde PDFs.
+- Dos registros fueron duplicados: `text2graphAPI...` apareció cargado dos veces y el artículo de `The Caminhos dos Cânions do Sul...` apareció con dos nombres de archivo distintos.
+- Conviene confirmar la regla global para artículos en volumen 2024 pero con `Available online` en 2023; aquí se aplicó estrictamente la fecha visible del PDF.
+- Conviene mantener una regla global para bases de datos científicas de dominio: aceptarlas sólo si hay aporte claro de DBMS, IR, HCI, arquitectura de software o sistema computacional generalizable.
+- `Read/write fence-free work-stealing with multiplicity` debería recuperarse sólo si el chat principal decide usar año de volumen en lugar de fecha online para ScienceDirect.

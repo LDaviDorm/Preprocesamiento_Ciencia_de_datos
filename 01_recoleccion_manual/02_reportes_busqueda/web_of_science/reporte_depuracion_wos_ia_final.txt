@@ -1,0 +1,118 @@
+# Reporte de depuración — Web of Science IA
+
+## Archivos recibidos
+- savedrecs (2).xls
+- savedrecs (3).xls
+- savedrecs (4).xls
+- savedrecs (5).xls
+- savedrecs (6).xls
+- savedrecs (7).xls
+- savedrecs (8).xls
+
+## Objetivo
+Depurar registros descargados desde Web of Science para el lote inicial IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Web of Science.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, fuente, fechas y metadatos de afiliación.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no había DOI, por título normalizado + año + primer autor.
+
+Nota: Web of Science exportó `Publication Date`, `Publication Year`, `Conference Date` y `Early Access Date`. Cuando el mes fue verificable se aplicó estrictamente el periodo marzo 2024–diciembre 2025. Para proceedings, si `Conference Date` indicaba 2023 o 2026, el registro se excluyó aunque el año bibliográfico estuviera en 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 1257
+- Artículos únicos después de deduplicación: 736
+- Registros duplicados eliminados: 521
+- Registros excluidos por estar fuera de periodo: 73
+- Registros excluidos por no tener afiliación UNAM: 29
+- Registros excluidos por no ser Ciencias de la Computación: 503
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 131
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- aprendizaje automático, aprendizaje profundo, redes neuronales, GNN, Transformers, LLM, RAG y modelos generativos;
+- NLP y lingüística computacional, incluyendo clasificación de reportes, corpus, tareas compartidas de hate speech/polaridad, esperanza discursiva y metáforas;
+- visión por computadora, segmentación, reconstrucción, análisis de imágenes médicas y datasets/benchmarks computacionales;
+- software, arquitectura de chatbots, generación/síntesis de programas y medición funcional asistida por IA;
+- optimización evolutiva, MORL, hiperparámetros, algoritmos y estructuras de datos/concurrencia;
+- IoT, WiFi sensing, privacidad, seguridad y verificación formal cuando el aporte computacional fue central;
+- HCI, XR, interacción humano‑IA, accesibilidad, robótica y sistemas interactivos cuando la contribución técnica fue el sistema, interfaz, arquitectura o método.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+- `Mexican Scientific Production on Artificial Intelligence: A Bibliometric Analysis`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Machine learning and magnetic parameters to monitor potentially toxic elements in urban road dust of Mexico City`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Pattern recognition in living cells through the lens of machine learning`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Artificial Intelligence in Liver Diseases: Recent Advances`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Advancing a Hybrid Decision-Making Model in Anesthesiology: Applications of Artificial Intelligence in the Perioperative Setting`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Early Birth Weight Prediction: A Machine Learning Explainability Analysis`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `A machine learning approach for the design optimization of a multiple magnetic and inertial sensors wearable system for the spine mobility assessment`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Students' Collaborative Learning through Programming Computational Intelligence Algorithms: A Mixed Methods Approach Applied to a Case Study on Energy and Buildings`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Machine Learning Algorithms for Solar Irradiance Forecasting in a Rural Community in Michoacan, Mexico`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Predicting groundwater quality for irrigation suitability on agricultural practices using machine learning, fuzzy logic and GIS techniques`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Machine and Deep Learning for the Diagnosis, Prognosis, and Treatment of Cervical Cancer: A Scoping Review`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `The role of artificial intelligence in Latin American ruminant production systems`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Prospective study using artificial neural networks for identification of high-risk COVID-19 patients`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Prediction of Sonic Well Logs Using Deep Neural Network: Application to Petroleum Reservoir Characterization in Mexico`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Application of Artificial Intelligence in Identifying Human Immunoglobulin and Albumin in Commercial Intravenous Drugs`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Examining public managers' competencies of artificial intelligence implementation in local government: A quantitative study`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Deep learning and genetic algorithms for cosmological Bayesian inference speed-up`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Indoor occupancy monitoring using environmental feature fusion and semi-supervised machine learning models`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Improving river water quality prediction with hybrid machine learning and temporal analysis`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Semiarid mangrove species classification using machine learning algorithms and visible UAV data`: IA/ML/software como herramienta de dominio o estudio no técnico.
+- `Identifying Suicidal Ideation Through Automatic Extraction of Emotional Traces in Suicide Notes`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Predicting the Length of Mechanical Ventilation in Acute Respiratory Disease Syndrome Using Machine Learning: The PIONEER Study`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Activation of epidermal growth factor receptors in triple-negative breast cancer cells by morphine; analysis through Raman spectroscopy and machine learning`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Practical SERS substrates by spray coating of silver solutions for deep learning-assisted sensitive antigen identification`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Gamma-Ray Burst Light-curve Reconstruction: A Comparative Machine and Deep Learning Analysis`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Detection of MCI in Seniors During Resting-State EEG With Fractal Dimension and AI Classifiers`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Data-Based Modeling, Multi-Objective Optimization, and Multi-Criterion Decision-Making to Maximize the Electro-Oxidation of Metoprolol over Boron-Doped Diamond Electrodes in a Flow-By Reactor`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+- `Application of Optimization Algorithms in Voter Service Module Allocation`: excluido por no tener afiliación UNAM clara en `Addresses`/`Reprint Addresses`/correo; WoS podía mostrar una afiliación normalizada ambigua.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos, clínicos o de salud pública que sólo aplican IA/ML para diagnóstico, pronóstico o revisión sin aporte computacional claro.
+- Artículos de química, materiales, farmacología, biología y bioinformática donde IA/ML era herramienta de dominio o recurso biológico/químico sin método CS central.
+- Artículos de astronomía, astrofísica, física, óptica y cosmología con deep learning o pipelines de observatorio usados como herramienta de análisis de datos.
+- Artículos de geociencias, volcanología, hidrología, energía, agricultura, clima, ingeniería civil y sistemas eléctricos donde el aprendizaje automático era auxiliar.
+- Estudios educativos, bibliotecológicos, jurídicos, administrativos o sociales sobre uso, percepción o impacto de IA sin contribución técnica de Ciencias de la Computación.
+- Registros con afiliación normalizada engañosa en WoS: `Affiliations` podía listar `Universidad Nacional Autónoma de México` aunque `Addresses` correspondiera a UAM, UAEMex, UACM u otra institución. En esos casos se priorizó `Addresses`, `Reprint Addresses` y correos institucionales.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `artificial intelligence`, `machine learning`, `deep learning`, `algorithm`, `model`, `data`, `software`, `database`, `simulation` o `digital`.
+- Se conservaron trabajos aplicados cuando el objeto central era un método, algoritmo, arquitectura, sistema, interfaz, framework, corpus/dataset computacional o técnica de IA/NLP/visión/señales.
+- Se excluyeron aplicaciones de IA/ML en dominios externos cuando el resultado principal era médico, químico, físico, energético, geocientífico, educativo, social o administrativo.
+- Se revisó con especial cuidado el campo institucional: para WoS se priorizó la evidencia de afiliación en `Addresses` y `Reprint Addresses` sobre el campo normalizado `Affiliations`.
+- Se aceptaron algunos registros no estrictamente IA porque sí son claramente de Ciencias de la Computación y se reclasificarán después.
+
+## Formato del archivo final
+- Los siete archivos de Web of Science tenían el mismo encabezado: 72 columnas.
+- Se conservaron exactamente esas columnas originales, en el mismo orden.
+- No se agregaron columnas.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- No se convirtió al modelo canónico.
+- El CSV final está codificado en UTF‑8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+- `wos_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Web of Science tuvo mucho solapamiento entre consultas: 521 duplicados eliminados sobre 1257 registros recibidos.
+- El campo `Affiliations` de WoS puede introducir falsos positivos institucionales; conviene usar `Addresses`, `Reprint Addresses` y correos como evidencia principal de afiliación UNAM.
+- El filtro fue deliberadamente estricto contra IA/ML aplicado como herramienta secundaria de otra disciplina.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO y Engineering Village, porque varios títulos aceptados ya aparecieron en otras fuentes.
+- Algunos registros aceptados son de NLP, HCI, visión, seguridad, optimización, redes o cómputo científico; deben reclasificarse por área en la fase posterior.

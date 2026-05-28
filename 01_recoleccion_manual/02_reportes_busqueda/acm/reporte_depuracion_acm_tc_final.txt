@@ -1,0 +1,119 @@
+# Reporte de depuración — ACM TC
+
+## Archivos recibidos
+- ACM_TC_lote1_canonico.csv
+- ACM_TC_lote2_canonico.csv
+- reporte_extraccion_ACM_TC_lote1.txt
+- reporte_extraccion_ACM_TC_lote2.txt
+
+## Objetivo
+Depurar registros provenientes de ACM para el lote TC — Teoría de la Computación, conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación y entregar un CSV consolidado manteniendo el mismo diseño de columnas recibido en los CSV ACM.
+
+## Alcance de esta fase
+- No se convirtió nuevamente al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Los CSV recibidos ya venían en formato canónico por extracción manual previa; en esta fase se conservó ese diseño de columnas.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+- Se incorporó la información relevante de los reportes previos de extracción manual ACM TC.
+
+## Información incorporada de los reportes previos de extracción manual
+- Lote 1: el reporte previo documentó 16 cargas de PDF, 13 PDFs únicos, 16 registros BibTeX, 16 registros EndNote/RIS, 48 registros brutos detectados, 35 duplicados eliminados y 13 artículos únicos en `ACM_TC_lote1_canonico.csv`.
+- Lote 1: el reporte previo indicó 13 registros con DOI, 12 con abstract, 12 con keywords, 12 con afiliación UNAM clara y 1 sin afiliación UNAM clara.
+- Lote 1: el reporte previo indicó que `Recent Advances on Principles of Concurrent Data Structures` no tenía abstract ni keywords, y que `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives` tenía afiliación UNAM no clara.
+- Lote 1: el reporte previo advirtió que `On Stability Properties in a Stochastic Controlled Lotka-Volterra Model` corresponde a un congreso de matemáticas/estadística y no necesariamente a TC; por eso se revisó con especial cuidado en esta depuración temática.
+- Lote 2: el reporte previo documentó 15 cargas de PDF, 10 PDFs únicos, 15 registros BibTeX, 14 registros EndNote/RIS, 44 registros brutos detectados, 34 duplicados eliminados y 10 artículos únicos en `ACM_TC_lote2_canonico.csv`.
+- Lote 2: el reporte previo indicó 10 registros con DOI, 9 con abstract, 9 con keywords, 9 con afiliación UNAM clara y 1 sin afiliación UNAM clara.
+- Lote 2: el reporte previo indicó que `Recent Advances on Principles of Concurrent Data Structures` quedó con `Abstract=N/D` y `Keywords=N/D`, y que el ISSN `0001-0782` fue recuperado desde EndNote/RIS.
+- Ambos reportes previos advirtieron solapamiento entre lotes ACM y recomendaron deduplicación global posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, afiliaciones, DOI y observaciones de los reportes previos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; cuando no hubiera DOI, por título normalizado + año + primer autor.
+- Conservación del registro con más metadatos completos cuando había duplicados.
+
+Nota temporal: los CSV ACM recibidos sólo traen `Año`, no mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos en los CSV ACM: 23
+- Artículos únicos después de deduplicación inter-lotes: 13
+- Registros duplicados inter-lotes eliminados: 10
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser claramente Ciencias de la Computación: 1
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 11
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- teoría de cómputo distribuido, memoria compartida, wait-freedom, tareas distribuidas y modelos asíncronos;
+- verificación en tiempo de ejecución, lenguajes para sistemas distribuidos, tolerancia a fallas y algoritmos concurrentes;
+- estructuras de datos concurrentes, colas concurrentes, linearizability, strong linearizability y primitivas con consensus number;
+- optimización multiobjetivo, optimización evolutiva, reinforcement learning multiobjetivo y algoritmos metaheurísticos;
+- programación funcional, DSL embebido en Haskell, geometría computacional aplicada a patrones rítmicos y live coding.
+
+Registros aceptados:
+- `Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems`
+- `Uncertainty Quantification of the Hypervolume for Evolutionary Multi-Objective Reinforcement Learning`
+- `Demo: A Geometric Approach to Generate Musical Rhythmic Patterns in Haskell`
+- `A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP`
+- `Strong Linearizability using Primitives with Consensus Number 2`
+- `Hot off the Press: Finding the Set of Nearly Optimal Solutions of a Multi-objective Optimization Problem`
+- `Hot off the Press: Finding ϵ-Locally Optimal Solutions for Multi-Objective Multimodal Optimization`
+- `Modular Baskets Queue`
+- `The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers`
+- `Solvability Characterization for General Three-Process Tasks`
+- `Recent Advances on Principles of Concurrent Data Structures`
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives`: afiliación visible no muestra UNAM; los reportes previos indican `Universidad Morelia` y sólo un correo `@enesmorelia.unam.mx` como posible pista, por lo que no se tomó como afiliación UNAM clara.
+- `On Stability Properties in a Stochastic Controlled Lotka-Volterra Model`: trabajo de estabilidad/control estocástico Lotka–Volterra; el aporte principal es matemático/estadístico/biológico, no Ciencias de la Computación.
+
+## Principales falsos positivos detectados
+- Registros matemáticos o de control estocástico que aparecen en el lote TC pero cuyo aporte principal no es Ciencias de la Computación.
+- Registros de optimización/combinatoria que sí son computacionales pero cuya afiliación visible no permite confirmar UNAM de forma clara.
+- Solapamiento fuerte entre los dos lotes ACM TC por cargas repetidas de PDF, BibTeX y EndNote/RIS.
+- Metadatos incompletos en algunos registros, especialmente `Recent Advances on Principles of Concurrent Data Structures`, que carece de abstract y keywords, aunque el título, DOI, autores y metadatos lo identifican claramente como CS.
+
+## Decisiones importantes
+- Se consolidaron los dos lotes TC en un solo archivo final.
+- Se deduplicó por DOI; todos los registros únicos tenían DOI.
+- Cuando el mismo DOI apareció en ambos lotes, se conservó la fila con más metadatos completos y, en empate, la primera aparición.
+- Se conservó `Recent Advances on Principles of Concurrent Data Structures` aunque tiene `Abstract=N/D` y `Keywords=N/D`, porque el título, autores, DOI y metadatos son suficientes para justificar que pertenece claramente a Ciencias de la Computación.
+- Se excluyó `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives` por no tener afiliación UNAM clara en la afiliación visible, aunque su tema sí es computacional.
+- Se excluyó `On Stability Properties in a Stochastic Controlled Lotka-Volterra Model` porque el aporte principal es estabilidad/control estocástico de un modelo Lotka–Volterra, no Ciencias de la Computación.
+- Se conservaron los registros de optimización multiobjetivo, concurrencia, verificación, programación funcional y computación distribuida, aunque algunos podrían reasignarse a IA, CC o RS en la fase final.
+- Se conservaron los registros `Hot off the Press` porque tienen DOI propio, afiliación UNAM clara y contenido claramente computacional; no se trataron como duplicados porque no comparten DOI ni título normalizado con otros registros del CSV final.
+
+## Formato del archivo final
+- Se conservó el mismo diseño de columnas recibido en los CSV ACM: 14 columnas.
+- Columnas conservadas: indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract.
+- Los dos archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- Las columnas `Area` y `Subarea` existían en los archivos recibidos; no se reasignaron ni se modificaron como clasificación final.
+- La columna existente `indice` se reenumeró de forma consecutiva en el CSV consolidado final; no se creó una columna nueva.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos o `N/D` se dejaron como venían en los registros conservados.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+- `acm_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Confirmar si `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives` debe considerarse afiliación UNAM por el correo `@enesmorelia.unam.mx`; en esta depuración se excluyó porque la afiliación visible dice `Universidad Morelia`.
+- Confirmar si los artículos `Hot off the Press` deben mantenerse como registros bibliográficos independientes; en esta fase se conservaron porque tienen DOI propio y contenido claramente computacional.
+- Confirmar si `Recent Advances on Principles of Concurrent Data Structures` debe seguir aceptándose sin abstract ni keywords; aquí se conservó porque el metadato restante es suficiente para identificarlo como CS.
+- El lote ACM TC se solapa con ACM CC, IA, ISBD, RS y SIAV; conviene hacer deduplicación global por DOI al consolidar todos los lotes ACM.
+- Varios registros aceptados probablemente serán reasignados en la clasificación final a optimización/IA, cómputo distribuido/RS o lenguajes, pero en esta fase sólo se filtró CS vs. no CS.

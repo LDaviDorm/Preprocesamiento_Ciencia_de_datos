@@ -1,0 +1,92 @@
+# Reporte de depuración — ProQuest TC
+
+## Archivos recibidos
+- ProQuestDocuments-2026-05-19.xls: 13 registros, 29 columnas
+- ProQuestDocuments-2026-05-19 (1).xls: 2 registros, 26 columnas
+
+## Objetivo
+Depurar registros descargados desde ProQuest para el lote inicial de Teoría de la Computación y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de ProQuest.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, revista/fuente, afiliaciones y metadatos exportados por ProQuest.
+- Exclusión estricta de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no hubiera DOI, por título normalizado + año + primer autor.
+
+Nota sobre fechas: para ProQuest se usó `pubdate` como fecha bibliográfica principal, y `elecPubDate` como apoyo. En este lote no hubo registros fuera del periodo obligatorio usando esa regla.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 15
+- Artículos únicos después de deduplicación: 14
+- Registros duplicados eliminados: 1
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser Ciencias de la Computación: 9
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 4
+
+## Registros aceptados
+Se conservaron registros claramente relacionados con:
+- computación distribuida, consenso, acuerdo aproximado y lower bounds;
+- algoritmos de optimización combinatoria, redes de localización y metaheurísticas;
+- estructuras de datos concurrentes y principios de computación distribuida;
+- geometría computacional y problemas tipo art gallery.
+
+Registros aceptados:
+- A speedup theorem for asynchronous computation with applications to consensus and approximate agreement
+- Ortho-Unit Polygons can be Guarded with at most n-48 Guards
+- Solution Algorithms for the Capacitated Location Tree Problem with Interconnections
+- Recent Advances on Principles of Concurrent Data Structures
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con razón breve:
+- Graph morphisms and exhaustion of curve graphs of low-genus surfaces: excluido; teoría/topología matemática sobre curve graphs sin aporte computacional o algorítmico claro.
+- On Bipartite Biregular Large Graphs Derived From Difference Sets: excluido; construcción algebraica de grafos, sin algoritmo, complejidad o contribución computacional clara.
+- Dynamic Cycles in Edge-Colored Multigraphs: excluido de forma conservadora; combinatoria/teoría de grafos pura, sin algoritmo o complejidad computacional clara.
+- Musical stylistic analysis: a study of intervallic transition graphs via persistent homology: excluido de forma conservadora; método matemático/topological data analysis aplicado a música, sin evidencia suficiente de aporte CS central.
+- More Ramsey theory for highly connected monochromatic subgraphs: excluido; Ramsey/set theory y combinatoria infinita, sin aporte CS claro.
+- Classification of SERS spectra for agrochemical detection using a neural network with engineered features: excluido; ML aplicado a fotónica/agroquímicos como herramienta de análisis de dominio.
+- A similarity Based Algorithm for Predicting Academic Success in First-year Undergraduates: no incluido; aunque propone un algoritmo, ProQuest no exportó afiliación de autores y el texto sólo menciona datos de UNAM.
+
+## Principales falsos positivos detectados
+- artículos de matemática pura o combinatoria que contienen `graphs`, `complexity`, `graph theory` o `Ramsey`, pero sin contribución algorítmica o computacional clara;
+- artículos biomédicos o de neurociencia que usan grafos, redes, regresión o análisis estadístico como herramientas de dominio;
+- artículos de materiales/fotónica/microscopía con términos como `image processing`, `neural networks` o `algorithms`, pero cuyo aporte principal es experimental o físico-químico;
+- artículos de educación/analítica académica donde ProQuest no exportó afiliación institucional clara;
+- ruido generado por campos temáticos de ProQuest, por ejemplo `Graph theory`, `Artificial neural networks`, `SUSTAINABILITY` o `PSYCHOLOGY`, que no bastan para aceptar un registro como CS.
+
+## Decisiones importantes
+- El filtro fue deliberadamente estricto porque el lote ProQuest TC incluía varios registros matemáticos o interdisciplinarios que contenían términos de grafos, complejidad, algoritmos o redes sin que el aporte principal fuera de Ciencias de la Computación.
+- Se excluyeron resultados de grafos/combinatoria cuando el registro no mostraba algoritmo, complejidad computacional, verificación, estructura de datos, sistema distribuido u otro aporte computacional claro.
+- `Recent Advances on Principles of Concurrent Data Structures` se conservó aunque `AuthorAffiliation` venía vacío, porque el propio resumen de ProQuest identifica el trabajo como investigación del Institute/Instituto de Matemáticas de la Universidad Nacional Autónoma de México y el tema es inequívocamente de estructuras de datos concurrentes y computación distribuida.
+- `A similarity Based Algorithm for Predicting Academic Success...` no se incluyó porque no hay afiliación institucional de autores en el CSV; el hecho de usar un dataset de UNAM no se tomó como afiliación UNAM.
+
+## Formato del archivo final
+- No se convirtió al modelo canónico.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- Los archivos de ProQuest tenían encabezados diferentes:
+- ProQuestDocuments-2026-05-19.xls: 29 columnas
+- ProQuestDocuments-2026-05-19 (1).xls: 26 columnas
+- Para no perder metadatos, el CSV final conserva la unión de columnas originales de ProQuest, con diseño final de 29 columnas.
+- El archivo con 26 columnas no incluyó `companies`, `identifierKeywords` ni `subjects`; esas columnas se conservaron en el CSV final y quedan vacías para los registros que procedían de ese archivo.
+- El CSV final está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `proquest_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ProQuest TC tuvo varios falsos positivos de matemática pura, grafos y combinatoria; conviene mantener la regla estricta de aceptar sólo si hay aporte computacional claro.
+- Para ProQuest se siguió usando `pubdate` como fecha bibliográfica principal; `elecPubDate` se consideró campo auxiliar.
+- El único registro aceptado con afiliación no exportada explícitamente fue `Recent Advances on Principles of Concurrent Data Structures`, por evidencia en el resumen del propio registro.
+- Conviene deduplicar globalmente contra ACM, ScienceDirect y otros lotes, porque algunos títulos de estructuras de datos concurrentes y computación distribuida ya aparecieron en otras fuentes.

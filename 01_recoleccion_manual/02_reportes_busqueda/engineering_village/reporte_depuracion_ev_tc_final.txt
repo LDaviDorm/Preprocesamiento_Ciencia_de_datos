@@ -1,0 +1,164 @@
+# Reporte de depuración — Engineering Village TC
+
+## Archivos recibidos
+- Engineering_Village_abstract_5-17-2026_232643130.csv
+- Engineering_Village_abstract_5-17-2026_232648551.csv
+- Engineering_Village_abstract_5-17-2026_232652482.csv
+- Engineering_Village_abstract_5-17-2026_232656350.csv
+- Engineering_Village_abstract_5-17-2026_2327148.csv
+- Engineering_Village_abstract_5-17-2026_23263725.csv
+- Engineering_Village_abstract_5-17-2026_23275663.csv
+
+## Objetivo
+Depurar registros descargados desde Engineering Village para el lote inicial TC y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el formato de columnas original de Engineering Village.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, términos controlados/no controlados, fuente, fechas, DOI y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; si no había DOI, por título normalizado + año + primer autor.
+
+Nota: varios registros de Engineering Village sólo indican año 2024 o 2025 en `Issue date` o `Publication year`; cuando no hubo mes verificable se aplicó la regla de conservar 2024. No se detectaron registros de enero/febrero de 2024 ni de 2026 en los artículos únicos de este lote.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 71
+- Artículos únicos después de deduplicación: 37
+- Registros duplicados eliminados: 34
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 13
+- Registros excluidos por no ser claramente Ciencias de la Computación: 11
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 13
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- algoritmos y optimización combinatoria;
+- cómputo distribuido, concurrencia y memoria compartida;
+- verificación/runtime verification y formalización de propiedades de sistemas distribuidos;
+- estructuras de datos concurrentes;
+- lógica aplicada a IoT y contratos inteligentes;
+- aprendizaje por refuerzo multiobjetivo y optimización evolutiva;
+- HRI/robótica e interfaces cuando el aporte fue claramente algorítmico o de combinación de métodos computacionales;
+- protección de imágenes, esteganografía, criptografía e información.
+
+Registros aceptados:
+- Iterated local search for the label printing problem
+- Generalising the team orienteering problem through multi-constraining and multi-objectives
+- A speedup theorem for asynchronous computation with applications to consensus and approximate agreement
+- Solution Algorithms for the Capacitated Location Tree Problem with Interconnections
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+- Advanced Algorithm Combinations for Safe Human-Robot Collaboration: A Review and Research Proposal
+- Modular Baskets Queue
+- Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems
+- Consistency in Smart Contracts Design
+- Consistent IoT Systems: A Perspective Based on Paraconsistent Descriptive Logic
+- A R2 Based Multi-objective Reinforcement Learning Algorithm
+- On the Approximation of the Entire Pareto Front of a Constrained Multi-objective Optimization Problem
+- Color Image Protection via Quantum Encryption and HVS-Based Mini-Block Data Hiding
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con razón breve:
+
+- `Graph Theory-Based Fault Location Method for Transmission Systems With Renewable Energy Sources`: método de localización de fallas en sistemas eléctricos; graph theory como herramienta de ingeniería de potencia.
+- `Regional centres of inertia by clustering-based identification`: clustering/grafos aplicado a estabilidad de sistemas eléctricos; aporte principal en potencia.
+- `An approach to inertial distribution in power grids by a modularity index`: modularidad y grafos aplicados a robustez inercial de redes eléctricas.
+- `Pipe roughness calibration approach for water distribution network models using a nonlinear state observer`: calibración hidráulica/redes de agua; aporte principal de ingeniería hidráulica/control.
+- `Understanding Post-Angiogenic Tumor Growth: Insights from Vascular Network Properties in Cellular Automata Modeling`: modelo celular/vascular para crecimiento tumoral; aporte principal biomédico.
+- `I-ultrafilters in the rational perfect set model`: set theory puro/matemática lógica sin aporte claro de computabilidad, algoritmos o verificación.
+- `The mode of computing`: ensayo conceptual sobre computación/natural computing sin contribución técnica clara de CS.
+- `Real-time Ocean Probabilistic Forecasts, Reachability Analysis, and Adaptive Sampling in the Gulf of Mexico`: pronóstico oceanográfico y muestreo adaptativo; métodos computacionales auxiliares al dominio.
+- `Another remark on connexivity and set theory`: lógica/set theory filosófica sin contribución computacional clara.
+- `Real-Time Probabilistic Reachability Forecasting for Gliders in the Gulf of Mexico`: planeación/pronóstico de gliders en oceanografía; aporte principal de dominio oceanográfico.
+- `Monitoring and performance of AugerPrime`: monitoreo de observatorio de rayos cósmicos; aporte principal de física/astrofísica experimental.
+
+Además, se excluyeron registros claramente computacionales pero sin afiliación UNAM clara en Engineering Village:
+
+- `Concurrent Wait-Free Graph Snapshots Using Multi-versioning`
+- `Overcoming Obstacles with a Home Walking Robot`
+- `Agent-Driven BFS Tree in Anonymous Graphs with Applications`
+- `Vectorized Visibility Graph Planning with Neural Polygon Extraction`
+- `A Technique of Distributed Missions Assignment Problem Solving in Heterogeneous Groups of Aerial Rescue Robots`
+- `BeRGeR: Byzantine-Robust Geometric Routing`
+- `Algebraic Computations in Anonymous VANET`
+- `NavTopo: Leveraging Topological Maps for Autonomous Navigation of a Mobile Robot`
+- `Decentralized Unlabeled Multi-agent Navigation in Continuous Space`
+- `Static Data Race Detection via Lazy Sequentialization`
+- `Recursive Estimation Algorithms for AUV Collaborative Navigation in Case of Abnormal Outliers in Measurements`
+- `Some New Results With k -Set Agreement`
+- `A Domain Specific Language for Testing Distributed Protocol Implementations`
+
+## Principales falsos positivos detectados
+- Artículos de sistemas eléctricos/potencia que usaban grafos, clustering o modularidad como herramienta de análisis de red eléctrica.
+- Artículos de hidráulica, agua, oceanografía, física/astrofísica o biomedicina que usaban modelos, simulación, redes, grafos o reachability como herramientas de dominio.
+- Artículos de lógica o set theory puros sin una contribución clara de computabilidad, algoritmos, verificación formal o teoría de la computación.
+- Registros de robótica o redes de grafos sin afiliación UNAM clara, aunque algunos fueran de CS.
+- Registros de observatorios, monitoreo científico o infraestructura experimental donde el componente computacional no fue el aporte principal.
+
+## Decisiones importantes
+- Se conservaron artículos no estrictamente de TC cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo HRI, MORL, protección de imágenes, IoT lógico, smart contracts y optimización.
+- Se excluyeron registros aunque contuvieran términos como `graph theory`, `algorithm`, `network`, `model`, `simulation`, `reachability` o `cellular automata` cuando el aporte principal era de otra disciplina.
+- `Generalising the team orienteering problem...` se aceptó en este lote porque Engineering Village reporta afiliación `Universidad Nacional Autonoma de Mexico`, a diferencia de metadatos ACM previos donde la afiliación era dudosa.
+- `I-ultrafilters in the rational perfect set model` y `Another remark on connexivity and set theory` se excluyeron por criterio conservador: son trabajos de lógica/set theory, pero no muestran aporte claro de Ciencias de la Computación.
+- `The mode of computing` se excluyó por ser un ensayo conceptual sin aporte técnico suficientemente claro.
+
+## Formato del archivo final
+- Engineering Village exportó archivos con encabezados distintos: 24, 30 y 32 columnas.
+- Para no perder metadatos, se usó la unión de columnas originales de Engineering Village, con diseño final de 33 columnas.
+- No se renombraron columnas.
+- No se agregaron columnas de clasificación.
+- No se eliminaron columnas originales presentes en la unión.
+- No se convirtió al modelo canónico.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, términos largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de la deduplicación.
+
+Detalle de encabezados recibidos:
+- Engineering_Village_abstract_5-17-2026_232643130.csv: 30 columnas
+- Engineering_Village_abstract_5-17-2026_232648551.csv: 32 columnas
+- Engineering_Village_abstract_5-17-2026_232652482.csv: 30 columnas
+- Engineering_Village_abstract_5-17-2026_232656350.csv: 32 columnas
+- Engineering_Village_abstract_5-17-2026_2327148.csv: 24 columnas
+- Engineering_Village_abstract_5-17-2026_23263725.csv: 32 columnas
+- Engineering_Village_abstract_5-17-2026_23275663.csv: 32 columnas
+
+Columnas del CSV final:
+- Title, Author, Author affiliation, Source, Sponsor, Publisher/Repository, Volume and Issue, Pages, Issue date, Monograph title, Publication year, ISSN, E-ISSN, ISBN13, DOI, Article number, Conference name, Conference date, Conference location, Abstract, Number of references, Main Heading, Controlled/Subject terms, Uncontrolled terms, Classification code, IPC code, Treatment, Funding details, Funding text, Open Access type(s), Database, Copyright, Data Provider
+
+## Duplicados detectados
+Se eliminaron 34 duplicados. Principales duplicados:
+
+- `Concurrent Wait-Free Graph Snapshots Using Multi-versioning` — 4 apariciones; DOI: 10.1007/978-3-031-67321-4_2
+- `Overcoming Obstacles with a Home Walking Robot` — 3 apariciones; DOI: 10.1007/978-3-031-71360-6_32
+- `Agent-Driven BFS Tree in Anonymous Graphs with Applications` — 3 apariciones; DOI: 10.1007/978-3-031-67321-4_4
+- `A speedup theorem for asynchronous computation with applications to consensus and approximate agreement` — 6 apariciones; DOI: 10.1007/s00446-025-00480-0
+- `The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers` — 5 apariciones; DOI: 10.1145/3662158.3662789
+- `A Technique of Distributed Missions Assignment Problem Solving in Heterogeneous Groups of Aerial Rescue Robots` — 3 apariciones; DOI: 10.1007/978-3-031-71360-6_30
+- `Advanced Algorithm Combinations for Safe Human-Robot Collaboration: A Review and Research Proposal` — 3 apariciones; DOI: 10.1016/j.procs.2025.08.018
+- `Static Data Race Detection via Lazy Sequentialization` — 2 apariciones; DOI: 10.1007/978-3-031-67321-4_8
+- `Recursive Estimation Algorithms for AUV Collaborative Navigation in Case of Abnormal Outliers in Measurements` — 3 apariciones; DOI: 10.1007/978-3-031-71360-6_7
+- `Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems` — 4 apariciones; DOI: 10.48550/arXiv.2502.00191
+- `Consistency in Smart Contracts Design` — 3 apariciones; DOI: 10.1134/S0361768825700458
+- `I-ultrafilters in the rational perfect set model` — 2 apariciones; DOI: 10.1017/jsl.2022.81
+- `A Domain Specific Language for Testing Distributed Protocol Implementations` — 2 apariciones; DOI: 10.1007/978-3-031-67321-4_6
+- `A R2 Based Multi-objective Reinforcement Learning Algorithm` — 2 apariciones; DOI: 10.1007/978-3-031-75623-8_22
+- `On the Approximation of the Entire Pareto Front of a Constrained Multi-objective Optimization Problem` — 2 apariciones; DOI: 10.1007/978-981-96-3538-2_7
+- `Color Image Protection via Quantum Encryption and HVS-Based Mini-Block Data Hiding` — 3 apariciones; DOI: 10.1109/ICFSP67350.2025.11353827
+
+## Archivo final generado
+- `ev_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- El lote tiene bastante solapamiento con otros lotes de Engineering Village, especialmente RS, CC, IA y SIAV; conviene deduplicar globalmente por DOI al consolidar todas las áreas.
+- Varios registros sin afiliación UNAM clara son de CS, pero se excluyeron por el requisito institucional.
+- La frontera más delicada fue distinguir graph theory/computación aplicada a potencia, agua, oceanografía o biomedicina contra contribuciones realmente computacionales.
+- Conviene mantener como regla global que set theory o lógica filosófica sólo pasen como CS si hay vínculo claro con computabilidad, verificación, formal languages, temporal logic, model checking o algoritmos.

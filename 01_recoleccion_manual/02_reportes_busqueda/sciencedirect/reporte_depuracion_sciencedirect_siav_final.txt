@@ -1,0 +1,98 @@
+# Reporte de depuración y extracción — ScienceDirect SIAV
+
+## Archivos recibidos
+- 1-s2.0-S0010482524000635-main.pdf
+- 1-s2.0-S135044952400553X-main.pdf
+- 1-s2.0-S0142061525005848-main.pdf
+- 1-s2.0-S1746809425008596-main.pdf
+- 1-s2.0-S2405844024026768-main.pdf
+- 1-s2.0-S2405896324002969-main.pdf
+- 1-s2.0-S2666521225000146-main.pdf
+
+## Objetivo
+Depurar PDFs descargados desde ScienceDirect para el lote de Señales, Imágenes y Ambientes Virtuales, conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación y convertir los registros aceptados al modelo canónico, ya que ScienceDirect no entregó CSV estructurado.
+
+## Alcance de esta fase
+- Se revisaron PDFs, no archivos CSV estructurados.
+- Se convirtió al modelo canónico únicamente lo aceptado.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de SIAV.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM mexicana clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, metadatos de primera página, DOI, fecha de publicación/disponibilidad y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y título.
+
+## Resultados cuantitativos
+- Total de cargas PDF recibidas: 7
+- Artículos únicos después de deduplicación: 7
+- Registros duplicados eliminados: 0
+- Registros excluidos por estar fuera de periodo: 2
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 0
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 5
+
+## Registros aceptados
+Se conservaron artículos de:
+
+- visión por computadora, segmentación de imágenes y deep learning para imágenes médicas;
+- machine learning/deep learning aplicado a termografía, señales y reconocimiento de emociones;
+- clasificación multietiqueta de eventos en señales de sistemas eléctricos mediante CNN y análisis espectral;
+- detección y localización de fallas/ciberataques con deep learning;
+- interpretabilidad y evaluación de CNN en clasificación de imágenes médicas.
+
+Registros aceptados:
+
+- `Emotion detection based on infrared thermography: A review of machine learning and deep learning algorithms`
+- `Real-time multi-label event categorization in the Brazilian interconnected power system`
+- `Advanced Dual-Branch U-Net Decoder for Precise and Robust Surgical Instrument and Organ Segmentation`
+- `An integrated monitoring system based on deep learning tools for industrial process`
+- `Improving CNN interpretability and evaluation via alternating training and regularization in chest CT scans`
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Improved predictive diagnosis of diabetic macular edema based on hybrid models: An observational study`: claramente computacional por CNN, imágenes OCT/fundus y señales ERG, pero se excluyó porque el PDF indica `Available online 11 January 2024`, fuera del periodo obligatorio.
+- `Feature-based 3D+t descriptors of hyperactivated human sperm beat patterns`: claramente computacional por adquisición, segmentación, tracking y descriptores 3D+t, pero se excluyó porque el PDF indica `Available online 23 February 2024`, fuera del periodo obligatorio.
+
+## Principales falsos positivos detectados
+En este lote no se detectaron falsos positivos temáticos aceptados por error. Los dos registros no incluidos fueron excluidos por periodo, no por falta de pertenencia a Ciencias de la Computación.
+
+Riesgos revisados durante la depuración:
+
+- artículos biomédicos con uso intensivo de imágenes/señales y modelos de aprendizaje profundo;
+- artículos de potencia o procesos industriales donde el aporte podría parecer de dominio aplicado;
+- artículos con fechas de enero/febrero de 2024 que sí eran computacionales pero quedaron fuera por la regla temporal obligatoria.
+
+## Decisiones importantes
+- Se aceptó `Emotion detection based on infrared thermography...` aunque es un artículo de revisión, porque el foco central es el análisis de métodos de machine learning y deep learning para detección automática de emociones con imágenes termográficas.
+- Se aceptó `Real-time multi-label event categorization...` aunque el dominio aplicado es sistemas eléctricos, porque el aporte principal es una metodología computacional de clasificación multietiqueta con CNN, análisis espectral DWT y datos reales de PMU.
+- Se aceptó `An integrated monitoring system...` aunque no es estrictamente SIAV, porque el aporte central es un sistema de monitoreo con deep learning para detección/localización de fallas y ciberataques.
+- Se excluyeron dos trabajos claramente CS por fecha: enero y febrero de 2024 están fuera del periodo obligatorio.
+- No se deduplicó contra otros lotes o áreas de ScienceDirect; esa deduplicación global debe hacerse al consolidar todo el corpus.
+
+## Formato del archivo final
+- ScienceDirect no entregó CSV estructurado; la extracción se hizo desde PDFs.
+- El archivo final se generó en modelo canónico de 14 columnas.
+- Columnas usadas: `indice`, `Titulo`, `Año`, `Autor_norm`, `Afiliacion1`, `Afiliacion2`, `ISBN`, `ISSN`, `Doi`, `URL`, `Area`, `Subarea`, `Keywords`, `Abstract`.
+- `Area` se llenó como `SIAV` por tratarse del lote de búsqueda, no como clasificación final.
+- `Subarea` se dejó vacía.
+- `ISBN` se dejó como `N/D`.
+- `Afiliacion1` contiene la relación autor-afiliación.
+- `Afiliacion2` se dejó vacía.
+- El CSV está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `sciencedirect_siav_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Dos artículos computacionales quedaron fuera únicamente por enero/febrero de 2024.
+- Conviene deduplicar globalmente contra ScienceDirect ISBD, CC, RS y TC: algunos títulos o autores ya aparecen en otros lotes.
+- La decisión más revisable es conservar el artículo de clasificación multietiqueta de eventos en sistemas eléctricos; se mantuvo porque el aporte principal es clasificación computacional de señales en tiempo real.
+- Para ScienceDirect se sigue usando modelo canónico porque sólo se recibieron PDFs, no exportaciones CSV/Excel.

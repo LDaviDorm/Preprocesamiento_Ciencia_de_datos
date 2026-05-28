@@ -1,0 +1,125 @@
+# Reporte de depuración — IEEE IA
+
+## Archivos recibidos
+- ieee_ia_q1_general_ai_raw_2024-03_2025-12.csv
+- ieee_ia_q2_machine_deep_learning_llm_raw_2024-03_2025-12.csv
+- ieee_ia_q3_nlp_computational_linguistics_raw_2024-03_2025-12.csv
+- ieee_ia_q4_agents_knowledge_reasoning_raw_2024-03_2025-12.csv
+- ieee_ia_q5_computational_intelligence_evolutionary_raw_2024-03_2025-12.csv
+- ieee_ia_q6_robotics_planning_intelligent_interfaces_raw_2024-03_2025-12.csv
+- ieee_ia_q7a_catalog_seed_authors_1_raw_2024-03_2025-12.csv
+- ieee_ia_q7b_catalog_seed_authors_2_raw_2024-03_2025-12.csv
+- ieee_ia_q8_rescue_hybrid_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde IEEE para el lote inicial IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de IEEE.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, author keywords, IEEE terms, publicación, fechas y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, si no había DOI, por título normalizado + año + primer autor. En duplicados se conservó la fila con más metadatos completos.
+
+Nota sobre fechas IEEE: los archivos traen `Issue Date`, `Meeting Date`, `Online Date` y `Date Added To Xplore`. Para el periodo se usó como referencia principal `Issue Date` o `Meeting Date` cuando permitían verificar mes. `Online Date` y `Date Added To Xplore` se trataron como fechas de publicación en línea o indexación, no como criterio principal cuando el congreso/artículo correspondía claramente a 2024–2025. Se conservaron registros agregados a IEEE Xplore en 2026 cuando el congreso o publicación correspondía a 2025. Se excluyeron registros de enero de 2024 cuando el mes era verificable.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 256
+- Registros duplicados eliminados: 170
+- Registros excluidos por estar fuera de periodo: 2
+- Registros excluidos por no tener afiliación UNAM clara: 3
+- Registros excluidos por no ser Ciencias de la Computación: 37
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 44
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- privacidad, seguridad, cifrado homomórfico, protección de información y detección de ataques DoS/DDoS;
+- aprendizaje automático, deep learning, domain adaptation, redes neuronales, visión por computadora y modelos multimodales cuando el aporte computacional fue central;
+- procesamiento de imágenes biomédicas, segmentación, reconstrucción, mejoramiento de imagen, video médico y análisis de señales cuando el método computacional fue el objeto principal;
+- optimización evolutiva, multiobjetivo, teoría de información, privacidad diferencial, divergencias, cadenas de Markov y memoria asociativa;
+- robótica, interacción humano-robot, robots móviles, plataformas de manipulación con visión, path planning/reachability y sistemas IoT;
+- NLP/LLM y generación automática de código;
+- XR, interfaces 3D, atlas inmersivo y chatbot cuando el sistema computacional/interfaz era el aporte central.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+- `Modeling the Impact of Public Transportation and Mitigation Strategies in COVID-19 Spread in Mexico City`: modelado epidemiológico/transporte; aporte principal de salud pública y movilidad urbana.
+- `Entangled Two-Photon Spectroscopy Assisted by Machine Learning`: ML aplicado a espectroscopía/física óptica.
+- `Passive Fault-Tolerant Control via Sliding-Mode-Based Lyapunov Redesign`: control automático; no aporte CS claro.
+- `Early Predictive Modeling of Engineering Student Attrition: An Ai-Driven Machine Learning Approach`: predicción educativa; IA como herramienta de dominio.
+- `Outlet Pressure Regulation in a High-Viscosity Two-Phase Flow Horizontal Pipeline Using Inverse ANN and PSO`: control de flujo/tuberías; IA como herramienta de ingeniería.
+- `Automatic Classification of Synthetic Jovian Radio Emissions Using Spectrogram Analysis and Machine Learning`: clasificación astronómica; dominio de radioastronomía.
+- `Machine learning application for prediction of peptides with antiarboviral therapeutic potential`: predicción farmacológica/biomédica; ML auxiliar.
+- `Calibration of Friction and Roughness in an Urban Water Distribution Network Using an LSTM Neural Network-Based Framework`: hidráulica/redes de agua; LSTM como herramienta.
+- `Fault diagnosis in a HVAC monophase transmission line`: diagnóstico de línea eléctrica; atención lineal aplicada al dominio.
+- `Automatic Detection of Dynamic Wind Conditions in Mexican California: A Machine Learning-Driven Advancement in Wind Management`: gestión eólica/ambiental; ML aplicado.
+- `Network Based Machine Learning Description of the Antidepressive ADR Landscape`: farmacovigilancia/medicina; análisis ML de dominio.
+- `The Economic Value of Words: an Evaluation of News for Economic Analysis`: NLP usado para análisis económico; aporte principal económico.
+- `Machine Learning for Arrhythmia Detection: Integrating ECG Biomarkers for Improved Diagnostic Performance`: diagnóstico clínico con ML estándar.
+- `Artificial Intelligence-Based System for the Diagnosis of Hepatic Steatosis`: diagnóstico médico/fotónico; clasificación auxiliar.
+- `Framework for Training and Deployment Machine Learning Methods in Real-Time Simulator: Short-Term Kinetic Energy Forecasting in Power Systems`: pronóstico en sistemas eléctricos; dominio energético.
+- `DNI Nowcasting Applying a Differential Approach Method Into Sky Camera Images`: nowcasting solar/energía; visión como herramienta.
+- `Optimization of Deep Learning Architectures for Accurate Prediction of Protein-Ligand Binding in Drug Discovery`: review de DL en química/fármacos; dominio principal drug discovery.
+- `Students’ Collaborative Learning through Programming Computational Intelligence Algorithms: A Mixed Methods Approach Applied to a Case Study on Energy and Buildings`: estudio educativo sobre enseñanza de CI.
+- `Cloud Computing Integration for Leak Diagnosis Using Meta-Heuristic Methods for Water Distribution Networks`: diagnóstico hidráulico; cloud/metaheurísticas como soporte.
+- `Brain Connectivity Hypergraphs`: hipergrafos aplicados a neurociencia; aporte principal biomédico/neurocientífico.
+
+
+También se excluyeron por institución o periodo:
+- `Keep it Simple: Understanding Natural Language Commands for General-Purpose Service Robots`: fuera del periodo obligatorio por fecha verificable de enero de 2024.
+- `Fast Coupled Thermoelectric and Magnetic Model to Simulate the Transient Behavior of Inductive and Resistive Superconducting Fault-Current Limiters`: fuera del periodo obligatorio por fecha verificable de enero de 2024.
+- `Practical Fiber Dispersion-Induced Limitations for 1.6 Tbps (4× 400 Gbps/$\lambda$) O-Band IM/DD Transmission Systems Over 2, 10, 20 and 40 km`: sin afiliación UNAM mexicana clara.
+- `A Guided-Ensembling Approach for Cell Counting in Fluorescence Microscopy Images`: sin afiliación UNAM mexicana clara.
+- `Experimental Modeling of a Buck Converter Using Genetic Algorithms in Python`: sin afiliación UNAM mexicana clara.
+
+## Principales falsos positivos detectados
+- Artículos de salud, medicina o biomedicina que sólo aplican ML/IA para diagnóstico o predicción clínica sin contribución computacional clara.
+- Artículos de química, farmacología y drug discovery que usan deep learning o modelos predictivos como herramienta de dominio.
+- Artículos de energía, sistemas eléctricos, transformadores, calidad de potencia, eólica y power grids donde el aporte principal es de ingeniería eléctrica.
+- Artículos de control automático, mecánica, fluidos, robótica médica de dispositivo o instrumentación donde el método computacional no fue el foco principal.
+- Artículos de astronomía, óptica, espectroscopía, oceanografía, hidrología y geociencias con ML, simulación o procesamiento de señales como apoyo de dominio.
+- Estudios educativos, urbanos, sociales o económicos sobre uso de IA, datos o NLP sin aporte técnico de Ciencias de la Computación.
+- Falsos positivos institucionales por acrónimos parecidos a UNAM o por instituciones no mexicanas, especialmente `UNaM` de Argentina y `National Nanotechnology Research Center (UNAM)` de Turquía.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `artificial intelligence`, `machine learning`, `deep learning`, `algorithm`, `model`, `data analysis`, `simulation`, `Python`, `system` o `software`.
+- Se aceptaron registros aplicados cuando el objeto central era un método, arquitectura, sistema, framework, interfaz, protocolo, pipeline, algoritmo o técnica computacional.
+- Se conservaron registros no estrictamente de IA cuando pertenecían claramente a Ciencias de la Computación, por ejemplo seguridad, privacidad, optimización, teoría de información, lógica, IoT, robótica, interfaces, XR, HCI, visión e imágenes.
+- Se excluyeron registros de ML aplicado en medicina, energía, química, geofísica, astronomía, educación, economía y ciencias sociales cuando el aporte principal era de la disciplina de aplicación.
+- En IEEE se aceptaron registros agregados a Xplore en 2026 si el `Issue Date` o `Meeting Date` correspondía al periodo solicitado de 2025.
+- Se conservaron casos de path planning/reachability para gliders cuando la planificación computacional y el sistema de decisión eran parte central del aporte; se excluyeron casos oceanográficos/neurocientíficos cuando el método computacional parecía auxiliar al dominio.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de IEEE: 28 columnas.
+- Los nueve archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de la deduplicación.
+
+## Archivo final generado
+
+- `ieee_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- IEEE trae varias fechas; para este lote se usó `Issue Date`/`Meeting Date` como criterio principal y `Date Added To Xplore` como fecha de indexación.
+- Hay registros publicados o agregados a Xplore en 2026, pero se conservaron cuando el congreso o publicación correspondía a 2025.
+- Se detectaron falsos positivos institucionales por `UNaM` Argentina y `National Nanotechnology Research Center (UNAM)` de Turquía.
+- El filtro fue estricto contra IA/ML aplicado en dominios externos; esto reduce falsos positivos, aunque puede dejar fuera trabajos aplicados con bajo aporte computacional explícito.
+- Conviene mantener una regla global para artículos biomédicos y energéticos: aceptarlos sólo cuando presenten método, arquitectura, sistema o pipeline computacional central, no sólo resultados de diagnóstico, control o predicción de dominio.

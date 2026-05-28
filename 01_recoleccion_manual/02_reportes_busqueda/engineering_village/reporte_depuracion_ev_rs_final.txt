@@ -1,0 +1,120 @@
+# Reporte de depuración — Engineering Village RS
+
+## Archivos recibidos
+- Engineering_Village_abstract_5-17-2026_232115857.csv (22 registros, 32 columnas)
+- Engineering_Village_abstract_5-17-2026_232120389.csv (10 registros, 32 columnas)
+- Engineering_Village_abstract_5-17-2026_232125265.csv (15 registros, 28 columnas)
+- Engineering_Village_abstract_5-17-2026_232129535.csv (22 registros, 33 columnas)
+- Engineering_Village_abstract_5-17-2026_232133388.csv (5 registros, 29 columnas)
+- Engineering_Village_abstract_5-17-2026_232138729.csv (22 registros, 32 columnas)
+
+## Objetivo
+Depurar registros descargados desde Engineering Village para el lote inicial RS — Redes y Seguridad en Cómputo y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de Engineering Village sin convertir al modelo canónico.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad en Cómputo.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en `Author affiliation`.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de `Title`, `Abstract`, `Controlled/Subject terms`, `Uncontrolled terms`, `Main Heading`, `Source`, `DOI`, fechas y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no hubo DOI, por título normalizado + año + primer autor.
+
+Notas temporales: varios registros de Engineering Village no tenían `Publication year`, pero sí `Issue date` o `Conference date`. Cuando sólo había año 2024/2025 sin mes, se conservó el registro. Cuando `Issue date` o `Conference date` permitían verificar mes, se aplicó estrictamente el periodo marzo 2024–diciembre 2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 96
+- Artículos únicos después de deduplicación: 46
+- Registros duplicados eliminados: 50
+- Registros excluidos por estar fuera de periodo: 1
+- Registros excluidos por no tener afiliación UNAM clara: 14
+- Registros excluidos por no ser claramente Ciencias de la Computación: 11
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 20
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- IoT, sistemas embebidos, sensores, interfaces web para robótica e interacción humano-robot;
+- seguridad, privacidad, criptografía, cifrado homomórfico, smart contracts, OpenPGP, watermarking, esteganografía y protección de imágenes/datos;
+- redes, protocolos MAC, sistemas distribuidos, verificación en tiempo de ejecución, consenso, memoria compartida y estructuras de datos concurrentes;
+- optimización evolutiva/multiobjetivo, aprendizaje por refuerzo multiobjetivo y teoría/información aplicada a privacidad/ML;
+- HPC/supercómputo y flujos computacionales intensivos cuando la arquitectura o workflow computacional fue el aporte principal.
+
+## Registros dudosos
+Registros dudosos o relevantes que NO fueron incluidos:
+
+- `Digital governance in Latin America: A comprehensive analysis and future perspectives`: gobierno digital/política pública; sin contribución técnica CS.
+- `Optimising large-scale solar-based distributed energy generation systems in high-density urban areas: An integrated approach using geospatial and techno-economic modelling`: energía solar/modelado geoespacial-tecnoeconómico; no CS.
+- `Synthesis of flexible and sub-microstructured gold thin films with honeycomb cavities`: materiales/fotónica; análisis de SEM/AFM/óptica sin aporte CS principal.
+- `Resilience-Oriented Design of Radial Microgrids Under Extreme Wind Conditions`: diseño de microredes/sistemas eléctricos; resiliencia energética, no CS.
+- `A Comparative Analysis of Advanced Car Parking Automation:PLC-Based Versus AI-Controlled Systems`: automatización/mecatrónica urbana; PLC/IA como implementación aplicada.
+- `Introducing fine grained energy consumption variables into a public passenger transport simulation in SUMO`: simulación de transporte/energía y apoyo a política pública; SUMO/Python como herramienta de dominio.
+- `The Role of Blue Carbon in Reversing Mangrove Degradation Trends in Mexico`: ecología/manglares/carbono azul; no CS.
+- `Anticipating synchronization in electrochemical systems`: dinámica no lineal/electroquímica; simulación numérica como apoyo de física/química.
+- `Neuron configuration enhances the synchronization dynamics in ring networks with heterogeneous firing patterns`: modelado de dinámica neuronal/neurofisiología; no CS.
+- `Bessel and cosine filtering approaches for electromechanical modes identification`: identificación de modos en sistemas eléctricos; procesamiento de señales orientado a potencia.
+- `Results and plans to apply interferometry to air shower observations at the Pierre Auger Observatory`: física/observatorio de rayos cósmicos; reconstrucción/interferometría de dominio.
+- `Q-COSMIC: Quantum Software Metrics Based on COSMIC (ISO/IEC19761)`: fuera del periodo obligatorio; `Issue date` indica February 13, 2024.
+- `Challenger: Blockchain-based Massively Multiplayer Online Game Architecture`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Towards Stronger Blockchains: Security Against Front-Running Attacks`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Some New Results With k -Set Agreement`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `A Domain Specific Language for Testing Distributed Protocol Implementations`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Fish Image Classification Based on MobileNetV2 with Transfer Learning Technique for Robotic Application in Aquaculture`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Sharding in Permissionless Systems in Presence of an Adaptive Adversary`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Concurrent Wait-Free Graph Snapshots Using Multi-versioning`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Algebraic Computations in Anonymous VANET`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Dynamic Resource Allocation for 5G Device-to-Device Communication Based on Expected SARSA`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `BeRGeR: Byzantine-Robust Geometric Routing`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Enhancing Cost and Latency Efficiency Through Service Placement in Containerized Fog-Cloud Computing Environments`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Static Data Race Detection via Lazy Sequentialization`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Short Paper: An Efficient Framework for Supporting Nested Transaction in STMs`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+- `Towards Generating a Dataset for Failure Prediction in Microservices Applications`: Engineering Village no reportó afiliación UNAM clara en `Author affiliation`.
+
+## Principales falsos positivos detectados
+- Artículos de energía, microredes, potencia y transporte donde `network`, `security`, `AI`, `simulation` o `optimization` eran herramientas de ingeniería de dominio.
+- Artículos de física, electroquímica, neurociencia, materiales y astronomía que usaban modelado, interferometría, señales o simulación sin aporte principal de Ciencias de la Computación.
+- Estudios de gobierno digital o política pública que contienen vocabulario tecnológico, pero no presentan método, sistema, protocolo o algoritmo computacional.
+- Registros claramente de CS recuperados por las queries, pero sin afiliación UNAM clara en `Author affiliation`.
+- Registros fuera de periodo aunque fueran claramente de Ciencias de la Computación.
+
+## Decisiones importantes
+- Se aceptaron registros no estrictamente RS cuando sí eran claramente de Ciencias de la Computación, por ejemplo optimización multiobjetivo, aprendizaje por refuerzo, teoría/información, cómputo distribuido, estructuras de datos concurrentes y HPC.
+- Se conservó `Self-Tuning Model for Energy-Context Optimization in Perpetual Sensor Nodes Within IoT-Integrated Hydroponic Systems` porque el aporte central es la optimización de operación de nodos embebidos/IoT energéticamente restringidos, no sólo el cultivo hidropónico.
+- Se conservó `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing...` porque el aporte descrito se centra en arquitectura HPC/GPU/IA y flujo computacional de procesamiento, aunque el caso de uso sea astronómico.
+- Se excluyó `Q-COSMIC: Quantum Software Metrics Based on COSMIC (ISO/IEC19761)` aunque es claramente CS, porque `Issue date` indica February 13, 2024, fuera del periodo obligatorio.
+- Se excluyó `Introducing fine grained energy consumption variables into a public passenger transport simulation in SUMO` de forma conservadora: aunque usa SUMO y Python, el aporte principal se presenta como simulación energética de transporte y apoyo a políticas públicas.
+- Se excluyeron registros sin afiliación UNAM clara aunque fueran claramente de CS, por ejemplo blockchains, sharding, data-race detection, resource allocation, service placement y microservices.
+
+## Formato del archivo final
+- Los archivos no tenían exactamente el mismo diseño de columnas.
+- Engineering_Village_abstract_5-17-2026_232115857.csv: 32 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: Article number.
+- Engineering_Village_abstract_5-17-2026_232120389.csv: 32 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: Article number.
+- Engineering_Village_abstract_5-17-2026_232125265.csv: 28 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: Monograph title, E-ISSN, Article number, Funding details, Funding text.
+- Engineering_Village_abstract_5-17-2026_232129535.csv: 33 columnas; coincide con el encabezado completo usado como base.
+- Engineering_Village_abstract_5-17-2026_232133388.csv: 29 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: ISSN, Article number, Funding details, Funding text.
+- Engineering_Village_abstract_5-17-2026_232138729.csv: 32 columnas; se integró al diseño unido de 33 columnas dejando vacías las columnas ausentes: Article number.
+- El CSV final conserva la unión de columnas originales de Engineering Village: 33 columnas.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se convirtió al modelo canónico.
+- Las columnas ausentes en algunos archivos se dejaron vacías al integrarlas.
+- Se conservó el orden del encabezado completo de Engineering Village.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, términos largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de la deduplicación.
+
+## Archivo final generado
+- `ev_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Engineering Village no mantuvo encabezados idénticos entre archivos; se armonizó con la unión de columnas originales, sin convertir al modelo canónico.
+- El lote tuvo 50 duplicados eliminados sobre 96 registros recibidos.
+- Conviene mantener como regla global que artículos de sistemas eléctricos, energía, transporte o instrumentación no se acepten sólo por usar `network`, `security`, `AI`, `simulation`, `digital twin`, `filtering` o `optimization`.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO y los demás lotes de Engineering Village, porque varios títulos aceptados ya aparecieron en otros lotes.

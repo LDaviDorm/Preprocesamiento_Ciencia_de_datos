@@ -1,0 +1,534 @@
+REPORTE FINAL DE SCOPUS — DEPURACIÓN POR ÁREAS
+Proyecto bibliográfico/académico — Ciencias de la Computación UNAM
+Periodo de búsqueda: marzo de 2024 a diciembre de 2025
+Fuente: Scopus
+
+======================================================================
+1. RESUMEN EJECUTIVO
+======================================================================
+
+Se completó la fase de búsqueda, descarga y depuración inicial en Scopus para las seis áreas del proyecto:
+
+1. ISBD — Ingeniería de Software y Bases de Datos
+2. CC — Computación Científica
+3. IA — Inteligencia Artificial
+4. RS — Redes y Seguridad en Cómputo
+5. TC — Teoría de la Computación
+6. SIAV/SIAAV — Señales, Imágenes y Ambientes Virtuales
+
+La fase realizada NO convirtió los registros al modelo canónico, NO asignó áreas finales y NO asignó subáreas finales. El objetivo fue conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el formato original de columnas exportado desde Scopus.
+
+Resultado acumulado de Scopus:
+
+- Total raw descargado en Scopus: 3293 registros
+- Duplicados eliminados dentro de cada lote: 1318
+- Registros únicos después de deduplicación por lote: 1975
+- Registros aceptados como Ciencias de la Computación: 561
+- Registros excluidos por no ser Ciencias de la Computación: 1371
+- Registros excluidos por afiliación UNAM no clara: 43
+- Registros excluidos por fuera de periodo: 0
+- Registros excluidos por metadatos insuficientes: 0
+
+Indicadores acumulados:
+
+- Tasa de duplicación acumulada por lote: 40.0%
+- Tasa de aceptación sobre registros raw: 17.0%
+- Tasa de aceptación sobre registros únicos por lote: 28.4%
+- Tasa de rechazo por no ser CS sobre registros únicos por lote: 69.4%
+- Tasa de rechazo por afiliación UNAM no clara sobre registros únicos por lote: 2.2%
+
+IMPORTANTE:
+Este acumulado todavía NO representa una deduplicación global entre áreas de Scopus. La deduplicación realizada hasta ahora fue interna por lote/área. Es probable que algunos artículos aceptados se repitan entre áreas, especialmente en IA, visión, señales, seguridad, verificación formal, sistemas distribuidos, optimización, HCI, cómputo científico y software científico.
+
+======================================================================
+2. TABLA CONSOLIDADA POR ÁREA
+======================================================================
+
+Área inicial de búsqueda | Raw recibidos | Duplicados eliminados | Únicos por lote | Excluidos afiliación | Excluidos no CS | Aceptados CS
+------------------------ | ------------: | --------------------: | --------------: | -------------------: | -------------: | -----------:
+ISBD                     |           218 |                    96 |             122 |                    1 |             68 |           53
+CC                       |           175 |                    43 |             132 |                    4 |             78 |           50
+IA                       |          1356 |                   655 |             701 |                   10 |            508 |          183
+RS                       |           308 |                   141 |             167 |                    2 |             88 |           77
+TC                       |           195 |                   102 |              93 |                    1 |             27 |           65
+SIAV/SIAAV               |          1041 |                   281 |             760 |                   25 |            602 |          133
+TOTAL                    |          3293 |                  1318 |            1975 |                   43 |           1371 |          561
+
+======================================================================
+3. ARCHIVOS FINALES GENERADOS POR LOTE
+======================================================================
+
+ISBD:
+- scopus_isbd_depurado_cs_final_2024-03_2025-12.csv
+
+CC:
+- scopus_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+IA:
+- scopus_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+RS:
+- scopus_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+TC:
+- scopus_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+SIAV/SIAAV:
+- scopus_siaav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Nota de nomenclatura:
+El lote de Señales, Imágenes y Ambientes Virtuales aparece como `siaav` en el nombre del archivo final, aunque en el control general del proyecto se ha usado `SIAV`. Se recomienda conservar el nombre generado para trazabilidad y documentar que `SIAAV = SIAV`.
+
+Formato de los archivos finales:
+- Se conservó el formato original de Scopus.
+- En general, los reportes indican 27 columnas.
+- No se renombraron encabezados.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- ISBD fue escrito en UTF-8 con comillas CSV estándar.
+- CC, IA, RS, TC y SIAV/SIAAV fueron escritos en UTF-8 con BOM para facilitar apertura en Excel con acentos.
+
+======================================================================
+4. CRITERIOS APLICADOS EN LA DEPURACIÓN
+======================================================================
+
+En los seis lotes se aplicaron criterios homogéneos:
+
+Periodo:
+- Marzo de 2024 a diciembre de 2025.
+- Los archivos de Scopus sólo traían `Year`, no fecha completa con mes.
+- Por eso, los registros de 2024 se conservaron cuando no había forma de verificar si eran de enero/febrero o de marzo en adelante.
+- No se detectaron registros fuera de 2024–2025.
+
+Afiliación:
+- Debía existir afiliación UNAM clara en afiliaciones o autores con afiliación.
+- Se aceptaron variantes inequívocas como:
+  - Universidad Nacional Autónoma de México
+  - Universidad Nacional Autonoma de Mexico
+  - National Autonomous University of Mexico
+  - UNAM
+  - U.N.A.M.
+  - IIMAS-UNAM
+  - Univ. Nal. Autónoma de México
+- Se rechazaron acrónimos `UNAM` cuando correspondían a instituciones no mexicanas o no equivalentes a la Universidad Nacional Autónoma de México.
+
+Tema:
+- Se conservó el registro sólo si pertenecía claramente a Ciencias de la Computación.
+- Se revisaron título, keywords, abstract y metadatos disponibles.
+- No se aceptó un artículo sólo por mencionar términos como software, database, algorithm, machine learning, model, simulation, network, image, signal, virtual reality, blockchain, IoT o digital.
+- Se exigió que el aporte principal fuera computacional.
+
+Deduplicación:
+- Primero por DOI.
+- Si no había DOI, por título normalizado + año + primer autor.
+- También se eliminaron duplicados evidentes con DOI distinto pero título equivalente cuando el reporte lo detectó.
+
+======================================================================
+5. RESULTADOS POR ÁREA
+======================================================================
+
+---------------------------------------------------------------------
+5.1 ISBD — Ingeniería de Software y Bases de Datos
+---------------------------------------------------------------------
+
+Resultados cuantitativos:
+- Raw recibidos: 218
+- Duplicados eliminados: 96
+- Registros únicos: 122
+- Excluidos por afiliación UNAM no clara: 1
+- Excluidos por no ser CS: 68
+- Aceptados CS: 53
+
+Tipos de registros aceptados:
+- Ingeniería de software.
+- Arquitectura de software.
+- Medición funcional.
+- Generación automática de código.
+- IA/NLP, LLM/RAG, chatbots y clasificación automática.
+- Optimización evolutiva.
+- Algoritmos de grafos.
+- Memoria asociativa.
+- Concurrencia y cómputo paralelo.
+- HCI, CSCW, interfaces conversacionales, usabilidad, realidad aumentada/virtual y diseño de interfaces.
+- Seguridad, criptografía, esteganografía, watermarking y protocolos seguros.
+- Cómputo científico, simulación computacional, procesamiento de señales/datos e infraestructura de datos cuando el componente computacional era central.
+
+Principales falsos positivos:
+- Recursos científicos de dominio descritos como bases de datos, pero sin aporte DBMS/IR/HCI.
+- Artículos biomédicos con análisis estadístico o minería de datos sin aporte computacional.
+- Artículos de física, geología, química, energía o ecología con simulación/ML como herramienta secundaria.
+- Falso positivo institucional: `UNAM-National Nanotechnology Research Center`, Bilkent University, Turquía.
+
+Archivo final:
+- scopus_isbd_depurado_cs_final_2024-03_2025-12.csv
+
+---------------------------------------------------------------------
+5.2 CC — Computación Científica
+---------------------------------------------------------------------
+
+Resultados cuantitativos:
+- Raw recibidos: 175
+- Duplicados eliminados: 43
+- Registros únicos: 132
+- Excluidos por afiliación UNAM no clara: 4
+- Excluidos por no ser CS: 78
+- Aceptados CS: 50
+
+Tipos de registros aceptados:
+- Métodos numéricos.
+- Integración temporal.
+- Elementos finitos.
+- Diferencias finitas.
+- Solvers y esquemas de discretización.
+- Cómputo científico.
+- Simuladores.
+- Co-simulación.
+- Model reduction.
+- Inversión numérica.
+- Software científico.
+- HPC, GPU, CUDA y supercómputo.
+- IA metodológica.
+- Redes neuronales informadas por física.
+- Segmentación semántica.
+- Algoritmos evolutivos.
+- Optimización.
+- Interpolación.
+- Sistemas distribuidos, concurrencia y consenso.
+- Herramientas Python para modelado científico.
+
+Principales falsos positivos:
+- Simulación rutinaria de dominio sin método computacional nuevo.
+- Simulaciones o modelos usados como herramientas secundarias de ingeniería, biología, salud, energía, geociencias o química.
+- Artículos con FEM, CFD, Monte Carlo o modelos matemáticos donde la contribución principal era de otra disciplina.
+
+Regla importante para CC:
+Aceptar sólo cuando el aporte principal sea método, solver, formulación numérica, arquitectura, algoritmo, técnica computacional, herramienta/código científico o modelo de cómputo distribuido.
+
+Archivo final:
+- scopus_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+---------------------------------------------------------------------
+5.3 IA — Inteligencia Artificial
+---------------------------------------------------------------------
+
+Resultados cuantitativos:
+- Raw recibidos: 1356
+- Duplicados eliminados: 655
+- Registros únicos: 701
+- Excluidos por afiliación UNAM no clara: 10
+- Excluidos por no ser CS: 508
+- Aceptados CS: 183
+
+Tipos de registros aceptados:
+- NLP.
+- LLM.
+- Lingüística computacional.
+- Extracción de información.
+- Detección de subjetividad.
+- Autoría.
+- Fact-checking.
+- Análisis de sentimiento.
+- Recursos/corpus lingüísticos.
+- Machine learning.
+- Deep learning.
+- Redes neuronales.
+- Aprendizaje por refuerzo.
+- Adaptación de dominio.
+- Privacidad en ML.
+- Modelos generativos.
+- Evaluación de LLM.
+- Visión por computadora.
+- Segmentación y clasificación de imágenes.
+- Imágenes médicas, imágenes 3D y reconstrucción.
+- Señales EEG/ECG/EMG, audio y termografía.
+- Robótica, planeación de tareas e interacción humano-robot.
+- Interfaces conversacionales, HCI, accesibilidad, realidad virtual y háptica.
+- Seguridad, privacidad, cifrado homomórfico, verificación formal, IoT y redes/sensado inalámbrico.
+- Teoría, grafos, optimización evolutiva, algoritmos, cómputo distribuido, quantum computing y cómputo científico/numerical cuando el aporte metodológico fue claro.
+
+Principales falsos positivos:
+- ML aplicado a salud, energía, biología, ingeniería o ciencias sociales sin aporte metodológico.
+- Modelos predictivos estándar usados como herramienta.
+- Artículos que mencionaban IA, ML, deep learning, algorithm, data science, software, database, model o simulation sin que el aporte principal fuera computacional.
+
+Regla importante para IA:
+Conservar aplicaciones sólo cuando el objeto central sea método, arquitectura, algoritmo, sistema, interfaz, protocolo, framework o técnica computacional.
+
+Archivo final:
+- scopus_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+---------------------------------------------------------------------
+5.4 RS — Redes y Seguridad en Cómputo
+---------------------------------------------------------------------
+
+Resultados cuantitativos:
+- Raw recibidos: 308
+- Duplicados eliminados: 141
+- Registros únicos: 167
+- Excluidos por afiliación UNAM no clara: 2
+- Excluidos por no ser CS: 88
+- Aceptados CS: 77
+
+Tipos de registros aceptados:
+- Protocolos.
+- Tráfico.
+- MAC.
+- Neighbor discovery.
+- Redes inalámbricas.
+- Edge/fog computing.
+- IoT.
+- WSN.
+- Sistemas embebidos.
+- Ciberseguridad.
+- Criptografía.
+- Privacidad.
+- Cifrado homomórfico.
+- OpenPGP.
+- Blockchain.
+- Smart contracts.
+- Esteganografía.
+- Watermarking.
+- Autenticación.
+- Sistemas distribuidos.
+- Consenso.
+- Memoria compartida.
+- Concurrencia.
+- Estructuras de datos concurrentes.
+- Runtime verification.
+- Algoritmos tolerantes a fallas.
+- Verificación formal.
+- Lógica, modelos híbridos y benchmarks de verificación.
+- ML, optimización evolutiva, privacidad diferencial y procesamiento de señales/imágenes cuando el método computacional fue central.
+- HPC, CUDA, GPU, simulación exacta y software científico cuando el código, algoritmo o arquitectura computacional era el aporte principal.
+
+Principales falsos positivos:
+- Estudios donde network, security, cybersecurity, IoT, blockchain, software, algorithm, ML, model, simulation, data analysis o digital aparecían como apoyo, no como contribución técnica.
+- Estudios jurídicos, políticos o geopolíticos de ciberseguridad sin método, protocolo, sistema o análisis técnico.
+- IoT o sensores usados sólo como instrumentación de agricultura, salud, energía o monitoreo.
+
+Archivo final:
+- scopus_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+---------------------------------------------------------------------
+5.5 TC — Teoría de la Computación
+---------------------------------------------------------------------
+
+Resultados cuantitativos:
+- Raw recibidos: 195
+- Duplicados eliminados: 102
+- Registros únicos: 93
+- Excluidos por afiliación UNAM no clara: 1
+- Excluidos por no ser CS: 27
+- Aceptados CS: 65
+
+Tipos de registros aceptados:
+- Teoría de la computación.
+- Computabilidad distribuida.
+- Consenso.
+- Wait-free computing.
+- Memoria compartida.
+- Modelos asíncronos.
+- Pruebas de imposibilidad.
+- Verificación formal.
+- Runtime verification.
+- TLA+.
+- Model checking.
+- Reachability analysis.
+- Lógica epistémica dinámica.
+- Sistemas híbridos.
+- Algoritmos.
+- Estructuras de datos concurrentes.
+- Weak memory.
+- Work-stealing.
+- Linealizabilidad.
+- Grafos.
+- Combinatoria algorítmica.
+- Geometría computacional.
+- Graph drawing.
+- Matching, guarding y diagramas de Voronoi.
+- Criptografía, seguridad, contratos inteligentes, blockchain y privacidad diferencial.
+- Optimización, algoritmos evolutivos, clustering, quantum annealing y cómputo científico/numerical cuando el aporte computacional fue claro.
+
+Principales falsos positivos:
+- Términos ambiguos como network, consensus, complexity, automata, model, simulation, software o algorithm usados en neurociencia, control, educación, filosofía, geología o biología.
+- Resultados puramente matemáticos sin aporte computacional claro.
+
+Regla importante para TC:
+En grafos/geometría discreta, conservar sólo cuando exista vínculo claro con teoría computacional, geometría computacional, algoritmos, estructuras de datos o problemas clásicos de Ciencias de la Computación.
+
+Archivo final:
+- scopus_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+---------------------------------------------------------------------
+5.6 SIAV/SIAAV — Señales, Imágenes y Ambientes Virtuales
+---------------------------------------------------------------------
+
+Resultados cuantitativos:
+- Raw recibidos: 1041
+- Duplicados eliminados: 281
+- Registros únicos: 760
+- Excluidos por afiliación UNAM no clara: 25
+- Excluidos por no ser CS: 602
+- Aceptados CS: 133
+
+Tipos de registros aceptados:
+- Procesamiento de imágenes.
+- Visión por computadora.
+- Detección de objetos.
+- Segmentación semántica.
+- Reconstrucción 3D.
+- Holografía.
+- Computational imaging.
+- Análisis de imágenes médicas con método computacional central.
+- Deep learning aplicado a imágenes, video y señales.
+- CNN, U-Net, SegFormer, YOLO, modelos híbridos CNN-RNN y domain adaptation.
+- Procesamiento de señales ECG, EMG, EEG, audio, vibración, fasores, fotoacústica y espectrogramas.
+- VR/XR, HCI, interfaces, interacción humano-robot, háptica y plataformas inmersivas.
+- Seguridad de imágenes, watermarking, esteganografía y cifrado de imágenes.
+- Reconocimiento de voz, NLP, grafos/GNN, clustering, privacidad diferencial, sistemas distribuidos y frameworks computacionales.
+
+Principales falsos positivos:
+- Estudios médicos o clínicos donde CT, MRI, PET, EEG, VR o señales funcionaban sólo como instrumentos de diagnóstico, medición o intervención.
+- Biomedicina, biología, geofísica, astronomía, química, energía, materiales o ambiente con imágenes, señales, ML o simulación como herramienta de dominio.
+- Revisiones clínicas o psicológicas sobre realidad virtual sin contribución técnica en VR/HCI/interacción.
+- Usos educativos, geográficos, patrimoniales o sociales de web mapping, AR o visualización sin aporte computacional generalizable.
+
+Reglas importantes para SIAV/SIAAV:
+- Aceptar estudios biomédicos de imágenes/señales sólo cuando el método computacional sea el aporte principal.
+- Excluir revisiones clínicas o estudios donde CT/MRI/PET/EEG/VR sean sólo instrumentos de medición o intervención.
+- Aceptar VR/AR/XR sólo cuando el sistema, interfaz, interacción, usabilidad o entorno computacional sea central.
+- Excluir usos meramente educativos, terapéuticos o sociales de VR/AR/XR sin aporte técnico.
+
+Archivo final:
+- scopus_siaav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+======================================================================
+6. PROBLEMAS GLOBALES DETECTADOS EN SCOPUS
+======================================================================
+
+1. Falta de mes de publicación
+
+Los seis reportes indican que los archivos de Scopus sólo traían `Year`, no fecha completa con mes. Por eso, los registros de 2024 se conservaron cuando no había forma de verificar si eran de enero/febrero o de marzo en adelante. Esta limitación debe pasar al reporte principal porque el periodo real del proyecto es marzo 2024–diciembre 2025.
+
+2. Ausencia de columna `Subject Area`
+
+Varios reportes indican que los archivos exportados no incluyeron `Subject Area`, aunque las queries sí usaron filtros como `SUBJAREA COMP` en varias búsquedas. Esto limita el perfilado posterior y debe considerarse al convertir al modelo canónico.
+
+3. Falsos positivos institucionales por `UNAM`
+
+En varios lotes se detectó que `UNAM` puede referirse a instituciones que no son la Universidad Nacional Autónoma de México, especialmente `UNAM-National Nanotechnology Research Center` asociado a Bilkent University, Turquía. Por eso, aunque las búsquedas incluyan `AFFIL("UNAM")` y `AFFIL("unam")` para mejorar recuperación, la depuración debe verificar que la afiliación corresponda realmente a la UNAM mexicana.
+
+4. Alto solapamiento entre queries
+
+El solapamiento interno por lote fue importante:
+- IA: 655 duplicados eliminados.
+- SIAV/SIAAV: 281 duplicados eliminados.
+- RS: 141 duplicados eliminados.
+- TC: 102 duplicados eliminados.
+- ISBD: 96 duplicados eliminados.
+- CC: 43 duplicados eliminados.
+
+Total de duplicados eliminados dentro de lote: 1318.
+
+Esto confirma que las queries por subárea y rescate recuperan muchos registros repetidos, lo cual es útil para recall, pero exige deduplicación rigurosa.
+
+5. Diferencia entre “uso de herramienta” y “aporte computacional”
+
+La regla de calidad más importante fue no aceptar artículos sólo porque mencionan términos computacionales. Los reportes repiten esta lógica para términos como:
+
+- software
+- database
+- algorithm
+- machine learning
+- model
+- simulation
+- network
+- security
+- image
+- signal
+- virtual reality
+- complexity
+- automata
+- IoT
+- blockchain
+- digital
+
+El artículo se conservó sólo si el aporte principal era método, algoritmo, sistema, arquitectura, protocolo, framework, solver, software científico, interfaz, técnica computacional, procesamiento de señales/imágenes o evaluación computacional central.
+
+======================================================================
+7. REGLAS GLOBALES RECOMENDADAS PARA LA SIGUIENTE FASE
+======================================================================
+
+1. Deduplicación global entre áreas de Scopus
+
+Los 561 registros aceptados son suma por lote, no un total global único. La siguiente fase debe unir los seis CSV finales y deduplicar globalmente por DOI; si no hay DOI, por título normalizado + año + primer autor.
+
+2. Conversión posterior al modelo canónico
+
+La conversión al modelo canónico sigue pendiente. El modelo canónico esperado es:
+
+indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract
+
+3. Asignación final de área y subárea
+
+Los lotes fueron búsquedas iniciales, no clasificación definitiva. Un artículo recuperado por ISBD, CC, IA, RS, TC o SIAV puede pertenecer finalmente a otra área de Ciencias de la Computación.
+
+4. Mantener criterio conservador de Ciencias de la Computación
+
+Se recomienda conservar la regla: no aceptar artículos de otra disciplina que sólo usen software, ML, simulación, bases de datos, imágenes, señales, redes o algoritmos como herramienta secundaria.
+
+5. Verificar afiliación UNAM real
+
+Las variantes `UNAM`, `U.N.A.M.`, `IIMAS-UNAM`, `Universidad Nacional Autónoma de México`, `Universidad Nacional Autonoma de Mexico` y algunas normalizaciones defectuosas pueden aceptarse sólo si la institución es inequívocamente la UNAM mexicana. No contar acrónimos `UNAM` asociados a otras instituciones.
+
+6. Documentar limitación temporal
+
+Dado que Scopus no exportó mes de publicación, los registros 2024 se conservaron cuando no había mes verificable. Esta limitación debe quedar explícita en la bitácora y en el reporte metodológico.
+
+======================================================================
+8. ESTADO FINAL DE SCOPUS
+======================================================================
+
+Fuente: Scopus
+Áreas cubiertas: 6/6
+
+- ISBD: completado
+- CC: completado
+- IA: completado
+- RS: completado
+- TC: completado
+- SIAV/SIAAV: completado
+
+Registros raw procesados: 3293
+Registros aceptados como Ciencias de la Computación por lote: 561
+
+Formato de salida actual:
+- CSV con mismo formato original de Scopus.
+- 27 columnas.
+
+Pendiente:
+- Unión de los seis CSV finales.
+- Deduplicación global entre áreas.
+- Conversión al modelo canónico.
+- Asignación final de área.
+- Asignación final de subárea.
+- Perfilado de calidad del conjunto integrado.
+
+======================================================================
+9. NOTA EJECUTIVA PARA EL CHAT PRINCIPAL
+======================================================================
+
+Scopus quedó completado para las seis áreas del proyecto. Se procesaron 3293 registros raw distribuidos en ISBD, Computación Científica, Inteligencia Artificial, Redes y Seguridad, Teoría de la Computación y Señales/Imágenes/Ambientes Virtuales. Después de deduplicación interna por lote se obtuvieron 1975 registros únicos por área; de ellos, 561 fueron aceptados como claramente pertenecientes a Ciencias de la Computación, 1371 fueron rechazados por no ser CS y 43 por no tener afiliación UNAM clara. No se detectaron registros fuera de 2024–2025 ni casos excluidos por metadatos insuficientes. Los CSV finales conservan el formato original de Scopus con 27 columnas y aún no fueron convertidos al modelo canónico ni clasificados por área/subárea final. La siguiente fase debe unir los seis CSV finales, realizar deduplicación global entre áreas y convertir al modelo canónico del proyecto.
+
+======================================================================
+10. FUENTES INTERNAS USADAS PARA ESTE REPORTE
+======================================================================
+
+- reporte_depuracion_scopus_isbd_final.txt
+- reporte_depuracion_scopus_cc_final.txt
+- reporte_depuracion_scopus_ia_final.txt
+- reporte_depuracion_scopus_rs_final.txt
+- reporte_depuracion_scopus_tc_final.txt
+- reporte_depuracion_scopus_siaav_final.txt
+

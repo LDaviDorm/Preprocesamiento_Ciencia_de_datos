@@ -1,0 +1,117 @@
+# Reporte de depuración — Scopus Redes y Seguridad en Cómputo
+
+## Archivos recibidos
+- scopus_rs_q1_general_comp_raw_2024-03_2025-12.csv
+- scopus_rs_q2_security_cryptography_privacy_raw_2024-03_2025-12.csv
+- scopus_rs_q3_networks_protocols_iot_sdn_raw_2024-03_2025-12.csv
+- scopus_rs_q4_distributed_systems_consensus_verification_raw_2024-03_2025-12.csv
+- scopus_rs_q5_parallel_computing_clusters_mpi_raw_2024-03_2025-12.csv
+- scopus_rs_q6_catalog_seed_authors_comp_raw_2024-03_2025-12.csv
+- scopus_rs_q7_rescue_no_subjarea_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde Scopus para el lote inicial Redes y Seguridad en Cómputo y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Scopus.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor; además se eliminó un duplicado evidente con dos variantes de DOI y el mismo título.
+
+Nota: los archivos recibidos sólo traen `Year`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 308
+- Registros duplicados eliminados: 141
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 2
+- Registros excluidos por no ser Ciencias de la Computación: 88
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 77
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- protocolos, tráfico, MAC, neighbor discovery, redes inalámbricas, edge/fog computing, IoT, WSN y sistemas embebidos cuando el aporte fue de arquitectura, protocolo, optimización o sistema computacional;
+- ciberseguridad, criptografía, privacidad, cifrado homomórfico, OpenPGP, blockchain, smart contracts, esteganografía, watermarking, protección de imágenes y autenticación;
+- sistemas distribuidos, consenso, memoria compartida, cómputo concurrente, estructuras de datos concurrentes, verificación en tiempo de ejecución y algoritmos tolerantes a fallas;
+- verificación formal, lógica, razonamiento automatizado, modelos de sistemas híbridos y herramientas/benchmarks de verificación;
+- aprendizaje automático, optimización evolutiva, aprendizaje por refuerzo, minería de datos, privacidad diferencial y procesamiento de señales/imágenes cuando el método computacional fue central;
+- cómputo científico/HPC, CUDA, GPU, simulación exacta y software científico cuando el código, algoritmo o arquitectura computacional era el aporte principal.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `Design and Simulation of a High-Gain 4 × 1 Microstrip Patch Antenna Array at 2.45 GHz for Wi-Fi 6 and IoT Applications`: diseño de antena/microondas; el aporte principal es hardware/electromagnetismo, no red/protocolo computacional.
+- `Addressing multidimensional highly correlated data for forecasting in precision beekeeping`: modelado predictivo para apicultura; ML/series de tiempo como herramienta de agricultura de precisión.
+- `Technological Digitalization Model for Medium-Sized Pig Farms in Mexico`: digitalización de granjas; enfoque agropecuario/gestión, no contribución técnica de CS.
+- `Applications and methodologies of Internet of Things in warehouses and inventory management: A systematic literature review`: revisión de IoT aplicada a inventarios/almacenes; contribución logística, no técnica de redes.
+- `A State of the Art of Non-fungible Tokens: A Literature Review`: revisión general de NFT con énfasis en fenómeno/aplicaciones; no aporte técnico de blockchain.
+- `Spatial Diversity in Non-Orthogonal Multiplexing Access (NOMA)-based Coherent Optical Transmission under Differential Path Loss`: demostración de transmisión óptica/fotónica; no aporte claro de CS.
+- `Cloud Computing Integration for Leak Diagnosis Using Meta-Heuristic Methods for Water Distribution Networks`: sistema de diagnóstico hidráulico; cloud/metaheurística como apoyo de ingeniería civil/hidráulica.
+- `A Camera-Based Remote Sensor for Physical Therapy in Parkinson’s Disease`: evaluación de OpenPose para terapia física; aplicación biomédica sin método computacional nuevo.
+- `OPTICAM triple-channel astronomical image acquisition control software and external triggering synchronization system`: software de control de instrumento astronómico; software operativo de dominio, no ingeniería de software generalizable.
+- `Spectral Characterization of the Ictal Phase in Epileptic Seizures of Temporal Lobe Using the Wavelet Transform`: análisis biomédico de EEG con wavelets; se consideró señal como herramienta clínica, no aporte CS suficiente.
+- `Unsupervised learning and natural language processing highlight research trends in a superbug`: NLP/topic modeling usado para mapear literatura biomédica; resultado principal de salud pública/microbiología.
+- `A Comparative Analysis of Advanced Car Parking Automation:PLC-Based Versus AI-Controlled Systems`: automatización de estacionamiento como aplicación urbana; análisis comparativo sin contribución computacional clara.
+- `Improving river water quality prediction with hybrid machine learning and temporal analysis`: ML aplicado a calidad del agua; dominio ambiental.
+- `MexSIC, a Data Acquisition Channel for SiPMs`: canal DAQ/ASIC/FPGA para detectores; instrumentación nuclear/electrónica.
+- `IoT smartwatch based on open technologies for the collection of thermal comfort data`: hardware IoT para mediciones de confort térmico; recolección de datos de dominio.
+- `Practical Fiber Dispersion-Induced Limitations for 1.6 Tbps (4× 400 Gbps/λ) O-Band IM/DD Transmission Systems Over 2, 10, 20 and 40 km`: transmisión óptica/fotónica física; no aporte de red computacional.
+- `Ctapipe - Prototype Open Event Reconstruction Pipeline for the Cherenkov Telescope Array`: pipeline de astronomía; software científico de dominio sin aporte CS generalizable claro.
+- `The Internet on Russia’s National Security Agenda: RuNet and Digital Sovereignty; [A internet na agenda de segurança nacional russa: RuNet e a soberania digital]; [Internet en la agenda de seguridad nacional rusa: RuNet y la soberanía digital]`: gobernanza/geopolítica de Internet; no aporte técnico de redes o seguridad.
+
+Registros excluidos por afiliación institucional no clara:
+
+- `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit`: no se encontró afiliación UNAM mexicana clara en las afiliaciones; se trató como falso positivo institucional.
+- `Atomic layer deposition of YSZ electrolytes for solid-state battery development: Beyond lithium`: no se encontró afiliación UNAM mexicana clara en las afiliaciones; se trató como falso positivo institucional.
+
+## Principales falsos positivos detectados
+- Artículos de telecomunicaciones físicas, antenas, microondas, fotónica u óptica que mencionan Wi-Fi, 5G, Ethernet, NOMA, redes u optical networks, pero cuyo aporte principal es hardware o transmisión física, no redes computacionales.
+- Artículos de energía, microgrids, baterías, power systems o smart grids donde `network`, `security`, `vulnerability`, `distributed` o `resilience` se refiere a redes eléctricas o infraestructura energética.
+- Artículos biomédicos o clínicos que usan sensores, EEG, OpenPose, PET/CT, IA o análisis de señales como herramienta de diagnóstico o medición sin aporte computacional suficiente.
+- Artículos de biología, química, materiales, geología, hidrología, ecología o astronomía que sólo usan simulación, bases de datos, ML, clustering, software o pipelines como apoyo de dominio.
+- Estudios de política pública, derecho, relaciones internacionales, administración, educación o sociedad digital que mencionan ciberseguridad, blockchain, IA, Internet o identidad digital, pero sin contribución técnica de CS.
+- Revisiones de literatura o estados del arte sobre IoT, NFT, blockchain o digitalización cuando el aporte principal fue descriptivo o de dominio.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `network`, `security`, `cybersecurity`, `IoT`, `blockchain`, `software`, `algorithm`, `machine learning`, `model`, `simulation`, `data analysis` o `digital`.
+- Se conservaron registros no estrictamente de Redes y Seguridad cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo verificación formal, sistemas distribuidos, estructuras de datos concurrentes, optimización, aprendizaje por refuerzo, privacidad diferencial, procesamiento de imágenes/señales, GPU/CUDA y cómputo científico.
+- Se excluyeron artículos de seguridad como política pública o geopolítica porque no presentaban contribución técnica de seguridad informática.
+- Se conservaron algunos trabajos aplicados de IoT, edge/fog computing, WSN o sistemas embebidos sólo cuando el aporte central fue una arquitectura, modelo de operación, protocolo, middleware, optimización o sistema computacional.
+- Se excluyeron trabajos aplicados donde el componente computacional funcionaba principalmente como herramienta secundaria del dominio, especialmente en salud, agricultura, energía, geociencias, astronomía, óptica, química, biología, educación y ciencias sociales.
+- Se eliminó como duplicado claro una variante de `Cryptographic consensus protocols in Blockchain for the Internet of Things` con DOI distinto pero mismo título; se conservó la fila con más metadatos completos.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Scopus: 27 columnas.
+- Los siete archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de Scopus después de la deduplicación.
+
+## Archivo final generado
+
+- `scopus_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Los archivos de Scopus no traían mes ni columna `Subject Area`; el filtro temporal se aplicó con `Year`, conservando 2024 cuando no había mes verificable.
+- Hubo solapamiento importante entre queries: 141 filas se eliminaron como duplicados.
+- El lote mezcló redes/seguridad técnicas con telecomunicaciones físicas, energía, óptica, política pública y aplicaciones biomédicas; esas fronteras se resolvieron de forma conservadora.
+- Conviene mantener una regla global: aceptar IoT/edge/fog/WSN sólo cuando el aporte sea arquitectura, protocolo, middleware, optimización o sistema computacional; excluir simples dispositivos o plataformas de monitoreo de dominio.
+- Conviene mantener una regla global para ciberseguridad no técnica: estudios jurídicos, políticos o geopolíticos sobre ciberseguridad no deben pasar como Ciencias de la Computación salvo que incluyan método, protocolo, sistema o análisis técnico.

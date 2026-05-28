@@ -1,0 +1,99 @@
+# Reporte de depuración — ACM CC
+
+## Archivos recibidos
+- ACM_CC_canonico.csv
+- reporte_extraccion_ACM_CC.txt
+
+## Objetivo
+Depurar registros provenientes de ACM para el lote de Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo diseño de columnas recibido en el CSV de ACM.
+
+## Alcance de esta fase
+- No se convirtió nuevamente al modelo canónico; el CSV recibido ya venía en formato canónico por la extracción manual previa.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+- Se incorporó al reporte la información relevante del reporte previo de extracción manual de ACM.
+
+## Información incorporada del reporte previo de extracción ACM CC
+- El lote previo se extrajo desde PDFs, BibTeX y EndNote/RIS.
+- El reporte previo indica 7 cargas de PDF, equivalentes a 6 PDFs únicos, porque `Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems.pdf` apareció duplicado por nombre.
+- El reporte previo indica 7 registros en BibTeX, 7 en EndNote/RIS y 0 registros ACM Ref/TXT.
+- El total bruto de extracción fue de 21 registros detectados, de los cuales 15 se eliminaron como duplicados durante la extracción canónica.
+- El CSV canónico previo quedó con 6 artículos únicos, todos con DOI, abstract, keywords y afiliación UNAM clara.
+- Las URLs DOI con proxy institucional fueron normalizadas previamente hacia URL DOI pública.
+- Se normalizaron nombres con escapes BibTeX o acentos, por ejemplo `Castañeda`, `Piña` y `Rodríguez`.
+- Se reportó una variante tipográfica/errata de institución en `Strong Linearizability using Primitives with Consensus Number 2`; se normalizó como `Universidad Nacional Autónoma de México` en la extracción previa.
+- En `The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers`, la afiliación doble de Sergio Rajsbaum se separó en `Afiliacion1` y `Afiliacion2`.
+- El reporte previo señala que `A Culturally-Aware AI Tool for Crowdworkers...` corresponde temáticamente a HCI/CSCW; en esta depuración se conservó porque pertenece claramente a Ciencias de la Computación, aunque no sea Computación Científica estricta.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor.
+
+Nota: el CSV recibido sólo trae `Año`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos en el CSV ACM CC: 6
+- Registros duplicados eliminados en esta depuración: 0
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 0
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 6
+
+Conteo contextual del reporte previo de extracción:
+- Total bruto detectado durante extracción manual: 21
+- Duplicados eliminados durante extracción manual previa: 15
+- Artículos únicos entregados en `ACM_CC_canonico.csv`: 6
+
+## Registros aceptados
+Se conservaron todos los registros del CSV recibido porque todos pertenecen claramente a Ciencias de la Computación:
+
+- `The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers`: computación distribuida teórica, shared memory, wait-freedom y complejidad de espacio.
+- `Asynchronous Fault-Tolerant Language Decidability for Runtime Verification of Distributed Systems`: verificación en tiempo de ejecución, sistemas distribuidos, tolerancia a fallas y propiedades de consistencia.
+- `Strong Linearizability using Primitives with Consensus Number 2`: concurrencia, linealizabilidad fuerte, primitivas de sincronización y wait-freedom.
+- `Solvability Characterization for General Three-Process Tasks`: teoría de computación distribuida, tareas wait-free y caracterización topológica.
+- `A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles`: HCI/CSCW y herramienta de IA/sistema interactivo para crowdworkers; no es CC estricta pero sí CS.
+- `Modular Baskets Queue`: estructura de datos concurrente, cola no bloqueante, linealizabilidad y primitivas atómicas.
+
+En conjunto, se conservaron principalmente artículos de cómputo distribuido, teoría de concurrencia, estructuras de datos concurrentes, verificación de sistemas distribuidos, tareas wait-free, shared memory, linealizabilidad, consenso y HCI/CSCW.
+
+## Registros dudosos
+No hubo registros dudosos excluidos en este lote. El único caso de posible duda temática fue `A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles`, pero se conservó porque su aporte principal es de HCI/CSCW y herramienta/sistema interactivo de IA, por lo que pertenece claramente a Ciencias de la Computación aunque probablemente deba clasificarse en otra área final.
+
+## Principales falsos positivos detectados
+No se detectaron falsos positivos no-CS en el CSV ACM CC recibido. A diferencia de otros lotes, este paquete estuvo compuesto por trabajos claramente computacionales. El único patrón relevante fue la mezcla de áreas internas de CS: algunos registros son de HCI/CSCW o teoría de la computación distribuida más que de Computación Científica estricta.
+
+## Decisiones importantes
+- Se conservaron todos los registros porque cumplen periodo, afiliación UNAM y pertenencia clara a Ciencias de la Computación.
+- No se usó la columna `Area` como criterio final de aceptación; se revisaron título, abstract, keywords y afiliaciones.
+- Se conservó `A Culturally-Aware AI Tool for Crowdworkers...` por ser HCI/CSCW, aunque no sea CC estricta.
+- No se eliminaron posibles solapamientos con lotes anteriores de ACM/ISBD, porque esta fase depura el lote ACM CC por separado. Si se consolida ACM completo entre áreas, conviene deduplicar por DOI.
+- No se modificaron valores de `Area` ni `Subarea` porque esas columnas ya venían en el CSV recibido; esta fase no asigna áreas finales.
+
+## Formato del archivo final
+- Se conservó el mismo diseño de columnas del CSV ACM recibido: 14 columnas.
+- Columnas conservadas: indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos, `N/D` y metadatos existentes se dejaron como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se conservaron en el orden original del CSV recibido.
+
+## Archivo final generado
+- `acm_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Este lote ACM CC ya venía como CSV canónico por extracción manual; en esta fase sólo se depuró temáticamente y se mantuvo el diseño recibido.
+- El reporte previo ya había eliminado 15 duplicados de extracción PDF/BibTeX/EndNote; en esta depuración no se encontraron duplicados adicionales.
+- Conviene decidir si los solapamientos entre ACM CC y ACM ISBD se deduplican sólo en una fase de consolidación global, no en depuraciones por área.
+- `A Culturally-Aware AI Tool for Crowdworkers...` debe pasar a clasificación posterior como posible HCI/CSCW, no necesariamente Computación Científica.
+- El lote no tuvo falsos positivos no-CS; todos los registros aceptados son computacionales.

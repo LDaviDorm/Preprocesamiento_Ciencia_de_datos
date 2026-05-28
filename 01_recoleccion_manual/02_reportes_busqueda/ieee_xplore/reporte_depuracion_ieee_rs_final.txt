@@ -1,0 +1,140 @@
+# Reporte de depuración — IEEE Redes y Seguridad en Cómputo
+
+## Archivos recibidos
+- ieee_rs_q1_general_networks_security_raw_2024-03_2025-12.csv
+- ieee_rs_q2_security_cryptography_privacy_raw_2024-03_2025-12.csv
+- ieee_rs_q3_networks_protocols_iot_sdn_raw_2024-03_2025-12.csv
+- ieee_rs_q4_distributed_systems_consensus_verification_raw_2024-03_2025-12.csv
+- ieee_rs_q5_parallel_computing_clusters_mpi_raw_2024-03_2025-12.csv
+- ieee_rs_q6_access_control_identity_policies_raw_2024-03_2025-12.csv
+- ieee_rs_q7a_catalog_seed_authors_1_raw_2024-03_2025-12.csv
+- ieee_rs_q7b_catalog_seed_authors_2_raw_2024-03_2025-12.csv
+- ieee_rs_q9_rescue_hybrid_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde IEEE para el lote de Redes y Seguridad en Cómputo y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de IEEE.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad en Cómputo.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no había DOI, por título normalizado + año + primer autor.
+
+Nota sobre fechas IEEE: los archivos contienen varias columnas de fecha (`Issue Date`, `Meeting Date`, `Online Date` y `Date Added To Xplore`). Para el periodo se tomó como referencia la fecha de publicación o congreso (`Issue Date`/`Meeting Date`) cuando permitía verificar mes. `Online Date` y `Date Added To Xplore` se trataron como fechas de indexación/publicación en Xplore. Por eso se conservaron registros agregados a Xplore en 2026 cuando el congreso o publicación correspondía a 2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 139
+- Registros duplicados eliminados: 67
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 10
+- Registros excluidos por no ser Ciencias de la Computación: 35
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 27
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- artículos de redes, protocolos, middleware, descubrimiento de vecinos, MAC/IEEE 802.11, IoT y sistemas embebidos;
+- artículos de seguridad, privacidad, criptografía, cifrado homomórfico, esteganografía, watermarking y protección de imágenes/datos;
+- artículos de detección de ataques DoS/DDoS y seguridad de redes;
+- artículos de teoría de la información, privacidad diferencial, divergencias y garantías de privacidad en aprendizaje automático;
+- artículos de razonamiento automático, lógica modal, lógica descriptiva y formalización de consistencia;
+- artículos de IA, visión, video, WiFi sensing, robótica, interfaces web e interacción humano-robot cuando el método/sistema computacional fue central;
+- artículos de planeación, alcanzabilidad probabilística, ruteo/optimización y modelos algorítmicos cuando el aporte fue computacional.
+
+## Registros dudosos
+Registros dudosos o falsos positivos que NO fueron incluidos por criterio conservador:
+
+- `Democratizing Air Quality Monitoring: The Role of Low-Cost PM2.5 Sensors in Community Decision- Making`: sensado ambiental/gobernanza; la adquisición de datos es instrumental.
+- `Grid-Forming and BESS: Review of Advances and Challenges`: revisión de sistemas de potencia; ciberseguridad se menciona sólo como brecha futura.
+- `Cloud Computing Integration for Leak Diagnosis Using Meta-Heuristic Methods for Water Distribution Networks`: cloud/metaheurística aplicada al diagnóstico de fugas hidráulicas; contribución principal de dominio.
+- `Physical Layer Service Fairness of 200-Gbps TDM-NOMA Coherent Passive Optical Networks Within Single Timeslot`: no hay afiliación UNAM mexicana en el campo de afiliaciones exportado.
+- `Critical Nodes Detection and Dynamic Vulnerability Analysis in Power Grids`: vulnerabilidad/estabilidad de red eléctrica, no seguridad de redes computacionales.
+- `Design and Simulation of a High-Gain 4 × 1 Microstrip Patch Antenna Array at 2.45 GHz for Wi-Fi 6 and IoT Applications`: diseño de antena/electromagnetismo; Wi‑Fi/IoT son contextos de aplicación.
+- `Compressive Ghost Imaging with Customized Speckles`: falso positivo institucional: UNAM corresponde al National Nanotechnology Research Center de Bilkent University, Turquía.
+- `Design of Array Microstrip Antenna with Circular Polarization for WBAN/WIMAX`: diseño/simulación de antena y SAR; no hay contribución central de CS.
+- `Fast and Efficient Speckle Customization with Binary Amplitude Modulation`: falso positivo institucional: UNAM corresponde al National Nanotechnology Research Center de Bilkent University, Turquía.
+- `Achieving Below 200ppm Scale Factor Temperature Stability in an am Gyroscope with On-Chip Stress Sensing`: sin afiliación UNAM mexicana; sólo afiliación Bilkent/Turquía.
+- `Laser-Inscribed Flexible Bragg Gratings Containing Silicon Oxynitride Doped Silicon Thin Film for Authentication Applications and Their Electronic and Structural Properties from X-Ray Absorption Spectroscopy and Ab Initio Calculations`: falso positivo institucional: UNAM corresponde al National Nanotechnology Research Center de Bilkent University, Turquía.
+- `Forging Pathways: Quantum Computing Initiatives in Mexico`: iniciativa educativa/de vinculación; no hay contribución técnica de computación cuántica.
+- `Time-Transient Wireless RF Sensor With Differentiative Detection Capability in Ionic Aqueous Environment for Water Conservation and Green Cleaning`: falso positivo institucional: UNAM corresponde al National Nanotechnology Research Center de Bilkent University, Turquía.
+- `Wireless Control of Bacterial Function with Microwave Hyperthermia`: falso positivo institucional: UNAM/Bilkent, Turquía, no la UNAM mexicana.
+- `Opportunities of Smart Polymeric Materials for Autonomous Marine Energy and Sensor Systems`: revisión de materiales/sensores para energía marina; sin contribución central de CS.
+- `Passive Fault-Tolerant Control via Sliding-Mode-Based Lyapunov Redesign`: teoría de control automático, no CS.
+- `Calibration of Friction and Roughness in an Urban Water Distribution Network Using an LSTM Neural Network-Based Framework`: LSTM aplicado a calibración de redes hidráulicas; contribución de ingeniería de dominio.
+- `Real-time inertia estimation via ARMAX model representation and synchrophasor measurements`: estimación/control de inercia en sistemas de potencia.
+- `Framework for Training and Deployment Machine Learning Methods in Real-Time Simulator: Short-Term Kinetic Energy Forecasting in Power Systems`: despliegue de ML para pronóstico en sistemas de potencia; contribución de dominio.
+- `Graph Theory-Based Fault Location Method for Transmission Systems With Renewable Energy Sources`: teoría de grafos aplicada a localización de fallas eléctricas; foco en ingeniería de potencia.
+- `Robust Adaptive Fault-Tolerant Control for MAGLEV Train Systems: A Nonsingular Finite-Time Approach`: control/electrificación del transporte; dominio no CS.
+- `Implicit Discretization of a PID-like Sliding-Mode Controller for Double Integrator Systems`: discretización para control; no se consideró contribución CS en esta fase.
+- `Multi-layer barrier function-based adaptive super-twisting controller`: teoría de control automático.
+- `Active Power Injection by Solar + Wind + Batteries Microgrids in Electrical Distribution Networks using Software In the loop Methodology`: simulación de potencia/microredes; software‑in‑the‑loop es herramienta de validación.
+- `Spectral Characterization of the Ictal Phase in Epileptic Seizures of Temporal Lobe Using the Wavelet Transform`: análisis biomédico de señales con wavelets; contribución clínica/biofísica.
+- `A Real Time Strategy for Detecting Intertum Short-Circuit Faults in PMSM Using Vold-Kalman Filter`: falso positivo institucional: UNaM es la Universidad Nacional de Misiones, Argentina.
+- `Virtual Inertia Provision Through the Super-twisting Algorithm`: control de redes eléctricas.
+- `A Comparative Analysis of Advanced Car Parking Automation:PLC-Based Versus AI-Controlled Systems`: comparación de estacionamiento/mecatrónica; AI/PLC son herramientas de implementación.
+- `Electrochemical Sensor With Dynamic Self-Calibration for Acetaminophen Detection in Water`: sensor electroquímico; el algoritmo de calibración es instrumental.
+- `The Yucatan HF Radar Network: A Multinational Technology Demonstration to Advance Monitoring of Western Boundary Currents`: infraestructura radar de observación oceanográfica; el componente CS no es central.
+- `Entangled Two-Photon Spectroscopy Assisted by Machine Learning`: ML aplicado a espectroscopía/física.
+- `Early Predictive Modeling of Engineering Student Attrition: An Ai-Driven Machine Learning Approach`: aplicación de analítica educativa.
+- `Automatic Detection of Dynamic Wind Conditions in Mexican California: A Machine Learning-Driven Advancement in Wind Management`: aplicación de ML a meteorología/energía/ambiente.
+- `Step-test based procedure for Super-Twisting Algorithm gains adjustment`: ajuste de control automático.
+- `Identification and Characterization of Stellar Bars: A Combined Approach of Isophote and Fourier Analysis`: análisis morfológico astronómico; las herramientas computacionales son secundarias.
+- `Super-twisting gain design for transfer heat processes based on identification of parasitic dynamics`: control de procesos de transferencia de calor.
+- `Equivalence of Linear Complementarity Problems: Theory and Application to Nonsmooth Bifurcations`: sin afiliación UNAM mexicana clara en el registro.
+- `Power System Harmonics Identification Powered by an Eigensystem Realization Approach`: identificación de calidad de energía; método usado para dominio eléctrico.
+- `Regional centres of inertia by clustering-based identification`: clustering/monitoreo de sistemas de potencia; dominio eléctrico.
+- `EMC Characterization and Analysis of the Attitude Determination and Control System (ADCS) Board of a CubeSat Platform`: caracterización de compatibilidad electromagnética/hardware.
+- `Experimental Modeling of a Buck Converter Using Genetic Algorithms in Python`: falso positivo institucional: UNaM es la Universidad Nacional de Misiones, Argentina.
+- `Power System Stabilizers’ Design Through The Eigensystem Realization Algorithm`: control y diseño de estabilizadores de sistemas de potencia.
+- `Optimization of the Safety Margins of the Major Insulation on Oil-Immersed Transformers`: diseño de aislamiento de transformadores con GA; foco en ingeniería eléctrica.
+- `Control of Electromechanical Oscillations with Machine Learning`: ML/control para oscilaciones de sistemas de potencia; contribución de dominio.
+- `Spatio-temporal Data-Driven and Machine Learning based Applications for Transmission Systems`: revisión/aplicaciones para sistemas de transmisión eléctrica.
+
+## Principales falsos positivos detectados
+- Artículos de potencia, microredes, convertidores, control automático, estabilidad eléctrica, transformadores y protección de sistemas eléctricos donde el algoritmo/modelo era herramienta de ingeniería eléctrica.
+- Artículos de antenas, fotónica, MEMS, sensores, materiales, espectroscopía y dispositivos donde `wireless`, `authentication`, `sensor` o `network` no implicaban una contribución de Ciencias de la Computación.
+- Artículos ambientales, oceanográficos, biomédicos, educativos o de infraestructura científica donde ML, software, modelos o análisis de datos se usaban como herramientas de dominio.
+- Registros sobre `security` que correspondían a seguridad/estabilidad de sistemas eléctricos, no a ciberseguridad, seguridad informática o seguridad de redes.
+- Falsos positivos institucionales por `UNAM` que no correspondían a la Universidad Nacional Autónoma de México, especialmente `UNAM - National Nanotechnology Research Center` de Bilkent University, Turquía, y `UNaM` de la Universidad Nacional de Misiones, Argentina.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `network`, `security`, `sensor`, `IoT`, `AI`, `machine learning`, `cloud computing`, `algorithm`, `model`, `software`, `simulation` o `data-driven`.
+- Se conservaron registros no estrictamente de Redes y Seguridad cuando sí eran claramente de Ciencias de la Computación, por ejemplo visión, robótica, lógica, privacidad diferencial, optimización, planeación, path planning y cómputo científico.
+- Se aceptaron IoT, redes inalámbricas y sistemas embebidos sólo cuando el aporte central fue protocolo, middleware, arquitectura, optimización de duty cycle, seguridad, interacción o sistema computacional.
+- Se excluyeron artículos de potencia/control aunque usaran términos como `security assessment`, `fault tolerant`, `graph theory`, `ML`, `ARMAX`, `eigensystem realization`, `software-in-the-loop` o `genetic algorithms` cuando el aporte principal era de ingeniería eléctrica/control.
+- Se excluyeron antenas, fotónica y sensores cuando el aporte principal era electromagnético, material, físico o de instrumentación, aunque mencionaran Wi-Fi, IoT, wireless, authentication o network.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de IEEE: 28 columnas.
+- Los nueve archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de IEEE después de la deduplicación.
+
+## Archivo final generado
+
+- `ieee_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- IEEE trae varias columnas de fecha; se usó `Issue Date`/`Meeting Date` como referencia principal y `Date Added To Xplore` como fecha de indexación.
+- Hubo mucho solapamiento entre queries: 67 duplicados eliminados sobre 139 registros recibidos.
+- Conviene mantener como regla global que `security` en sistemas eléctricos no equivale a ciberseguridad o seguridad informática.
+- Conviene mantener como regla global que `UNAM` de Bilkent University/Turquía y `UNaM` de Argentina no deben contar como afiliación UNAM mexicana.
+- Los casos de potencia/control se excluyeron salvo cuando el aporte ya era claramente computacional/numerical general; el umbral se mantuvo estricto para evitar falsos positivos.

@@ -1,0 +1,133 @@
+# Reporte de depuración — EBSCO ISBD
+
+## Archivos recibidos
+- EBSCO-Metadata-17_05_2026 (1).csv
+- EBSCO-Metadata-17_05_2026.csv
+
+## Objetivo
+Depurar registros descargados desde EBSCO para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas de los archivos recibidos en la medida posible.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+- Para EBSCO se aplicó la instrucción especial de recuperar afiliación UNAM fuera del CSV cuando EBSCO no exportó afiliación.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara, verificada fuera del CSV cuando no venía en metadatos EBSCO.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, subjects, fuente, DOI y páginas editoriales/DOI cuando fue necesario.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, si faltaba DOI, por título normalizado + año + primer autor.
+
+Nota: los archivos EBSCO sí traen `publicationDate` en formato mayoritariamente `YYYYMMDD`, por lo que se aplicó el mes cuando estaba disponible. No se detectaron registros fuera de marzo 2024–diciembre 2025 después de la deduplicación.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 71
+- Registros duplicados eliminados: 1
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser Ciencias de la Computación: 61
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 9
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- software científico/cómputo científico cuando el aporte central fue una suite computacional open-source con programas, GUI y código liberado;
+- cifrado de imágenes, análisis de seguridad y criptografía aplicada;
+- aprendizaje automático, optimización multiobjetivo e hiperparámetros;
+- síntesis de programas, NLP y revisión técnica de generación automática de software;
+- HCI, experiencia de usuario, interacción humano-robot, interfaces embebidas y realidad virtual;
+- ingeniería de software, integración de bases de datos y estimación de esfuerzo de software;
+- IoT, lógica difusa, verificación formal y programación por usuarios finales;
+- creatividad computacional, agentes de diseño, interfaces colaborativas y diseño de videojuegos.
+
+- DensToolKit2: A comprehensive open-source package for analyzing the electron density and its derivative scalar and vector fields.
+- Symmetric Grayscale Image Encryption Based on Quantum Operators with Dynamic Matrices.
+- On the multi-objective hyperparameter optimization of the weighted entropic associative memory.
+- A Systematic Literature Review of 10 years of Research on Program Synthesis and Natural Language Processing.
+- Assessing User Experience with Piezoresistive Force Sensors: Interpreting Button Press Impulse and Duration.
+- Merging Distinct Sources Databases to Improve Software Estimation Models.
+- Comparison of Manual, Automatic, and Voice Control in Wheelchair Navigation Simulation in Virtual Environments: Performance Evaluation of User and Motion Sickness.
+- A fuzzy description logic based IoT framework: Formal verification and end user programming.
+- Towards a Collaborative Game Designer Using the CCDSF Framework.
+
+## Afiliaciones UNAM recuperadas fuera del CSV de EBSCO
+EBSCO no exportó columnas de afiliación institucional. Para los registros aceptados se recuperó afiliación desde páginas editoriales, DOI/PubMed o páginas de revista. Las afiliaciones recuperadas se concentraron en la columna `Afiliacion1` del CSV final. A solicitud del usuario, `Afiliacion1` contiene el mapeo explícito `autor — afiliación` para cada registro aceptado, y `Afiliacion2` se conserva por diseño de columnas pero queda vacía.
+
+- DensToolKit2...: Centro Conjunto de Investigación en Química Sustentable UAEM-UNAM; Instituto de Química, Universidad Nacional Autónoma de México. Fuente: AIP Publishing. URL: https://pubs.aip.org/aip/jcp/article/161/23/232501/3326229/DensToolKit2-A-comprehensive-open-source-package
+- Symmetric Grayscale Image Encryption...: Facultad de Ingeniería, Universidad Nacional Autónoma de México (UNAM). Fuente: MDPI Mathematics. URL: https://www.mdpi.com/2227-7390/13/6/982
+- On the multi-objective hyperparameter optimization...: Universidad Nacional Autónoma de México, IIMAS. Fuente: Scientific Reports/Nature. URL: https://www.nature.com/articles/s41598-025-22621-y
+- A Systematic Literature Review...: Facultad de Ingeniería, Universidad Nacional Autónoma de México. Fuente: Springer Nature Link. URL: https://link.springer.com/article/10.1134/S0361768824700737
+- Assessing User Experience with Piezoresistive Force Sensors...: Postgraduate School of Engineering, UNAM; Department of Mechanical Engineering, UNAM. Fuente: MDPI Sensors. URL: https://www.mdpi.com/1424-8220/25/21/6685
+- Merging Distinct Sources Databases...: National Autonomous University of Mexico Science Faculty. Fuente: Springer Nature Link. URL: https://link.springer.com/article/10.1134/S0361768824700762
+- Comparison of Manual, Automatic, and Voice Control...: Instituto de Ciencias Aplicadas y Tecnología (ICAT), UNAM. Fuente: MDPI Sensors. URL: https://www.mdpi.com/1424-8220/25/2/530
+- A fuzzy description logic based IoT framework...: Department of Telecommunications, National Autonomous University of Mexico; Department of Computer Engineering, National Autonomous University of Mexico. Fuente: PLOS ONE. URL: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0296655
+- Towards a Collaborative Game Designer...: Posgrado en Ciencia e Ingeniería de la Computación, UNAM; Department of Computer Science, IIMAS, UNAM. Fuente: Springer Nature Link. URL: https://link.springer.com/article/10.1007/s00354-024-00287-w
+
+## Registros dudosos
+Registros dudosos o frontera que NO fueron incluidos, salvo los marcados como incluidos:
+
+- `MacaqueNet: Advancing comparative behavioural research through large‐scale collaboration.`: Base de datos/R package para comportamiento animal; recurso de dominio ecológico, no aporte principal de CS.
+- `DensToolKit2: A comprehensive open-source package for analyzing the electron density and its derivative scalar and vector fields.`: Incluido pese a frontera, porque el aporte central es una suite open-source, cross-platform y opcionalmente paralelizada con GUI y código liberado.
+- `LAPOD, Latin-American paleomagnetic online database: An online interface to access paleomagnetic data from Latin America.`: Excluido: base de datos/interfaz de dominio geocientífico; no se observó aporte de DBMS/IR/HCI suficientemente general.
+- `MetAP DB and Metal-FP: a database and fingerprint framework for advancing metal-based drug discovery.`: Excluido: aunque tiene afiliación UNAM y propone base/fingerprints, el foco principal es química computacional/drug discovery; se dejó fuera por criterio conservador.
+- `How far are we from the era of big data in transcriptomics? Lessons from the bacterial data in GEO.`: Excluido: revisión/diagnóstico de datos transcriptómicos en repositorio biológico; no se tomó como aporte CS principal.
+- `An educator framework for organizing Wikipedia editathons for computational biology.`: Excluido: marco educativo/divulgativo para editatones; el web tool es apoyo, no contribución CS central.
+- `Design, develop, and implement the strategic information system on health, dependence, and healthy aging: an analysis of the Mexican experience.`: Excluido: sistema de información de salud pública; foco principal en indicadores/política sanitaria.
+- `Towards a Collaborative Game Designer Using the CCDSF Framework.`: Incluido: sistema de diseño creativo computacional, agente colaborativo y GUI evaluada.
+
+## Principales falsos positivos detectados
+- Bases de datos, repositorios, catálogos o herramientas web de dominio ecológico, geocientífico, astronómico, paleomagnético, edafológico, biológico o químico sin aporte de DBMS, IR, HCI o ingeniería de software suficientemente claro.
+- Artículos biomédicos, farmacológicos, odontológicos, veterinarios o de salud pública con análisis de datos, IA o simulación como herramienta secundaria.
+- Artículos de geografía, turismo, movilidad, urbanismo, medio ambiente, suelos, paleomagnetismo, astronomía o energía con sistemas de datos o GIS como soporte de dominio.
+- Estudios educativos, administrativos, de gobernanza o comunicación científica sobre IA, Wikipedia, integridad académica o educación en línea sin contribución técnica de CS.
+- Artículos de química/materiales con DFT, diseño molecular o análisis in silico donde la contribución principal fue química o farmacológica, no computacional general.
+
+## Decisiones importantes
+- Se conservó cualquier registro claramente de Ciencias de la Computación, aunque el lote inicial fuera ISBD.
+- Se agregaron `Afiliacion1` y `Afiliacion2` como excepción necesaria para EBSCO, porque los CSV recibidos no tenían columnas de afiliación y el usuario pidió llenar esas afiliaciones si se verificaban externamente. En el ajuste posterior, toda la información de afiliación quedó concentrada en `Afiliacion1` con el formato `autor — afiliación`; `Afiliacion2` quedó vacía.
+- Se excluyeron registros aunque mencionaran `database`, `information system`, `web tool`, `AI`, `data mining`, `model`, `simulation` o `software` cuando esos elementos eran herramientas de otra disciplina.
+- Se mantuvo un criterio conservador para bases de datos científicas de dominio: sólo se aceptaron si el aporte era claramente computacional y no sólo un repositorio o plataforma de datos de una disciplina externa.
+- `DensToolKit2` se incluyó como caso frontera aceptado porque el aporte central es una suite computacional open-source, cross-platform, con programas opcionalmente paralelizados, GUI y código liberado.
+- `MetAP DB and Metal-FP` se excluyó como caso frontera por predominio de química computacional/drug discovery, pese a tener afiliación UNAM verificada y componentes de base de datos/fingerprints.
+
+## Ajuste posterior solicitado — columna Afiliacion1
+
+Después de generar la primera versión depurada, se aplicó un ajuste solicitado por el usuario:
+
+- Toda la información de afiliaciones recuperadas externamente se concentró en `Afiliacion1`.
+- `Afiliacion1` ahora señala explícitamente qué autor pertenece a qué afiliación usando el formato `autor — afiliación`.
+- Cuando un autor tiene más de una afiliación, ambas se conservan en la misma entrada del autor, separadas por punto y coma.
+- Los autores dentro de cada registro se separan con ` | ` para mantener la lectura en una sola celda.
+- `Afiliacion2` se conserva como columna para no alterar el diseño final, pero queda vacía en todos los registros.
+- No se modificaron títulos, DOI, abstracts, fechas, criterios de aceptación, número de registros ni columnas originales de EBSCO.
+- El archivo ajustado se generó en UTF-8 con BOM para lectura correcta de acentos en Excel.
+
+## Formato del archivo final
+- Los dos archivos tenían encabezados idénticos de EBSCO: 37 columnas.
+- No se renombraron columnas originales.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- Se añadieron únicamente `Afiliacion1` y `Afiliacion2` al final por instrucción específica para EBSCO. En la versión ajustada, `Afiliacion1` contiene toda la información de afiliación y señala qué autor pertenece a qué afiliación; `Afiliacion2` se conserva vacía para no cambiar el diseño de columnas.
+- No se convirtió al modelo canónico.
+- No se agregaron columnas de clasificación temática.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos del archivo original se dejaron vacíos.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts largos, caracteres especiales y HTML exportado por EBSCO.
+
+## Archivo final generado
+
+- `ebsco_isbd_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- EBSCO no exportó afiliaciones; para los registros aceptados se recuperó evidencia externa en páginas editoriales, DOI o PubMed.
+- El CSV final conserva las 37 columnas originales de EBSCO y añade sólo `Afiliacion1`/`Afiliacion2`; por ajuste solicitado, `Afiliacion1` concentra el mapeo autor-afiliación y `Afiliacion2` queda vacía.
+- Conviene definir una regla global para paquetes de software científico de química/física: aquí se aceptó `DensToolKit2` por tener contribución de software/cómputo científico explícita.
+- Conviene definir una regla global para cheminformática: aquí se excluyó `MetAP DB and Metal-FP` por criterio conservador, aunque tenía afiliación UNAM y componentes computacionales.
+- Muchos falsos positivos de EBSCO provienen de subjects como `Databases`, `Information systems`, `Data mining`, `AI`, `web tool` o `software`, usados en artículos de dominio no CS.

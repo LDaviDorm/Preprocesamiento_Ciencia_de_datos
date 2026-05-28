@@ -1,0 +1,400 @@
+REPORTE FINAL DE IEEE XPLORE — DEPURACIÓN POR ÁREAS
+Periodo del proyecto: marzo de 2024 a diciembre de 2025
+Fuente / editorial: IEEE Xplore
+Fase: búsqueda, descarga y depuración inicial por área
+Formato de salida actual: CSV con el mismo formato original de IEEE
+Estado: IEEE completado para las seis áreas
+
+
+1. RESUMEN EJECUTIVO
+
+Se completó la fase de búsqueda, descarga y depuración inicial en IEEE Xplore para las seis áreas del proyecto:
+
+1. ISBD — Ingeniería de Software y Bases de Datos
+2. CC — Computación Científica
+3. IA — Inteligencia Artificial
+4. RS — Redes y Seguridad en Cómputo
+5. TC — Teoría de la Computación
+6. SIAV — Señales, Imágenes y Ambientes Virtuales
+
+La fase realizada NO convirtió los registros al modelo canónico, NO asignó áreas finales y NO asignó subáreas finales. El objetivo fue conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el formato original de columnas exportado desde IEEE Xplore.
+
+El resultado acumulado de IEEE es:
+
+Total raw descargado en IEEE: 832 registros
+Duplicados eliminados dentro de cada lote: 437
+Registros únicos después de deduplicación por lote: 395
+Registros aceptados como Ciencias de la Computación: 158
+Registros excluidos por no ser Ciencias de la Computación: 188
+Registros excluidos por afiliación UNAM no clara: 39
+Registros excluidos por estar fuera de periodo: 10
+Registros excluidos por metadatos insuficientes: 0
+
+Indicadores acumulados:
+
+Tasa de duplicación acumulada por lote: 52.5%
+Tasa de aceptación sobre registros raw: 19.0%
+Tasa de aceptación sobre registros únicos por lote: 40.0%
+Tasa de rechazo por no ser CS sobre registros únicos por lote: 47.6%
+Tasa de rechazo por afiliación UNAM no clara sobre registros únicos por lote: 9.9%
+Tasa de rechazo por fuera de periodo sobre registros únicos por lote: 2.5%
+
+Este acumulado todavía NO representa una deduplicación global entre áreas de IEEE. La deduplicación hecha hasta ahora fue interna por lote/área. Es probable que algunos artículos aceptados se repitan entre áreas, especialmente en IA, visión, señales, seguridad, privacidad, robótica, verificación formal, optimización, HCI, cómputo científico y software.
+
+
+2. TABLA CONSOLIDADA POR ÁREA
+
+Área inicial de búsqueda | Raw recibidos | Duplicados eliminados | Únicos por lote | Excluidos fuera de periodo | Excluidos por afiliación | Excluidos no CS | Aceptados CS
+------------------------|---------------|------------------------|-----------------|----------------------------|--------------------------|-----------------|-------------
+ISBD                    | 57            | 17                     | 40              | 2                          | 0                        | 16              | 22
+CC                      | 131           | 43                     | 88              | 3                          | 11                       | 52              | 22
+IA                      | 256           | 170                    | 86              | 2                          | 3                        | 37              | 44
+RS                      | 139           | 67                     | 72              | 0                          | 10                       | 35              | 27
+TC                      | 32            | 13                     | 19              | 0                          | 4                        | 8               | 7
+SIAV                    | 217           | 127                    | 90              | 3                          | 11                       | 40              | 36
+TOTAL                   | 832           | 437                    | 395             | 10                         | 39                       | 188             | 158
+
+
+3. ARCHIVOS FINALES GENERADOS POR LOTE
+
+ISBD:
+ieee_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+CC:
+ieee_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+IA:
+ieee_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+RS:
+ieee_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+TC:
+ieee_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+SIAV:
+ieee_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Los seis reportes indican que los archivos finales conservaron el formato original de IEEE Xplore: 28 columnas, encabezados idénticos dentro de cada lote, sin renombrar columnas, sin agregar columnas nuevas, sin eliminar columnas originales y conservando el orden original. Los CSV finales quedaron codificados en UTF-8 con BOM para facilitar la apertura en Excel con acentos y caracteres especiales.
+
+
+4. REPORTES DE ENTRADA USADOS
+
+Los reportes integrados fueron:
+
+reporte_depuracion_ieee_isbd_final.txt
+reporte_depuracion_ieee_cc_final.txt
+reporte_depuracion_ieee_ia_final.txt
+reporte_depuracion_ieee_rs_final.txt
+reporte_depuracion_ieee_tc_final.txt
+reporte_depuracion_ieee_siav_final.txt
+
+
+5. CRITERIOS APLICADOS EN LA DEPURACIÓN
+
+En los seis lotes se aplicaron criterios homogéneos:
+
+Periodo:
+marzo de 2024 a diciembre de 2025.
+
+Afiliación:
+afiliación UNAM clara en las columnas de afiliación o en metadatos suficientes del registro.
+
+Tema:
+pertenencia clara a Ciencias de la Computación.
+
+Revisión:
+título, abstract, author keywords, IEEE terms, publicación, afiliaciones, DOI y metadatos de fecha cuando estaban disponibles.
+
+Exclusión:
+falsos positivos interdisciplinarios donde la computación aparece sólo como herramienta secundaria.
+
+Deduplicación:
+primero por DOI; cuando no había DOI, por título normalizado + año + primer autor. En registros duplicados se conservó la fila con más metadatos completos.
+
+Regla central:
+no se aceptó un registro sólo por contener palabras como software, AI, machine learning, algorithm, data analysis, model, simulation, Python, system, image processing, signal processing, network, security, IoT, cloud computing o database. El artículo se conservó sólo cuando el aporte principal era un método, algoritmo, sistema, arquitectura, protocolo, framework, pipeline, interfaz, técnica computacional, modelo computacional o evaluación técnica de Ciencias de la Computación.
+
+
+6. NOTA METODOLÓGICA SOBRE FECHAS EN IEEE
+
+IEEE Xplore exporta varias columnas de fecha, entre ellas:
+
+Publication Year
+Issue Date
+Meeting Date
+Online Date
+Date Added To Xplore
+
+Para esta depuración se usó como referencia principal la fecha de publicación o congreso, especialmente Issue Date o Meeting Date cuando permitían verificar mes. Online Date y Date Added To Xplore se trataron como fechas de publicación en línea o indexación, pero no como criterio principal cuando el congreso o publicación correspondía claramente a 2024–2025.
+
+Esto permitió conservar registros agregados a IEEE Xplore en 2026 cuando el congreso o publicación correspondía a 2025. También permitió excluir registros de enero/febrero de 2024 cuando el mes era verificable.
+
+Exclusiones por fuera de periodo:
+ISBD: 2
+CC: 3
+IA: 2
+RS: 0
+TC: 0
+SIAV: 3
+Total: 10
+
+
+7. RESULTADOS POR ÁREA
+
+7.1 ISBD — Ingeniería de Software y Bases de Datos
+
+Raw recibidos: 57
+Duplicados eliminados: 17
+Registros únicos después de deduplicación: 40
+Excluidos por fuera de periodo: 2
+Excluidos por afiliación UNAM no clara: 0
+Excluidos por no ser CS: 16
+Aceptados como CS: 22
+
+Archivo final:
+ieee_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Se conservaron registros de razonamiento automatizado, lógica modal graduada, verificación/formalización, ingeniería de software, generación automática de código, sistemas multiagente, LLM, minería de datos, modelado dinámico de usuarios, process mining, data stream mining, aprendizaje automático, adaptación de dominio, reconocimiento afectivo multimodal, neural computation, visión, procesamiento de imágenes médicas, segmentación, mejora de imágenes, señales EMG/EEG, criptografía, privacidad, cifrado homomórfico, watermarking, data hiding, esteganografía, robótica, interacción humano-robot, interfaces web/IoT, realidad extendida, ambientes virtuales, optimización evolutiva y algoritmos multiobjetivo.
+
+Principales falsos positivos:
+artículos biomédicos, farmacológicos, sensores, electrónica, instrumentación, fotónica, materiales, química, energía, sistemas de potencia, monitoreo ambiental, urbanismo, movilidad o educación donde software, AI, machine learning, database, data-driven, toolbox, GUI, sensor, system o platform funcionaban como apoyo de dominio y no como contribución técnica de Ciencias de la Computación.
+
+
+7.2 CC — Computación Científica
+
+Raw recibidos: 131
+Duplicados eliminados: 43
+Registros únicos después de deduplicación: 88
+Excluidos por fuera de periodo: 3
+Excluidos por afiliación UNAM no clara: 11
+Excluidos por no ser CS: 52
+Aceptados como CS: 22
+
+Archivo final:
+ieee_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Se conservaron registros de aprendizaje automático, deep learning, visión por computadora, segmentación, imagen médica, razonamiento automático, lógica modal, lógica descriptiva, IoT consistente, seguridad, esteganografía paralela, detección de ataques en redes, minería de datos, process mining, modelado dinámico de usuario, reconstrucción de redes dinámicas, optimización numérica, optimización evolutiva, algoritmos de optimización multiobjetivo, cómputo científico/numerical, identificación, integración, simulación, reducción de modelos, planeación/ruteo computacional, alcanzabilidad probabilística para vehículos autónomos y modelos/protocolos algorítmicos en finanzas descentralizadas.
+
+Principales falsos positivos:
+ingeniería eléctrica, electrónica de potencia, control automático, convertidores, microredes, estabilidad de sistemas eléctricos, sensores, MEMS, fotónica, guías de onda, materiales, celdas solares, química, potencia, astronomía, fluidos, biomedicina y educación donde modelado, simulación, AI, ML, finite element, Python, cloud computing o computational eran herramientas de dominio y no aportes computacionales generalizables.
+
+Decisión clave:
+la frontera más delicada fue control/potencia contra computación científica. Se aceptaron sólo casos con método computacional central; se excluyeron simulaciones/modelos de ingeniería como aportes de dominio.
+
+
+7.3 IA — Inteligencia Artificial
+
+Raw recibidos: 256
+Duplicados eliminados: 170
+Registros únicos después de deduplicación: 86
+Excluidos por fuera de periodo: 2
+Excluidos por afiliación UNAM no clara: 3
+Excluidos por no ser CS: 37
+Aceptados como CS: 44
+
+Archivo final:
+ieee_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Se conservaron registros de privacidad, seguridad, cifrado homomórfico, protección de información, detección de ataques DoS/DDoS, machine learning, deep learning, domain adaptation, redes neuronales, visión por computadora, modelos multimodales, procesamiento de imágenes biomédicas con método central, segmentación, reconstrucción, mejoramiento de imagen, video médico, análisis de señales, optimización evolutiva, multiobjetivo, teoría de información, privacidad diferencial, divergencias, cadenas de Markov, memoria asociativa, robótica, interacción humano-robot, robots móviles, plataformas de manipulación con visión, path planning, reachability, sistemas IoT, NLP/LLM, generación automática de código, XR, interfaces 3D, atlas inmersivo y chatbots cuando el sistema computacional/interfaz era el aporte central.
+
+Principales falsos positivos:
+salud, medicina, biomedicina, química, farmacología, drug discovery, energía, sistemas eléctricos, transformadores, calidad de potencia, power grids, control automático, mecánica, fluidos, instrumentación, astronomía, óptica, espectroscopía, oceanografía, hidrología, geociencias, educación, economía y ciencias sociales cuando IA/ML/NLP era sólo herramienta de dominio.
+
+Decisión clave:
+el filtro fue estricto contra IA/ML aplicado en dominios externos. Se aceptaron aplicaciones sólo cuando el objeto central era método, arquitectura, sistema, framework, interfaz, protocolo, pipeline, algoritmo o técnica computacional.
+
+
+7.4 RS — Redes y Seguridad en Cómputo
+
+Raw recibidos: 139
+Duplicados eliminados: 67
+Registros únicos después de deduplicación: 72
+Excluidos por fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 10
+Excluidos por no ser CS: 35
+Aceptados como CS: 27
+
+Archivo final:
+ieee_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Se conservaron registros de redes, protocolos, middleware, descubrimiento de vecinos, MAC/IEEE 802.11, IoT, sistemas embebidos, seguridad, privacidad, criptografía, cifrado homomórfico, esteganografía, watermarking, protección de imágenes/datos, detección de ataques DoS/DDoS, seguridad de redes, teoría de la información, privacidad diferencial, divergencias, garantías de privacidad en aprendizaje automático, razonamiento automático, lógica modal, lógica descriptiva, formalización de consistencia, IA, visión, video, WiFi sensing, robótica, interfaces web, interacción humano-robot, planeación, alcanzabilidad probabilística, ruteo/optimización y modelos algorítmicos.
+
+Principales falsos positivos:
+potencia, microredes, convertidores, control automático, estabilidad eléctrica, transformadores, protección de sistemas eléctricos, antenas, fotónica, MEMS, sensores, materiales, espectroscopía, dispositivos, medio ambiente, oceanografía, biomedicina, educación, infraestructura científica y casos donde security significaba estabilidad/seguridad de sistemas eléctricos, no ciberseguridad.
+
+Decisión clave:
+security en sistemas eléctricos NO se trató como ciberseguridad. IoT, redes inalámbricas y sistemas embebidos se aceptaron sólo cuando el aporte central fue protocolo, middleware, arquitectura, optimización, seguridad, interacción o sistema computacional.
+
+
+7.5 TC — Teoría de la Computación
+
+Raw recibidos: 32
+Duplicados eliminados: 13
+Registros únicos después de deduplicación: 19
+Excluidos por fuera de periodo: 0
+Excluidos por afiliación UNAM no clara: 4
+Excluidos por no ser CS: 8
+Aceptados como CS: 7
+
+Archivo final:
+ieee_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Se conservaron registros de criptografía, cifrado, esteganografía, protección de imágenes digitales, lógica modal, teoría de la demostración, razonamiento automatizado, hiper-secuentes, optimización evolutiva, optimización multiobjetivo/multimodal, algoritmos de aproximación, protocolos, modelos algorítmicos y sistemas descentralizados/blockchain.
+
+Registros aceptados mencionados en el reporte:
+- Symmetric Cipher for Grayscale Images Based on Quantum Differential Geometry
+- A Reasoning System for Graded Modal Logic
+- Color Image Protection via Quantum Encryption and HVS-Based Mini-Block Data Hiding
+- Finding ϵ-Locally Optimal Solutions for Multiobjective Multimodal Optimization
+- Finding the Set of Nearly Optimal Solutions of a Multiobjective Optimization Problem
+- An Evolutionary Approach for the Computation of ∈-Locally Optimal Solutions for Multi-Objective Multimodal Optimization
+- Invited Paper: Further Decentralizing Decentralized Finance: Loss vs Rebalancing Without a Shared Reference Market
+
+Principales falsos positivos:
+ingeniería eléctrica y sistemas de potencia que usan grafos, clustering, filtros o vulnerabilidad como herramientas; hidráulica, transporte, epidemiología, neurociencia y salud pública que usan modelado, simulación, hipergrafos o autómatas celulares como soporte; fotónica, láseres y comunicaciones ópticas recuperados por términos como complexity, quantum, network, Ethernet, coding o datacenter.
+
+Decisión clave:
+teoría de grafos, autómatas, clustering, simulation, complexity, filtering, vulnerability o network no bastan por sí solos. Debe existir aporte algorítmico/computacional y no sólo modelado de una red física, biológica o social.
+
+
+7.6 SIAV — Señales, Imágenes y Ambientes Virtuales
+
+Raw recibidos: 217
+Duplicados eliminados: 127
+Registros únicos después de deduplicación: 90
+Excluidos por fuera de periodo: 3
+Excluidos por afiliación UNAM no clara: 11
+Excluidos por no ser CS: 40
+Aceptados como CS: 36
+
+Archivo final:
+ieee_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+Se conservaron registros de visión por computadora, segmentación, detección, reconstrucción, restauración, mejora de imágenes, procesamiento de señales EEG, EMG, WiFi-CSI y señales biomédicas cuando el método computacional fue central, deep learning, domain adaptation, reconocimiento de emociones, modelos multimodales, arquitecturas de IA, robótica, manipulación guiada por visión, HRI, haptics, XR/VR, interfaces inmersivas, seguridad, privacidad, cifrado, watermarking, data hiding, protección de imágenes/datos digitales, planeación, reachability, path planning, minería de procesos/datos, redes neuronales robustas y otros métodos computacionales claramente CS.
+
+Principales falsos positivos:
+artículos biomédicos o clínicos que usan imágenes, EEG, ECG o ML sólo para diagnóstico o caracterización; potencia, control automático, redes eléctricas, fotónica, óptica, sensores, instrumentación, oceanografía, geofísica, astronomía, energía, monitoreo ambiental, química, materiales y farmacología cuando imagen/señal/ML era herramienta de dominio.
+
+Decisión clave:
+se aceptaron artículos biomédicos de imagen/señal sólo cuando el aporte central fue segmentación, reconstrucción, mejora de imagen, clasificación de señales, arquitectura de aprendizaje profundo o pipeline computacional explícito.
+
+
+8. PROBLEMAS GLOBALES DETECTADOS EN IEEE
+
+8.1 Múltiples fechas por registro
+
+IEEE Xplore exporta varias fechas. La regla aplicada fue:
+
+- Issue Date y Meeting Date: referencia principal de publicación o congreso.
+- Online Date: apoyo cuando la publicación/reunión no tenía mes verificable.
+- Date Added To Xplore: fecha de indexación; no se usó como fecha principal si el registro correspondía claramente a 2024–2025.
+
+Esto permitió conservar registros agregados a Xplore en 2026 si la publicación o congreso correspondía a 2025.
+
+8.2 Falsos positivos institucionales por UNAM
+
+Se detectaron falsos positivos por acrónimos o nombres que no correspondían a la Universidad Nacional Autónoma de México. Casos recurrentes:
+
+- UNAM asociado a National Nanotechnology Research Center / Bilkent University, Turquía.
+- UNaM asociado a Universidad Nacional de Misiones, Argentina.
+- variantes institucionales no mexicanas o sin evidencia clara de afiliación UNAM.
+
+Regla global:
+cualquier registro recuperado por UNAM, unam o variantes similares debe verificarse manualmente para confirmar que la institución sea la UNAM mexicana.
+
+8.3 Alto solapamiento entre queries
+
+IEEE tuvo un solapamiento fuerte entre queries:
+
+Duplicados eliminados dentro de lote:
+ISBD: 17
+CC: 43
+IA: 170
+RS: 67
+TC: 13
+SIAV: 127
+Total: 437
+
+El lote con más duplicación fue IA, seguido de SIAV y RS. Esto confirma que las queries por subtema y rescate son útiles para recall, pero exigen deduplicación posterior.
+
+8.4 Dominio de aplicación vs. aporte computacional
+
+El problema de calidad más frecuente fue distinguir entre artículos de Ciencias de la Computación y artículos de otra disciplina que sólo usan herramientas computacionales. Los dominios más conflictivos fueron:
+
+- ingeniería eléctrica y sistemas de potencia;
+- control automático;
+- energía, microredes, transformadores y estabilidad eléctrica;
+- salud, biomedicina, farmacología y diagnóstico clínico;
+- química, materiales, fotónica, sensores e instrumentación;
+- astronomía, geofísica, oceanografía y monitoreo ambiental;
+- educación, economía, movilidad urbana y ciencias sociales;
+- redes físicas, hidráulicas o eléctricas confundidas con redes computacionales.
+
+Regla global:
+aceptar sólo cuando el aporte central sea método, algoritmo, sistema, protocolo, arquitectura, framework, pipeline, interfaz, modelo computacional o evaluación técnica generalizable dentro de Ciencias de la Computación.
+
+
+9. REGLAS GLOBALES RECOMENDADAS PARA LA SIGUIENTE FASE
+
+1. Deduplicación global entre áreas IEEE.
+Los 158 registros aceptados son suma por lote, no total global único. La siguiente fase debe unir los seis CSV finales y deduplicar globalmente por DOI; si no hay DOI, por título normalizado + año + primer autor.
+
+2. Conversión posterior al modelo canónico.
+La conversión al modelo:
+indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract
+sigue pendiente.
+
+3. Asignación final de área y subárea.
+Los lotes fueron búsquedas iniciales, no clasificación definitiva. Un artículo recuperado por ISBD, CC, IA, RS, TC o SIAV puede pertenecer finalmente a otra área de Ciencias de la Computación.
+
+4. Mantener criterio conservador de CS.
+No aceptar artículos de otra disciplina que sólo usen software, ML, IA, simulación, bases de datos, imágenes, señales, redes, seguridad o algoritmos como herramientas secundarias.
+
+5. Verificar afiliación UNAM real.
+Aceptar sólo afiliaciones inequívocas a la Universidad Nacional Autónoma de México. Excluir acrónimos UNAM/UNaM asociados a otras instituciones.
+
+6. Documentar regla temporal de IEEE.
+Mantener la regla:
+Issue Date / Meeting Date como fechas principales.
+Online Date como apoyo.
+Date Added To Xplore como indexación.
+
+7. Mantener reglas específicas por dominio:
+- Power systems/control: aceptar sólo si el aporte computacional es generalizable.
+- Biomédico: aceptar sólo con método/pipeline/arquitectura computacional central.
+- Imágenes/señales: aceptar sólo si procesamiento, segmentación, reconstrucción, clasificación o visión son el aporte principal.
+- Seguridad: distinguir ciberseguridad de seguridad/estabilidad eléctrica.
+- Grafos/teoría: aceptar sólo cuando haya aporte algorítmico/computacional, no simple modelado de red física o biológica.
+- VR/AR/XR/HCI: aceptar cuando el sistema, interfaz, interacción o evaluación computacional sea central.
+
+
+10. ESTADO FINAL DE IEEE
+
+Fuente: IEEE Xplore
+Áreas cubiertas: 6/6
+
+ISBD: completado
+CC: completado
+IA: completado
+RS: completado
+TC: completado
+SIAV: completado
+
+Registros raw procesados: 832
+Registros aceptados como Ciencias de la Computación por lote: 158
+Formato de salida actual: CSV con mismo formato original de IEEE, 28 columnas.
+
+Pendiente:
+- Unión de los seis CSV finales de IEEE.
+- Deduplicación global entre áreas.
+- Conversión al modelo canónico.
+- Asignación final de área.
+- Asignación final de subárea.
+- Perfilado de calidad del conjunto integrado.
+- Integración con los resultados ya procesados de Scopus y las demás editoriales.
+
+
+11. TEXTO CORTO PARA PEGAR COMO NOTA EJECUTIVA
+
+IEEE Xplore quedó completado para las seis áreas del proyecto. Se procesaron 832 registros raw distribuidos en ISBD, Computación Científica, Inteligencia Artificial, Redes y Seguridad, Teoría de la Computación y Señales/Imágenes/Ambientes Virtuales. Después de deduplicación interna por lote se obtuvieron 395 registros únicos por área; de ellos, 158 fueron aceptados como claramente pertenecientes a Ciencias de la Computación, 188 fueron rechazados por no ser CS, 39 por no tener afiliación UNAM clara y 10 por estar fuera del periodo marzo 2024–diciembre 2025. No hubo exclusiones por metadatos insuficientes. Los CSV finales conservan el formato original de IEEE con 28 columnas y aún no fueron convertidos al modelo canónico ni clasificados por área/subárea final. La siguiente fase debe unir los seis CSV finales, realizar deduplicación global entre áreas y convertir al modelo canónico del proyecto.

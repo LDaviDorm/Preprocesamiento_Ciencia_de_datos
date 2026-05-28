@@ -1,0 +1,101 @@
+# Reporte de depuración — Web of Science TC
+
+## Archivos recibidos
+- savedrecs (2).xls
+- savedrecs (3).xls
+- savedrecs (4).xls
+- savedrecs (5).xls
+- savedrecs (6).xls
+- savedrecs (7).xls
+- savedrecs (8).xls
+- savedrecs (9).xls
+
+## Objetivo
+Depurar registros descargados desde Web of Science para el lote inicial TC — Teoría de la Computación — y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Web of Science.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en direcciones, afiliaciones, correos o reprint address.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor.
+
+Web of Science exportó campos de fecha como `Publication Date`, `Publication Year`, `Conference Date` y `Early Access Date`. Cuando el mes fue verificable se aplicó estrictamente el periodo; cuando sólo había año 2024 sin mes verificable, se conservó el registro.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 130
+- Artículos únicos después de deduplicación: 89
+- Registros duplicados eliminados: 41
+- Registros excluidos por estar fuera de periodo: 9
+- Registros excluidos por no tener afiliación UNAM clara: 3
+- Registros excluidos por no ser claramente Ciencias de la Computación: 46
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 31
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- teoría de la computación, cómputo distribuido, consenso, set-agreement, linealizabilidad, estructuras concurrentes y verificación/runtime verification;
+- lógica, razonamiento formal, lógicas descriptivas, lógica modal graduada, smart contracts y verificación formal de sistemas IoT;
+- algoritmos, complejidad/interpretabilidad de Kolmogorov, grafos, geometría computacional, optimización combinatoria y optimización multiobjetivo;
+- teoría de información, códigos lineales/cíclicos, campos finitos con vínculo computacional/criptográfico y criptografía;
+- seguridad de imágenes, cifrado, blockchain, IoT y protección de información;
+- métodos computacionales de IA/datos, aprendizaje automático, procesamiento de datos de alta dimensión y computación creativa/celular cuando el método computacional fue el aporte central.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con una razón breve:
+
+- `Pattern Models: A Dynamic Epistemic Logic For Distributed Systems`: claramente CS, pero excluido porque `Publication Date` indica febrero de 2024, fuera del periodo obligatorio.
+- `An Interpretable Authorship Attribution Algorithm Based on Distance-Related Characterizations of Tokens`: claramente CS/NLP, pero `Conference Date` corresponde a noviembre de 2023, fuera del periodo obligatorio.
+- `Verified propagation of imprecise probabilities in non-linear ODEs`: posible cómputo científico/verificación numérica, pero `Publication Date` indica enero de 2024, fuera del periodo obligatorio.
+- `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit`: tema computacional, pero la afiliación visible es `Universidad Autónoma de México, Unidad Lerma`/IPN, sin evidencia clara de UNAM mexicana.
+- `YEAB: YEAB Ease the analysis of behavior`: paquete R para análisis de experimentos de conducta; se consideró herramienta de dominio psicológico, no aporte principal de CS.
+- `Model order reduction of an ion exchange process for ammonium removal in groundwater`: reducción de orden aplicada a proceso químico/hidrológico; no se observó aporte CS central.
+- `Graph Theory-Based Fault Location Method for Transmission Systems With Renewable Energy Sources`: teoría de grafos aplicada a localización de fallas en sistemas eléctricos; aporte principal de ingeniería eléctrica.
+- `The mode of computing`: ensayo/conceptual sobre computación natural y conciencia; no se observó contribución técnica verificable de CS.
+- `Musical composition based on skewed statistical distributions of stochastic processes`: modelo estadístico/Monte Carlo para composición musical en contexto de artes; se excluyó conservadoramente por no mostrar aporte técnico CS claro.
+- `On some congruences and exponential sums`: matemática pura en campos finitos; se excluyó conservadoramente por no vincularse claramente con algoritmos, codificación o criptografía computacional.
+
+## Principales falsos positivos detectados
+- Artículos de matemática pura, física, química, biología, ecología, salud, neurociencia o astronomía que usan grafos, autómatas, Markov chains, redes, topología o campos finitos sin aporte computacional claro.
+- Artículos de sistemas eléctricos, energía, agua, transporte, clima, materiales y sensores donde algoritmos, clustering, simulación o modelado aparecen como herramientas de dominio.
+- Estudios biomédicos o biológicos con redes funcionales, redes regulatorias, hipergrafos, persistencia topológica o autómatas celulares usados para explicar procesos de dominio.
+- Artículos de arte/música/ciencias cognitivas que usan stochastic processes, Python, Monte Carlo o reflexiones sobre computación sin una contribución técnica suficiente de CS.
+- Falsos positivos institucionales por instituciones como `Universidad Autónoma de México, Unidad Lerma`, UAM/UAEM o `UNAM` de Bilkent/Turquía, que no se trataron como UNAM mexicana.
+
+## Decisiones importantes
+- Se conservaron registros no estrictamente TC cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo cifrado de imágenes, blockchain/IoT, IA/ML metodológico, procesamiento de datos de alta dimensión y optimización.
+- Se excluyeron registros aunque tuvieran términos como `graph theory`, `cellular automata`, `Markov chains`, `machine learning`, `algorithm`, `model`, `simulation`, `network` o `data analysis` cuando esos términos eran herramientas auxiliares de otra disciplina.
+- En afiliación, se priorizaron `Addresses` y `Reprint Addresses`; el campo `Affiliations` de WoS se usó con cautela porque puede normalizar instituciones de forma ambigua.
+- Se excluyeron registros claramente computacionales por estar fuera de periodo cuando la fecha era verificable, por ejemplo febrero de 2024, enero de 2024, 2023 o 2026.
+- Se aceptó `Musical Composition and Two-Dimensional Cellular Automata Based on Music Intervals` como caso de computación creativa/celular, pero se excluyó otro artículo de composición musical basado en procesos estocásticos por falta de aporte técnico CS suficientemente claro.
+
+## Formato del archivo final
+- Los ocho archivos de Web of Science tenían el mismo encabezado: 72 columnas.
+- Se conservaron exactamente esas columnas originales, en el mismo orden.
+- No se agregaron columnas.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- No se convirtió al modelo canónico.
+- El CSV final está en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- No hubo diferencias de encabezado entre archivos.
+
+## Archivo final generado
+- `wos_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO, Engineering Village y los demás lotes WoS al consolidar todo el corpus.
+- Conviene mantener una regla global para matemática pura: conservar sólo cuando el vínculo con teoría computacional, algoritmos, codificación, criptografía, geometría computacional, información o sistemas distribuidos sea claro.
+- Algunos registros aceptados no pertenecerán al área final TC, pero sí a Ciencias de la Computación y deberán reclasificarse después.
+- WoS puede producir falsos positivos institucionales por campos normalizados; en consolidaciones futuras conviene revisar `Addresses` antes de `Affiliations`.
+- El caso de computación creativa/celular en música queda como decisión conservada pero revisable para la fase de clasificación final.

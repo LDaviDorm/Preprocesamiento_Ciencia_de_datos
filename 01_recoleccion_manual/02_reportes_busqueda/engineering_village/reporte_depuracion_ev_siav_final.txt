@@ -1,0 +1,107 @@
+# Reporte de depuración — Engineering Village SIAV
+
+## Archivos recibidos
+- Engineering_Village_abstract_5-17-2026_233056858.csv
+- Engineering_Village_abstract_5-17-2026_233114731.csv
+- Engineering_Village_abstract_5-17-2026_233121514.csv
+- Engineering_Village_abstract_5-17-2026_233126217.csv
+- Engineering_Village_abstract_5-17-2026_233132629.csv
+- Engineering_Village_abstract_5-17-2026_233142684.csv
+- Engineering_Village_abstract_5-17-2026_23317935.csv
+
+## Objetivo
+Depurar registros descargados desde Engineering Village para el lote inicial SIAV — Señales, Imágenes y Ambientes Virtuales — y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de los archivos de Engineering Village.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de SIAV.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, términos controlados/no controlados, fuente, afiliaciones, DOI y fechas.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI, por título normalizado + año + primer autor y por duplicados claros de preprint/proceedings con el mismo título.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 324
+- Artículos únicos después de deduplicación: 146
+- Registros duplicados eliminados: 178
+- Registros excluidos por estar fuera de periodo: 3
+- Registros excluidos por no tener afiliación UNAM clara: 14
+- Registros excluidos por no ser Ciencias de la Computación: 99
+- Registros excluidos por metadatos insuficientes: 1
+- Registros aceptados en CSV final: 29
+
+## Registros aceptados
+Se conservaron principalmente:
+
+- artículos de visión por computadora, segmentación, reconstrucción y mejora de imágenes;
+- artículos de procesamiento de señales biomédicas, EEG, espectrogramas, termografía e imágenes médicas cuando el método computacional era central;
+- artículos de realidad extendida, haptics, interacción humano-robot e interfaces inmersivas;
+- artículos de seguridad/protección de imágenes, watermarking, esteganografía y cifrado;
+- artículos de IA/ML, NLP/LLM, modelos neuronales, aprendizaje profundo y data augmentation con aporte metodológico;
+- artículos de sistemas computacionales, anomalía en trazas distribuidas y cómputo científico cuando el aporte era claramente computacional.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Generating a database for deep learning-based applications in multimodal tomography of the human brain`: recurso/base de datos de imagenología biomédica; se excluyó por no presentar aporte CS suficientemente claro más allá del recurso y pipeline de dominio.
+- `A guided-ensembling approach for cell counting in fluorescence microscopy images`: método de visión computacional, pero la afiliación `UNAM` corresponde a Turquía/Bilkent y no a la UNAM mexicana.
+- `Event reconstruction using pattern spectra and convolutional neural networks for the Cherenkov Telescope Array`: aunque usa CNN y reconstrucción, el registro corresponde a conferencia de 2022 y además se consideró aplicación de astrofísica.
+- `Cloud Detection using Night Sky Background Light at the Pierre Auger Observatory`: detección/monitoreo de nubes para observatorio de astropartículas; aporte principal de dominio físico.
+- `Breast glandular density in contrast mammography with dual-energy decomposition into 3 elements`: método de física médica/medición de densidad mamaria; la parte computacional aparece subordinada al dominio.
+- `Remote quality control in digital mammography. Two experiences`: control de calidad clínico con ImageJ/ATIA como herramientas; no aporte CS central.
+- `DNI Nowcasting Applying a Differential Approach Method Into Sky Camera Images`: procesamiento de sky-camera/ANN aplicado a energía solar; aporte principal energético/meteorológico.
+- `Robo-Surveillance of a Solar Park for a Workshop in Interdisciplinary Education`: robótica usada como taller educativo/interdisciplinario; el foco principal no fue un método CS.
+- `Reconstruction of the Probability Measure and the Coupling Parameters in a Curie-Weiss Model`: matemática/estadística y física matemática; no se consideró claramente Ciencias de la Computación.
+- `Graph Neural Networks for Photon Searches with the Underground Muon Detector of the Pierre Auger Observatory`: GNN aplicado a física de rayos cósmicos; se excluyó como aplicación científica de dominio.
+
+## Principales falsos positivos detectados
+- Artículos de astronomía, astrofísica y física de altas energías que usan imágenes, CNN, GNN o reconstrucción como herramientas de análisis científico, sin aporte CS generalizable claro.
+- Artículos biomédicos o de física médica donde imágenes, señales, tomografía o software se usan como instrumentos de medición o control de calidad.
+- Artículos de energía, potencia, redes eléctricas, geotecnia, geofísica, oceanografía, hidrología y meteorología que usan clustering, ML, señales o simulación como herramientas de dominio.
+- Artículos de química, materiales, nanomateriales, fotocatálisis, contaminación, alimentos y biotecnología con caracterización por espectroscopía, microscopía o tomografía, pero sin contribución computacional.
+- Artículos educativos, sociales o conceptuales sobre IA, robótica o tecnología sin método, sistema o algoritmo computacional central.
+- Duplicados entre versiones arXiv/proceedings o preprint/artículo con DOI diferente pero título idéntico o prácticamente idéntico.
+
+## Decisiones importantes
+- Se aceptaron trabajos biomédicos de imagen/señal sólo cuando el aporte central fue segmentación, reconstrucción, mejora, data augmentation, clasificación, arquitectura de aprendizaje profundo, watermarking, protección de imágenes, procesamiento de señales o interfaz/háptica.
+- Se aceptaron algunos trabajos no estrictamente SIAV —por ejemplo anomalía en trazas distribuidas, LLM/data augmentation, NeuralODE/UDE y HCI/robótica— porque sí pertenecen claramente a Ciencias de la Computación.
+- Se excluyeron aplicaciones de ML/visión en astronomía, energía, geología, salud clínica, hidrología o materiales cuando el aporte principal era de la disciplina de aplicación.
+- Se eliminaron como duplicados claros versiones con título idéntico pero DOI diferente, por ejemplo preprints arXiv frente a versiones de proceedings.
+- Se excluyeron los registros con fecha verificable de conferencia fuera del periodo, por ejemplo 2022 o 2023, aunque el metadato de publicación indicara 2024.
+
+## Formato del archivo final
+- Engineering Village exportó archivos con encabezados distintos: algunos tenían 33 columnas, otros 32.
+- Para no perder metadatos, el CSV final usa la unión de columnas originales de Engineering Village, con diseño final de 33 columnas.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se convirtió al modelo canónico.
+- No se eliminaron columnas originales.
+- Los campos faltantes en archivos con menos columnas se dejaron vacíos.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, términos largos y caracteres especiales.
+
+### Diferencias de encabezado detectadas
+- Engineering_Village_abstract_5-17-2026_233056858.csv: 33 columnas; encabezado completo de 33 columnas
+- Engineering_Village_abstract_5-17-2026_233114731.csv: 33 columnas; encabezado completo de 33 columnas
+- Engineering_Village_abstract_5-17-2026_233121514.csv: 33 columnas; encabezado completo de 33 columnas
+- Engineering_Village_abstract_5-17-2026_233126217.csv: 32 columnas; faltantes frente a la unión: Sponsor
+- Engineering_Village_abstract_5-17-2026_233132629.csv: 32 columnas; faltantes frente a la unión: Article number
+- Engineering_Village_abstract_5-17-2026_233142684.csv: 33 columnas; encabezado completo de 33 columnas
+- Engineering_Village_abstract_5-17-2026_23317935.csv: 33 columnas; encabezado completo de 33 columnas
+
+## Archivo final generado
+- `ev_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Este lote tuvo mucho solapamiento: 178 duplicados eliminados sobre 324 registros recibidos.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO y los demás lotes de Engineering Village, porque varios títulos aceptados ya aparecieron en otros lotes.
+- La frontera más delicada fue distinguir procesamiento real de imágenes/señales frente a instrumentación, medición o análisis aplicado de dominio.
+- Mantener como regla global: aceptar artículos biomédicos o científicos sólo cuando el método computacional sea el aporte central, no cuando imagen/señal/ML sea una herramienta secundaria.
+- Mantener como regla global: las plataformas, datasets o bases de datos de dominio se excluyen si no hay contribución clara de software, arquitectura, procesamiento, IR, HCI o método computacional.

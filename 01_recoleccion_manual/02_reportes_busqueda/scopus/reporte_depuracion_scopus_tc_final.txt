@@ -1,0 +1,111 @@
+# Reporte de depuración — Scopus Teoría de la Computación
+
+## Archivos recibidos
+- scopus_export_May 16-2026_2e646269-46ac-4c01-838f-1f4dfeb7ef45.csv
+- scopus_export_May 16-2026_4a2eacc3-c072-4d9e-a43a-5e4f770d495d.csv
+- scopus_export_May 16-2026_528533c0-a616-4417-8d8b-cf10237e6c2f.csv
+- scopus_export_May 16-2026_56632a31-8d89-476a-99f2-6424bfe412ee.csv
+- scopus_export_May 16-2026_8971d1ad-d6c6-4413-a36a-74d7e4dad062.csv
+- scopus_export_May 16-2026_c986d79e-a6df-4ab2-9540-b4ba10375826.csv
+- scopus_export_May 16-2026_d203ffd7-19a9-43cf-a9f9-6147169de132.csv
+- scopus_export_May 16-2026_dae3c567-54be-4bc0-b9ad-d6e4a5043914.csv
+
+## Objetivo
+Depurar registros descargados desde Scopus para el lote inicial de Teoría de la Computación y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Scopus.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Teoría de la Computación.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor; además se eliminó un duplicado claro con DOI distinto y título equivalente.
+
+Nota: los archivos recibidos sólo traen `Year`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 195
+- Registros duplicados eliminados: 102
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 1
+- Registros excluidos por no ser Ciencias de la Computación: 27
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 65
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- teoría de la computación, computabilidad distribuida, consenso, wait-free computing, memoria compartida, modelos asíncronos y pruebas de imposibilidad;
+- verificación formal, runtime verification, TLA+, model checking, reachability analysis, lógica epistémica dinámica y sistemas híbridos;
+- algoritmos, estructuras de datos concurrentes, colas concurrentes, weak memory, work-stealing y linealizabilidad;
+- grafos, combinatoria algorítmica, geometría computacional, graph drawing, problemas de partición, matching, guarding y diagramas de Voronoi;
+- criptografía, seguridad, cifrado de imágenes, contratos inteligentes, blockchain, privacidad diferencial y protocolos de consenso;
+- optimización, algoritmos evolutivos, aprendizaje por refuerzo multiobjetivo, clustering, quantum annealing y paquetes computacionales de estimación/clustering;
+- cómputo científico/numerical cuando el aporte principal fue un método, framework o reducción/modelado computacional suficientemente claro.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit`: aunque es claramente computacional, la afiliación disponible indica “Universidad Autónoma de México, Unidad Lerma” e IPN; no hay evidencia clara de UNAM mexicana, por lo que se excluyó por institución.
+- `Musical Composition and Two-Dimensional Cellular Automata Based on Music Intervals`: uso de autómatas celulares en creatividad musical/humanidades; no se observó aporte técnico de CS suficientemente claro.
+- `The mode of computing`: ensayo/conceptual sobre modos de computación; sin contribución técnica o formal verificable suficiente.
+- `Modeling the Impact of Public Transportation and Mitigation Strategies in COVID-19 Spread in Mexico City`: modelo epidemiológico y de movilidad urbana; simulación como herramienta de salud pública.
+- `Justification Logic and the Epistemic Contribution of Deduction`: lógica filosófica; no se observó contribución computacional o de formal methods aplicada a sistemas.
+- `Low-Cost Proposal For Satellite Data And Image Reception Software Using Software Defined Radio And Open-Source Software Based On GNURadio`: plataforma de recepción satelital/SDR; software como integración operativa, no aporte CS principal.
+- `Classification of SERS spectra for agrochemical detection using a neural network with engineered features`: ML aplicado a detección agroquímica/fotónica; aporte principal de dominio.
+- `Optimized Performance Pulse Oximeter Based on the MAX30102 Commercial Sensor`: diseño de dispositivo biomédico; procesamiento de señales como componente instrumental.
+- `A Strong Gram Classification of Non-negative Unit Forms of Dynkin Type Ar`: resultado algebraico/matemático; no se identificó contribución de algoritmos, computabilidad o sistemas.
+- `Brain Connectivity Hypergraphs`: aplicación de hipergrafos a conectividad cerebral; foco en neurociencia.
+- `Hypergraph Analysis of Functional Brain Connectivity During Figurative Attention`: metodología de análisis de conectividad cerebral; foco biomédico/neurocientífico.
+- `Trees with minimum weighted Szeged index`: teoría/extremal de grafos con descriptor molecular; sin aporte algorítmico claro.
+- `On the attitude consensus of rigid bodies using exponential coordinates`: consenso de control para cuerpos rígidos; foco en ingeniería de control/robótica física, no consenso distribuido computacional.
+- `Correlations and Fractality in Sentence-Level Sentiment Analysis Based on VADER for Literary Texts`: uso de herramienta de sentimiento para análisis literario/fractal; no nuevo método NLP/CS claro.
+- `Exploring the multifractal behavior of the human genome T2T-CHM13v2.0: Graphical representations and cytogenetics`: análisis genómico/multifractal; foco biomédico/genético.
+- `Uranium Mineral Transport in the Peña Blanca Desert: Dissolution or Fragmentation? Simulation in Sediment Column Systems`: simulación/experimento geológico; no CS.
+- `Activated Biochar from Pineapple Crown Biomass: A High-Efficiency Adsorbent for Organic Dye Removal`: química/medio ambiente; modelo numérico como apoyo.
+
+## Principales falsos positivos detectados
+- Artículos de matemáticas, física, filosofía o lógica filosófica sin contribución computacional clara.
+- Artículos de salud, biomedicina, neurociencia o genética que usan grafos, Markov, fractales, redes neuronales o conectividad como herramienta de análisis de dominio.
+- Artículos de ingeniería de control, energía, materiales, química, geología, agua o ambiente con simulación/modelado, pero sin aporte CS principal.
+- Artículos que contienen términos como `network`, `consensus`, `complexity`, `automata`, `algorithm`, `model`, `simulation`, `software` o `machine learning`, pero cuyo objeto central pertenece a otra disciplina.
+- Registros de software/plataformas de operación de dominio, por ejemplo recepción satelital o instrumentación biomédica, sin contribución de ingeniería de software, algoritmos o sistemas computacionales generalizable.
+
+## Decisiones importantes
+- Se aceptaron artículos no estrictamente de Teoría de la Computación cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo verificación formal, seguridad, privacidad, blockchain, NLP/autoría, aprendizaje por refuerzo, optimización evolutiva, clustering, HCI/robótica algorítmica y cómputo científico.
+- Se aceptaron variantes de afiliación UNAM como `UNAM`, `U.N.A.M.`, `IIMAS-UNAM`, `Universidad Nacional Autónoma de México`, `Universidad Nacional Autonoma de Mexico`, `Univ. Nal. Autónoma de México` y variantes con errores tipográficos menores cuando la institución era inequívoca.
+- Se excluyó el caso `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit` por no tener afiliación UNAM clara, aunque el tema sí era computacional.
+- Se eliminó como duplicado claro el registro `Cryptographic consensus protocols in Blockchain for the Internet of Things` con DOI distinto y sin abstract, conservando la versión con más metadatos completos.
+- Se excluyeron artículos aunque contenían términos como `cellular automata`, `network`, `complexity`, `consensus`, `model`, `simulation`, `software` o `algorithm` cuando esos términos funcionaban como herramienta secundaria o marco conceptual de otra disciplina.
+- En resultados de grafos/geometría discreta se conservó el registro cuando había señal clara de teoría computacional, geometría computacional, algoritmos, graph drawing, reconfiguración, estructuras de datos o problemas clásicos de CS; se excluyeron resultados puramente matemáticos sin aporte computacional claro.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Scopus: 27 columnas.
+- Los ocho archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de Scopus después de la deduplicación.
+
+## Archivo final generado
+
+- `scopus_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Los archivos de Scopus no traían mes ni columna `Subject Area`; el filtro temporal se aplicó con `Year`, conservando 2024 cuando no había mes verificable.
+- El lote tuvo solapamiento alto entre queries: 102 registros eliminados como duplicados.
+- Conviene confirmar la regla global para artículos de matemática discreta pura: aquí se conservaron cuando el vínculo con teoría computacional, geometría computacional, algoritmos, estructuras de datos o sistemas distribuidos era claro, y se excluyeron cuando el resultado parecía puramente matemático sin aporte CS.
+- Conviene mantener la regla conservadora para términos ambiguos como `network`, `consensus`, `complexity`, `automata` o `model`, porque pueden aparecer en neurociencia, control, educación, filosofía, geología o biología sin constituir Ciencias de la Computación.

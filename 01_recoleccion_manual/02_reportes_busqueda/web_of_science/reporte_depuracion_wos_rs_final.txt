@@ -1,0 +1,108 @@
+# Reporte de depuración — Web of Science RS
+
+## Archivos recibidos
+- savedrecs (2).xls
+- savedrecs (3).xls
+- savedrecs (4).xls
+- savedrecs (5).xls
+- savedrecs (6).xls
+- savedrecs (7).xls
+- savedrecs (8).xls
+
+## Objetivo
+Depurar registros descargados desde Web of Science para el lote inicial RS — Redes y Seguridad en Cómputo — y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Web of Science.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad en Cómputo.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado cuando el duplicado era evidente.
+
+Nota: Web of Science exportó `Publication Date`, `Publication Year`, `Conference Date` y `Early Access Date`; cuando el mes fue verificable se aplicó estrictamente el periodo marzo 2024–diciembre 2025. Se excluyeron registros de enero/febrero de 2024, registros 2026, registros 2023 y registros con fecha de conferencia fuera del periodo.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 334
+- Artículos únicos después de deduplicación: 206
+- Registros duplicados eliminados: 128
+- Registros excluidos por estar fuera de periodo: 27
+- Registros excluidos por no tener afiliación UNAM clara: 5
+- Registros excluidos por no ser Ciencias de la Computación: 127
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 47
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- criptografía, OpenPGP, blockchain, smart contracts, control de acceso, privacidad local, esteganografía, watermarking y protección de imágenes;
+- redes, IoT, 5G/6G, middleware, descubrimiento de vecindad, análisis de tráfico y sistemas distribuidos;
+- verificación formal, runtime verification, linealizabilidad, lógica modal/epistémica y teoría de cómputo distribuido;
+- algoritmos, optimización, estructuras de datos concurrentes, colas concurrentes, cómputo heterogéneo, GPU/HPC y software/código científico;
+- HCI, robótica, interfaces web y edge/fog computing cuando el sistema o método computacional era el aporte central;
+- procesamiento de imágenes/señales cuando el aporte fue seguridad, cifrado, autenticación o recuperación/protección digital.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit`: CS/optimización sobre GPU, pero WoS sólo muestra `Univ Autonoma Mexico, Unidad Lerma`; no se tomó como afiliación UNAM clara.
+- `Genetic electro-search optimization for optimum energy consumption in edge computing-based internet of healthcare things`: CS/edge computing posible, pero `Early Access Date` indica JAN 2024; se excluyó por periodo.
+- `On the Decentralization of Attribute-Based Encryption Schemes`: criptografía/seguridad clara, pero la conferencia es SEP 11-13, 2023; se excluyó por periodo.
+- `Pattern Models: A Dynamic Epistemic Logic For Distributed Systems`: teoría/distribuidos clara, pero `Publication Date` es FEB 17, 2024; se excluyó por periodo.
+- `Structurally Colored Physically Unclonable Functions with Ultra-Rich and Stable Encoding Capacity`: PUF/seguridad física, pero la afiliación `UNAM` corresponde al centro de nanotech de Bilkent/Turquía y no a UNAM México.
+- `All-Optical Encryption Controlled by Multiphotonic Absorption in Carbon Nanotubes`: contiene `encryption`, pero el aporte principal es fotónica/materiales, no Ciencias de la Computación.
+- `Blockchain in breast disease: Challenges and ethical considerations`: menciona blockchain, pero el foco es médico/ético y no técnico-computacional.
+- `The Internet on Russia's National Security Agenda: RuNet and Digital Sovereignty`: menciona seguridad/Internet, pero es geopolítica/política pública, no seguridad informática técnica.
+- `Fog Computing and Industry 4.0 for Newsvendor Inventory Model Using Attention Mechanism and Gated Recurrent Unit`: contiene fog/GRU, pero el foco es inventario/logística; se excluyó conservadoramente.
+- `Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation`: instrumentación biomédica Doppler; no se observó aporte CS central.
+
+## Principales falsos positivos detectados
+- Artículos de materiales, fotónica, sensores, energía o nanodispositivos que usan términos como `security`, `encryption`, `PUF`, `wireless`, `IoT` o `sensor`, pero cuyo aporte principal es físico/material.
+- Artículos biomédicos, clínicos o de salud pública que usan IA, blockchain, edge computing, audio, imágenes o registros como herramientas de dominio.
+- Artículos de política pública, geopolítica, derecho, gobierno digital o ciencias sociales que mencionan Internet, seguridad, IA o datos sin contribución técnica de CS.
+- Artículos de hidrología, geociencias, energía, edificios, transporte, ecología o agricultura con simulación, sensores, redes o ML como apoyo aplicado.
+- Falsos positivos institucionales por `UNAM` asociado a Bilkent University/Turquía o por variantes ambiguas como `Univ Autonoma Mexico` sin evidencia clara de UNAM mexicana.
+
+## Decisiones importantes
+- Se conservaron registros no estrictamente RS cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo verificación formal, HCI, optimización, cómputo científico, seguridad de imágenes, sistemas distribuidos y estructuras concurrentes.
+- Se excluyeron registros aunque contenían términos como `security`, `network`, `blockchain`, `IoT`, `fog computing`, `edge computing`, `AI`, `encryption`, `model`, `simulation` o `digital` cuando esos términos eran secundarios al dominio de aplicación.
+- Se trató como falso positivo institucional el uso de `UNAM` para centros de Bilkent University/Turquía, no vinculados a la UNAM mexicana.
+- Se excluyó `Comparative Study of Particle Swarm Optimization and Differential Evolution Algorithms on a Graphics Processing Unit` por afiliación UNAM no clara, aunque el tema es computacional.
+- Se eliminó como duplicado claro una segunda versión de `Cryptographic Consensus Protocols in Blockchain for the Internet of Things` con título equivalente y menor completitud de metadatos.
+
+## Formato del archivo final
+- Los siete archivos de Web of Science tenían el mismo encabezado: 72 columnas.
+- Se conservaron exactamente esas 72 columnas originales, en el mismo orden.
+- No se agregaron columnas nuevas.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- No se convirtió al modelo canónico.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+Detalle de encabezados por archivo:
+- savedrecs (2).xls: 72 columnas
+- savedrecs (3).xls: 72 columnas
+- savedrecs (4).xls: 72 columnas
+- savedrecs (5).xls: 72 columnas
+- savedrecs (6).xls: 72 columnas
+- savedrecs (7).xls: 72 columnas
+- savedrecs (8).xls: 72 columnas
+
+## Archivo final generado
+- `wos_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO, Engineering Village y otros lotes WoS, porque varios títulos aceptados ya aparecieron en otras fuentes o áreas.
+- Mantener como regla global que `security` o `network` en energía, materiales, sensores, política pública, salud o biología no equivale automáticamente a Ciencias de la Computación.
+- Mantener como regla global que IoT/edge/fog se acepta sólo cuando el aporte sea arquitectura, middleware, protocolo, algoritmo, sistema computacional o procesamiento central; no simples dispositivos o plataformas de monitoreo de dominio.
+- Revisar globalmente los casos con `Early Access Date` de enero/febrero de 2024 y publicación posterior, porque aquí se aplicó estrictamente el campo de fecha disponible.
+- La afiliación `Univ Autonoma Mexico, Unidad Lerma` se trató como no clara para UNAM, aunque WoS normalizó una afiliación como `Universidad Nacional Autonoma de Mexico`; se recomienda revisar si el chat principal quiere una regla distinta para esos casos.

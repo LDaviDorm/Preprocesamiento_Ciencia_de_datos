@@ -1,0 +1,130 @@
+# Reporte de depuración y extracción — ScienceDirect IA
+
+## Archivos recibidos
+
+### Lote 1
+- Optimizing-Automated-Manufacturing-Processes-Using-a-Hybrid_2024_Procedia-Co.pdf
+- 1-s2.0-S0142061525005848-main.pdf
+- 1-s2.0-S1877050924018714-main.pdf
+- 11---Modeling-responsible-technologies-using-m_2025_Computational-Modeling-A.pdf
+- Addressing-multidimensional-highly-correlated-dat_2024_Computers-and-Electro.pdf
+- Advanced-Algorithm-Combinations-for-Safe-Human-Robot-Col_2025_Procedia-Compu.pdf
+- Advanced-Dual-Branch-U-Net-Decoder-for-Precise-and_2025_Biomedical-Signal-Pr.pdf
+- AI-Enhanced-Supercomputing-for-Next-Generation-Astronomical_2025_Procedia-Co.pdf
+- A-machine-learning-based-inverse-analysis-procedure-for-_2025_Advances-in-En.pdf
+- Analysis-of-an-electrically-responsive-drug-delivery-sys_2025_Computers-in-B.pdf
+- Connectivity-and-stochastic-robustness-of-synchroni_2024_Discrete-Applied-Ma.pdf
+- Error-Compensation-Method-during-Welding-Operations-using_2024_Procedia-Comp.pdf
+- Examining-public-managers--competencies-of-artificial-in_2024_Government-Inf.pdf
+- Improved-predictive-diagnosis-of-diabetic-macular-ede_2024_Computers-in-Biol.pdf
+- Machine-learning-in-AIRR-diagnostics--Advances-and-appli_2025_ImmunoInformat.pdf
+- Mammography-reporting-dataset-with-BI-RADS-system-for-natural-la_2025_Data-i.pdf
+- Multi-modal-supervised-domain-adaptation-with-a-multi-level-ali_2025_Knowled.pdf
+- Neuroevolution-based-multiobjective-algorithm-for-feature-s_2025_Applied-Sof.pdf
+
+### Lote 2
+- Real-time-multi-label-event-categorization_2025_International-Journal-of-Ele.pdf
+- Simulation-of-an-individual-with-motor-disabilities-by-a-deep_2024_Neurocomp.pdf
+- text2graphAPI--A-library-to-transform-text-documents-into-differ_2024_Softwa.pdf
+- The-importance-of-spatial-scale-and-vegetation-compl_2024_ISPRS-Journal-of-P.pdf
+
+## Objetivo
+Depurar PDFs descargados desde ScienceDirect para el lote de Inteligencia Artificial y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación. Como ScienceDirect no entregó CSV estructurado, los registros aceptados se convirtieron al modelo canónico utilizado en los lotes previos de ScienceDirect.
+
+## Alcance de esta fase
+- Se revisaron PDFs, no archivos CSV estructurados.
+- Se convirtió al modelo canónico únicamente lo aceptado.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM mexicana clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, metadatos de primera página, DOI, fecha de publicación/disponibilidad y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y título normalizado.
+
+## Resultados cuantitativos
+- Total de cargas PDF recibidas: 22
+- Artículos únicos después de deduplicación: 20
+- Registros duplicados eliminados: 2
+- Registros excluidos por estar fuera de periodo: 2
+- Registros excluidos por no tener afiliación UNAM clara: 1
+- Registros excluidos por no ser claramente Ciencias de la Computación: 4
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 13
+
+## Registros aceptados
+Se conservaron artículos de:
+
+- algoritmos de optimización, scheduling y manufactura inteligente;
+- clasificación multietiqueta con CNN, DWT y DNN;
+- multi-agent systems, HRI, robótica colaborativa y reinforcement learning;
+- visión por computadora, segmentación de imágenes y deep learning médico;
+- HPC, GPU, supercómputo y flujos de procesamiento de datos con IA;
+- ingeniería de software científico y NLP;
+- domain adaptation, multimodal emotion recognition y EEG/eye tracking;
+- neuroevolución, optimización multiobjetivo y selección de características;
+- datasets/corpus para NLP y aprendizaje automático.
+
+Registros aceptados:
+
+- `Optimizing Automated Manufacturing Processes Using a Hybrid BRKGA Algorithm: A Case Study on Flexible Job-Shop Scheduling`
+- `Real-time multi-label event categorization in the Brazilian interconnected power system`
+- `Modeling responsible technologies using multiagent system for climate crisis and sustainability`
+- `Advanced Algorithm Combinations for Safe Human-Robot Collaboration: A Review and Research Proposal`
+- `Advanced Dual-Branch U-Net Decoder for Precise and Robust Surgical Instrument and Organ Segmentation`
+- `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory`
+- `A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets`
+- `Error Compensation Method during Welding Operations using the Enhanced Wagner-Hagras Interval Type-3 NSFLS-1`
+- `Mammography reporting dataset with BI-RADS system for natural language processing applications: Addressing public data gaps in Spanish`
+- `Multi-modal supervised domain adaptation with a multi-level alignment strategy and consistent decision boundaries for cross-subject emotion recognition from EEG and eye movement signals`
+- `Neuroevolution-based multiobjective algorithm for feature selection and binary classification of DNA microarrays`
+- `Simulation of an individual with motor disabilities by a deep reinforcement learning model`
+- `text2graphAPI: A library to transform text documents into different graph representations`
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Addressing multidimensional highly correlated data for forecasting in precision beekeeping`: modelos predictivos/time series aplicados a apicultura; el aporte principal es agropecuario/precision beekeeping, no CS generalizable.
+- `Analysis of an electrically responsive drug delivery system for ibuprofen on-demand release using a machine learning approach`: ML aplicado a formulación farmacéutica y liberación de fármacos; aporte principal biomédico/químico.
+- `Connectivity and stochastic robustness of synchronized multi-drone systems`: claramente CS por algoritmos, grafos y conectividad de sistemas multi-drone, pero se excluyó porque el PDF indica `Available online 22 February 2024`, fuera del periodo obligatorio.
+- `Examining public managers’ competencies of artificial intelligence implementation in local government`: estudio cuantitativo de administración pública y competencias de gestores; no hay aporte técnico de IA/CS.
+- `Improved predictive diagnosis of diabetic macular edema based on hybrid models: An observational study`: claramente computacional por modelos híbridos/CNN, OCT, fundus y ERG, pero se excluyó porque el PDF indica `Available online 11 January 2024`, fuera del periodo obligatorio.
+- `Machine learning in AIRR diagnostics: Advances and applications`: se excluyó por institución; la afiliación visible `UNAM – National Nanotechnology Research Center` corresponde a Bilkent University, Ankara, Turkey, no a la UNAM mexicana.
+- `The importance of spatial scale and vegetation complexity in woody species diversity and its relationship with remotely sensed variables`: el foco es ecología/remote sensing aplicado a diversidad vegetal; GLM y Random Forest son herramientas de análisis de dominio.
+
+## Principales falsos positivos detectados
+- Artículos de agricultura, ecología, salud, química, farmacología, administración pública o energía donde IA/ML aparece como herramienta auxiliar.
+- Registros donde `AI`, `machine learning`, `simulation`, `model`, `data-driven` o `Random Forest` no implican una contribución principal de Ciencias de la Computación.
+- Falsos positivos institucionales por siglas `UNAM` que no corresponden a la Universidad Nacional Autónoma de México.
+- Registros claramente computacionales pero fuera de periodo obligatorio por disponibilidad en enero/febrero de 2024.
+
+## Decisiones importantes
+- Se aceptó `Modeling responsible technologies using multiagent system...` como caso frontera porque el capítulo propone un marco de sistemas multiagente para sistemas energéticos descentralizados; MAS pertenece claramente a la familia de Inteligencia Artificial, aunque el dominio aplicado sea sostenibilidad/clima.
+- Se aceptó `A machine learning-based inverse analysis procedure...` porque el aporte explícito es un algoritmo/procedimiento de inverse analysis con ML y generación de dataset no experimental, no sólo una predicción rutinaria de dominio.
+- Se aceptó `Mammography reporting dataset...` porque el aporte es un dataset estructurado para NLP en español y aplicaciones de aprendizaje automático; no se aceptó por el dominio médico sino por su utilidad directa para NLP/AI.
+- Se deduplicaron internamente dos pares de PDFs: `Optimizing Automated Manufacturing...` apareció con dos nombres de archivo y `Real-time multi-label event categorization...` también apareció duplicado.
+- No se deduplicó contra otros lotes o áreas de ScienceDirect ni contra otras editoriales; esa deduplicación global debe hacerse al consolidar todo el corpus.
+
+## Formato del archivo final
+- ScienceDirect no entregó CSV estructurado; la extracción se hizo desde PDFs.
+- El archivo final se generó en modelo canónico de 14 columnas.
+- Columnas usadas: `indice`, `Titulo`, `Año`, `Autor_norm`, `Afiliacion1`, `Afiliacion2`, `ISBN`, `ISSN`, `Doi`, `URL`, `Area`, `Subarea`, `Keywords`, `Abstract`.
+- `Area` se llenó como `IA` por tratarse del lote de búsqueda, no como clasificación final.
+- `Subarea` se dejó vacía.
+- `ISBN` se dejó como `N/D` cuando no estaba disponible.
+- `Afiliacion2` se dejó vacía.
+- El CSV está codificado en UTF-8 con BOM para que Excel muestre correctamente acentos y caracteres especiales.
+
+## Archivo final generado
+- `sciencedirect_ia_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Dos registros claramente CS quedaron fuera únicamente por la regla temporal estricta: `Connectivity and stochastic robustness...` y `Improved predictive diagnosis...`.
+- El caso `Modeling responsible technologies using multiagent system...` es revisable en clasificación final; se conservó por MAS/IA.
+- El caso `Mammography reporting dataset...` debe revisarse en clasificación final porque probablemente pertenezca más a NLP/datos/IA que a SIAV o salud.
+- Hay solapamiento con lotes previos de ScienceDirect: varios registros aceptados ya aparecieron en CC, RS o SIAV.

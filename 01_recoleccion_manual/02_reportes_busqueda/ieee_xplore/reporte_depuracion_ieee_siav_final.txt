@@ -1,0 +1,110 @@
+# Reporte de depuración — IEEE Señales, Imágenes y Ambientes Virtuales
+
+## Archivos recibidos
+- ieee_siav_q1_general_signals_images_vr_raw_2024-03_2025-12.csv
+- ieee_siav_q2_image_processing_computer_vision_raw_2024-03_2025-12.csv
+- ieee_siav_q3_signal_audio_speech_processing_raw_2024-03_2025-12.csv
+- ieee_siav_q4_pattern_recognition_signals_images_raw_2024-03_2025-12.csv
+- ieee_siav_q5_graphics_vr_ar_animation_raw_2024-03_2025-12.csv
+- ieee_siav_q6_wavelets_filtering_restoration_raw_2024-03_2025-12.csv
+- ieee_siav_q7b_catalog_seed_authors_2_raw_2024-03_2025-12.csv
+- ieee_siav_q7c_catalog_seed_authors_3_raw_2024-03_2025-12.csv
+- ieee_siav_q7d_catalog_seed_authors_4_raw_2024-03_2025-12.csv
+- ieee_siav_q9_rescue_hybrid_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde IEEE para el lote de Señales, Imágenes y Ambientes Virtuales y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de IEEE.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Señales, Imágenes y Ambientes Virtuales.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor.
+
+Nota: IEEE trae varias fechas: `Issue Date`, `Meeting Date`, `Online Date` y `Date Added To Xplore`. Para el periodo se usó `Issue Date`/`Meeting Date` como referencia principal cuando permitían verificar mes. `Date Added To Xplore` se trató como fecha de indexación. Se conservaron publicaciones agregadas a Xplore en 2026 cuando el congreso o publicación correspondía a 2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 217
+- Registros duplicados eliminados: 127
+- Registros excluidos por estar fuera de periodo: 3
+- Registros excluidos por no tener afiliación UNAM: 11
+- Registros excluidos por no ser Ciencias de la Computación: 40
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 36
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- visión por computadora, segmentación, detección, reconstrucción, restauración y mejora de imágenes;
+- procesamiento de señales EEG, EMG, WiFi-CSI y señales biomédicas cuando el método computacional fue central;
+- aprendizaje profundo, adaptación de dominio, reconocimiento de emociones, modelos multimodales y arquitecturas de IA;
+- robótica, manipulación guiada por visión, HRI, haptics, XR/VR e interfaces inmersivas;
+- seguridad, privacidad, cifrado, watermarking, data hiding y protección de imágenes/datos digitales;
+- planeación, reachability, path planning, minería de procesos/datos, redes neuronales robustas y otros métodos computacionales claramente CS.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `Artificial Intelligence-Based System for the Diagnosis of Hepatic Steatosis`: diagnóstico médico/fotónico; la clasificación de imágenes funciona como apoyo de dominio.
+- `Machine Learning for Arrhythmia Detection: Integrating ECG Biomarkers for Improved Diagnostic Performance`: diagnóstico clínico con ML estándar sobre ECG; sin aporte computacional suficientemente claro.
+- `DNI Nowcasting Applying a Differential Approach Method Into Sky Camera Images`: nowcasting solar/energía; visión y ANN como herramientas de dominio.
+- `Data-Driven Transient Stability Assessment by Modal Patterns-Based Severity Indices`: estabilidad de sistemas eléctricos; procesamiento de señales aplicado a potencia.
+- `Brain Connectivity Hypergraphs`: análisis/revisión de conectividad cerebral; foco neurocientífico.
+- `Fault diagnosis in a HVAC monophase transmission line`: diagnóstico de fallas en línea eléctrica; foco en ingeniería de potencia/control.
+- `The Yucatan HF Radar Network: A Multinational Technology Demonstration to Advance Monitoring of Western Boundary Currents`: red de monitoreo oceanográfico; tecnología de observación de dominio.
+- `MexSIC, a Data Acquisition Channel for SiPMs`: DAQ/ASIC/FPGA para instrumentación física; no CS principal.
+- `Automatic Classification of Synthetic Jovian Radio Emissions Using Spectrogram Analysis and Machine Learning`: clasificación astronómica; ML sobre espectrogramas como herramienta de radioastronomía.
+- `Spectral Characterization of the Ictal Phase in Epileptic Seizures of Temporal Lobe Using the Wavelet Transform`: caracterización clínica/neurofisiológica; wavelets como herramienta de análisis.
+- `Optimization of Deep Learning Architectures for Accurate Prediction of Protein-Ligand Binding in Drug Discovery`: review/aplicación de DL en descubrimiento de fármacos; dominio químico-farmacológico.
+- `PQ-SyDa: Power Quality Synthetic Disturbances DataSet`: dataset/toolbox para calidad de energía; foco en sistemas eléctricos.
+- `Forging Pathways: Quantum Computing Initiatives in Mexico`: iniciativa educativa/red académica; no artículo técnico de CS.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos o clínicos que usan imágenes, EEG, ECG o ML sólo para diagnóstico o caracterización de enfermedad.
+- Artículos de potencia, control automático, redes eléctricas, fotónica, óptica, sensores e instrumentación donde el algoritmo o filtro es auxiliar del dominio.
+- Artículos de oceanografía, geofísica, astronomía, energía y monitoreo ambiental que usan imágenes/señales/ML como herramienta de observación o predicción.
+- Artículos de química, materiales y farmacología con clasificación, optimización o simulación sin contribución computacional central.
+- Falsos positivos institucionales por acrónimos UNAM que no corresponden a la Universidad Nacional Autónoma de México, especialmente National Nanotechnology Research Center (UNAM), Bilkent University/Turquía y UNaM/Argentina.
+- Registros fuera de marzo 2024–diciembre 2025, principalmente enero/febrero de 2024.
+
+## Decisiones importantes
+- Se conservaron artículos no estrictamente de Señales/Imágenes/VR cuando sí eran claramente de Ciencias de la Computación, por ejemplo privacidad diferencial, seguridad, minería de procesos, path planning, reachability, HRI, robótica e IA.
+- Se aceptaron artículos biomédicos de imagen/señal sólo cuando el aporte central fue segmentación, reconstrucción, mejora de imagen, clasificación de señales, arquitectura de aprendizaje profundo o pipeline computacional explícito.
+- Se excluyeron registros aunque contenían términos como image processing, signal processing, machine learning, deep learning, algorithm, data acquisition, model, simulation o digital cuando el aporte principal era de medicina, energía, potencia, fotónica, química, astronomía u oceanografía.
+- En IEEE se usaron Issue Date y Meeting Date como referencia temporal principal; Date Added To Xplore se trató como fecha de indexación.
+- Se conservaron registros agregados a Xplore en 2026 cuando el congreso/publicación correspondía a 2025.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de IEEE: 28 columnas.
+- Los diez archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de la deduplicación.
+
+## Archivo final generado
+
+- `ieee_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- IEEE trae múltiples fechas; para este lote se usó `Issue Date`/`Meeting Date` como criterio principal y `Date Added To Xplore` sólo como fecha de indexación.
+- Se conservaron registros agregados a IEEE Xplore en 2026 cuando el congreso o publicación correspondía a 2025.
+- Hubo mucho solapamiento entre queries: 127 duplicados eliminados sobre 217 registros recibidos.
+- Se detectaron falsos positivos institucionales por `UNAM` de Bilkent University/Turquía y por `UNaM` de Argentina.
+- Conviene mantener una regla estricta para potencia, fotónica, sensores e instrumentación: sólo aceptar cuando el aporte computacional sea central y generalizable, no cuando el algoritmo sea una herramienta de dominio.
+- Para artículos biomédicos de imagen/señal, conviene conservar sólo los casos con método computacional claro: segmentación, reconstrucción, mejora de imagen, arquitectura DL, pipeline, visión por computadora, señal o interfaz.

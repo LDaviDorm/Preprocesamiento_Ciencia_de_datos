@@ -1,0 +1,105 @@
+# Reporte de depuración — Web of Science SIAV
+
+## Archivos recibidos
+- savedrecs (2).xls
+- savedrecs (3).xls
+- savedrecs (4).xls
+- savedrecs (5).xls
+- savedrecs (6).xls
+- savedrecs (7).xls
+- savedrecs (8).xls
+- savedrecs (9).xls
+
+## Objetivo
+Depurar registros descargados desde Web of Science para el lote inicial SIAV y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Web of Science.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de SIAV.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica.
+
+Para Web of Science se revisaron `Publication Date`, `Publication Year`, `Conference Date` y `Early Access Date`. Cuando el mes era verificable, se aplicó estrictamente el periodo marzo 2024–diciembre 2025. Para afiliación UNAM se priorizaron `Addresses` y `Reprint Addresses`, usando `Affiliations` sólo como apoyo por posibles normalizaciones ambiguas de WoS.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 1497
+- Artículos únicos después de deduplicación: 1070
+- Registros duplicados eliminados: 427
+- Registros excluidos por estar fuera de periodo: 107
+- Registros excluidos por no tener afiliación UNAM clara: 31
+- Registros excluidos por no ser claramente Ciencias de la Computación: 848
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 84
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+- visión por computadora, detección de objetos, segmentación, análisis de imágenes médicas y reconstrucción/registro de imágenes;
+- procesamiento de señales, EEG, eye-tracking, audio/speech, wavelets, spike sorting y mode decomposition;
+- realidad virtual, realidad mixta, simuladores, interfaces, interacción usuario-sistema y dispositivos musicales digitales;
+- watermarking, cifrado/protección de imágenes, seguridad visual y autenticación de contenido;
+- robótica, reconocimiento de objetos, pose estimation, manipulación y sistemas de sensado;
+- IA/ML, NLP, data mining, bibliotecas/software científico, frameworks y pipelines computacionales claramente centrales.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con una razón breve:
+- `Pioneering Augmented and Mixed Reality in Cranial Surgery: The First Latin American Experience`: experiencia clínica con AR/MR; no se observó aporte técnico de sistema, algoritmo o interfaz generalizable.
+- `Generating a Database for Deep Learning-based Applications in Multimodal Tomography of the Human Brain`: base de datos biomédica para DL; no aporta método computacional suficiente.
+- `3D+t Multifocal Imaging Dataset of Human Sperm`: dataset biológico de imágenes; se menciona DL/pattern recognition como uso posible.
+- `Deep learning and genetic algorithms for cosmological Bayesian inference speed-up`: aceleración aplicada a inferencia cosmológica; se dejó fuera por criterio conservador de dominio físico.
+- `DNI Nowcasting Applying a Differential Approach Method Into Sky Camera Images`: nowcasting solar/energético con imágenes de cielo; aporte principal de dominio.
+- `Social cognition training using virtual reality for people with schizophrenia: a scoping review`: revisión clínica/psicológica sobre VR, sin aporte computacional.
+- `Semi-Supervised Training for (Pre-Stack) Seismic Data Analysis`: ML aplicado a datos sísmicos/geofísicos.
+- `Development of a classification of ceramic paste based on the analysis of digital radiography images`: clasificación de material patrimonial por radiografía; aporte principal no CS.
+- `Revealing Io's surface using JWST-NIRISS aperture masking interferometry and neural network deconvolution`: aplicación astronómica con deconvolución/ML como herramienta.
+- `AI-Driven Plant Health Assessment: A Comparative Analysis of Inception V3, ResNet-50 and ViT with SHAP for Accurate Disease Identification in Taro`: clasificación agrícola con modelos existentes.
+- `Operational ozone forecasting system in Mexico City: A machine learning framework integrating forecasted weather and historical ozone data`: pronóstico ambiental con ML; aporte principal atmosférico.
+- `Development of artificial neural networks for the prediction of the pressure field along a horizontal pipe conveying high-viscosity two-phase flow`: ANN aplicada a flujo bifásico.
+- `Performance evaluation of SDRs for receiving GOES-16 Satellite digital images`: evaluación de dispositivos SDR; sin aporte CS principal.
+- `Discrete Neuroimaging Metrics for Identifying Structural Alterations in COVID-19-Related Brain Atrophy`: aplicación biomédica de métricas morfológicas, sin método CS nuevo claro.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos, clínicos o de salud que usan imágenes, señales, VR/AR o deep learning como herramienta de diagnóstico o entrenamiento, sin aporte computacional claro.
+- Artículos de astronomía, cosmología, geociencias, óptica, fotónica, energía y materiales donde image processing, signal processing o neural networks son herramientas de dominio.
+- Datasets, repositorios o catálogos de imágenes/señales de dominio biológico o médico cuando el trabajo no aporta método, sistema o benchmark computacional suficientemente generalizable.
+- Estudios educativos, psicológicos, sociales o clínicos sobre uso de VR/AR/IA sin contribución técnica a HCI, interfaz, sistema o método.
+- Trabajos de sensores, instrumentación, microscopía, espectroscopía o medición donde el procesamiento digital es secundario al dispositivo o fenómeno físico.
+- Registros fuera de periodo, especialmente publicaciones 2026, conferencias 2023 o enero/febrero de 2024 cuando el mes era verificable.
+- Registros con afiliaciones normalizadas de WoS que podían sugerir UNAM, pero sin evidencia clara en `Addresses`/`Reprint Addresses`.
+
+## Decisiones importantes
+- Se conservaron registros no estrictamente SIAV cuando sí eran claramente de Ciencias de la Computación, por ejemplo NLP/ASR, software científico, bioinformática computacional, user modeling, edge computing, seguridad de imágenes y minería de datos.
+- Se aceptaron artículos biomédicos de imágenes/señales sólo cuando el aporte central fue segmentación, reconstrucción, clasificación, software, framework, pipeline, representación/descriptor o método computacional explícito.
+- Se excluyeron registros aunque contenían `deep learning`, `image processing`, `signal processing`, `virtual reality`, `computer vision`, `software`, `algorithm`, `framework` o `dataset` cuando el aporte principal era de otra disciplina.
+- Se trató con cautela el campo `Affiliations` de WoS; se priorizaron `Addresses` y `Reprint Addresses` para evitar falsos positivos institucionales.
+- Se reutilizaron decisiones aceptadas previamente en otros lotes Web of Science cuando el mismo título ya había sido depurado como Ciencias de la Computación, para mantener consistencia entre áreas.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Web of Science: 72 columnas.
+- Los ocho archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de la deduplicación.
+
+## Archivo final generado
+- `wos_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- El lote SIAV de WoS tuvo mucho ruido temático: imágenes, señales, VR/AR, deep learning y sensores aparecieron muy frecuentemente como herramientas de medicina, astronomía, geociencias, materiales, energía, biología y psicología.
+- Se conservaron algunos registros de HCI/VR, software, bioinformática computacional, user modeling, edge computing y estadística computacional porque esta fase filtra Ciencias de la Computación vs. no CS, no asigna área final.
+- Hay alto solapamiento con otros lotes WoS ya depurados; conviene deduplicar globalmente por DOI al consolidar toda la fuente.
+- Algunas decisiones frontera —por ejemplo VR biomédica, bioinformática de dominio y señalamiento energético con wavelets— deben revisarse en la fase de consolidación si se desea un umbral todavía más estricto.

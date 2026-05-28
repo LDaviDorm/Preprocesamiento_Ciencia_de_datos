@@ -1,0 +1,93 @@
+# Reporte de depuración — ProQuest RS
+
+## Archivos recibidos
+- ProQuestDocuments-2026-05-19.xls
+- ProQuestDocuments-2026-05-19 (1).xls
+
+## Objetivo
+Depurar registros descargados desde ProQuest para el lote inicial RS — Redes y Seguridad en Cómputo y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de ProQuest.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Redes y Seguridad en Cómputo.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, subject terms, afiliación y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no hubiera DOI, por título normalizado + año + primer autor.
+
+Nota sobre fechas ProQuest: se usó `pubdate` como fecha bibliográfica principal y `elecPubDate` como campo auxiliar/contextual, siguiendo la regla usada en los lotes ProQuest anteriores. Por eso se conservó el artículo aceptado con `pubdate = May 2024`, aunque `elecPubDate = 2023-11-03`; esta decisión queda señalada como revisable.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 34
+- Artículos únicos después de deduplicación: 17
+- Registros duplicados eliminados: 17
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 16
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 1
+
+## Registros aceptados
+Se conservó un registro claramente perteneciente a Ciencias de la Computación por su componente central de interacción, visualización y desarrollo de una aplicación de realidad aumentada:
+
+- `Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico`
+
+## Registros dudosos
+Registros dudosos o potencialmente confundibles que NO fueron incluidos:
+
+- `Geohistory and geomorphology of the Mitlatongo landslide, Oaxaca, Mexico`: geografía/geomorfología; GIS, drones y fotogrametría son herramientas de análisis de dominio.
+- `Natural Compounds with Antiviral Activity Against Clinically Relevant RNA Viruses: Advances of the Last Decade`: biomedicina/química; IA y bases de datos se mencionan como apoyo para descubrimiento antiviral.
+- `Facilitating public scrutiny of EIA reports with open data and artificial intelligence: insights from a Mexican case study`: evaluación ambiental y escrutinio público; OD/AI son herramientas para EIA, no aporte técnico CS.
+- `DIALOGUE: A Generative AI-Based Pre–Post Simulation Study to Enhance Diagnostic Communication in Medical Students Through Virtual Type 2 Diabetes Scenarios`: educación médica; usa ChatGPT/GPT-4o como intervención, sin aporte de IA/NLP/HCI generalizable suficiente.
+- `Impact of Petroleum Coke (Petcoke) PM<sub>10</sub> on the Urban Environment of the Port Terminals of Veracruz, Mexico`: salud ambiental/contaminación; software y modelos espaciales son herramientas.
+- `Generation of Hydrogeological Units for 3D Modelling Using Open‐Source Tools in the Mexico Basin`: hidrogeología; uso de herramientas open-source para modelado 3D de dominio.
+- `Evolution of the Contemporary Landscape: Relevance of Land Use Management Over Environmental Drivers of Soil Erosion`: geomorfología/erosión; análisis multivariado como herramienta de dominio.
+- `The Legacy of Ann Cyphers for Olmec Archaeology: Ann Cyphers (1950–2023)`: arqueología/humanidades; GIS no es aporte computacional central.
+- `A global database of tsunami deposits`: base de datos geocientífica de dominio; no aporta DBMS/IR/sistemas de información.
+- `Modal finite element correlation for computer aided engineering education`: educación en ingeniería mecánica; software/CAE usado para enseñanza, no contribución CS.
+- `Methodology for the design of a nanosatellite telecommunication system in S-Band based on Software for Digital Mission Engineering`: diseño de enlace/telecomunicaciones aeroespaciales con STK; no protocolo/red computacional ni software engineering central.
+- `Best practices for genetic and genomic data archiving`: gestión/archivo de datos genómicos de dominio; no aporte técnico CS claro.
+- `Protecting breeding sites: a critical goal for the conservation of the golden eagle in Mexico under global change scenarios`: ecología/conservación; modelado espacial como herramienta.
+- `Geodiversity Assessment in the MidriffIslands Region of the Gulf of California (Northwest Mexico)`: geodiversidad/geociencias; evaluación espacial de dominio.
+- `Bistable magnetic nanowires: A new approach to non-volatile memory with single readout and automatic deletion`: materiales/nanoestructuras para memoria; contribución principal de materiales/electrónica física, no CS.
+- `Risk of Asian hornet invasion in Mexico: a proposal for invasive species risk assessment from a spatial perspective`: ecología de invasiones; modelos espaciales/information systems como apoyo.
+
+## Principales falsos positivos detectados
+- Artículos de geografía, geociencias, geomorfología, hidrogeología, ecología, arqueología y conservación que usan GIS, drones, fotogrametría, modelos espaciales o bases de datos como herramientas.
+- Artículos biomédicos, farmacológicos o de salud donde IA, bases de datos o simulación son apoyo, no aporte computacional.
+- Artículos de educación o comunicación médica que usan GenAI/ChatGPT como instrumento de entrenamiento, sin contribución técnica de IA/NLP/HCI suficientemente clara.
+- Artículos de materiales, nanoestructuras o electrónica física con términos como memoria, almacenamiento, recuperación de información o codificación, pero cuyo aporte principal no es CS.
+- Artículos de telecomunicaciones/aeroespacio donde el uso de software o análisis de enlace no constituye un aporte de redes computacionales o seguridad.
+
+## Decisiones importantes
+- Se aplicó un criterio estricto para ProQuest porque el lote tenía mucho ruido temático.
+- Se excluyeron artículos aunque contuvieran términos como `artificial intelligence`, `software`, `database`, `information systems`, `simulation`, `model`, `GIS`, `telecommunication`, `data transmission` o `information retrieval` cuando esos términos funcionaban como herramientas o etiquetas de otra disciplina.
+- `Augmented reality to the creation of hybrid maps applied in soil sciences...` se conservó porque el aporte central es una aplicación AR interactiva desarrollada con Unity 3D/AR Foundation, con evaluación de interacción/visualización; aunque el dominio sea suelos, el objeto técnico es computacional.
+- `Methodology for the design of a nanosatellite telecommunication system in S-Band...` se excluyó porque el foco es el diseño de un enlace de comunicación satelital con STK, no un protocolo, arquitectura de red computacional, seguridad, middleware o sistema distribuido.
+- `DIALOGUE...` se excluyó porque el foco es la evaluación educativa/médica de una intervención con GenAI, no la construcción o evaluación técnica de un modelo/sistema de IA como contribución de CS.
+
+## Formato del archivo final
+- Se conservaron exactamente las columnas originales de ProQuest.
+- Los dos archivos tenían el mismo encabezado: 29 columnas.
+- No se agregaron columnas.
+- No se renombraron columnas.
+- No se eliminaron columnas originales.
+- No se convirtió al modelo canónico.
+- El CSV final está codificado en UTF-8 con BOM para que Excel lea correctamente acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+
+## Archivo final generado
+- `proquest_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- ProQuest exportó dos archivos con los mismos 17 artículos; se eliminaron 17 duplicados por DOI.
+- El lote fue muy ruidoso: sólo 1 artículo único pasó el filtro estricto de Ciencias de la Computación.
+- La decisión temporal sobre `Augmented reality...` es revisable: `pubdate` indica mayo de 2024, pero `elecPubDate` indica 2023-11-03. Se conservó por usar `pubdate` como fecha bibliográfica principal en ProQuest.
+- Conviene mantener la regla global de excluir artículos con `telecommunication`, `software`, `AI`, `database`, `information systems`, `simulation`, `model`, `GIS` o `open data` si el aporte principal es de geociencias, salud, ecología, materiales, educación o política pública.

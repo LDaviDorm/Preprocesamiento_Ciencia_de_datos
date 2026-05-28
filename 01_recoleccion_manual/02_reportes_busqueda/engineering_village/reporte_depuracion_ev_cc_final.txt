@@ -1,0 +1,128 @@
+# Reporte de depuración — Engineering Village CC
+
+## Archivos recibidos
+- Engineering_Village_abstract_5-17-2026_231131177.csv
+- Engineering_Village_abstract_5-17-2026_231143934.csv
+- Engineering_Village_abstract_5-17-2026_23115078.csv
+- Engineering_Village_abstract_5-17-2026_231155310.csv
+- Engineering_Village_abstract_5-17-2026_23120679.csv
+- Engineering_Village_abstract_5-17-2026_23126166.csv
+
+## Objetivo
+Depurar registros descargados desde Engineering Village para el lote inicial CC — Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de los archivos recibidos.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, términos controlados/no controlados, códigos de clasificación, fuente, fechas, DOI y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI; cuando no hubo DOI, por título normalizado + año + primer autor.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 119
+- Artículos únicos después de deduplicación: 74
+- Registros duplicados eliminados: 45
+- Registros excluidos por estar fuera de periodo: 3
+- Registros excluidos por no tener afiliación UNAM clara: 6
+- Registros excluidos por no ser claramente Ciencias de la Computación: 51
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 14
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- cómputo de alto rendimiento, supercómputo, arquitecturas GPU y flujos de procesamiento científico;
+- métodos numéricos e inversión numérica cuando el aporte central fue comparar, proponer o mejorar algoritmos computacionales;
+- optimización multiobjetivo, optimización evolutiva, ant colony optimization y reinforcement learning;
+- teoría/distribución/concurrencia, consenso y modelos de memoria compartida;
+- esteganografía, procesamiento de imágenes y reconstrucción de imágenes con deep learning;
+- HCI/háptica e interfaces con IA cuando el sistema o algoritmo computacional fue el aporte central;
+- métodos computacionales para redes booleanas y representaciones numéricas que reducen tiempo/memoria.
+
+Registros aceptados:
+- AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory
+- Large-Scale Validation and Analysis of the Rejection Capacity in Entropic Associative Memory
+- A Parallel Steganography Algorithm Using a New Secret Key Generation
+- A Comparative Study of Numerical Laplace Inversion Methods for HeatTransfer in Fractured Reservoirs
+- Development Of An Algorithm For Strength Training With Use Haptic Feedback And Artificial Intelligence (AI) Based Enhancement
+- On the Approximation of the Entire Pareto Front of a Constrained Multi-objective Optimization Problem
+- A speedup theorem for asynchronous computation with applications to consensus and approximate agreement
+- The Computational Power of Distributed Shared-Memory Models with Bounded-Size Registers
+- Integer transformation of Boolean networks and its topological implications
+- Symmetry adapted DVR approach using Cartesian basis
+- 'A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP'
+- Incorporation of Deep Learning Regularization in the Image Reconstruction Algorithm for a Dual-Panel PEM Scanner
+- Generalising the team orienteering problem through multi-constraining and multi-objectives
+- A R2 Based Multi-objective Reinforcement Learning Algorithm
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+- Data-driven power system linear model identification via quadrature-based balanced truncation: modelo/identificación aplicado a sistemas eléctricos; no se observó aporte CS generalizable suficiente.
+- Critical Nodes Detection and Dynamic Vulnerability Analysis in Power Grids: análisis de vulnerabilidad de red eléctrica; se consideró dominio de ingeniería eléctrica.
+- On the Exact Parameter Estimation for Robot Manipulators Without Persistence of Excitation: control/adaptive control de manipuladores; contribución principal en teoría de control, no CS.
+- Reconstruction of the Probability Measure and the Coupling Parameters in a Curie-Weiss Model: matemática estadística/física matemática; no aporte computacional central claro.
+- Pathological cell assembly dynamics in a striatal MSN network model: modelo de neurociencia computacional con foco biomédico/neurofisiológico.
+- Numerical Modeling for Tunnel Lining Optimization: modelado numérico geotécnico; simulación como herramienta de ingeniería civil.
+- Benchmarking thermo-hydro-mechanical models for geological barrier integrity in clay-based repositories: benchmark de modelos de geociencias/ingeniería geológica, no método CS central.
+
+## Principales falsos positivos detectados
+- Simulación y modelado numérico en ingeniería civil, geotecnia, hidráulica, geociencias, energía, materiales, física, astronomía y bioprocesos sin contribución computacional central.
+- Artículos que usan software, HEC-RAS, SUMO, FEM, LES, ANN, modelos matemáticos o simuladores como herramienta de dominio.
+- Estudios de sistemas eléctricos y potencia que emplean optimización, vulnerabilidad de redes o seguridad del sistema eléctrico, pero cuyo aporte principal es ingeniería eléctrica.
+- Artículos de física/astronomía con cómputo intensivo o análisis de datos, pero enfocados en resultados científicos de dominio.
+- Modelos biomédicos, neurocientíficos o biológicos donde la contribución principal no fue un algoritmo o sistema computacional generalizable.
+
+## Decisiones importantes
+- Se aceptó `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing...` porque el aporte principal describe una arquitectura HPC/GPU/IA y flujo computacional de procesamiento, no sólo un resultado astronómico.
+- Se aceptó `A Comparative Study of Numerical Laplace Inversion Methods for HeatTransfer in Fractured Reservoirs` porque el foco fue comparar algoritmos de inversión numérica, desempeño computacional y exactitud.
+- Se aceptó `Symmetry adapted DVR approach using Cartesian basis` porque propone un enfoque numérico que reduce tiempo computacional y memoria.
+- Se aceptó `Integer transformation of Boolean networks...` porque desarrolla un método algebraico/computacional para caracterizar la topología completa de redes booleanas.
+- Se excluyeron artículos de simulación numérica de dominio aunque mencionaran `numerical analysis`, `simulation`, `model`, `software`, `ANN`, `optimization`, `finite element method` o `data-driven` cuando el aporte principal era de otra disciplina.
+- Se excluyeron registros claramente computacionales sin afiliación UNAM clara en los metadatos de Engineering Village.
+
+## Registros fuera de periodo
+- Simulation Model to the Online Course Advising
+- Irrigation Efficiency Using a Systems Dynamics Model: A Case Study of a Pepper Crop in La Merced - Peru
+- Shallow three-dimensional shear wave velocity model for the Mexico City Basin
+
+## Registros sin afiliación UNAM clara
+- Optimal Control Problems in Collaborative Multi-agent Robotic Systems
+- Algorithms and Software for Simulation of Intelligent Systems of Autonomous Robots Based on Multi-agent Neurocognitive Architectures
+- Some New Results With k -Set Agreement
+- Static Data Race Detection via Lazy Sequentialization
+- Parameter Identification Algorithm for a LTV System with Partially Unknown State Matrix
+- A Technique of Distributed Missions Assignment Problem Solving in Heterogeneous Groups of Aerial Rescue Robots
+
+## Formato del archivo final
+- Engineering Village exportó archivos con diseños distintos.
+- Engineering_Village_abstract_5-17-2026_231131177.csv: 32 columnas
+- Engineering_Village_abstract_5-17-2026_231143934.csv: 28 columnas
+- Engineering_Village_abstract_5-17-2026_23115078.csv: 33 columnas
+- Engineering_Village_abstract_5-17-2026_231155310.csv: 30 columnas
+- Engineering_Village_abstract_5-17-2026_23120679.csv: 32 columnas
+- Engineering_Village_abstract_5-17-2026_23126166.csv: 33 columnas
+- Para no perder metadatos, se usó la unión de columnas originales de Engineering Village, tomando como base el encabezado completo de 33 columnas.
+- No se renombraron columnas.
+- No se agregaron columnas de clasificación.
+- No se eliminaron columnas originales.
+- Las columnas faltantes en algún archivo se dejaron vacías en las filas correspondientes.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, términos largos y caracteres especiales.
+
+## Archivo final generado
+- `ev_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Engineering Village no mantuvo encabezados idénticos entre archivos; se armonizó con la unión de columnas originales, sin convertir al modelo canónico.
+- El lote tuvo 45 duplicados eliminados sobre 119 registros recibidos.
+- Se detectaron muchos falsos positivos de simulación/modelado científico de dominio; el filtro fue deliberadamente conservador.
+- Conviene mantener una regla global para Computación Científica: aceptar métodos, algoritmos, software, HPC o frameworks computacionales; excluir simulaciones rutinarias donde el objetivo principal sea ingeniería civil, geofísica, energía, física, astronomía, biología o materiales.
+- `Generalising the team orienteering problem...` fue aceptado en Engineering Village porque este CSV sí reporta afiliación `Universidad Nacional Autonoma de Mexico`; en ACM el mismo caso había quedado como afiliación dudosa por metadatos distintos.

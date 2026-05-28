@@ -1,0 +1,107 @@
+# Reporte de depuración — ACM SIAV
+
+## Archivos recibidos
+- ACM_SIAV_canonico.csv
+- reporte_extraccion_ACM_SIAV.txt
+
+## Objetivo
+Depurar registros recuperados manualmente desde ACM para el lote inicial SIAV — Señales, Imágenes y Ambientes Virtuales — y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo diseño de columnas recibido en el CSV ACM.
+
+## Alcance de esta fase
+- No se convirtió nuevamente al modelo canónico; el CSV recibido ya venía en formato canónico por la extracción manual previa.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de SIAV.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Información incorporada del reporte de extracción manual previo
+- El paquete ACM SIAV tuvo 13 cargas de PDF y 9 PDFs únicos.
+- Se recibieron archivos BibTeX `acm (6).bib` y `acm (7).bib`.
+- Se recibieron archivos EndNote/RIS `acm.enw` y `acm (1).enw`.
+- No se recibieron archivos ACM Ref/TXT.
+- El reporte previo contabilizó 39 registros brutos detectados, 30 duplicados eliminados y 9 artículos únicos en `ACM_SIAV_canonico.csv`.
+- Los 9 artículos únicos tenían DOI, abstract, keywords y afiliación UNAM clara.
+- El reporte previo advirtió que `Blood Flow Emulator...` aparece como 2025 en BibTeX/EndNote, pero como 2024 en PDF/ACM Reference Format; en el CSV recibido se dejó 2024 por prioridad del PDF.
+- El reporte previo advirtió que `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)` está asociado al evento ICCBB 2023, diciembre 11–13 de 2023, aunque BibTeX/EndNote exportan 2024.
+- El reporte previo también indicó que varios registros HCI/CSCW, accesibilidad, trabajo digital, instrumentación biomédica y diseño creativo se habían conservado sólo porque la extracción canónica no filtraba temáticamente.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, afiliaciones y observaciones del reporte de extracción manual.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor.
+
+Nota temporal: el CSV recibido trae sólo `Año`. Para registros con sólo año 2024 o 2025 se conservó el registro si no había fecha más específica que lo excluyera. En el caso de `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)`, sí había evidencia específica en el reporte previo de evento en diciembre de 2023, por lo que se excluyó por fuera de periodo.
+
+## Resultados cuantitativos
+- Total de registros recibidos en el CSV ACM: 9
+- Artículos únicos después de deduplicación en esta fase: 9
+- Registros duplicados eliminados en esta fase: 0
+- Duplicados eliminados previamente durante la extracción manual: 30
+- Registros excluidos por estar fuera de periodo: 1
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser claramente Ciencias de la Computación: 1
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 7
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- HCI, CSCW y trabajo colaborativo asistido por tecnologías computacionales;
+- interacción humano-IA y flujos creativos con GenAI;
+- accesibilidad, interfaces, retroalimentación háptica y tecnologías asistivas;
+- herramientas sociotécnicas para crowdwork, gig work, acción colectiva y experiencia de usuario;
+- sistemas, herramientas o perspectivas de computación centradas en trabajadores y comunidades.
+
+Registros aceptados:
+- `A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles` — HCI/CSCW, herramienta de IA culturalmente consciente para crowdworkers.
+- `Creative dialogue: evolving intent in designer-AI workflows` — interacción humano-IA y flujos creativos con GenAI.
+- `CSCW Contributions to Critical Futures of Work` — CSCW, futuros críticos del trabajo y perspectivas de computación.
+- `Designing Gig Worker Sousveillance Tools` — HCI/CSCW, diseño de herramientas de sousveillance para gig workers.
+- `Fostering Latin American-Centric CSCW Research and Practice` — CSCW, investigación y práctica colaborativa centrada en Latinoamérica.
+- `MouseClicker: Exploring Tactile Feedback and Physical Agency for People with Hand Motor Impairments` — HCI/accesibilidad, retroalimentación háptica e interacción para personas con discapacidad motriz.
+- `Unveiling AI-Driven Collective Action for a Worker-Centric Future` — HCI/CSCW e IA centrada en trabajadores para acción colectiva.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation` — no CS: Instrumentación biomédica Doppler y banco experimental; el aporte principal es de equipo/phantom/calibración, no procesamiento de señales, visión, HCI ni método computacional central.
+- `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)` — fuera de periodo: El reporte previo lo asocia al evento ICCBB 2023, 11–13 de diciembre de 2023; al existir fecha verificable queda fuera del periodo marzo 2024–diciembre 2025.
+
+## Principales falsos positivos detectados
+- Instrumentación biomédica Doppler donde el aporte principal es de hardware, phantom, calibración o banco experimental, no procesamiento de señales computacional ni método de Ciencias de la Computación.
+- Registros SIAV recuperados por términos de señales o dispositivos, pero cuyo aporte principal pertenece a instrumentación médica.
+- Registros con metadato ACM 2024 pero con evidencia de evento fuera del periodo obligatorio cuando el reporte previo proporciona fecha específica.
+
+## Decisiones importantes
+- Se conservaron artículos HCI/CSCW, accesibilidad, trabajo digital e interacción humano-IA aunque no sean estrictamente SIAV, porque sí pertenecen claramente a Ciencias de la Computación.
+- Se excluyó `Blood Flow Emulator for Testing, Calibration and Training in Ultrasonic Doppler Instrumentation` aunque menciona Doppler, instrumentación y pruebas, porque el aporte central es biomédico/instrumental y no un método computacional de procesamiento de señales, visión, interfaces o sistemas.
+- Se excluyó `Design of a Pulsed-Wave Doppler ultrasound blood flow detector based on a Programmable System-on-Chip (PSoC)` por la evidencia específica de evento en diciembre de 2023; además, su contribución principal parece ser instrumentación biomédica, no Ciencias de la Computación.
+- No se eliminaron registros por falta de afiliación UNAM, porque el reporte previo y el CSV muestran afiliación UNAM clara en todos los artículos únicos.
+- No se deduplicó contra otros lotes ACM ya procesados; esa deduplicación global debe hacerse al consolidar todas las áreas ACM.
+
+## Formato del archivo final
+- Se conservó el mismo diseño de columnas del CSV ACM recibido: 14 columnas.
+- Columnas conservadas: `indice`, `Titulo`, `Año`, `Autor_norm`, `Afiliacion1`, `Afiliacion2`, `ISBN`, `ISSN`, `Doi`, `URL`, `Area`, `Subarea`, `Keywords`, `Abstract`.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- La columna `Area` se dejó como venía en el archivo recibido.
+- La columna `Subarea` se dejó vacía como venía en el archivo recibido.
+- La columna `indice` se renumeró secuencialmente para el CSV depurado final.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos `N/D` y vacíos se dejaron en el mismo estilo del archivo recibido.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+- `acm_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- El lote ACM SIAV se solapa con lotes ACM previos de ISBD, IA, RS y posiblemente CC; conviene deduplicar globalmente por DOI al consolidar ACM completo.
+- El criterio aplicado aquí conserva HCI/CSCW, accesibilidad y trabajo digital como Ciencias de la Computación, aunque después puedan reasignarse a otra área final.
+- Se aplicó estrictamente la evidencia del reporte previo para excluir el artículo PSoC por evento en diciembre de 2023.
+- `Blood Flow Emulator...` fue excluido por ser instrumentación biomédica sin contribución computacional central; si el chat principal decide aceptar más instrumentación Doppler como procesamiento de señales, sería el único caso recuperable de este lote.
+- Confirmar en la consolidación global si `Keywords` debe seguir conservando sólo author keywords o si más adelante se integrarán también CCS Concepts.

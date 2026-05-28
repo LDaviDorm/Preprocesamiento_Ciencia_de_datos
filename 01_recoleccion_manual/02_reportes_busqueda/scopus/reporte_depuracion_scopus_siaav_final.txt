@@ -1,0 +1,134 @@
+# Reporte de depuración — Scopus Señales, Imágenes y Ambientes Virtuales
+
+## Archivos recibidos
+- scopus_export_May 16-2026_255f20de-4ab7-4649-8f7a-eb5dcbe479c4.csv
+- scopus_export_May 16-2026_6183b495-f4b8-4414-9e90-c4faa00d4f47.csv
+- scopus_export_May 16-2026_eaca2e2c-9e71-4b7a-a819-093f78f5d1c3.csv
+- scopus_export_May 16-2026_0323c37d-303d-4481-870f-8b309edc3d40.csv
+- scopus_export_May 16-2026_0d83c626-6c60-4348-86bb-e372caa902e2.csv
+- scopus_export_May 16-2026_3dcbb554-e9ef-4708-8bb1-2c801abaaddd.csv
+- scopus_export_May 16-2026_145746ce-3de8-4072-a20e-b18a6a73f222.csv
+- scopus_export_May 16-2026_ef5aeb1b-921a-4d04-9876-e4ee99fa0fda.csv
+
+## Objetivo
+Depurar registros descargados desde Scopus para el lote inicial de Señales, Imágenes y Ambientes Virtuales y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Scopus.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Señales, Imágenes y Ambientes Virtuales.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor; además se eliminó un duplicado evidente por título normalizado con y sin DOI.
+
+Nota: los archivos recibidos sólo traen `Year`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 1041
+- Registros duplicados eliminados: 281
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 25
+- Registros excluidos por no ser Ciencias de la Computación: 602
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 133
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- procesamiento de imágenes, visión por computadora, detección de objetos, segmentación semántica, reconstrucción 3D, holografía/computational imaging y análisis de imágenes médicas cuando el método computacional fue central;
+- aprendizaje profundo aplicado a imágenes, video y señales, incluyendo CNN, U-Net, SegFormer, YOLO, modelos híbridos CNN-RNN, domain adaptation y modelos ligeros/explicables;
+- procesamiento de señales ECG, EMG, EEG, audio, vibración, fasores, fotoacústica y espectrogramas cuando el aporte fue algoritmo, modelado, extracción de características, clasificación o filtrado;
+- realidad virtual, realidad extendida, HCI, interfaces, interacción humano-robot, háptica y plataformas inmersivas cuando el sistema o la evaluación de interacción fue el objeto central;
+- seguridad de imágenes, watermarking, esteganografía, cifrado de imágenes y protección/autenticación de contenido visual;
+- NLP, reconocimiento de voz, análisis de sentimiento, autoría, grafos/GNN, clustering, privacidad diferencial, sistemas distribuidos y frameworks computacionales que aparecieron en el lote aunque no fueran estrictamente SIAAV;
+- cómputo científico o IA metodológica cuando el aporte principal fue un algoritmo, arquitectura, paquete, pipeline, benchmark o framework computacional generalizable.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `Virtual reality on perioperative anxiety in pediatric patients: A narrative review`: revisión clínica sobre VR como intervención médica; no presenta contribución técnica en VR/HCI.
+- `Community Participation and Web Mapping with Open Source Technologies: An Approach to the Identification and Dissemination of Intangible Cultural Heritage: A Case Study of Analco, Mexico`: web mapping aplicado a patrimonio cultural; desarrollo web/geográfico como herramienta de difusión.
+- `Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico`: AR aplicada a enseñanza de ciencias del suelo; foco educativo/edafológico más que contribución CS.
+- `Semi-Supervised Training for (Pre-Stack) Seismic Data Analysis`: ML aplicado a sísmica/geofísica; se consideró auxiliar al dominio.
+- `Social cognition training using virtual reality for people with schizophrenia: a scoping review`: revisión clínica/psicológica de VR en esquizofrenia; no aporte computacional claro.
+- `Characterization of wildfire severity using deep learning and satellite time series analysis`: teledetección/gestión de incendios; DL como herramienta de dominio.
+- `Emotion detection based on infrared thermography: A review of machine learning and deep learning algorithms`: revisión aplicada a termografía/emoción; no presenta contribución técnica original suficiente.
+- `Usability, sense of presence, and performance of a virtual reality emotion recognition task`: estudio psicológico/usabilidad de una tarea VR; no aporte técnico de VR/HCI suficiente.
+- `Pixelation method for the FARCOS array`: instrumentación nuclear; patrón/pixelación como parte de detector físico, no CS principal.
+- `Development and Validation of a Method of Body Volume and Fat Mass Estimation Using Three-Dimensional Image Processing with a Mexican Sample`: validación clínica/nutricional con cámaras 3D; contribución computacional no suficientemente general.
+- `Classifying merger stages with adaptive deep learning and cosmological hydrodynamical simulations`: DL aplicado a astrofísica; objetivo principal de astronomía.
+- `Galaxy merger challenge: A comparison study between machine learning-based detection methods`: comparación de detectores para astronomía; se consideró benchmark de dominio más que CS.
+- `Generating a database for deep learning-based applications in multimodal tomography of the human brain`: base de datos/recurso biomédico para DL; no método computacional principal.
+- `Low-Cost Proposal For Satellite Data And Image Reception Software Using Software Defined Radio And Open-Source Software Based On GNURadio`: software/SDR para recepción satelital; componente operativo de telecomunicaciones.
+- `RMS ASYMMETRY: A ROBUST METRIC OF GALAXY SHAPES IN IMAGES WITH VARIED DEPTH AND RESOLUTION.`: métrica de morfología galáctica; foco principal en astrofísica.
+- `Development of a classification of ceramic paste based on the analysis of digital radiography images; [Desarrollo de un método de clasificación de pastas cerámicas basado en el análisis de imágenes de radiografía digital]`: clasificación de pastas cerámicas con radiografía; foco patrimonio/geología.
+- `DNI Nowcasting Applying a Differential Approach Method into Sky Camera Images`: nowcasting solar con cámaras; aporte principal energético/atmosférico.
+- `Automated monitoring of pollen quality in Douglas-fir using digital images: applications for handling and storage`: macros/ImageJ para botánica/forestal; herramienta de dominio.
+- `Indoor occupancy monitoring using environmental feature fusion and semi-supervised machine learning models`: monitoreo de ocupación en edificios; ML aplicado al dominio de simulación/desempeño ambiental.
+- `Performance Evaluation of SDRs for Receiving GOES-16 Satellite Digital Images`: evaluación de receptores SDR para imágenes satelitales; instrumentación/telecomunicaciones.
+- `Using honey bee flight activity data and a deep learning model as a toxicovigilance tool`: RNN aplicado a toxicovigilancia de abejas; foco biológico/ecotoxicológico.
+- `Sample classification using machine learning-assisted entangled two-photon absorption`: clasificación espectroscópica/óptica de muestras; ML como apoyo de física/química.
+- `Optimization of Deep Learning Architectures for Accurate Prediction of Protein-Ligand Binding in Drug Discovery`: revisión de deep learning para unión proteína-ligando; foco de descubrimiento de fármacos/química.
+- `Prediction of Extraintestinal Manifestations in Inflammatory Bowel Disease Using Clinical and Genetic Variables with Machine Learning in a Latin IBD Group †`: predicción clínica de enfermedad inflamatoria intestinal; ML como herramienta médica.
+- `Detection of Microplastic Waste by Using a Novel Microfluidic System with an Integrated Object Tracking Algorithm`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Nanomechanical Systems for Reservoir Computing Applications`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Experimental Modeling of a Buck Converter Using Genetic Algorithms in Python`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `A Guided-Ensembling Approach for Cell Counting in Fluorescence Microscopy Images`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Multistability and noise-induced transitions in dispersively coupled nonlinear nanomechanical modes`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Dual-Stoichiometry Copper Sulphide Nanoparticles by Laser Ablation in DMSO: Synthesis and Biomedical Applications for Enhanced Photothermal Therapy and Photoacoustic Imaging`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Fabrication and Testing of a 64-Element CMUT Ring Array for Underwater Ultrasound Imaging`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Acoustic Gas Sensing with Weakly Coupled Mems Resonators`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Roadmap on computational methods in optical imaging and holography [invited]`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `In-situ X-ray monitoring using specialty optical fibers and determination of their synchrotron X-ray computed tomography imaging conditions`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `Dual-mode CMUT structure sensor for high hydrostatic pressure measurements: conventional and collapse modes`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+- `High-Frequency Voltage Analysis for Turn to Turn Short-Circuit Fault Detection in Induction Motor during Startup Transient`: sin afiliación UNAM mexicana clara; se detectó un falso positivo del acrónimo `UNAM` ajeno a la Universidad Nacional Autónoma de México.
+
+## Principales falsos positivos detectados
+- Artículos biomédicos, clínicos o de neurociencias que usan imágenes, EEG, PET, MRI, CT o VR como instrumento de medición/intervención, sin contribución computacional clara.
+- Artículos de física, astronomía, geofísica, óptica, materiales o energía que usan procesamiento de imágenes/señales como herramienta auxiliar de análisis de dominio.
+- Estudios de educación, psicología, patrimonio cultural, ciencias sociales o salud digital donde VR/AR/web mapping se usa como medio de enseñanza, difusión o intervención, sin aporte técnico de HCI/VR.
+- Artículos de teledetección, GIS, monitoreo ambiental o agricultura que sólo aplican modelos o software a un problema de dominio.
+- Revisiones clínicas o de dominio sobre IA, VR o imágenes médicas sin método, algoritmo, sistema o evaluación computacional propios.
+- Registros con falso positivo institucional por `UNAM-National Nanotechnology Research Center` o `UNAM — Institute of Materials Science and Nanotechnology` de Bilkent University, Turquía, y por `Universidad Nacional de Moquegua UNAM` de Perú.
+
+## Decisiones importantes
+- Se usó un umbral conservador: no se aceptó un registro sólo por mencionar `image`, `signal`, `virtual reality`, `deep learning`, `machine learning`, `software`, `algorithm`, `database`, `model`, `simulation` o `digital`.
+- Se aceptaron aplicaciones biomédicas sólo cuando el aporte central era segmentación, reconstrucción, procesamiento de señales, arquitectura de aprendizaje profundo, benchmark, pipeline, software o método computacional explícito.
+- Se excluyeron estudios médicos, biológicos, geofísicos, astronómicos, químicos, ambientales o sociales cuando la imagen/señal/VR/IA funcionaba sólo como herramienta de la disciplina de aplicación.
+- Se conservaron registros no estrictamente SIAAV cuando sí eran claramente de Ciencias de la Computación, por ejemplo NLP, seguridad, privacidad, GNN, clustering, sistemas distribuidos, robótica, optimización o cómputo científico.
+- Para afiliación, se aceptaron variantes inequívocas de UNAM y algunas variantes mal normalizadas por Scopus como `National University of Mexico`, pero se rechazaron acrónimos `UNAM` no mexicanos.
+- Se eliminó un duplicado exacto por título normalizado con una versión sin DOI y otra con DOI: `In-situ X-ray monitoring using specialty optical fibers and determination of their synchrotron X-ray computed tomography imaging conditions`.
+- En la segunda revisión se retiraron casos frontera que parecían computacionales sólo de forma instrumental, por ejemplo wildfire severity, galaxy merger classification, ceramic paste radiography, indoor occupancy monitoring y body-volume estimation con cámaras 3D.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Scopus: 27 columnas.
+- Los ocho archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de Scopus después de la deduplicación.
+
+## Archivo final generado
+
+- `scopus_siaav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Los archivos de Scopus no traían mes ni columna `Subject Area`; el filtro temporal se aplicó con `Year`, conservando 2024 cuando no había mes verificable.
+- El lote tuvo bastante solapamiento entre queries: 281 duplicados eliminados.
+- La frontera más delicada fue entre procesamiento de imágenes/señales como contribución computacional y uso instrumental de imágenes/señales en biomedicina, física, astronomía, geofísica, energía o materiales.
+- Conviene mantener como regla global: aceptar estudios biomédicos de imágenes/señales sólo cuando el método computacional sea el aporte principal; excluir revisiones clínicas o estudios donde CT/MRI/PET/EEG/VR sean sólo instrumentos de medición o intervención.
+- Conviene mantener como regla global: aceptar VR/AR/XR sólo cuando el sistema, interfaz, interacción, usabilidad o entorno computacional sea central; excluir usos meramente educativos, terapéuticos o sociales sin aporte técnico.
+- Se volvió a detectar el falso positivo institucional `UNAM` de Bilkent University/Turquía; no debe contarse como UNAM mexicana.

@@ -1,0 +1,133 @@
+# Reporte de depuración — Engineering Village IA
+
+## Archivos recibidos
+- Engineering_Village_abstract_5-17-2026_23158954.csv
+- Engineering_Village_abstract_5-17-2026_23161198.csv
+- Engineering_Village_abstract_5-17-2026_23166732.csv
+- Engineering_Village_abstract_5-17-2026_231533177.csv
+- Engineering_Village_abstract_5-17-2026_231541922.csv
+- Engineering_Village_abstract_5-17-2026_231549474.csv
+- Engineering_Village_abstract_5-17-2026_231554625.csv
+- Engineering_Village_abstract_5-17-2026_231615409.csv
+- Engineering_Village_abstract_5-17-2026_231622792.csv
+
+## Objetivo
+Depurar registros descargados desde Engineering Village para el lote inicial IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el diseño de columnas original de Engineering Village sin convertir al modelo canónico.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara en `Author affiliation`.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, términos controlados/no controlados, abstract, fuente, conferencia, DOI y afiliaciones.
+- Exclusión de falsos positivos interdisciplinarios donde IA/ML es sólo herramienta de otra disciplina.
+- Deduplicación por DOI y, cuando no hubo DOI, por título normalizado + año + primer autor.
+
+Nota temporal: cuando `Conference date` o `Issue date` permitió verificar mes, se aplicó estrictamente el rango marzo 2024–diciembre 2025. Cuando sólo había año 2024 o 2025, se conservó el registro para revisión temática.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 421
+- Artículos únicos después de deduplicación: 148
+- Registros duplicados eliminados: 273
+- Registros excluidos por estar fuera de periodo: 5
+- Registros excluidos por no tener afiliación UNAM clara: 32
+- Registros excluidos por no ser claramente Ciencias de la Computación: 56
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 55
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- aprendizaje automático, aprendizaje profundo, aprendizaje por refuerzo, optimización evolutiva y optimización multiobjetivo;
+- NLP, LLM, detección de texto generado, análisis de subjetividad, metáforas, similitud semántica y clasificación de publicaciones en redes sociales;
+- visión por computadora, segmentación, clasificación de imágenes, imágenes médicas, reconstrucción de imágenes y aumento de datos;
+- robótica, SLAM visual, HRI, navegación, interfaces web para robots, path planning y sistemas hápticos;
+- redes, protocolos MAC, cifrado homomórfico, privacidad, cómputo distribuido y teoría de consenso;
+- cómputo científico/HPC, métodos computacionales, software/plataformas abiertas y modelos formales cuando el aporte computacional fue central.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con razón breve:
+- `Enhancing Solar Cell Classification Using Mamdani Fuzzy Logic Over Electroluminescence Images: A Comparative Analysis with Machine Learning Methods`: Conference date: November 13, 2023.
+- `Semiotics and Artificial Intelligence (AI): An Analysis of Symbolic Communication in the Age of Technology`: ensayo/análisis semiótico sobre IA y comunicación simbólica, no aporte técnico CS.
+- `A Fuzzy Logic Technique for the Environmental Impact Assessment of Marine Renewable Energy Power Plants`: fuzzy logic aplicado a evaluación ambiental de plantas de energía renovable marina.
+- `Generative artificial intelligence and university libraries in Latin America`: bibliotecología/uso de IA generativa en bibliotecas universitarias, sin aporte técnico CS.
+- `Reconstruction of the depth of the shower maximum of air showers with the SD-750 surface detector of the Pierre Auger Observatory using neural networks`: redes neuronales aplicadas a rayos cósmicos; aporte principal de física/observatorio.
+- `Graph Neural Networks for Photon Searches with the Underground Muon Detector of the Pierre Auger Observatory`: GNN aplicada a búsqueda de fotones en observatorio; dominio astrofísico.
+- `A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets`: ML aplicado a predicción de ley de ablandamiento de concreto; dominio de ingeniería civil.
+- `Optimization Model for Coordinated Multistage Planning of the Generation-Transmission System with Demand Forecasting Using Neural Networks`: planeación generación-transmisión eléctrica con pronóstico; dominio de sistemas eléctricos.
+- `Classification of Academic Achievement in Upper-Middle Education in Veracruz, Mexico: A Computational Intelligence Approach`: clasificación de rendimiento académico; aplicación educativa.
+- `Data-driven geothermal exploration using Machine learning applied to the Trans-Mexican Volcanic Belt Province`: exploración geotérmica con ML; dominio geocientífico.
+- `Machine learning based CAGIB score predicts in-hospital mortality of cirrhotic patients with acute gastrointestinal bleeding`: predicción clínica de mortalidad; ML como herramienta biomédica.
+- `Event reconstruction using pattern spectra and convolutional neural networks for the Cherenkov Telescope Array`: Conference date: July 4, 2022.
+- `Spatio-temporal Data-Driven and Machine Learning based Applications for Transmission Systems`: aplicaciones de ML a sistemas de transmisión eléctrica.
+- `Framework for training and deployment machine learning methods in real-time simulator: short-term kinetic energy forecasting in power systems`: framework ML para pronóstico en sistemas eléctricos.
+- `Inference of the Mass Composition of Cosmic Rays with Energies from 1018.5 to 1020 eV Using the Pierre Auger Observatory and Deep Learning`: DL para composición de rayos cósmicos; dominio de física.
+- `Estimation of the Performance of Photovoltaic Cells by Means of an Adaptative Neural Fuzzy Inference Model`: Conference date: November 13, 2023.
+- `Automatic Detection of Dynamic Wind Conditions in Mexican California: A Machine Learning-Driven Advancement in Wind Management`: ML aplicado a gestión de viento/energía.
+- `Machine Learning Algorithms for Solar Irradiance Forecasting in a Rural Community in Michoacán, Mexico`: pronóstico de irradiancia solar con ML.
+- `The impact of comorbidities and economic inequality on COVID-19 mortality in Mexico: a machine learning approach`: mortalidad COVID-19 con ML; salud pública/epidemiología.
+- `Control of Electromechanical Oscillations with Machine Learning`: control de oscilaciones en sistemas eléctricos con ML.
+- `PQ-SyDa: power quality synthetic disturbances dataset`: dataset de calidad de energía eléctrica, sin aporte CS suficiente.
+- `Sixty Years of Research on Polaritons: A Scientometric Review`: revisión cientométrica de polaritones; física/bibliometría.
+- `Bridging the AI gap: Comparative analysis of AI integration, education, and outreach in academic libraries`: integración/outreach de IA en bibliotecas académicas.
+- `A Comparative Analysis of Advanced Car Parking Automation:PLC-Based Versus AI-Controlled Systems`: comparación de estacionamiento automatizado PLC/AI; control/urbanismo aplicado.
+- `Evolutionary algorithms applied to minimize the thermal transport in atomic nanoribbons`: optimización evolutiva aplicada a transporte térmico en nanoribbons; materiales.
+- `Closing the computational biology 'knowledge gap': Spanish Wikipedia as a case study`: recurso educativo/Wikipedia en biología computacional, no método CS central.
+- `Aerodynamic drag coefficient prediction of a spike blunt body based on k-nearest neighbors`: KNN aplicado a coeficiente aerodinámico; dominio aeroespacial.
+- `Real-time Error Compensation Transfer Learning with Echo State Networks for Enhanced Wind Power Prediction`: transfer learning para predicción de energía eólica.
+- `Terrestrial and Martian space weather: A complex systems approach`: clima espacial y sistemas complejos; dominio físico.
+- `Reactor System Design Optimization using the ASME Plant Systems Design Standard (PSD-1)`: optimización multiobjetivo aplicada a diseño de reactor; dominio nuclear/seguridad.
+- `Academic Achievement of Higher-Middle Education Students in Chihuahua: A Pre and Post COVID-19 Pandemic Analysis`: clustering de rendimiento académico; aplicación educativa.
+- `Preliminary Effects of a Robot-Based Therapy Program with Atlas-2030 in Children with Cerebral Palsy Receiving Care at a Specialized Rehabilitation Center`: terapia robótica y rehabilitación clínica; robot como intervención de dominio.
+- `Towards a Robotically Steerable Laser Ablation Probe`: sonda robótica de ablación láser; instrumentación biomédica/hardware.
+- `DNI Nowcasting Applying a Differential Approach Method Into Sky Camera Images`: nowcasting de irradiancia solar con imágenes de cielo; energía solar.
+- `AI-Driven Synthetic Cohorts to Explore Genetic Associations: Lessons from Testicular Cancer with Relevance to Rare Conditions`: cohortes sintéticas para asociaciones genéticas; biomedicina/genética.
+
+## Principales falsos positivos detectados
+- Artículos de energía, sistemas eléctricos, potencia, transformadores y renovables que usan IA/ML o lógica difusa como herramienta de predicción/control.
+- Artículos de física, astronomía y cosmología que aplican redes neuronales o GNN a observatorios, rayos cósmicos, galaxias o CMB sin aporte CS generalizable claro.
+- Artículos biomédicos/clínicos donde ML se usa para predicción de mortalidad, diagnóstico o terapia sin método computacional central.
+- Artículos de ingeniería civil, materiales, geotermia, aeroespacial, oceanografía, diseño de producto y urbanismo con ML/optimización como apoyo de dominio.
+- Estudios de bibliotecología, educación, comunicación, resiliencia, ciencias sociales o divulgación con IA como objeto de análisis no técnico.
+- Registros sin afiliación UNAM clara aunque el tema fuera computacional.
+- Falso positivo institucional: `UNAM, Interdisciplinary Graduate Program in Neuroscience, Turkey` asociado a Bilkent University no se tomó como UNAM mexicana.
+
+## Decisiones importantes
+- Se conservó IA aplicada cuando el aporte principal fue método, algoritmo, arquitectura, pipeline, interfaz, software, protocolo, benchmark o modelo computacional.
+- Se excluyeron registros que sólo aplicaban modelos existentes de IA/ML a problemas de energía, salud, materiales, geociencias, astronomía, educación o ciencias sociales.
+- Se aceptaron registros no estrictamente IA —por ejemplo redes, criptografía, teoría de cómputo distribuido, HCI, robótica, optimización y cómputo científico— porque pertenecen claramente a Ciencias de la Computación.
+- `Generalising the team orienteering problem...` fue aceptado en Engineering Village porque este CSV sí reporta afiliación `Universidad Nacional Autonoma de Mexico`.
+- Se aceptaron artículos biomédicos o de señales/imágenes sólo cuando el aporte central fue segmentación, reconstrucción, aumento de datos, modelo computacional o procesamiento de señal/imágenes.
+
+## Formato del archivo final
+- Los archivos de Engineering Village no tenían todos el mismo encabezado.
+- Distribución de encabezados detectada:
+- 28 columnas: Engineering_Village_abstract_5-17-2026_231554625.csv, Engineering_Village_abstract_5-17-2026_231622792.csv
+- 32 columnas: Engineering_Village_abstract_5-17-2026_23161198.csv, Engineering_Village_abstract_5-17-2026_23166732.csv, Engineering_Village_abstract_5-17-2026_231533177.csv
+- 33 columnas: Engineering_Village_abstract_5-17-2026_23158954.csv, Engineering_Village_abstract_5-17-2026_231541922.csv, Engineering_Village_abstract_5-17-2026_231549474.csv
+- 34 columnas: Engineering_Village_abstract_5-17-2026_231615409.csv
+- Para no perder metadatos, el CSV final usa la unión de columnas originales de Engineering Village, con el encabezado completo de 34 columnas como base.
+- No se agregaron columnas de clasificación.
+- No se renombraron columnas.
+- No se convirtió al modelo canónico.
+- Las columnas faltantes en algunos archivos quedan vacías en las filas correspondientes.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+
+## Archivo final generado
+
+- `ev_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+
+- Engineering Village exportó encabezados distintos; se usó la unión de columnas originales para conservar toda la información.
+- Se detectó un falso positivo institucional por sigla `UNAM` en Turquía/Bilkent; no se consideró afiliación UNAM mexicana.
+- El lote tuvo mucho solapamiento entre queries: 273 duplicados eliminados sobre 421 registros recibidos.
+- Se aplicó criterio estricto contra IA/ML aplicado en dominios externos; esto reduce falsos positivos, aunque puede sacrificar algunos casos aplicados frontera.
+- Los registros astronómicos/cosmológicos con redes neuronales se excluyeron cuando el aporte era principalmente del observatorio o del análisis físico, salvo infraestructura/HPC o procesamiento computacional claro.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO y otros lotes de Engineering Village cuando se consolide el corpus completo.

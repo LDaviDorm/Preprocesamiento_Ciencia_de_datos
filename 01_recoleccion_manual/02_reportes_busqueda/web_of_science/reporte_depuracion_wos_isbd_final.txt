@@ -1,0 +1,104 @@
+# Reporte de depuración — Web of Science ISBD
+
+## Archivos recibidos
+- savedrecs (2).xls
+- savedrecs (3).xls
+- savedrecs (4).xls
+- savedrecs (5).xls
+- savedrecs (6).xls
+- savedrecs (7).xls
+- savedrecs (8).xls
+
+## Objetivo
+Depurar registros descargados desde Web of Science para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Web of Science.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract, direcciones/afiliaciones, áreas WoS, fuente y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y por título normalizado + año + primer autor.
+
+Nota: Web of Science exportó campos de fecha más detallados que otras fuentes, especialmente `Publication Date`, `Publication Year`, `Conference Date` y `Early Access Date`. Cuando el mes fue verificable, se aplicó estrictamente el periodo marzo de 2024 a diciembre de 2025. Los registros con año 2024 sin mes verificable se conservaron en la evaluación temporal.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 1207
+- Registros duplicados eliminados: 115
+- Registros excluidos por estar fuera de periodo: 109
+- Registros excluidos por no tener afiliación UNAM: 33
+- Registros excluidos por no ser Ciencias de la Computación: 919
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 31
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- ingeniería de software, medición funcional, estimación de software, síntesis de programas y asistentes de programación con IA;
+- bases de datos, integración de fuentes, sistemas web, usabilidad y recuperación/indización de información;
+- inteligencia artificial, LLM, NLP, domain adaptation, optimización de hiperparámetros y aprendizaje profundo;
+- seguridad, esteganografía, watermarking, OpenPGP y protección de imágenes/datos;
+- HCI, accesibilidad, experiencia de usuario, interfaces web, chatbots educativos, diseño colaborativo y sistemas pervasivos;
+- cómputo científico y software científico cuando el aporte principal fue una herramienta/código/paquete computacional;
+- señales, imágenes y visión cuando el aporte central fue procesamiento, representación, segmentación, watermarking o pipeline computacional;
+- teoría/algoritmos, optimización evolutiva, curvas codificadas, biclustering y knowledge graphs.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos, con razón breve:
+- `PQ-SyDa: Power Quality Synthetic Disturbances DataSet`: dataset/toolbox de calidad de energía; foco principal en ingeniería eléctrica.
+- `The K-Band Mexican Radio Telescope`: infraestructura e instrumentación astronómica; software/interfaz secundaria.
+- `Machine Learning Algorithms for Solar Irradiance Forecasting in a Rural Community in Michoacan, Mexico`: ML aplicado a pronóstico de irradiancia solar; dominio energético.
+- `Improved Dynamic Correction for Seismic Data Processing: Mitigating the Stretch Effect in NMO Correction`: procesamiento geofísico/sísmico de dominio; no se incluyó por criterio conservador.
+- `A Spanish Chemoinformatics GitBook for Chemical Data Retrieval and Analysis Using Python Programming`: material educativo de química/cheminformatics; no investigación CS central.
+- `Early Birth Weight Prediction: A Machine Learning Explainability Analysis`: ML aplicado a predicción biomédica; aporte principal clínico/biomédico.
+- `Visual metaphors in the digital design of a mobile app for learning French`: diseño educativo/lingüístico; sin contribución técnica CS suficiente.
+- `Evaluation of Automatic Analysis Software for 1H NMR Spectra Quantification. Impact of Signal Broadening and EDTA Addition`: evaluación de software como herramienta para metabolómica/química.
+- `Generating a Database for Deep Learning-based Applications in Multimodal Tomography of the Human Brain`: generación de base de datos biomédica; recurso de dominio.
+- `Facilitating public scrutiny of EIA reports with open data and artificial intelligence: insights from a Mexican case study`: uso de IA/open data en política ambiental; sin aporte técnico CS claro.
+- `From Pervasive Computing to Pervasive Information Systems`: ensayo conceptual/información; no contribución técnica clara.
+
+## Principales falsos positivos detectados
+- Artículos de medicina, biología, química, geociencias, astronomía, energía, materiales, educación, bibliotecología, urbanismo y ciencias sociales que sólo usan software, bases de datos, ML, simulación, imágenes o análisis de datos como herramienta secundaria.
+- Bases de datos, catálogos, repositorios, datasets o plataformas web de dominio científico sin aporte claro de DBMS, IR, HCI, arquitectura de datos o ingeniería de software.
+- Trabajos de ML/IA aplicados a predicción clínica, energía, química, materiales, geofísica, astronomía, hidrología o educación sin método computacional nuevo o central.
+- Instrumentación científica con FPGA, sensores, ASIC, DAQ, telescopios, microscopía, tomografía o sistemas embebidos donde el software es operativo pero no el aporte principal de CS.
+- Estudios conceptuales o de adopción/impacto de IA, big data, software o plataformas digitales sin contribución técnica computacional.
+- Falsos positivos institucionales por siglas o nombres parecidos a UNAM fuera de México.
+
+## Decisiones importantes
+- Se aceptaron registros no estrictamente ISBD cuando sí pertenecían claramente a Ciencias de la Computación, por ejemplo NLP, HCI, seguridad, visión/señales, optimización, software científico, knowledge graphs y algoritmos.
+- Se excluyeron registros aunque contenían términos como `software`, `database`, `algorithm`, `AI`, `machine learning`, `model`, `simulation`, `digital`, `web` o `data analysis` cuando esos elementos eran herramientas auxiliares de otra disciplina.
+- Se aceptó `DensToolKit2` como caso frontera porque el aporte central es un paquete open-source con programas, GUI y funcionalidad computacional reutilizable, aunque el dominio de aplicación sea físico/químico.
+- Se aceptó `THE IBDATA WEB SYSTEM FOR BIOLOGICAL COLLECTIONS` porque el foco explícito fue el diseño del sistema web y la usabilidad, no sólo el repositorio biológico.
+- Se excluyeron bases de datos o repositorios de dominio cuando no había evidencia suficiente de contribución en DBMS, recuperación de información, arquitectura de software, HCI o ingeniería de datos generalizable.
+- Se aplicó criterio conservador en ML aplicado: sólo se conservaron trabajos donde el método, arquitectura, algoritmo, sistema, framework o pipeline computacional era el aporte central.
+
+## Formato del archivo final
+- Los siete archivos de Web of Science tenían el mismo encabezado: {len(headers)} columnas.
+- Se conservó el diseño original de columnas de Web of Science.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- Los archivos recibidos eran `.xls`; para procesarlos se leyó su contenido tabular y el resultado final se entregó como CSV.
+- El CSV final está codificado en UTF-8 con BOM para abrirse correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos, direcciones, referencias y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de Web of Science después de la deduplicación.
+
+## Archivo final generado
+- `wos_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Web of Science sí incluye campos de mes/fecha; por eso se excluyeron registros de enero/febrero de 2024 cuando el mes era verificable, y también registros 2026.
+- El lote ISBD de WoS tuvo mucho ruido temático: la mayoría de los registros eran de dominio aplicado y fueron excluidos por no ser claramente CS.
+- Conviene deduplicar globalmente contra Scopus, IEEE, ACM, EBSCO y Engineering Village, porque varios títulos aceptados ya aparecieron en otras fuentes.
+- Conviene mantener una regla global para repositorios científicos de dominio: aceptar sólo si hay aporte claro de sistemas, HCI, IR, arquitectura, ingeniería de software o método computacional generalizable.
+- Conviene mantener una regla global para ML aplicado: aceptar sólo cuando la contribución computacional sea central, no cuando ML sea una herramienta secundaria para resolver una pregunta de otra disciplina.

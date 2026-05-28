@@ -1,0 +1,109 @@
+# Reporte de depuración — Scopus ISBD
+
+## Archivos recibidos
+- scopus_isbd_q1_general_comp_raw_2024-03_2025-12.csv (52 registros)
+- scopus_isbd_q2_software_engineering_raw_2024-03_2025-12.csv (9 registros)
+- scopus_isbd_q3_database_systems_raw_2024-03_2025-12.csv (18 registros)
+- scopus_isbd_q4_hci_information_retrieval_raw_2024-03_2025-12.csv (34 registros)
+- scopus_isbd_q5_seed_authors_raw_2024-03_2025-12.csv (3 registros)
+- scopus_isbd_q6_rescue_no_subjarea_raw_2024-03_2025-12.csv (102 registros)
+
+## Objetivo
+Depurar registros descargados desde Scopus para el lote inicial ISBD y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Scopus.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de ISBD.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025. En estos archivos Scopus sólo reportó la columna Year; por tanto, los registros 2024 se conservaron cuando no había mes verificable.
+- Afiliación UNAM mexicana clara en Affiliations o Authors with affiliations. Se excluyó el caso de “UNAM-National Nanotechnology Research Center, Bilkent University” porque no corresponde a la Universidad Nacional Autónoma de México.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos disponibles. La columna Subject Area no venía en los archivos recibidos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica: primero DOI; si no había DOI, título normalizado + año + primer autor.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 218
+- Registros duplicados eliminados: 96
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 1
+- Registros excluidos por no ser Ciencias de la Computación: 68
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 53
+
+## Registros aceptados
+Se conservaron registros cuyo aporte principal era claramente computacional, incluyendo:
+- artículos de ingeniería de software, arquitectura de software, medición funcional y generación automática de código;
+- artículos de inteligencia artificial, aprendizaje automático, NLP, LLM/RAG, chatbots y clasificación automática;
+- artículos de optimización evolutiva, algoritmos de grafos, memoria asociativa, concurrencia y cómputo paralelo;
+- artículos de HCI, CSCW, interfaces conversacionales, usabilidad, realidad aumentada/virtual y diseño de interfaces;
+- artículos de seguridad, criptografía, esteganografía, watermarking y protocolos seguros;
+- artículos de cómputo científico, simulación computacional, procesamiento de señales/datos e infraestructura de datos cuando el componente computacional era central.
+
+## Registros dudosos
+Los siguientes registros dudosos NO fueron incluidos:
+- Benchmarking for a New Railway Accident Classification Methodology and Its Database: A Case Study in Mexico, the United States, Canada, and the European Union — metodología/base de datos de accidentes ferroviarios; dominio transporte/seguridad, sin contribución de sistemas de bases de datos.
+- Machine Learning Algorithms for Solar Irradiance Forecasting in a Rural Community in Michoacán, Mexico — aplicación de regresores estándar para irradiancia solar; el aporte principal es energético/ambiental.
+- Updating and profiling the natural product-likeness of Latin American compound libraries** — perfilado químico de bibliotecas de productos naturales; base de datos usada como recurso de química.
+- Chemical Multiverse and Diversity of Food Chemicals — análisis de diversidad química de alimentos; contribución principal de química/cheminformática aplicada.
+- How far are we from the era of big data in transcriptomics? Lessons from the bacterial data in GEO — evaluación de datos transcriptómicos en GEO; bioinformática de dominio sin método computacional nuevo claro.
+- Natural Products Repository of Costa Rica (NAPRORE-CR): An Open-Access Database — repositorio de productos naturales; recurso químico de dominio, no sistema de bases de datos.
+- ENcyclopedia of TRAnscription Factors in Bacteria and Archaea genomes (ENTRAF) version 2.0 — base de datos genética de factores de transcripción; recurso biológico, no DBMS/sistema computacional.
+- Update and ADMET Profile of the Latin American Natural Product Database: LANaPDB — actualización/perfil ADMET de base de datos de productos naturales; contribución química.
+- The K-Band Mexican Radio Telescope — radiotelescopio; el software/control remoto es componente instrumental, no el aporte central de CS.
+- Design, Assembly and Control of a Differential/Omnidirectional Mobile Robot through Additive Manufacturing — diseño/control de robot móvil por manufactura aditiva; mecatrónica/controles, no HCI/IA/visión central.
+- Smart Rainwater Harvesting Service Design — diseño de servicio de captación de lluvia; gestión hídrica y diseño de servicio, sin aporte computacional claro.
+- EcoNicheS: enhancing ecological niche modeling, niche overlap and connectivity analysis using the shiny dashboard and R package — paquete R/Shiny para nicho ecológico; herramienta de ecología sin contribución CS suficientemente clara.
+- MexSIC, a Data Acquisition Channel for SiPMs — canal de adquisición para SiPMs con ASIC/FPGA; instrumentación electrónica/nuclear.
+- LAPOD, Latin-American paleomagnetic online database: An online interface to access paleomagnetic data from Latin America — base de datos paleomagnética en línea; repositorio geocientífico de dominio.
+- Taxonomies in Cultural Heritage Repositories: Need, Description, and Benefits; [Taxonomías en repositorios sobre patrimonio cultural: necesidad, descripción y ventajas] — taxonomías en repositorios culturales; enfoque bibliotecológico/hermenéutico, no recuperación computacional.
+- Data requirements for a systematic analysis of urban food flows and their sustainability outcomes — plataforma/datos de flujos urbanos de alimentos; sostenibilidad urbana, sin método CS central.
+- Methods for multi-omic data integration in cancer research — revisión de integración multi-ómica en cáncer; biomedicina/bioinformática aplicada, sin contribución CS propia.
+- Enhancing biomass Pyrolysis: Predictive insights from process simulation integrated with interpretable Machine learning models — ML aplicado a pirólisis de biomasa; contribución de ingeniería química/procesos.
+- An Approach for Modeling the Orographic–Forcing Effect via Random Cascades and the Long-Term Statistics of Mexico City's Daily Precipitation — modelo de precipitación con cascadas aleatorias; hidrometeorología, no CS clara.
+- Monte Carlo simulation of two Siemens Biograph PET/CT system using GATE: Image quality performance — validación de simulación Monte Carlo PET/CT; física médica, simulación como herramienta.
+- Substellar candidates at the earliest stages: The SUCANES database — base de datos astronómica SUCANES; recurso científico de dominio.
+- The Early Data Release of the Dark Energy Spectroscopic Instrument — liberación de datos DESI; catálogo/datos astronómicos, no contribución CS.
+- A retrospective approach for evaluating ecological niche modeling transferability over time: the case of Mexican endemic rodents — comparación de algoritmos de nicho ecológico; aplicación ecológica.
+- Facilitating public scrutiny of EIA reports with open data and artificial intelligence: insights from a Mexican case study — IA y datos abiertos para evaluación ambiental; IA como apoyo en política ambiental.
+- DensToolKit2: A comprehensive open-source package for analyzing the electron density and its derivative scalar and vector fields — paquete para densidad electrónica; software científico de química/física sin aporte CS claro.
+- ppgm: an R package for integrating neontological, palaeontological, and climate data in a phylogenetic comparative framework — paquete R para datos paleontológicos/clima; herramienta de dominio ecológico/paleontológico.
+- Data-Driven Framework for the Techno-Economic Assessment of Sustainable Aviation Fuel from Pyrolysis — ML para evaluación tecno-económica de biocombustible; ingeniería química/energía.
+
+## Principales falsos positivos detectados
+- Artículos de otra disciplina que sólo usan software, una plataforma, una base de datos o análisis de datos como soporte.
+- Recursos científicos de dominio —química, biología, astronomía, geociencias— descritos como bases de datos, pero sin aporte de DBMS, recuperación de información o sistemas de información.
+- Artículos biomédicos con meta-análisis, análisis estadístico, minería de datos o calidad de datos sin contribución computacional clara.
+- Artículos de física, geología, química, energía o ecología con simulación/ML como herramienta secundaria.
+- Registros recuperados por términos como software, database, algorithm, data integration, model o simulation sin que esos términos fueran el aporte principal de Ciencias de la Computación.
+- Un falso positivo institucional: “UNAM-National Nanotechnology Research Center” de Bilkent University, Turquía, no corresponde a la UNAM mexicana.
+
+## Decisiones importantes
+- Se conservaron registros recuperados por queries ISBD que pertenecen claramente a otras familias de Ciencias de la Computación, por ejemplo IA/NLP, HCI, seguridad, optimización, grafos, cómputo científico y procesamiento de señales.
+- No se conservaron artículos sólo por contener palabras como software, database, algorithm, data analysis, model, simulation o platform.
+- En duplicados, se mantuvo el registro con más metadatos completos; no se agregaron columnas para indicar origen ni decisión.
+- Cuando un registro trataba de una base de datos de dominio, se conservó sólo si el resumen indicaba una contribución computacional/sistémica clara, por ejemplo una aplicación web con capacidades de búsqueda, filtrado, descarga o interfaz como parte central.
+- Los registros de 2024 se conservaron en el filtro temporal cuando Scopus no proporcionó mes. No había registros 2026 ni años fuera de 2024–2025.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Scopus: 27 columnas.
+- Los seis archivos tenían encabezados idénticos y en el mismo orden.
+- No se armonizó ni renombró ningún encabezado.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- La columna Subject Area no estaba presente en los archivos recibidos.
+- Se mantuvieron campos vacíos tal como estaban en los registros seleccionados.
+- El CSV final fue escrito en UTF-8, con comillas CSV estándar para preservar abstracts, keywords, comas y caracteres especiales.
+
+## Archivo final generado
+- scopus_isbd_depurado_cs_final_2024-03_2025-12.csv
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- La fuente Scopus no incluyó mes ni Subject Area; el filtro temporal se aplicó por Year, aceptando registros 2024 sin mes verificable.
+- Conviene decidir en el chat principal si los repositorios científicos de dominio —por ejemplo químicos, astronómicos o geocientíficos— deben entrar en una fase posterior de “información científica/bases de datos” o quedar excluidos por defecto si no hay contribución DBMS/IR/HCI clara.
+- Se excluyó explícitamente “SpAi: A machine-learning supported experimental workflow...” por no tener afiliación UNAM mexicana clara; el “UNAM” de ese registro corresponde a un centro de Bilkent University en Turquía.
+- Los registros de HCI/usabilidad aplicada a salud se aceptaron sólo cuando el objeto central fue la evaluación/interfaz digital, no el resultado clínico.

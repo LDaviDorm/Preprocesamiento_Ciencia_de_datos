@@ -1,0 +1,107 @@
+# Reporte de depuración — ACM IA
+
+## Archivos recibidos
+- ACM_IA_canonico.csv
+- reporte_extraccion_ACM_IA.txt
+
+## Objetivo
+Depurar registros recuperados manualmente desde ACM para el lote IA y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas recibido en el CSV ACM.
+
+## Alcance de esta fase
+- No se volvió a convertir al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de IA.
+- La clasificación final por área se realizará en una fase posterior.
+- Se incorporó al reporte final la información relevante del reporte previo de extracción manual ACM.
+
+## Información incorporada del reporte previo de extracción
+- El reporte previo indica que la extracción ACM se hizo manualmente desde PDF, BibTeX y EndNote/RIS.
+- Se reportaron 15 cargas de PDF, correspondientes a 13 PDFs únicos por nombre.
+- Se reportaron 15 registros en BibTeX y 15 en EndNote/RIS.
+- Se reportaron 45 registros brutos detectados y 32 duplicados eliminados durante la extracción previa.
+- El CSV recibido contenía 13 artículos únicos, todos con DOI, abstract y keywords.
+- El reporte previo indica 12 registros con afiliación UNAM clara y 1 registro sin afiliación UNAM clara.
+- El reporte previo señala que las URLs DOI con proxy institucional fueron limpiadas y que los nombres con acentos/escapes LaTeX fueron normalizados.
+- También se reportó que no se integraron CCS Concepts en `Keywords`; se conservaron author keywords / additional key words exportados por ACM.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, si faltara DOI, por título normalizado + año + primer autor.
+
+Nota: el CSV recibido sólo trae la columna `Año`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada por el proyecto: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos en el CSV ACM: 13
+- Registros duplicados eliminados en esta depuración: 0
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 1
+- Registros excluidos por no ser Ciencias de la Computación: 1
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 11
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- optimización evolutiva, optimización multiobjetivo, MORL y algoritmos metaheurísticos;
+- asistentes generativos de programación, accesibilidad y desarrollo de software;
+- HCI, CSCW, interacción humano-IA, crowdwork, herramientas de IA centradas en trabajadores y accesibilidad;
+- social computing, co-creatividad con IA y flujos de trabajo diseñador-IA.
+
+Registros conservados:
+- `Uncertainty Quantification of the Hypervolume for Evolutionary Multi-Objective Reinforcement Learning`: aprendizaje por refuerzo multiobjetivo, optimización evolutiva e incertidumbre del hipervolumen; aporte metodológico de IA/optimización.
+- `The Impact of Generative AI Coding Assistants on Developers Who Are Visually Impaired`: asistentes generativos de programación, accesibilidad y desarrollo de software/HCI; objeto central computacional.
+- `Benchmarking MOEAs for solving continuous multi-objective RL problems`: benchmarking de algoritmos evolutivos multiobjetivo para problemas de aprendizaje por refuerzo; aporte de IA/optimización.
+- `Hot off the Press: Finding ϵ-Locally Optimal Solutions for Multi-Objective Multimodal Optimization`: optimización multiobjetivo/multimodal y aproximación de soluciones localmente óptimas; tema claramente algorítmico/computacional.
+- `A Cooperative Multi Indicator-Based Ant Colony Optimization Algorithm for the MOGenConVRP`: algoritmo de optimización por colonia de hormigas multiindicador para problema de ruteo multiobjetivo; aporte algorítmico.
+- `Finding the Set of Nearly Optimal Solutions of a Multi-objective Optimization Problem`: optimización multiobjetivo, archiving, soluciones casi óptimas y análisis de convergencia; aporte algorítmico.
+- `MouseClicker: Exploring Tactile Feedback and Physical Agency for People with Hand Motor Impairments`: HCI/accesibilidad, interacción física, retroalimentación háptica y dispositivo/interfaz computacional.
+- `Unveiling AI-Driven Collective Action for a Worker-Centric Future`: HCI/CSCW, IA centrada en trabajadores, plataformas y sistemas para acción colectiva.
+- `A Culturally-Aware AI Tool for Crowdworkers: Leveraging Chronemics to Support Diverse Work Styles`: herramienta de IA para crowdworkers, HCI/CSCW, diseño de sistema y adaptación cultural de interfaces.
+- `Creative dialogue: evolving intent in designer-AI workflows`: interacción diseñador-IA, GenAI en flujos creativos, co-creatividad y HCI aplicada.
+- `Fostering Latin American-Centric CSCW Research and Practice`: CSCW/social computing, investigación y práctica sobre tecnologías colaborativas y sociales.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+- `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives`: Afiliación UNAM no clara: la afiliación visible en el CSV dice `Universidad Morelia`; el reporte previo lo marcó como duda porque sólo aparece un correo `@enesmorelia.unam.mx`, sin nombre explícito de UNAM en la afiliación visible.
+- `Leadership and Transformation in the Public Sector: An Empirical Exploration of AI Adoption and Efficiency during the Fourth Industrial Revolution`: Estudio empírico/administrativo sobre adopción y eficiencia de IA en sector público; no presenta método, sistema, algoritmo, arquitectura, interfaz o contribución técnica de Ciencias de la Computación como aporte central.
+
+## Principales falsos positivos detectados
+- Estudios empíricos, administrativos o de política pública sobre adopción de IA que no presentan método, algoritmo, sistema, arquitectura, interfaz, evaluación computacional o contribución técnica de Ciencias de la Computación.
+- Registros con posible relación institucional por correo o contexto, pero sin afiliación UNAM explícita en los metadatos visibles del CSV.
+- Trabajos recuperados por el lote IA que podrían corresponder mejor a HCI/CSCW, accesibilidad, optimización o software; se conservaron si pertenecían claramente a Ciencias de la Computación.
+
+## Decisiones importantes
+- Se excluyó `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives` aunque el tema es de optimización/computación, porque la afiliación visible en el CSV es `Universidad Morelia`; el reporte previo también lo marcó como afiliación UNAM no clara.
+- Se excluyó `Leadership and Transformation in the Public Sector: An Empirical Exploration of AI Adoption and Efficiency during the Fourth Industrial Revolution` porque el aporte principal es un estudio empírico/administrativo sobre adopción de IA en sector público, no una contribución técnica de CS.
+- Se conservó `Hot off the Press: Finding ϵ-Locally Optimal Solutions for Multi-Objective Multimodal Optimization` porque el contenido es de optimización multiobjetivo/multimodal y no había duplicado claro dentro del CSV ACM IA recibido.
+- Se conservaron registros no estrictamente IA si pertenecían claramente a Ciencias de la Computación, por ejemplo HCI/CSCW, accesibilidad, asistentes de programación, optimización evolutiva y social computing.
+- No se reclasificó el contenido de la columna `Area`; se dejó tal como venía en el CSV recibido.
+- No se llenó ni modificó `Subarea`.
+- No se deduplicó contra otros lotes ACM ya procesados ni contra Scopus/IEEE; la deduplicación global entre áreas/editoriales debe realizarse en una fase posterior.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas del CSV ACM recibido: 14 columnas.
+- Columnas conservadas: indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos y valores `N/D` se dejaron como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+
+## Archivo final generado
+- acm_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- El lote ACM IA recibido ya estaba en formato canónico por la extracción manual previa; en esta fase no se reconvirtió ni se reasignaron áreas.
+- El CSV sólo contiene año, no mes; se aplicó la regla de conservar 2024 y 2025 cuando no hay mes verificable.
+- Se excluyó un registro computacional por afiliación UNAM no clara: `Generalising the Team Orienteering problem through Multi-constraining and Multi-objectives`.
+- Se excluyó un registro de adopción de IA en sector público por no tener contribución técnica de Ciencias de la Computación.
+- Se conservaron registros de HCI/CSCW, accesibilidad, social computing y diseño/IA porque pertenecen a Ciencias de la Computación aunque no necesariamente sean IA estricta.
+- El reporte previo advierte solapamientos con lotes ACM anteriores, especialmente en `A Culturally-Aware AI Tool...`, `The Impact of Generative AI Coding Assistants...` y `Unveiling AI-Driven Collective Action...`; conviene deduplicar globalmente al consolidar todas las áreas ACM.

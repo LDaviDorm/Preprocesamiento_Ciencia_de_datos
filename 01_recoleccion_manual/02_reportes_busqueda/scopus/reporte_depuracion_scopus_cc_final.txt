@@ -1,0 +1,103 @@
+# Reporte de depuración — Scopus Computación Científica
+
+## Archivos recibidos
+- scopus_cc_q1_general_comp_raw_2024-03_2025-12.csv
+- scopus_cc_q2_numerical_linear_algebra_parallel_raw_2024-03_2025-12.csv
+- scopus_cc_q3_pde_modeling_discretization_raw_2024-03_2025-12.csv
+- scopus_cc_q4_optimization_hpc_raw_2024-03_2025-12.csv
+- scopus_cc_q5_catalog_seed_authors_comp_raw_2024-03_2025-12.csv
+- scopus_cc_q6_rescue_no_subjarea_raw_2024-03_2025-12.csv
+
+## Objetivo
+Depurar registros descargados desde Scopus para el lote inicial de Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de Scopus.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM mexicana clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, keywords, abstract y metadatos.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica.
+
+Nota: los archivos recibidos sólo traen `Year`, no una fecha con mes. Por eso, para 2024 se aplicó la regla indicada: si el archivo sólo tiene año 2024 pero no mes, se conserva el registro. No se detectaron años fuera de 2024–2025.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 175
+- Registros duplicados eliminados: 43
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM: 4
+- Registros excluidos por no ser Ciencias de la Computación: 78
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 50
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- métodos numéricos, integración temporal, métodos de elementos finitos, diferencias finitas, solvers y esquemas de discretización;
+- cómputo científico, simuladores, co-simulación, model reduction, inversión numérica y software científico;
+- computación de alto desempeño, GPU, CUDA, supercómputo y flujos de procesamiento de datos científicos;
+- inteligencia artificial, aprendizaje automático, redes neuronales informadas por física, reconocimiento de patrones, segmentación semántica y algoritmos evolutivos;
+- optimización, identificación de modelos, métodos de interpolación, inversión y algoritmos de búsqueda;
+- sistemas distribuidos, concurrencia, consenso, smart contracts, verificación de algoritmos concurrentes y teoría de cómputo distribuido;
+- arquitectura de software para chatbots y herramientas Python abiertas para modelado científico.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos:
+
+- `Numerical Modeling for Tunnel Lining Optimization`: aplicación geotécnica/civil de simulación; no se observó aporte principal de método computacional generalizable.
+- `Analysing and Computing the Impact of Geometric Asymmetric Coils on Transformer Stray Losses`: simulación electromagnética aplicada al diseño de transformadores; aporte principal de ingeniería eléctrica.
+- `The art of modeling gene regulatory circuits`: modelado de sistemas biológicos como tema de dominio; no se identificó contribución computacional nueva.
+- `Impacts of a high-glucose diet or starvation on microRNA-transcription factor networks...`: modelado booleano aplicado a biología molecular; se consideró herramienta de dominio.
+- `A Bayesian Machine Learning Model for Predicting Uncontrolled Type 2 Diabetes Mellitus`: ML aplicado a salud; modelo predictivo simple sin aporte metodológico de IA suficientemente claro.
+- `Simultaneous observations of multiple ELVES and SPRITES at the Pierre Auger Observatory`: observación/instrumentación astronómica; el algoritmo Python/DBSCAN aparece como apoyo operativo.
+- `Molecular Dynamic Simulations for Biopolymers with Biomedical Applications`: revisión/aplicación de simulación molecular en biomateriales; no se identificó aporte CS principal.
+- `Event-triggered boundary control of the linearized FitzHugh–Nagumo equation`: control matemático/PDE con simulaciones; no se incluyó como CS clara.
+- `Constructive approaches to QP-time-dependent KAM theory...`: resultado matemático en sistemas hamiltonianos; uso de quasi-Newton en demostración, no como contribución computacional principal.
+- `Understanding wildfire occurrence and size in Jalisco, Mexico: A spatio-temporal analysis`: estadística espacial aplicada a ecología/incendios; INLA/SPDE como herramienta de análisis.
+
+## Principales falsos positivos detectados
+- Artículos de ingeniería civil, geotecnia, energía, óptica, electrónica, química, materiales, geofísica o biomedicina que usaban simulación, FEM, CFD, Monte Carlo o análisis numérico como herramienta de dominio.
+- Artículos biomédicos o epidemiológicos con análisis estadístico, regresión, modelos de riesgo o ML aplicado sin aporte computacional suficientemente claro.
+- Trabajos de biología de sistemas, bioinformática o redes regulatorias donde el modelo computacional funcionaba como apoyo para una pregunta biológica.
+- Artículos de instrumentación científica donde el software, el algoritmo o la visualización eran componentes operativos, no la contribución principal.
+- Registros de educación o revisión pedagógica sobre métodos numéricos, modelado matemático o recursos digitales.
+- Registros de control, dinámica, PDE o matemática aplicada con simulaciones, pero sin aporte de método numérico, algoritmo computacional o sistema computacional claro.
+- Falsos positivos institucionales por `UNAM - National Nanotechnology Research Center` de Bilkent University, Turquía, que no corresponde a la UNAM mexicana.
+
+## Decisiones importantes
+- Se conservaron registros recuperados por queries de Computación Científica aunque su clasificación final pudiera corresponder después a IA, teoría, redes/sistemas distribuidos, software o visión.
+- Se conservaron trabajos no estrictamente de Computación Científica cuando el aporte principal era claramente de Ciencias de la Computación, por ejemplo distributed computing, smart contracts, runtime verification, segmentación semántica, arquitectura de chatbots y esteganografía paralela.
+- Se excluyeron registros aunque contenían términos como `simulation`, `finite element`, `computational`, `model`, `algorithm`, `machine learning`, `software`, `data analysis` o `numerical`, cuando esos términos aparecían como herramientas secundarias de otra disciplina.
+- Se aceptaron registros aplicados cuando el foco explícito fue una metodología computacional, un solver, una formulación numérica, una arquitectura de software, un algoritmo, una técnica de IA/visión, un modelo de cómputo distribuido o una herramienta/código científico como contribución principal.
+- Se excluyó conservadoramente el registro con afiliación `Universidad Autónoma de México, Unidad Lerma`, porque corresponde probablemente a UAM Lerma o a una forma incompleta/no clara, no a una afiliación UNAM mexicana verificable en el registro.
+- Se excluyeron registros asociados a `UNAM - National Nanotechnology Research Center` o `National Nanotechnology Research Center (UNAM), Bilkent University, Ankara, Turkey`, porque ese `UNAM` no corresponde a la Universidad Nacional Autónoma de México.
+
+## Formato del archivo final
+- Se conservó exactamente el mismo diseño de columnas de Scopus: 27 columnas.
+- Los seis archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas.
+- No se agregaron columnas nuevas.
+- No se eliminaron columnas originales.
+- Se conservó el orden original de columnas.
+- El CSV final está codificado en UTF-8 con BOM para facilitar la apertura directa en Excel sin problemas de acentos.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts, keywords largos y caracteres especiales.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados de Scopus después de la deduplicación.
+
+## Archivo final generado
+- `scopus_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Los archivos no traían mes de publicación, sólo año; se aplicó la regla de conservar registros 2024 si no hay mes verificable.
+- Hubo solapamiento entre queries: 43 registros eliminados como duplicados.
+- La frontera más delicada fue entre cómputo científico real y simulación rutinaria de dominio; se conservaron los registros donde el método, solver, algoritmo, arquitectura o software era el aporte principal.
+- Se detectaron falsos positivos institucionales por el acrónimo `UNAM` de Bilkent University, Turquía.
+- Conviene confirmar en el chat principal si en futuras fases deben aceptarse o excluirse de forma sistemática los trabajos de ML aplicado en salud y los modelos computacionales biológicos cuando no propongan un método computacional nuevo.

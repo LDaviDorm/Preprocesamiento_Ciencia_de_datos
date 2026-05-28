@@ -1,0 +1,101 @@
+# Reporte de depuración — EBSCO CC
+
+## Archivos recibidos
+- EBSCO-Metadata-17_05_2026 (1).csv
+- EBSCO-Metadata-17_05_2026 (2).csv
+- EBSCO-Metadata-17_05_2026 (3).csv
+- EBSCO-Metadata-17_05_2026.csv
+
+## Objetivo
+Depurar registros descargados desde EBSCO para el lote inicial CC — Computación Científica y conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el mismo formato de columnas original de EBSCO. Debido a que EBSCO no exportó afiliaciones institucionales en estos CSV, se recuperó evidencia externa de afiliación UNAM para los registros aceptados.
+
+## Alcance de esta fase
+- No se convirtió al modelo canónico.
+- No se asignaron áreas finales.
+- No se asignaron subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- La clasificación final por área se realizará en una fase posterior.
+- Para este lote EBSCO, se agregó información de afiliación recuperada externamente en `Afiliacion1`, indicando autor y afiliación.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara, recuperada fuera del CSV cuando EBSCO no la exportó.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, subjects, fuente, DOI y páginas editoriales cuando ayudaron a identificar tema y afiliación.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación básica por DOI y, cuando no había DOI, por título normalizado.
+
+Nota: en los CSV de EBSCO la columna `publicationDate` permitió verificar año y mes. No se detectaron registros fuera del periodo marzo 2024–diciembre 2025 después de deduplicación.
+
+## Resultados cuantitativos
+- Total de registros recibidos: 98
+- Artículos únicos después de deduplicación: 88
+- Registros duplicados eliminados: 10
+- Registros excluidos por estar fuera de periodo: 0
+- Registros excluidos por no tener afiliación UNAM clara: 0
+- Registros excluidos por no ser Ciencias de la Computación: 73
+- Registros excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV final: 15
+
+## Registros aceptados
+Se conservaron principalmente registros de:
+
+- métodos numéricos y diferencias finitas para modelado e inversión;
+- inversión bayesiana, inversión de campos potenciales, optimización e inferencia computacional;
+- métodos de elementos finitos y estimaciones de error con implementación numérica;
+- software/código científico explícito, incluyendo software de elementos finitos y código térmico-hidráulico;
+- algoritmos paralelos/distribuidos y work-stealing;
+- modelos de aprendizaje profundo/refuerzo y redes neuronales cuando el objeto central era el modelo computacional;
+- reconstrucción/señales e inversión regularizada;
+- PINNs y métodos de aprendizaje profundo para ecuaciones diferenciales.
+
+## Registros dudosos
+Registros dudosos que NO fueron incluidos por criterio conservador:
+
+- `Localization estimation of two leaks in pipelines through Monte Carlo simulations and hydraulic-spatial constraints`: estimación de fugas hidráulicas; Monte Carlo y restricciones espaciales como herramientas de dominio.
+- `Proposal for the Application of Fractional Operators in Polynomial Regression Models to Enhance the Determination Coefficient R 2 on Unseen Data`: regresión/fraccionarios como técnica aplicada, sin aporte CS suficientemente claro.
+- `Dynamical and numerical modeling of NEOs orbits using a quintessence-like space-time framework`: modelado orbital/físico; el componente numérico no se consideró aporte CS principal.
+- `History-dependent switch-like differentiation of keratinocytes in response to skin barrier damage`: modelo computacional en biología/células; foco principal biológico.
+- `The art of modeling gene regulatory circuits`: modelado de circuitos regulatorios genéticos; foco principal en biología de sistemas.
+- `Impacts of a high-glucose diet or starvation on microRNA-transcription factor networks in Caenorhabditis elegans through Boolean mathematical modeling`: modelado booleano aplicado a biología molecular.
+- `Computational modeling of orthodromically evoked synaptic potentials of striatal projection neurons of direct and indirect pathways`: neurociencia computacional aplicada; se excluyó por foco principal biomédico/neurocientífico.
+- `Numerical modeling of the origin and process of groundwater hypersalinization in a coastal dry environment in northwestern Mexico`: modelado hidrogeológico; aporte principal de geociencias.
+
+## Principales falsos positivos detectados
+- Artículos de energía, fluidos, materiales, química, geociencias, biología y salud que sólo usan simulación, modelado numérico o análisis computacional como herramienta.
+- Artículos de control, sistemas eléctricos, fotovoltaica, acústica física e instrumentación donde el método computacional no es la contribución principal.
+- Artículos de biología de sistemas o neurociencia con modelos matemáticos/computacionales cuyo aporte principal es de dominio biomédico.
+- Artículos de geociencias con modelado numérico rutinario, salvo casos donde el aporte central fue un método de inversión, algoritmo o software científico claramente computacional.
+- Registros con términos como `numerical`, `simulation`, `modeling`, `Monte Carlo`, `machine learning`, `software` o `code` usados de forma auxiliar.
+
+## Decisiones importantes
+- Se mantuvo un criterio conservador: no se aceptó un registro sólo por mencionar modelado, simulación, algoritmo, software, ML o análisis numérico.
+- Se conservaron registros de geofísica, física, acústica o ingeniería sólo cuando el aporte central era un método computacional generalizable, software científico, inversión, algoritmo, regularización, FEM/diferencias finitas, PINNs o código numérico.
+- Se aceptó `Finite element software for calculating fluid flow and heat transport for seamounts` porque el aporte explícito es software de elementos finitos.
+- Se aceptó `Validation of the New TLANESY Thermal–Hydraulic Code...` como caso frontera porque el aporte central reportado es un código nuevo con métodos numéricos rápidos, aunque el dominio sea ingeniería nuclear.
+- Se aceptaron artículos no estrictamente de CC, como work-stealing paralelo/distribuido, porque pertenecen claramente a Ciencias de la Computación.
+- EBSCO no exportó afiliaciones institucionales; para los 15 registros aceptados se recuperó afiliación UNAM en fuentes externas y se colocó en `Afiliacion1`.
+
+## Formato del archivo final
+- Se conservaron las 37 columnas originales de EBSCO.
+- Los cuatro archivos tenían encabezados idénticos.
+- No hubo diferencias entre archivos que requirieran armonización.
+- No se renombraron columnas originales.
+- No se eliminaron columnas originales.
+- Se agregaron únicamente `Afiliacion1` y `Afiliacion2` por la instrucción especial del lote EBSCO.
+- Toda la información de afiliación recuperada se colocó en `Afiliacion1` con formato `Autor — Afiliación | Autor — Afiliación`.
+- `Afiliacion2` se conserva como columna, pero queda vacía.
+- El CSV final está codificado en UTF-8 con BOM para abrirlo correctamente en Excel con acentos y caracteres especiales.
+- Los campos vacíos se dejaron vacíos como venían originalmente.
+- Las comillas del CSV fueron generadas correctamente para preservar abstracts largos, caracteres especiales y afiliaciones extensas.
+- Las filas aceptadas se ordenaron por primera aparición en los archivos combinados después de la deduplicación.
+
+## Archivo final generado
+- `ebsco_cc_depurado_cs_final_2024-03_2025-12_afiliacion1_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- EBSCO no exportó afiliación institucional; la afiliación de los registros aceptados fue recuperada fuera del CSV.
+- Toda la afiliación quedó concentrada en `Afiliacion1`, indicando autor y afiliación; `Afiliacion2` queda vacía por consistencia con la instrucción anterior.
+- El lote CC contiene muchos falsos positivos de simulación y modelado numérico en dominios externos; se excluyeron cuando el aporte computacional no era central.
+- Conviene confirmar como regla global si códigos científicos de dominio, como TLANESY, deben conservarse siempre que el artículo describa explícitamente el código y sus métodos numéricos.
+- Conviene deduplicar globalmente contra EBSCO ISBD y otros lotes cuando se consolide toda la editorial, porque algunos artículos de CS pueden aparecer en búsquedas de más de un área.

@@ -1,0 +1,273 @@
+# Reporte final de ProQuest — Depuración por áreas
+
+## Resumen ejecutivo
+
+Se completó la fase de búsqueda, descarga y depuración inicial en ProQuest Central para las seis áreas del proyecto:
+
+1. ISBD — Ingeniería de Software y Bases de Datos
+2. CC — Computación Científica
+3. IA — Inteligencia Artificial
+4. RS — Redes y Seguridad en Cómputo
+5. TC — Teoría de la Computación
+6. SIAV — Señales, Imágenes y Ambientes Virtuales
+
+La fase realizada no convirtió los registros al modelo canónico, no asignó áreas finales y no asignó subáreas finales. El objetivo fue conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación, manteniendo el formato original de columnas exportado desde ProQuest o, cuando los archivos tenían encabezados distintos, usando la unión de columnas originales para no perder metadatos.
+
+Resultado acumulado de ProQuest:
+
+Total raw descargado en ProQuest: 152 registros
+Duplicados eliminados dentro de cada lote: 36
+Registros únicos después de deduplicación por lote: 116
+Registros aceptados como Ciencias de la Computación: 19
+Registros excluidos por no ser Ciencias de la Computación: 93
+Registros excluidos por afiliación UNAM no clara: 4
+Registros excluidos por fuera de periodo: 0
+Registros excluidos por metadatos insuficientes: 0
+
+Indicadores acumulados:
+
+Tasa de duplicación acumulada por lote: 23.7%
+Tasa de aceptación sobre registros raw: 12.5%
+Tasa de aceptación sobre registros únicos por lote: 16.4%
+Tasa de rechazo sobre registros únicos por lote: 83.6%
+
+Este acumulado todavía no representa una deduplicación global entre áreas de ProQuest. La deduplicación realizada hasta ahora fue interna por lote. Hay solapamiento claro entre áreas, especialmente por el artículo de realidad aumentada aplicado a mapas híbridos, por registros de optimización/algoritmos y por registros de IA/SIAV.
+
+---
+
+# Tabla consolidada por área
+
+| Área inicial de búsqueda | Raw recibidos | Únicos por lote | Duplicados eliminados | Excluidos fuera de periodo | Excluidos afiliación | Excluidos no CS | Aceptados CS |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ISBD | 34 | 17 | 17 | 0 | 0 | 16 | 1 |
+| CC | 24 | 24 | 0 | 0 | 2 | 18 | 4 |
+| IA | 38 | 37 | 1 | 0 | 1 | 29 | 7 |
+| RS | 34 | 17 | 17 | 0 | 0 | 16 | 1 |
+| TC | 15 | 14 | 1 | 0 | 1 | 9 | 4 |
+| SIAV | 7 | 7 | 0 | 0 | 0 | 5 | 2 |
+| **Total** | **152** | **116** | **36** | **0** | **4** | **93** | **19** |
+
+---
+
+# Archivos finales generados por lote
+
+ISBD:
+proquest_isbd_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+CC:
+proquest_cc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+IA:
+proquest_ia_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+RS:
+proquest_rs_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+TC:
+proquest_tc_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+SIAV:
+proquest_siav_depurado_cs_final_2024-03_2025-12_utf8_bom.csv
+
+---
+
+# Criterios aplicados en la depuración
+
+En los seis lotes se aplicaron criterios homogéneos:
+
+- Periodo: marzo de 2024 a diciembre de 2025.
+- Afiliación: UNAM mexicana clara.
+- Tema: pertenencia clara a Ciencias de la Computación.
+- Revisión: título, abstract, keywords, subject terms, afiliación, DOI, fuente y metadatos ProQuest.
+- Exclusión: falsos positivos interdisciplinarios.
+- Deduplicación: DOI como clave principal; si no había DOI, título normalizado + año + primer autor.
+
+Regla temporal específica de ProQuest:
+Se usó `pubdate` como fecha bibliográfica principal. `elecPubDate` se revisó como campo auxiliar. Esta regla permitió conservar registros con `pubdate` dentro de mayo de 2024 aunque `elecPubDate` fuera anterior al periodo, como el artículo `Augmented reality to the creation of hybrid maps applied in soil sciences...`. Esta decisión queda como punto revisable para el chat principal si se decide usar siempre la fecha electrónica/early access.
+
+Regla institucional:
+Se aceptaron registros con afiliación UNAM clara en los metadatos. En TC hubo un caso aceptado aunque `AuthorAffiliation` venía vacío: `Recent Advances on Principles of Concurrent Data Structures`, porque el propio resumen de ProQuest identifica la investigación con el Instituto de Matemáticas de la Universidad Nacional Autónoma de México y el tema era inequívocamente de Ciencias de la Computación. En cambio, se excluyeron casos donde el registro sólo usaba datos de UNAM o correos aislados sin afiliación institucional verificable.
+
+---
+
+# Resultados por área
+
+## ISBD — Ingeniería de Software y Bases de Datos
+
+Raw recibidos: 34
+Registros únicos estimados después de deduplicación: 17
+Duplicados eliminados: 17
+Aceptados CS: 1
+
+Registro aceptado:
+- Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico.
+
+Este lote fue muy ruidoso. Se excluyeron registros de geociencias, hidrología, ecología, conservación, salud, materiales y educación donde `software`, `database`, `GIS`, `AI`, `open data`, `simulation`, `model` o `digital mission engineering` eran herramientas de dominio, no contribuciones centrales de Ciencias de la Computación.
+
+Decisión relevante:
+El artículo aceptado se conservó porque el objeto central del trabajo es una aplicación interactiva de realidad aumentada desarrollada con Unity 3D/AR Foundation, con evaluación de interacción y visualización. Aunque no sea ISBD final, sí pertenece a Ciencias de la Computación.
+
+## CC — Computación Científica
+
+Raw recibidos: 24
+Registros únicos después de deduplicación: 24
+Duplicados eliminados: 0
+Aceptados CS: 4
+
+Registros aceptados:
+- Augmented reality to the creation of hybrid maps applied in soil sciences...
+- Three-dimensional joint inversion of potential field datasets constrained by cross-gradient and depth weighting.
+- A time-domain SGFD-FK hybrid method for 2D teleseismic elastic wave modeling and inversion.
+- Rectilinear convex hull of points in 3D and applications.
+
+Se conservaron registros de cómputo científico, métodos numéricos para inversión/modelado, geometría computacional y ambientes virtuales/realidad aumentada cuando el sistema o método computacional era el aporte central.
+
+Principales falsos positivos:
+GIS, bases de datos, simulaciones, finite element, STK, open-source tools, modelos o software como herramientas de geociencias, arqueología, hidrología, energía, materiales, salud o educación.
+
+## IA — Inteligencia Artificial
+
+Raw recibidos: 38
+Registros únicos después de deduplicación: 37
+Duplicados eliminados: 1
+Aceptados CS: 7
+
+Registros aceptados:
+- Improved predictive diagnosis of diabetic macular edema based on hybrid models: An observational study.
+- Reconstruction of dynamic systems using genetic algorithms with dynamic search limits.
+- Transfer learning technique applied to polarized spectral lines.
+- Complex Task Planning for General-Purpose Service Robots.
+- On the multi-objective hyperparameter optimization of the weighted entropic associative memory.
+- 3D statistical shape models for automatic segmentation of the fetal cerebellum in ultrasound images.
+- Solution Algorithms for the Capacitated Location Tree Problem with Interconnections.
+
+Se conservaron artículos donde el método, algoritmo, sistema, pipeline, arquitectura o problema computacional era el aporte central. Se excluyeron aplicaciones de IA/ML cuando el objetivo principal era geociencias, ecología, salud, energía, ingeniería civil, ingeniería eléctrica, agricultura, política pública o ciencias sociales.
+
+Caso importante:
+`Plingo: A System for Probabilistic Reasoning in Answer Set Programming` fue excluido por afiliación UNAM no clara, aunque el tema es claramente de Ciencias de la Computación. El registro sólo mostraba un correo con dominio `ciencias.unam.mx`, lo cual no se tomó como afiliación institucional suficiente.
+
+## RS — Redes y Seguridad en Cómputo
+
+Raw recibidos: 34
+Registros únicos después de deduplicación: 17
+Duplicados eliminados: 17
+Aceptados CS: 1
+
+Registro aceptado:
+- Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico.
+
+Aunque el lote era de Redes y Seguridad, el único registro aceptado no es RS final. Se conservó porque sí pertenece claramente a Ciencias de la Computación por su componente de realidad aumentada, visualización e interacción.
+
+Principales falsos positivos:
+geografía, geomorfología, hidrogeología, ecología, arqueología, conservación, salud, materiales, telecomunicaciones aeroespaciales y política/educación médica. Se excluyeron artículos que mencionaban `telecommunication`, `software`, `AI`, `database`, `information systems`, `simulation`, `model`, `GIS`, `open data` o `information retrieval` cuando esos elementos eran instrumentos de otra disciplina.
+
+## TC — Teoría de la Computación
+
+Raw recibidos: 15
+Registros únicos después de deduplicación: 14
+Duplicados eliminados: 1
+Aceptados CS: 4
+
+Registros aceptados:
+- A speedup theorem for asynchronous computation with applications to consensus and approximate agreement.
+- Ortho-Unit Polygons can be Guarded with at most n-48 Guards.
+- Solution Algorithms for the Capacitated Location Tree Problem with Interconnections.
+- Recent Advances on Principles of Concurrent Data Structures.
+
+Se conservaron registros relacionados con computación distribuida, consenso, lower bounds, algoritmos de optimización combinatoria, estructuras de datos concurrentes y geometría computacional.
+
+Principales falsos positivos:
+matemática pura, grafos y combinatoria sin aporte algorítmico/computacional claro, materiales/fotónica con redes neuronales como herramienta, educación/analítica académica sin afiliación clara y ruido por campos temáticos como `Graph theory`, `Artificial neural networks`, `SUSTAINABILITY` o `PSYCHOLOGY`.
+
+## SIAV — Señales, Imágenes y Ambientes Virtuales
+
+Raw recibidos: 7
+Registros únicos después de deduplicación: 7
+Duplicados eliminados: 0
+Aceptados CS: 2
+
+Registros aceptados:
+- Augmented reality to the creation of hybrid maps applied in soil sciences: a study case in Ixmiquilpan Hidalgo, Mexico.
+- Improved predictive diagnosis of diabetic macular edema based on hybrid models: An observational study.
+
+Se conservaron registros de realidad aumentada, visualización interactiva, Unity 3D/AR Foundation, aprendizaje profundo, CNN, transferencia de aprendizaje, procesamiento de imágenes médicas y señales ERG/OCT/fundus.
+
+Principales falsos positivos:
+salud pública, biomarcadores, tomografía clínica, genómica/conservación, ecología y reportes de redes de bioimagen sin método computacional central.
+
+---
+
+# Problemas globales detectados en ProQuest
+
+## 1. ProQuest fue una fuente muy ruidosa
+
+ProQuest recuperó muchos registros donde términos como `software`, `database`, `AI`, `model`, `GIS`, `simulation`, `network`, `image`, `classification`, `algorithm`, `data`, `information systems` o `open data` eran herramientas secundarias de geociencias, salud, ecología, materiales, educación, política pública, energía, agricultura o biología.
+
+Por ello, se aplicó un criterio más estricto que en fuentes más especializadas.
+
+## 2. Uso de `pubdate` como fecha principal
+
+A diferencia de ScienceDirect, donde se aplicó la fecha visible en PDF/available online de forma estricta, en ProQuest se usó `pubdate` como fecha bibliográfica principal y `elecPubDate` como apoyo. Esto permitió conservar `Augmented reality...`, cuyo `pubdate` está dentro de mayo de 2024 aunque `elecPubDate` sea 2023-11-03. Esta decisión debe quedar marcada como revisable.
+
+## 3. No se convirtió al modelo canónico
+
+A diferencia de ScienceDirect y ACM en sus fases manuales, ProQuest sí exportó archivos tabulares. Por eso se conservó el diseño original de ProQuest y no se convirtió al modelo canónico.
+
+## 4. Encabezados variables entre archivos
+
+Algunos lotes exportaron archivos con 26, 28, 29 o 31 columnas. Para no perder metadatos, se usó la unión de columnas originales en los CSV finales. No se agregaron columnas de clasificación ni se renombraron columnas.
+
+## 5. Solapamiento entre áreas
+
+El mismo registro apareció como aceptado en varias áreas:
+- `Augmented reality to the creation of hybrid maps...` aparece en ISBD, CC, RS y SIAV.
+- `Improved predictive diagnosis...` aparece en IA y SIAV.
+- `Solution Algorithms for the Capacitated Location Tree Problem...` aparece en IA y TC.
+
+Por eso los 19 aceptados por lote no representan 19 artículos únicos globales.
+
+---
+
+# Reglas recomendadas para la siguiente fase
+
+1. Hacer deduplicación global de ProQuest por DOI; si no hay DOI, por título normalizado + año + primer autor.
+2. Deduplicar ProQuest contra Scopus, IEEE, ACM, EBSCO, Engineering Village, Web of Science y ScienceDirect.
+3. Convertir los registros finales de ProQuest al modelo canónico del proyecto en una fase posterior.
+4. Reasignar área y subárea final; los lotes de búsqueda no equivalen a clasificación final.
+5. Mantener criterio estricto contra falsos positivos de dominio: GIS, bases de datos, IA, software, simulación, telecomunicaciones o imágenes no bastan para aceptar un artículo si el aporte principal pertenece a otra disciplina.
+6. Definir una regla global para ProQuest sobre `pubdate` frente a `elecPubDate`.
+
+---
+
+# Estado final de ProQuest
+
+Fuente: ProQuest Central
+Áreas cubiertas: 6/6
+
+ISBD: completado
+CC: completado
+IA: completado
+RS: completado
+TC: completado
+SIAV: completado
+
+Registros raw procesados: 152
+Registros únicos por lote: 116
+Registros aceptados como Ciencias de la Computación por lote: 19
+
+Formato de salida actual:
+CSV con columnas originales de ProQuest o unión de columnas originales cuando los archivos tenían encabezados distintos.
+
+Pendiente:
+- Unión de los seis CSV finales.
+- Deduplicación global entre áreas ProQuest.
+- Conversión al modelo canónico.
+- Asignación final de área.
+- Asignación final de subárea.
+- Deduplicación global contra todas las demás fuentes.
+
+---
+
+# Nota ejecutiva para pegar en el chat principal
+
+ProQuest Central quedó completado para las seis áreas del proyecto. Se procesaron 152 registros raw distribuidos en ISBD, Computación Científica, Inteligencia Artificial, Redes y Seguridad, Teoría de la Computación y Señales/Imágenes/Ambientes Virtuales. Después de deduplicación interna por lote se obtuvieron 116 registros únicos por área; de ellos, 19 fueron aceptados como claramente pertenecientes a Ciencias de la Computación, 93 fueron rechazados por no ser CS y 4 por afiliación UNAM no clara. No hubo exclusiones por periodo usando `pubdate` como fecha bibliográfica principal ni por metadatos insuficientes. La fuente fue especialmente ruidosa, con muchos falsos positivos de geociencias, salud, ecología, materiales, educación, energía y política pública. Los CSV finales conservan las columnas originales de ProQuest o la unión de columnas originales cuando hubo encabezados distintos; aún no fueron convertidos al modelo canónico ni clasificados por área/subárea final. La siguiente fase debe unir los seis CSV finales, deduplicar globalmente por DOI/título y convertir al modelo canónico del proyecto.

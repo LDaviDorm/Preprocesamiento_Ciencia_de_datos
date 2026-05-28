@@ -1,0 +1,105 @@
+# Reporte de depuración y extracción — ScienceDirect CC lote 2
+
+## Archivos recibidos
+- Advanced-Algorithm-Combinations-for-Safe-Human-Robot-Col_2025_Procedia-Compu.pdf
+- AI-Enhanced-Supercomputing-for-Next-Generation-Astronomical_2025_Procedia-Co.pdf
+- A-machine-learning-based-inverse-analysis-procedure-for-_2025_Advances-in-En.pdf
+- Applications-and-methodologies-of-Internet-of-Things-in-war_2025_Procedia-Co.pdf
+- CUDA-code-to-generate-computational-models-and-predict-mechani_2024_Software.pdf
+- Dynamic-modelling-framework-for-the-ana_2024_International-Journal-of-Electr.pdf
+- Error-Compensation-Method-during-Welding-Operations-using_2024_Procedia-Comp.pdf
+- Machine-learning-in-AIRR-diagnostics--Advances-and-appli_2025_ImmunoInformat.pdf
+- On-the-orthogonal-Gr-nbaum-partition-problem-in-dime_2025_Computational-Geom.pdf
+- Optimizing-Automated-Manufacturing-Processes-Using-a-Hybrid_2024_Procedia-Co.pdf
+- Realizable-signatures-in-upward-pointset-embeddings-_2025_Procedia-Computer-.pdf
+
+## Objetivo
+Depurar el segundo lote de PDFs descargados desde ScienceDirect para Computación Científica, conservar únicamente registros que pertenezcan claramente a Ciencias de la Computación y convertir los aceptados al modelo canónico para agregarlos al documento consolidado del área.
+
+## Alcance de esta fase
+- Se revisaron únicamente los PDFs recibidos en este segundo lote.
+- Se convirtió al modelo canónico únicamente los registros aceptados como Ciencias de la Computación.
+- No se asignaron áreas finales ni subáreas finales.
+- Se conservaron artículos de Ciencias de la Computación aunque no fueran estrictamente de Computación Científica.
+- Se comparó el segundo lote contra el CSV del lote 1 de ScienceDirect CC para no duplicar registros en el consolidado.
+
+## Criterios aplicados
+- Periodo marzo 2024–diciembre 2025.
+- Afiliación UNAM clara.
+- Pertenencia clara a Ciencias de la Computación.
+- Revisión de título, abstract, keywords, afiliaciones, DOI, fuente y primera página del PDF.
+- Exclusión de falsos positivos interdisciplinarios.
+- Deduplicación por DOI dentro del lote y contra el lote 1.
+
+## Resultados cuantitativos
+- Total de cargas PDF recibidas en lote 2: 11
+- Artículos únicos en lote 2: 11
+- Duplicados internos eliminados en lote 2: 0
+- Excluidos por estar fuera de periodo: 0
+- Excluidos por no tener afiliación UNAM clara: 1
+- Excluidos por no ser claramente Ciencias de la Computación: 1
+- Excluidos por metadatos insuficientes: 0
+- Registros aceptados en CSV canónico de lote 2: 9
+- Registros aceptados de lote 2 ya presentes en lote 1: 1
+- Registros nuevos agregados al consolidado CC: 8
+- Registros en consolidado ScienceDirect CC lotes 1+2: 16
+
+## Registros aceptados en lote 2
+- `Advanced Algorithm Combinations for Safe Human-Robot Collaboration: A Review and Research Proposal`
+- `AI-Enhanced Supercomputing for Next-Generation Astronomical Data Processing in Latin America: A Case Study of the ALMA Observatory`
+- `A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets`
+- `Applications and methodologies of Internet of Things in warehouses and inventory management: A systematic literature review`
+- `CUDA code to generate computational models and predict mechanical properties for metallic surface nanocoatings`
+- `Error Compensation Method during Welding Operations using the Enhanced Wagner-Hagras Interval Type-3 NSFLS-1`
+- `On the orthogonal Grünbaum partition problem in dimension three`
+- `Optimizing Automated Manufacturing Processes Using a Hybrid BRKGA Algorithm: A Case Study on Flexible Job-Shop Scheduling`
+- `Realizable signatures in upward pointset embeddings of directed paths`
+
+## Tipos de artículos conservados
+Se conservaron principalmente registros de:
+
+- robótica colaborativa, interacción humano-robot, aprendizaje por refuerzo, transformers multimodales, Graph-CNN y arquitecturas de IA para colaboración segura;
+- supercómputo, HPC, aceleración GPU, procesamiento de datos astronómicos y flujos de trabajo de IA sobre infraestructura computacional;
+- análisis inverso con aprendizaje automático y generación de datasets no experimentales para problemas de simulación/ingeniería computacional;
+- Internet de las Cosas, arquitecturas IoT y revisión técnica de metodologías para gestión de almacenes e inventarios;
+- software científico y código CUDA/C++ para generación de modelos computacionales;
+- lógica difusa, visión, robótica y control inteligente para compensación automática de error;
+- geometría computacional, algoritmos geométricos, grafos, embeddings planares, scheduling y optimización metaheurística.
+
+## Registros dudosos o excluidos
+- `Dynamic modelling framework for the analysis of fair-sized DC microgrids`: Excluido por no ser claramente Ciencias de la Computación: aunque propone un marco de modelado dinámico y métodos numéricos, el aporte principal se consideró ingeniería eléctrica/potencia y análisis de microredes, consistente con la decisión tomada en el lote 1.
+- `Machine learning in AIRR diagnostics: Advances and applications`: Excluido por no tener afiliación UNAM mexicana clara: la afiliación visible dice “UNAM – National Nanotechnology Research Center, Bilkent University, Ankara, Turkey”, que corresponde a Bilkent/Turquía y no a la Universidad Nacional Autónoma de México. Además, el foco principal es una revisión de diagnóstico inmunológico/AIRR.
+
+## Casos frontera aceptados
+- `A machine learning-based inverse analysis procedure for concrete softening law prediction using non-experimental datasets`: se aceptó porque el aporte central es un procedimiento algorítmico de análisis inverso con aprendizaje automático y generación de datasets no experimentales, no sólo una aplicación rutinaria de ML.
+- `Applications and methodologies of Internet of Things in warehouses and inventory management`: se aceptó porque el tema central es IoT/arquitecturas y metodologías computacionales en sistemas de información; no se asigna área final en esta fase.
+- `Advanced Algorithm Combinations for Safe Human-Robot Collaboration...`: se aceptó aunque es revisión/propuesta porque el foco es la integración de Graph-CNN, transformers multimodales, SAC-RCPO y TactileGAN en robótica colaborativa.
+
+## Principales falsos positivos detectados
+- Modelado de sistemas eléctricos o microredes donde los métodos numéricos son herramientas de ingeniería eléctrica/potencia.
+- Falsos positivos institucionales por la sigla `UNAM` asociada a `UNAM – National Nanotechnology Research Center` de Bilkent University, Turquía.
+- Artículos de dominio aplicado donde términos como `machine learning`, `model`, `framework`, `simulation` o `control` no bastan por sí solos para justificar Ciencias de la Computación.
+
+## Decisiones importantes
+- `CUDA code to generate computational models...` se aceptó en el lote 2, pero no se agregó como registro nuevo al consolidado porque ya estaba en el lote 1 por DOI `10.1016/j.simpa.2024.100645`.
+- `Dynamic modelling framework for the analysis of fair-sized DC microgrids` se mantuvo excluido, consistente con la decisión del lote 1: el aporte principal se consideró potencia/microredes, no Ciencias de la Computación.
+- Se agregaron al consolidado los registros aceptados del lote 2 que no estaban presentes en el lote 1.
+- No se hizo deduplicación global contra ScienceDirect ISBD ni contra otras editoriales; eso debe hacerse al consolidar todo el corpus.
+
+## Formato del archivo final
+- Se usó el modelo canónico de 14 columnas utilizado en los lotes manuales/PDF:
+  `indice`, `Titulo`, `Año`, `Autor_norm`, `Afiliacion1`, `Afiliacion2`, `ISBN`, `ISSN`, `Doi`, `URL`, `Area`, `Subarea`, `Keywords`, `Abstract`.
+- `Area` se conservó como `CC` por corresponder al lote de búsqueda de Computación Científica.
+- `Subarea` se dejó vacía.
+- No se inventaron DOI, autores, afiliaciones, keywords ni abstracts.
+- Los campos no disponibles se dejaron vacíos cuando correspondía.
+- Los CSV finales están en UTF-8 con BOM para que los acentos sean legibles en Excel.
+
+## Archivos finales generados
+- `sciencedirect_cc_lote2_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+- `sciencedirect_cc_lotes1_2_canonico_depurado_cs_2024-03_2025-12_utf8_bom.csv`
+
+## Problemas, dudas o decisiones para pasar al chat principal
+- Conviene revisar globalmente si `AI-Enhanced Supercomputing...` ya debe deduplicarse contra ScienceDirect ISBD u otros lotes de otras editoriales.
+- `A machine learning-based inverse analysis procedure...` es un caso frontera aceptado; si el chat principal decide excluir aplicaciones de ML en ingeniería estructural aunque tengan procedimiento computacional propio, debe revisarse.
+- El consolidado CC de ScienceDirect quedó con 16 registros después de agregar 8 registros nuevos del lote 2 y evitar repetir `CUDA code...`.
