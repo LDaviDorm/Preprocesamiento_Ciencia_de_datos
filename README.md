@@ -6,7 +6,6 @@ Proyecto final de la materia **Preprocesamiento para Ciencia de Datos**.
 
 Integración, perfilado, limpieza y análisis de datos bibliográficos de la UNAM en **Ciencias de la Computación**, correspondientes al periodo **marzo de 2024 a diciembre de 2025**.
 
-El dominio del proyecto no es médico. La estructura general del proyecto de la materia se adaptó al dominio bibliográfico/académico.
 
 ## Objetivo
 
@@ -120,7 +119,3 @@ La etapa de análisis utiliza:
 - TF-IDF para búsqueda textual y similitud temática.
 - NetworkX para grafo principal y subgrafo de coautoría.
 - Ollama con `qwen2.5:7b` como LLM local para redactar respuestas a partir de evidencia calculada.
-
-## Nota sobre datos
-
-Los archivos CSV/XLSX del proyecto pueden subirse al repositorio si su tamaño es manejable. Evitar subir archivos temporales, respaldos duplicados, `.ipynb_checkpoints`, ambientes virtuales o caches.
