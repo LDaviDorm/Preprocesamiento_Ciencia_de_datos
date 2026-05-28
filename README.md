@@ -89,7 +89,6 @@ Métricas finales reportadas:
 06_LLM/
 visualizaciones/
 notebooks/
-outputs/
 docs/
 ```
 
