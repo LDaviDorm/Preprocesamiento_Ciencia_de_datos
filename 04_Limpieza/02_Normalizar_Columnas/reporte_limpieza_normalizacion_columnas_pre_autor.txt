@@ -1,0 +1,532 @@
+REPORTE DE LIMPIEZA - NORMALIZACIÓN DE COLUMNAS PREVIA A AUTOR_NORM
+
+============================================================
+1. OBJETIVO DE ESTA ETAPA
+============================================================
+
+Esta etapa tuvo como objetivo estandarizar las columnas bibliográficas y textuales de la base ya filtrada a autores con afiliación UNAM, sin deduplicar, sin fusionar registros y sin normalizar todavía la columna Autor_norm.
+
+La entrada principal de esta etapa fue:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\integrado_solo_unam_normalizado.csv
+
+La salida final elegida para continuar el proyecto es:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\02_Normalizar_Columnas\integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+La siguiente etapa definida NO será deduplicar ni fusionar todavía. La siguiente etapa será normalizar la columna Autor_norm, que quedó pendiente de forma intencional porque es una de las columnas más delicadas del proyecto.
+
+============================================================
+2. ALCANCE Y RESTRICCIONES DE LA ETAPA
+============================================================
+
+Durante esta fase se respetaron las siguientes restricciones:
+
+1. Mantener exactamente las 14 columnas canónicas:
+
+   indice
+   Titulo
+   Año
+   Autor_norm
+   Afiliacion1
+   Afiliacion2
+   ISBN
+   ISSN
+   Doi
+   URL
+   Area
+   Subarea
+   Keywords
+   Abstract
+
+2. No deduplicar registros.
+3. No fusionar registros.
+4. No normalizar Autor_norm todavía.
+5. No modificar las afiliaciones normalizadas previamente, salvo limpieza mínima de espacios o falsos vacíos.
+6. No modificar Area, porque ya estaba clasificada.
+7. Dejar Subarea siempre vacía.
+8. Usar celdas vacías reales en lugar de N/D, NA, NaN, None, guiones o textos equivalentes.
+9. Conservar el contenido académico original: no traducir, no resumir ni reescribir títulos, keywords o abstracts.
+
+============================================================
+3. ARCHIVOS Y LIBRETAS USADOS
+============================================================
+
+3.1 Libreta principal de normalización de columnas
+
+Nombre:
+
+04_limpieza_04_normalizar_columnas_pre_deduplicacion_v2.ipynb
+
+Propósito:
+
+Aplicar una normalización general a las columnas bibliográficas y textuales de la base UNAM ya filtrada. Esta libreta corrigió la fase previa de estandarización, especialmente en ISBN, ISSN, DOI, URL, Keywords, Abstract y Titulo.
+
+Entrada:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\01_Normalizar_Afiliaciones\integrado_solo_unam_normalizado.csv
+
+Salida:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\02_Normalizar_Columnas\integrado_solo_unam_estandarizado_pre_deduplicacion.csv
+
+3.2 Libreta de corrección puntual de observaciones
+
+Nombre:
+
+04_limpieza_05_corregir_observaciones_pre_deduplicacion.ipynb
+
+Propósito:
+
+Pulir observaciones residuales detectadas después de correr la normalización general. Esta libreta no rehizo toda la normalización; funcionó como una continuación para corregir detalles específicos.
+
+Entrada:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\02_Normalizar_Columnas\integrado_solo_unam_estandarizado_pre_deduplicacion.csv
+
+Salida final:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\02_Normalizar_Columnas\integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+
+============================================================
+4. BASE DE ENTRADA A ESTA ETAPA
+============================================================
+
+La base de entrada a esta fase fue:
+
+integrado_solo_unam_normalizado.csv
+
+Esta base ya venía de la etapa anterior, en la que se filtraron autores con afiliación UNAM y se normalizaron Afiliacion1 y Afiliacion2 con el catálogo/diccionario de afiliaciones UNAM.
+
+Características principales de la base de entrada:
+
+Filas: 3,239
+Columnas: 14
+Artículos únicos por indice: 1,459
+Rango de indice: 1 a 1,471
+Años presentes: 2024 y 2025
+Filas con Afiliacion1 vacía: 0
+Filas con Afiliacion2 usada: 82
+Subarea no vacía: 0
+
+Distribución por año:
+
+2024: 1,399 filas
+2025: 1,840 filas
+
+============================================================
+5. NORMALIZACIONES REALIZADAS EN LA LIBRETA PRINCIPAL
+============================================================
+
+La libreta 04_limpieza_04_normalizar_columnas_pre_deduplicacion_v2.ipynb realizó las siguientes acciones.
+
+------------------------------------------------------------
+5.1 indice
+------------------------------------------------------------
+
+Se estandarizó como entero en texto, sin decimales.
+
+Ejemplo:
+
+20521.0 -> 20521
+
+El indice se mantiene como identificador de artículo y puede repetirse en varias filas autor-artículo.
+
+------------------------------------------------------------
+5.2 Titulo
+------------------------------------------------------------
+
+Se limpiaron espacios dobles, saltos de línea y espacios al inicio/final.
+
+También se controlaron títulos completamente en mayúsculas, convirtiéndolos de forma conservadora a capitalización normal, sin traducir ni reescribir el contenido académico.
+
+Se protegieron acrónimos técnicos para evitar conversiones incorrectas.
+
+------------------------------------------------------------
+5.3 Año
+------------------------------------------------------------
+
+Se extrajo el año en formato de cuatro dígitos.
+
+Sólo se conservaron años válidos para el proyecto:
+
+2024
+2025
+
+No se detectaron años fuera del rango esperado en la base procesada.
+
+------------------------------------------------------------
+5.4 ISBN
+------------------------------------------------------------
+
+Esta columna fue uno de los puntos corregidos con mayor cuidado.
+
+Reglas aplicadas:
+
+1. Tratar ISBN como texto.
+2. Eliminar etiquetas como ISBN:, ISBN-10: o ISBN-13:.
+3. No permitir notación científica.
+4. Validar ISBN-10 e ISBN-13 cuando fue posible.
+5. Corregir ISBN compactos válidos.
+6. Mejorar guionización práctica de ISBN presentes en la base.
+7. Separar múltiples ISBN con coma y espacio.
+8. No inventar ISBN si el dato venía irrecuperable.
+
+Motivo de la corrección:
+
+En versiones previas, algunos ISBN quedaban compactos o con guiones incompletos, por ejemplo:
+
+9781510673144
+978-151067314-4
+978-303147639-6
+
+La versión corregida buscó evitar estos problemas y dejar ISBN más consistentes antes de cualquier deduplicación.
+
+------------------------------------------------------------
+5.5 ISSN
+------------------------------------------------------------
+
+Reglas aplicadas:
+
+1. Quitar etiquetas como ISSN:, eISSN:, print ISSN u online ISSN.
+2. Normalizar a formato ####-####.
+3. Permitir X final.
+4. Separar múltiples ISSN con coma y espacio.
+5. Eliminar o dejar vacío si no se pudo extraer un ISSN válido.
+
+------------------------------------------------------------
+5.6 Doi
+------------------------------------------------------------
+
+Reglas aplicadas:
+
+1. Normalizar DOI a minúsculas.
+2. Eliminar prefijos como:
+
+   https://doi.org/
+   http://dx.doi.org/
+   https://dx.doi.org/
+   doi.org/
+   doi:
+   doi/
+
+3. Conservar sólo DOI con estructura iniciada en 10.
+4. Si había varios DOI, conservar el primero cuando era claramente identificable.
+
+Resultado:
+
+DOI no vacíos: 3,079
+DOI vacíos: 160
+DOI no vacíos que no empiezan con 10.: 0
+
+------------------------------------------------------------
+5.7 URL
+------------------------------------------------------------
+
+Reglas aplicadas:
+
+1. Conservar URL original cuando era válida.
+2. Normalizar URL tipo DOI a https://doi.org/DOI.
+3. Si URL estaba vacía pero Doi estaba limpio, crear URL con:
+
+   https://doi.org/DOI
+
+Resultado después de la normalización:
+
+URL vacías: 74
+DOI no vacío con URL vacía: 0
+
+------------------------------------------------------------
+5.8 Keywords
+------------------------------------------------------------
+
+Reglas aplicadas:
+
+1. Convertir keywords a minúsculas, salvo acrónimos técnicos protegidos cuando aplicaba.
+2. Usar coma y espacio como separador único.
+3. Convertir separadores como punto y coma, barras verticales y saltos de línea a coma.
+4. Quitar etiquetas editoriales como:
+
+   keywords:
+   author keywords:
+   index terms:
+   ccs concepts:
+
+5. Quitar HTML.
+6. Quitar URLs.
+7. Quitar basura editorial.
+8. Deduplicar keywords preservando orden.
+
+------------------------------------------------------------
+5.9 Abstract
+------------------------------------------------------------
+
+Reglas aplicadas:
+
+1. Quitar etiqueta inicial Abstract si aparecía.
+2. Quitar HTML.
+3. Quitar espacios dobles y saltos innecesarios.
+4. Quitar texto legal o de copyright cuando no formaba parte del resumen académico.
+5. Evitar cortar enumeraciones científicas tipo (a), (b), (c).
+6. Quitar frases finales de disponibilidad de código, repositorios o datasets cuando contaminaban el abstract.
+7. Quitar URLs residuales no necesarias para el resumen.
+8. Limpiar residuos LaTeX sin destruir contenido científico.
+
+Punto importante:
+
+Se corrigió un problema de versiones previas donde el patrón (c) podía confundirse con copyright y cortar texto científico legítimo. La regla final fue más estricta: no se elimina (c) salvo que esté claramente asociado a una nota legal o copyright.
+
+------------------------------------------------------------
+5.10 Subarea
+------------------------------------------------------------
+
+Subarea quedó siempre vacía, por regla del proyecto.
+
+------------------------------------------------------------
+5.11 Columnas no modificadas en esta fase
+------------------------------------------------------------
+
+No se normalizaron de fondo estas columnas:
+
+Autor_norm
+Afiliacion1
+Afiliacion2
+Area
+
+Autor_norm se dejó pendiente para la siguiente fase.
+
+Afiliacion1 y Afiliacion2 ya venían normalizadas desde la etapa anterior.
+
+Area ya estaba clasificada.
+
+============================================================
+6. REVISIÓN POSTERIOR A LA NORMALIZACIÓN GENERAL
+============================================================
+
+Después de la libreta principal se revisó el archivo:
+
+integrado_solo_unam_estandarizado_pre_deduplicacion.csv
+
+La revisión confirmó que la estructura principal era correcta:
+
+Filas: 3,239
+Columnas: 14
+Columnas canónicas en orden correcto: Sí
+Subarea vacía: Sí
+Años sólo en 2024 y 2025: Sí
+Indice entero: Sí
+Filas con ambas afiliaciones vacías: 0
+Afiliaciones con coma: 0
+DOI no vacío que no inicia con 10.: 0
+DOI no vacío con URL vacía: 0
+Filas duplicadas completas: 0
+
+Sin embargo, también se detectaron 122 observaciones que convenía corregir antes de seguir.
+
+Distribución de observaciones:
+
+Texto legal/copyright residual en Abstract: 46 filas
+Frases o URLs de disponibilidad en Abstract: 32 filas
+Residuos LaTeX en Abstract: 16 filas
+Keywords duplicadas por guion o puntuación: 16 filas
+URLs bibliográficas dentro de Abstract: 10 filas
+Acrónimo técnico mal capitalizado en Titulo: 2 filas
+
+Estas observaciones motivaron la creación de una libreta adicional de corrección puntual.
+
+============================================================
+7. CORRECCIÓN PUNTUAL DE OBSERVACIONES
+============================================================
+
+La libreta:
+
+04_limpieza_05_corregir_observaciones_pre_deduplicacion.ipynb
+
+se creó como una continuación del proceso anterior. Su propósito fue corregir únicamente los detalles detectados, sin rehacer toda la normalización.
+
+Entrada:
+
+integrado_solo_unam_estandarizado_pre_deduplicacion.csv
+
+Salida:
+
+integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+Esta libreta aplicó correcciones en tres columnas principales:
+
+Titulo
+Keywords
+Abstract
+
+------------------------------------------------------------
+7.1 Correcciones en Titulo
+------------------------------------------------------------
+
+Se restauró el caso técnico:
+
+Neuralode -> NeuralODE
+
+También se limpiaron residuos puntuales de LaTeX o artefactos de extracción cuando afectaban títulos.
+
+------------------------------------------------------------
+7.2 Correcciones en Keywords
+------------------------------------------------------------
+
+Se aplicó una deduplicación suave para detectar keywords equivalentes aunque tuvieran guiones, puntuación o acentos diferentes.
+
+Ejemplos de equivalencias tratadas como duplicadas:
+
+bounded size registers / bounded-size registers
+unbounded size registers / unbounded-size registers
+gamma rays / gamma-rays
+
+La clave de deduplicación se basó en:
+
+1. quitar acentos;
+2. pasar a minúsculas;
+3. tratar guiones y puntuación como espacios;
+4. colapsar espacios;
+5. preservar el primer término observado.
+
+------------------------------------------------------------
+7.3 Correcciones en Abstract
+------------------------------------------------------------
+
+Se eliminaron residuos que todavía aparecían después de la normalización principal:
+
+1. Copyright residual.
+2. Frases legales finales.
+3. Frases de disponibilidad de código o datos.
+4. URLs finales de repositorios, datasets o páginas de proyecto.
+5. Bloques tipo [Display omitted].
+6. Bullets de highlights.
+7. Mojibake común.
+8. Residuos LaTeX como:
+
+   mathsf
+   mathrm
+   mathbf
+   frac
+   varepsilon
+   Theta left(...)
+   Omega left(...)
+
+El objetivo fue conservar el contenido académico del abstract, pero retirar elementos editoriales, legales o de extracción automática.
+
+============================================================
+8. RESULTADO FINAL DE LA ETAPA
+============================================================
+
+Archivo final elegido:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\02_Normalizar_Columnas\integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+Métricas finales:
+
+Filas: 3,239
+Columnas: 14
+Artículos únicos por indice: 1,459
+Rango de indice: 1 a 1,471
+Año 2024: 1,399 filas
+Año 2025: 1,840 filas
+DOI no vacíos: 3,079
+DOI vacíos: 160
+URL vacías: 74
+DOI no vacío con URL vacía: 0
+ISBN no vacíos: 1,293
+ISSN no vacíos: 2,350
+Keywords vacías: 103
+Abstract vacíos: 8
+Afiliacion1 vacía: 0
+Afiliacion2 usada: 82
+Subarea no vacía: 0
+
+La base final conserva las 14 columnas canónicas y no presenta observaciones automáticas residuales en la validación aplicada a esta subfase.
+
+============================================================
+9. COMPARACIÓN ENTRE ARCHIVOS DE LA ETAPA
+============================================================
+
+Entrada de la etapa:
+
+integrado_solo_unam_normalizado.csv
+
+Filas: 3,239
+Columnas: 14
+URL vacías: 837
+Keywords vacías: 98
+Abstract vacíos: 8
+
+Primera salida normalizada:
+
+integrado_solo_unam_estandarizado_pre_deduplicacion.csv
+
+Filas: 3,239
+Columnas: 14
+URL vacías: 74
+Keywords vacías: 98
+Abstract vacíos: 8
+Observaciones detectadas después de revisión: 122
+
+Salida final corregida:
+
+integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+Filas: 3,239
+Columnas: 14
+URL vacías: 74
+Keywords vacías: 103
+Abstract vacíos: 8
+Observaciones automáticas residuales de esta subfase: 0
+
+El aumento de Keywords vacías de 98 a 103 se debe a que algunas keywords residuales correspondían a basura editorial o términos no informativos, por lo que quedaron vacías de forma intencional.
+
+============================================================
+10. VALIDACIONES FINALES
+============================================================
+
+Validaciones estructurales confirmadas:
+
+1. El archivo final tiene exactamente 14 columnas.
+2. Las columnas están en el orden canónico.
+3. No se agregaron columnas auxiliares.
+4. No se generaron reportes ni diagnósticos como salida final de la libreta de corrección puntual.
+5. Subarea quedó vacía.
+6. Afiliacion1 no quedó vacía.
+7. Area se conservó sin reclasificar.
+8. Autor_norm no fue normalizada todavía.
+9. No se deduplicó.
+10. No se fusionó.
+11. DOI quedó normalizado y los DOI no vacíos empiezan con 10.
+12. Las URL derivadas de DOI se generaron cuando correspondía.
+13. Keywords quedaron separadas por coma y espacio.
+14. Abstract quedó sin HTML, sin URLs residuales de disponibilidad, sin copyright residual y sin residuos LaTeX fuertes detectados por la revisión final.
+
+============================================================
+11. DECISIONES IMPORTANTES TOMADAS
+============================================================
+
+1. Se decidió no deduplicar todavía.
+
+Aunque el archivo ya está más preparado para deduplicación, la siguiente fase será normalizar Autor_norm. Esto es importante porque los nombres de autores todavía pueden tener comas, iniciales, puntos, variantes de orden y otros problemas que afectarían la deduplicación si se hiciera antes.
+
+2. Se decidió no tocar Afiliacion1 y Afiliacion2.
+
+Estas columnas ya habían sido normalizadas en la etapa anterior mediante el catálogo/diccionario de afiliaciones UNAM. Por eso sólo se conservaron, evitando modificar afiliaciones correctas.
+
+3. Se decidió no modificar Area.
+
+Area ya estaba clasificada y no debía ser recalculada en esta fase.
+
+4. Se decidió dejar Subarea vacía.
+
+No se infirió subárea porque no forma parte de las reglas actuales y podría introducir valores no controlados.
+
+5. Se decidió limpiar Abstract de forma conservadora.
+
+El objetivo fue eliminar copyright, URLs de disponibilidad, HTML y LaTeX residual, pero sin traducir, resumir ni reescribir los abstracts.
+
+6. Se decidió corregir Keywords de forma estricta.
+
+Las keywords quedaron con separador coma y espacio, sin HTML, sin URLs y con deduplicación suave para reducir duplicados por puntuación.
