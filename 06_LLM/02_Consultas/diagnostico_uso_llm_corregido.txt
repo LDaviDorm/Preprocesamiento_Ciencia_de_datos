@@ -1,0 +1,12 @@
+DIAGNÓSTICO DE USO DEL LLM LOCAL
+========================================================================
+
+Modelo configurado: qwen2.5:7b
+Endpoint usado: http://localhost:11434/api/generate
+Ollama detectado: True
+Preguntas totales: 20
+Preguntas con LLM: 20
+Todas usaron LLM: True
+
+Modelos disponibles detectados:
+- qwen2.5:7b

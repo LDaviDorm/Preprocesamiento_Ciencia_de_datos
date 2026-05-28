@@ -1,0 +1,460 @@
+RESPUESTAS A LAS 20 PREGUNTAS CON CONSULTAS HETEROGÉNEAS
+========================================================================
+
+Modelo LLM local usado: qwen2.5:7b
+Endpoint Ollama: http://localhost:11434/api/generate
+Preguntas respondidas: 20
+Respuestas con LLM local activo: 20
+Todas usaron LLM local: True
+
+------------------------------------------------------------------------
+D1 | descriptiva | SQL + grafo principal
+Motores usados: SQL + grafo principal
+Pregunta: ¿Qué áreas de computación concentran más artículos por periodo de publicación?
+
+1. Respuesta directa:
+   Las áreas de computación que concentran más artículos en 2024 son IA (50 artículos) y SIAV (43 artículos). En 2025, estos roles se invierten con SIAV liderando (73 artículos).
+
+2. Evidencia principal:
+   |   Año | Area   |   articulos |
+   |------:|:-------|------------:|
+   |  2024 | IA     |          50 |
+   |  2024 | SIAV   |          43 |
+   |  2025 | SIAV   |          73 |
+   |  2025 | IA     |          67 |
+
+3. Criterio usado:
+   SQL: conteos, agrupaciones o filtros.
+
+4. Nota de alcance:
+   El resultado es top-2 por año y se basa en la cantidad de artículos publicados en cada área durante los años 2024 y 2025.
+
+------------------------------------------------------------------------
+D2 | descriptiva | SQL + grafo principal
+Motores usados: SQL + grafo principal
+Pregunta: ¿Qué autores tienen mayor producción dentro de cada área de conocimiento?
+
+1. Respuesta directa:
+Los autores más productivos en cada área de conocimiento son Helena Montserrat Gómez Adorno (IA) con 26 artículos, Mario Roberto Arrieta Paternina (CC) con 3 artículos y Saiph Savage (ISBD) con 6 artículos.
+
+2. Evidencia principal:
+| Area   | Autor_norm                           |   articulos |
+|:-------|:-------------------------------------|------------:|
+| CC     | Frederic Trillaud                    |           4 |
+| CC     | Mario Roberto Arrieta Paternina      |           3 |
+| CC     | Carlos Argaez                        |           2 |
+| CC     | Daniel Castañon Quiroz               |           2 |
+| CC     | Ursula Iturrarán Viveros             |           2 |
+| IA     | Helena Montserrat Gómez Adorno       |          26 |
+| IA     | Gemma Bel Enguix                     |          19 |
+| IA     | Carlos Ignacio Hernández Castellanos |          13 |
+| IA     | Gerardo Eugenio Sierra Martínez      |          11 |
+| IA     | Sergio Luis Ojeda Trueba             |           9 |
+| ISBD   | Saiph Savage                         |           6 |
+| ISBD   | Luis Martin Sanchez Adame            |           3 |
+
+3. Criterio usado:
+El componente SQL permitió contar y agrupar los artículos por autor, mientras que el grafo principal proporcionó la información sobre las relaciones entre autores, artículos y áreas de conocimiento.
+
+4. Nota de alcance:
+Este resultado es top-k, ya que se presentan los autores más productivos en cada área de conocimiento según la evidencia calculada.
+
+------------------------------------------------------------------------
+D3 | descriptiva | SQL + grafo principal
+Motores usados: SQL + grafo principal
+Pregunta: ¿Qué artículos tienen mayor número de coautores y a qué afiliaciones pertenecen esos autores?
+
+### Respuesta directa:
+Los artículos con mayor número de coautores pertenecen a la área SIAV. El artículo "Efficient and reliable spike sorting from neural recordings with UMAP-based unsupervised nonlinear dimensionality reduction" tiene 11 coautores y se encuentra en el Centro de Ciencias de la Complejidad e Instituto de Fisiología Celular.
+
+### Evidencia principal:
+- **Artículo**: Efficient and reliable spike sorting from neural recordings with UMAP-based unsupervised nonlinear dimensionality reduction (297)
+  - **Área**: SIAV
+  - **Número de coautores**: 11
+  - **Autores**: Antonio Paulino Zainos Rosales, Bernardo Andrade Ortega, Daniel Suarez Barrera, Hector Diaz, Jesus Manuel Alvarez Lopez, Lucas Bayones, Norberto Encinas Rodriguez, Roman Rossi Pool, Sebastian Pujalte, Sergio Parra, Viktor Monroy
+  - **Afiliaciones**: Centro de Ciencias de la Complejidad; Instituto de Fisiología Celular
+
+- **Artículo**: PCA-enhanced Speckle Interferometry with Bicubic Interpolation at the OAN-SPM México (338)
+  - **Área**: SIAV
+  - **Número de coautores**: 8
+  - **Autores**: Ana Bautista Hernandez, Andres Alberto Aviles Alvarado, Beatriz Sánchez y Sánchez, Eduardo Perez Tijerina, Francisco Javier Tamayo, J E Perez Leon, J H Castro Chacon, Mauricio Reyes Ruiz
+  - **Afiliaciones**: Instituto de Astronomía
+
+### Criterio usado:
+La pregunta fue respondida utilizando el componente SQL para contar y agrupar los autores por artículo. El grafo principal se utilizó para identificar las relaciones entre artículos, autores y afiliaciones.
+
+### Nota de alcance:
+El resultado es top-2, ya que solo se presentan los dos artículos con mayor número de coautores según la evidencia proporcionada.
+
+------------------------------------------------------------------------
+D4 | descriptiva | SQL + TF-IDF + grafo principal
+Motores usados: SQL + TF-IDF + grafo principal
+Pregunta: ¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?
+
+1. Respuesta directa:
+   Las keywords más frecuentes en la base curada de artículos UNAM en Ciencias de la Computación son deep learning y machine learning, ambas presentes en 36 artículos y pertenecientes al área SIAV.
+
+2. Evidencia principal:
+   - deep learning: 36 artículos, área principal SIAV
+   - machine learning: 36 artículos, área principal SIAV
+   - computational linguistics: 12 artículos, área principal IA
+   - artificial intelligence: 12 artículos, área principal SIAV
+   - convolutional neural networks: 12 artículos, área principal SIAV
+   - computer vision: 11 artículos, área principal SIAV
+   - algorithms: 10 artículos, área principal SIAV
+
+3. Criterio usado:
+   La información fue obtenida mediante el análisis de keywords utilizando TF-IDF y la identificación del área principal de los artículos a través de SQL agrupaciones.
+
+4. Nota de alcance:
+   Los resultados son top-k y se basan en la frecuencia de aparición de las keywords en los artículos, sin ser una predicción de colaboraciones futuras.
+
+------------------------------------------------------------------------
+D5 | descriptiva | SQL + TF-IDF + grafo principal
+Motores usados: SQL + TF-IDF + grafo principal
+Pregunta: Para la keyword image processing, ¿qué afiliaciones concentran más autores y artículos relacionados con ese tema?
+
+1. Respuesta directa:
+   La afiliación con más artículos y autores relacionados con la keyword image processing es la Facultad de Ingeniería, con 10 artículos publicados y 9 autores asociados.
+
+2. Evidencia principal:
+   | Afiliacion1                                                         |   articulos |   autores |
+   |:--------------------------------------------------------------------|------------:|----------:|
+   | Facultad de Ingeniería                                              |          10 |         9 |
+
+3. Criterio usado:
+   El componente SQL permitió contar y agrupar los artículos por afiliación, identificando la Facultad de Ingeniería como la que concentra más publicaciones relacionadas con image processing.
+
+4. Nota de alcance:
+   Este resultado es top-1 y se basa en la evidencia proporcionada, sin incluir otros posibles candidatos no mencionados.
+
+------------------------------------------------------------------------
+D6 | descriptiva | SQL + grafo principal + subgrafo de coautoría
+Motores usados: SQL + grafo principal + subgrafo de coautoría
+Pregunta: ¿Qué autores conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías?
+
+### Respuesta directa:
+Los autores que conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías son Helena Montserrat Gómez Adorno, Gemma Bel Enguix, Boris Escalante Ramírez, Gerardo Eugenio Sierra Martínez, Jimena Olveres Montiel, Fernando Arámbula Cosío, Sergio Luis Ojeda Trueba, Jorge Luis Pérez González y Roman Rossi Pool.
+
+### Evidencia principal:
+- Helena Montserrat Gómez Adorno: 26 artículos, 5 afiliaciones.
+- Gemma Bel Enguix: 19 artículos, 2 afiliaciones.
+- Boris Escalante Ramírez: 15 artículos, 2 áreas (IA y SIAV), 3 afiliaciones.
+- Gerardo Eugenio Sierra Martínez: 11 artículos, 2 afiliaciones.
+- Jimena Olveres Montiel: 14 artículos, 2 áreas (IA y SIAV), 2 afiliaciones.
+- Fernando Arámbula Cosío: 7 artículos, 2 afiliaciones.
+- Sergio Luis Ojeda Trueba: 9 artículos, 2 afiliaciones.
+- Jorge Luis Pérez González: 7 artículos, 2 afiliaciones.
+- Roman Rossi Pool: 2 artículos, 2 áreas (CC y SIAV), 2 afiliaciones.
+
+### Criterio usado:
+Se utilizó el grafo principal para identificar las relaciones entre autores, áreas y afiliaciones. El subgrafo de coautoría permitió determinar la cercanía estructural entre los autores y sus colaboraciones.
+
+### Nota de alcance:
+El resultado es top-k, ya que se presentan los autores con mayor número de artículos y conexiones interdisciplinarias.
+
+------------------------------------------------------------------------
+D7 | descriptiva | TF-IDF + grafo principal
+Motores usados: TF-IDF + grafo principal
+Pregunta: Para la keyword brain, ¿qué artículos la utilizan y qué autores participaron en ellos?
+
+1. Respuesta directa:
+Los artículos que utilizan la keyword "brain" son: "Modeling Higher-Order Interactions in Sparse and Heavy-Tailed Neural Population Activity", "3D Tortuosity computation as a shape descriptor and its application to brain structure analysis", y "Deep learning-based attenuation correction in brain PET studies". Los autores involucrados en estos artículos son Ulises Rodriguez Dominguez, Ernesto Bribiesca Correa, Jorge Alberto Márquez Flores, María Julieta Mateos, Wendy Elizabeth Aguilar Martínez, Arnulfo Martínez Dávalos, Arturo Avendaño Estrada, Fernando Moncada Gutierrez, Mercedes Rodríguez Villafuerte, Miguel Ángel Avila Rodriguez.
+
+2. Evidencia principal:
+- "Modeling Higher-Order Interactions in Sparse and Heavy-Tailed Neural Population Activity" (IA, 2025) - Ulises Rodriguez Dominguez
+- "3D Tortuosity computation as a shape descriptor and its application to brain structure analysis" (SIAV, 2024) - Ernesto Bribiesca Correa, Jorge Alberto Márquez Flores, María Julieta Mateos, Wendy Elizabeth Aguilar Martínez
+- "Deep learning-based attenuation correction in brain PET studies" (SIAV, 2025) - Arnulfo Martínez Dávalos, Arturo Avendaño Estrada, Fernando Moncada Gutierrez, Mercedes Rodríguez Villafuerte, Miguel Ángel Avila Rodriguez
+
+3. Criterio usado:
+La pregunta fue respondida utilizando el componente TF-IDF + grafo principal, que identificó los artículos y autores relacionados con la keyword "brain".
+
+4. Nota de alcance:
+El resultado es top-k, ya que se presentan los primeros artículos encontrados que utilizan la keyword "brain".
+
+------------------------------------------------------------------------
+D8 | descriptiva | SQL + grafo principal
+Motores usados: SQL + grafo principal
+Pregunta: ¿Qué áreas tienen producción reciente pero pocos autores asociados?
+
+1. Respuesta directa:
+   Las áreas ISBD y RS presentan producción reciente pero con pocos autores asociados, teniendo respectivamente 7 y 18 artículos.
+
+2. Evidencia principal:
+   | Area   |   articulos |   autores |   articulos_por_autor |
+   |:-------|------------:|----------:|----------------------:|
+   | ISBD   |           7 |        17 |                 0.412 |
+   | RS     |          18 |        27 |                 0.667 |
+
+3. Criterio usado:
+   Se utilizó SQL para contar y agrupar los artículos por área, y el grafo principal para identificar las relaciones entre autores y áreas.
+
+4. Nota de alcance:
+   Este resultado es exploratorio y se basa en la producción reciente del año 2025.
+
+------------------------------------------------------------------------
+D9 | descriptiva | TF-IDF + grafo principal + subgrafo de coautoría
+Motores usados: TF-IDF + grafo principal + subgrafo de coautoría
+Pregunta: ¿Qué autores trabajan temas similares, según keywords y abstracts, aunque todavía no aparezcan como coautores?
+
+### Respuesta directa:
+Los autores con mayor similitud en términos de keywords y abstracts, aunque no son coautores, incluyen Francisco Javier García Ugalde y Leonardo Faustinos Morales (similitud TF-IDF: 0.2462), Hiram Calvo y Jessica Barco (similitud TF-IDF: 0.2128), y Ricardo Daniel Fernandez Noguez y Sofia Magdalena Borrel Miller (similitud TF-IDF: 0.2075).
+
+### Evidencia principal:
+- Francisco Javier García Ugalde y Leonardo Faustinos Morales comparten áreas de RS.
+- Hiram Calvo y Jessica Barco comparten áreas de IA, además de tener la misma afiliación.
+- Ricardo Daniel Fernandez Noguez y Sofia Magdalena Borrel Miller comparten áreas de IA.
+
+### Criterio usado:
+El criterio utilizado fue el TF-IDF para evaluar la similitud en términos de keywords y abstracts entre los autores. Además, se consideraron las áreas de investigación y las afiliaciones compartidas.
+
+### Nota de alcance:
+Estos resultados son candidatos preliminares basados en la similitud temática y no garantizan colaboraciones futuras.
+
+------------------------------------------------------------------------
+D10 | descriptiva | SQL + TF-IDF
+Motores usados: SQL + TF-IDF
+Pregunta: ¿Qué publicaciones parecen duplicadas o variantes del mismo artículo al comparar título, DOI, URL, abstract y autores?
+
+1. Respuesta directa:
+   Se observó que los artículos con índices 201 y 203, así como los índices 202 y 204, presentan títulos muy similares y textos muy similares.
+
+2. Evidencia principal:
+   - Índice 1: 201
+     Título: ARCH-COMP24 Category Report: Artificial Intelligence and Neural Network Control System(AINNCS) for Continuous and Hybrid Systems Plants
+   - Índice 2: 203
+     Título: ARCH-COMP25 Category Report: Artificial Intelligence and Neural Network Control Systems (AINNCS) for Continuous and Hybrid Systems Plants
+     Similaridad de títulos: 0.989
+     Similaridad TF-IDF: 0.629
+   - Índice 1: 202
+     Título: ARCH-COMP24 Category Report: Continuous and Hybrid Systems with Nonlinear Dynamics
+   - Índice 2: 204
+     Título: ARCH-COMP25 Category Report: Continuous and Hybrid Systems with Nonlinear Dynamics
+     Similaridad de títulos: 0.988
+     Similaridad TF-IDF: 0.733
+
+3. Criterio usado:
+   Se utilizó la similitud TF-IDF para evaluar la similaridad entre los títulos y el texto completo de los artículos.
+
+4. Nota de alcance:
+   Los resultados son candidatos preliminares basados en la similitud del título y el texto, pero no se puede garantizar que sean duplicados o variantes del mismo artículo sin una revisión adicional.
+
+------------------------------------------------------------------------
+P1 | predictiva | TF-IDF/keywords + grafo principal
+Motores usados: TF-IDF/keywords + grafo principal
+Pregunta: Dados dos autores sin colaboración previa, ¿pueden considerarse candidatos preliminares a colaborar si comparten varias keywords en sus artículos?
+
+1. Respuesta directa:
+   Los autores comparten varias keywords en sus artículos, lo cual sugiere que podrían ser candidatos preliminares a colaborar.
+
+2. Evidencia principal:
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Daniel Suarez Barrera.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Bernardo Andrade Ortega.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Hector Diaz.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Jesus Manuel Alvarez Lopez.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Lucas Bayones.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Norberto Encinas Rodriguez.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Roman Rossi Pool.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Sebastian Pujalte.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Sergio Parra.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Viktor Monroy.
+   - Ulises Rodriguez Dominguez comparte 13 keywords con Antonio Paulino Zainos Rosales.
+
+3. Criterio usado:
+   Se utilizó el grafo principal, que mide la similitud temática basada en las keywords compartidas entre los autores.
+
+4. Nota de alcance:
+   Estos resultados son exploratorios y sugieren posibles candidatos preliminares a colaboración, pero no garantizan una futura colaboración real.
+
+------------------------------------------------------------------------
+P2 | predictiva | grafo principal + subgrafo de coautoría
+Motores usados: grafo principal + subgrafo de coautoría
+Pregunta: Para un autor poco conectado, ¿qué autores sin coautoría previa son los mejores candidatos para colaborar en el futuro?
+
+### Respuesta directa:
+Los autores Francisco Javier García Ugalde y Leonardo Faustinos Morales, así como Alberto Maximiliano Millan Prado y Sofia Magdalena Borrel Miller, son candidatos preliminares para colaborar en el futuro, basados en la similitud temática de sus trabajos.
+
+### Evidencia principal:
+1. Francisco Javier García Ugalde (RS) y Leonardo Faustinos Morales (RS): Similitud TF-IDF = 0.2462.
+2. Alberto Maximiliano Millan Prado (IA) y Sofia Magdalena Borrel Miller (IA): Similitud TF-IDF = 0.2151.
+
+### Criterio usado:
+Se utilizó la similitud temática basada en el análisis de titulos, keywords y abstracts utilizando TF-IDF para identificar pares de autores con mayor probabilidad de colaboración futura.
+
+### Nota de alcance:
+Estos resultados son exploratorios y no garantizan una colaboración futura.
+
+------------------------------------------------------------------------
+P3 | predictiva | subgrafo de coautoría
+Motores usados: subgrafo de coautoría
+Pregunta: ¿Qué pares de autores no conectados tienen mayor posibilidad de formar una nueva colaboración académica?
+
+1. Respuesta directa:
+Los pares de autores Karla Salas Jimenez y Edgar Lee Romero, así como Sergio Luis Ojeda Trueba y David Salvador Preciado Marquez, son candidatos preliminares para formar una nueva colaboración académica, ya que presentan un alto número de vecinos comunes y puntajes altos.
+
+2. Evidencia principal:
+| autor_1                         | autor_2                         |   vecinos_comunes |   jaccard |   puntaje |
+|:--------------------------------|:--------------------------------|------------------:|----------:|----------:|
+| Karla Salas Jimenez             | Edgar Lee Romero                |                 5 |     0.5   |     5.777 |
+| Sergio Luis Ojeda Trueba        | David Salvador Preciado Marquez |                 5 |     0.417 |     5.706 |
+
+3. Criterio usado:
+Se utilizó el subgrafo de coautoría, que mide la cercanía estructural entre autores a través del número de vecinos comunes y el coeficiente de Jaccard.
+
+4. Nota de alcance:
+Los resultados son exploratorios y no garantizan una nueva colaboración académica; se presentan como señales de posible interacción entre los pares de autores mencionados.
+
+------------------------------------------------------------------------
+P4 | predictiva | TF-IDF + grafo principal + subgrafo de coautoría
+Motores usados: TF-IDF + grafo principal + subgrafo de coautoría
+Pregunta: Para artículos relacionados con image processing, ¿qué pares de autores sin coautoría previa deberían recomendarse como candidatos de colaboración?
+
+### Respuesta directa:
+Los pares de autores sin coautoría previa que se sugieren como candidatos preliminares para colaboración en el área de image processing son: Helena Montserrat Gómez Adorno y Jimena Olveres Montiel, Boris Escalante Ramírez y Helena Montserrat Gómez Adorno.
+
+### Evidencia principal:
+| autor_1                         | autor_2                        | keywords_compartidas | grado_1 | grado_2 |
+|:--------------------------------|:-------------------------------|-----------------------:|----------:|----------:|
+| Boris Escalante Ramírez         | Helena Montserrat Gómez Adorno |                     12 |        19 |        35 |
+| Helena Montserrat Gómez Adorno  | Jimena Olveres Montiel         |                     12 |        35 |        17 |
+
+### Criterio usado:
+Se utilizó el subgrafo de coautoría para identificar pares de autores con cercanía estructural y un alto grado, lo que sugiere una posible colaboración. Además, se consideraron los keywords compartidas entre ellos.
+
+### Nota de alcance:
+Estos resultados son exploratorios y no garantizan la posibilidad de colaboración. Se recomienda revisar las publicaciones y áreas de interés de cada autor para confirmar la compatibilidad temática y potencial colaborativa.
+
+------------------------------------------------------------------------
+P5 | predictiva | SQL + TF-IDF + subgrafo de coautoría
+Motores usados: SQL + TF-IDF + subgrafo de coautoría
+Pregunta: Dentro de una misma afiliación, ¿qué pares de autores sin colaboración previa podrían colaborar si comparten keywords en sus artículos?
+
+### Respuesta directa:
+Los pares de autores sin colaboración previa que podrían considerar la posibilidad de colaboración son: Boris Escalante Ramírez y Helena Montserrat Gómez Adorno, Helena Montserrat Gómez Adorno y Jimena Olveres Montiel, Francisco Lopez Ponce y Helena Montserrat Gómez Adorno, entre otros.
+
+### Evidencia principal:
+| autor_1                         | autor_2                        | keywords_compartidas | grado_1 | grado_2 | afiliacion_compartida                                                                                           |
+|:--------------------------------|:-------------------------------|-----------------------:|----------:|----------:|:----------------------------------------------------------------------------------------------------------------|
+| Boris Escalante Ramírez         | Helena Montserrat Gómez Adorno |                     12 |        19 |        35 | Centro de Estudios en Computación Avanzada; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |
+| Helena Montserrat Gómez Adorno  | Jimena Olveres Montiel         |                     12 |        35 |        17 | Centro de Estudios en Computación Avanzada                                                                      |
+| Francisco Lopez Ponce           | Helena Montserrat Gómez Adorno |                      8 |         6 |        35 | Instituto de Ingeniería                                                                                         |
+
+### Criterio usado:
+Se utilizó un subgrafo de coautoría para identificar pares de autores sin colaboración previa que comparten keywords en sus artículos. La cercanía estructural y el grado de cada autor fueron considerados, con una similitud temática basada en Keywords.
+
+### Nota de alcance:
+Estos resultados son exploratorios y no garantizan la posibilidad de colaboración entre los autores identificados.
+
+------------------------------------------------------------------------
+P6 | predictiva | SQL + TF-IDF + subgrafo de coautoría
+Motores usados: SQL + TF-IDF + subgrafo de coautoría
+Pregunta: Entre autores de afiliaciones distintas, ¿qué pares podrían colaborar si publican sobre keywords similares?
+
+### Respuesta directa:
+Los pares de autores con similitud temática en keywords y cercanía estructural son candidatos preliminares para posible colaboración. Los pares sugeridos para revisión incluyen Francisco Javier García Ugalde y Leonardo Faustinos Morales, Hiram Calvo y Jessica Barco, entre otros.
+
+### Evidencia principal:
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas   |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:---------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                            |         2 |         1 |
+| Hiram Calvo                      | Jessica Barco                  |            0.2128 | IA        | IA        |                            |         5 |         5 |
+
+### Criterio usado:
+Se utilizó TF-IDF para evaluar la similitud temática en los keywords, abstracts y títulos de los artículos publicados por cada autor. Además, se consideró el subgrafo de coautoría para identificar autores con cercanía estructural y vecinos comunes.
+
+### Nota de alcance:
+Los resultados son exploratorios y no garantizan colaboraciones futuras. Se presentan pares sugeridos para revisión basados en similitud temática y cercanía estructural, pero la confirmación de interés mutuo es necesaria antes de cualquier colaboración real.
+
+------------------------------------------------------------------------
+P7 | predictiva | grafo principal + subgrafo de coautoría
+Motores usados: grafo principal + subgrafo de coautoría
+Pregunta: ¿Qué autores poco conectados podrían integrarse a grupos de colaboración dentro del área de sus artículos?
+
+1. Respuesta directa:
+Los autores poco conectados A L Padilla Ortiz y Abraham Jotssel Cisneros Mejorado podrían ser candidatos preliminares para integrarse a grupos de colaboración en el área SIAV, ya que ambos tienen un grado actual de 0 y son sugeridos para formar parte de un grupo con autores como Boris Escalante Ramírez, Jimena Olveres Montiel y Fernando Arámbula Cosío. Además, Ahmed Imad Hammoodi Al Jarah también podría ser integrado en grupos de colaboración relacionados con el área RS.
+
+2. Evidencia principal:
+| autor_poco_conectado              |   grado_actual | autor_grupo_sugerido            |   grado_grupo | area_compartida   |
+|:----------------------------------|---------------:|:--------------------------------|--------------:|:------------------|
+| A L Padilla Ortiz                 |              0 | Boris Escalante Ramírez         |            19 | SIAV              |
+| A L Padilla Ortiz                 |              0 | Jimena Olveres Montiel          |            17 | SIAV              |
+| A L Padilla Ortiz                 |              0 | Fernando Arámbula Cosío         |            13 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Boris Escalante Ramírez         |            19 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Jimena Olveres Montiel          |            17 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Fernando Arámbula Cosío         |            13 | SIAV              |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Ernesto Alonso Villegas Jimenez |            10 | RS                |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Héctor Benítez Pérez            |             8 | RS                |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Everardo Barcenas               |             7 | RS                |
+
+3. Criterio usado:
+Se utilizó el subgrafo de coautoría para identificar autores poco conectados y sugerirles grupos de colaboración basado en la cercanía estructural con otros autores dentro del mismo área temática (SIAV o RS).
+
+4. Nota de alcance:
+Estos resultados son exploratorios y no garantizan una colaboración asegurada entre los autores sugeridos.
+
+------------------------------------------------------------------------
+P8 | predictiva | SQL + subgrafo de coautoría
+Motores usados: SQL + subgrafo de coautoría
+Pregunta: ¿Qué autores que publicaron en el mismo año y en la misma área, pero que aún no han escrito juntos, podrían considerarse candidatos de colaboración?
+
+### Respuesta directa:
+Los autores candidatos preliminares para posibles colaboraciones son Boris Escalante Ramírez y Helena Montserrat Gómez Adorno, ambos con 12 palabras clave compartidas en el área de IA. También se sugieren I Perez Ruiz y Jimena Olveres Montiel, con 10 palabras clave compartidas en SIAV.
+
+### Evidencia principal:
+| autor_1                            | autor_2                            | años_compartidos   | areas_compartadas   | keywords_compartidas |
+|:-----------------------------------|:-----------------------------------|:-------------------|:--------------------|-----------------------:|
+| Boris Escalante Ramírez            | Helena Montserrat Gómez Adorno     | 2024; 2025         | IA                  |                     12 |
+| I Perez Ruiz                       | Jimena Olveres Montiel             | 2025               | SIAV                |                     10 |
+
+### Criterio usado:
+Se utilizó un subgrafo de coautoría para identificar autores que han publicado en el mismo año y área, pero aún no han escrito juntos. La cercanía estructural se evaluó a través del número de palabras clave compartidas.
+
+### Nota de alcance:
+Los resultados son exploratorios y no garantizan una colaboración futura entre los autores identificados.
+
+------------------------------------------------------------------------
+P9 | predictiva | SQL + grafo principal + subgrafo de coautoría
+Motores usados: SQL + grafo principal + subgrafo de coautoría
+Pregunta: Dentro de la afiliación con mayor número de autores, ¿qué pares de autores de la misma área, pero sin coautoría previa, podrían revisarse como posibles colaboradores?
+
+1. Respuesta directa:
+   Los pares de autores de la Facultad de Ingeniería, que comparten áreas de investigación pero no tienen coautoría previa, y que podrían ser candidatos preliminares para revisarse como posibles colaboradores son: Alain Morales Martinez y Jimena Olveres Montiel, Alain Morales Martinez y Boris Escalante Ramírez, Edgar Garduño Angeles y Jimena Olveres Montiel, Edgar Garduño Angeles y Fabián Torres Robles, Jimena Olveres Montiel y Mario Roberto Arrieta Paternina, Boris Escalante Ramírez y Mario Roberto Arrieta Paternina.
+
+2. Evidencia principal:
+   | autor_1                         | autor_2                         | afiliacion             | areas_compartidas   | keywords_compartidas |
+   |:--------------------------------|:--------------------------------|:-----------------------|:--------------------|-----------------------:|
+   | Alain Morales Martinez          | Jimena Olveres Montiel          | Facultad de Ingeniería | SIAV                |                      5 |
+   | Alain Morales Martinez          | Boris Escalante Ramírez         | Facultad de Ingeniería | SIAV                |                      5 |
+   | Edgar Garduño Angeles           | Jimena Olveres Montiel          | Facultad de Ingeniería | SIAV                |                      5 |
+   | Boris Escalante Ramírez         | Edgar Garduño Angeles           | Facultad de Ingeniería | SIAV                |                      5 |
+   | Jimena Olveres Montiel          | Mario Roberto Arrieta Paternina | Facultad de Ingeniería | IA; SIAV            |                      4 |
+   | Boris Escalante Ramírez         | Mario Roberto Arrieta Paternina | Facultad de Ingeniería | IA; SIAV            |                      4 |
+   | Edgar Garduño Angeles           | Fabián Torres Robles            | Facultad de Ingeniería | SIAV                |                      3 |
+   | Alain Morales Martinez          | Fabián Torres Robles            | Facultad de Ingeniería | SIAV                |                      3 |
+
+3. Criterio usado:
+   Se utilizó el subgrafo de coautoría para identificar pares de autores que comparten áreas de investigación (SIAV) pero no tienen coautoría previa, lo cual sugiere una posible cercanía estructural y señales de posible colaboración.
+
+4. Nota de alcance:
+   Estos resultados son exploratorios y top-k, ya que se seleccionaron los pares con mayor número de keywords compartidas dentro de la afiliación con mayor número de autores (Facultad de Ingeniería). No garantizan una futura colaboración entre estos autores.
+
+------------------------------------------------------------------------
+P10 | predictiva | SQL + TF-IDF + subgrafo de coautoría
+Motores usados: SQL + TF-IDF + subgrafo de coautoría
+Pregunta: ¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?
+
+### Respuesta directa:
+Los pares de autores sin coautoría previa que presentan alta similitud temática pero están clasificados en áreas diferentes son candidatos preliminares para posible colaboración. Entre ellos se encuentran Daniel Torres Robledo y Emmanuel Resendiz Ochoa (ISBD y SIAV), así como Antonio Paulino Zainos Rosales y Ulises Rodriguez Dominguez (SIAV e IA).
+
+### Evidencia principal:
+| autor_1                        | autor_2                    |   similitud_tfidf | areas_1   | areas_2   |
+|:-------------------------------|:---------------------------|------------------:|:----------|:----------|
+| Daniel Torres Robledo          | Emmanuel Resendiz Ochoa    |            0.1751 | ISBD      | SIAV      |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |
+
+### Criterio usado:
+Se utilizó TF-IDF para calcular la similitud temática basada en el título, keywords y abstract de los artículos. Además, se consideraron pares de autores sin coautoría previa que presentan alta similitud pero están clasificados en áreas diferentes.
+
+### Nota de alcance:
+Estos resultados son exploratorios y no garantizan una colaboración real entre los autores identificados.
+

@@ -1,0 +1,21 @@
+﻿id,tipo,pregunta,componentes_consultados
+D1,descriptiva,¿Qué áreas de computación concentran más artículos por periodo de publicación?,SQL + grafo principal
+D2,descriptiva,¿Qué autores tienen mayor producción dentro de cada área de conocimiento?,SQL + grafo principal
+D3,descriptiva,¿Qué artículos tienen mayor número de coautores y a qué afiliaciones pertenecen esos autores?,SQL + grafo principal
+D4,descriptiva,¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?,SQL + TF-IDF + grafo principal
+D5,descriptiva,"Para la keyword image processing, ¿qué afiliaciones concentran más autores y artículos relacionados con ese tema?",SQL + TF-IDF + grafo principal
+D6,descriptiva,¿Qué autores conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías?,SQL + grafo principal + subgrafo de coautoría
+D7,descriptiva,"Para la keyword brain, ¿qué artículos la utilizan y qué autores participaron en ellos?",TF-IDF + grafo principal
+D8,descriptiva,¿Qué áreas tienen producción reciente pero pocos autores asociados?,SQL + grafo principal
+D9,descriptiva,"¿Qué autores trabajan temas similares, según keywords y abstracts, aunque todavía no aparezcan como coautores?",TF-IDF + grafo principal + subgrafo de coautoría
+D10,descriptiva,"¿Qué publicaciones parecen duplicadas o variantes del mismo artículo al comparar título, DOI, URL, abstract y autores?",SQL + TF-IDF
+P1,predictiva,"Dados dos autores sin colaboración previa, ¿pueden considerarse candidatos preliminares a colaborar si comparten varias keywords en sus artículos?",TF-IDF/keywords + grafo principal
+P2,predictiva,"Para un autor poco conectado, ¿qué autores sin coautoría previa son los mejores candidatos para colaborar en el futuro?",grafo principal + subgrafo de coautoría
+P3,predictiva,¿Qué pares de autores no conectados tienen mayor posibilidad de formar una nueva colaboración académica?,subgrafo de coautoría
+P4,predictiva,"Para artículos relacionados con image processing, ¿qué pares de autores sin coautoría previa deberían recomendarse como candidatos de colaboración?",TF-IDF + grafo principal + subgrafo de coautoría
+P5,predictiva,"Dentro de una misma afiliación, ¿qué pares de autores sin colaboración previa podrían colaborar si comparten keywords en sus artículos?",SQL + TF-IDF + subgrafo de coautoría
+P6,predictiva,"Entre autores de afiliaciones distintas, ¿qué pares podrían colaborar si publican sobre keywords similares?",SQL + TF-IDF + subgrafo de coautoría
+P7,predictiva,¿Qué autores poco conectados podrían integrarse a grupos de colaboración dentro del área de sus artículos?,grafo principal + subgrafo de coautoría
+P8,predictiva,"¿Qué autores que publicaron en el mismo año y en la misma área, pero que aún no han escrito juntos, podrían considerarse candidatos de colaboración?",SQL + subgrafo de coautoría
+P9,predictiva,"Dentro de la afiliación con mayor número de autores, ¿qué pares de autores de la misma área, pero sin coautoría previa, podrían revisarse como posibles colaboradores?",SQL + grafo principal + subgrafo de coautoría
+P10,predictiva,"¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?",SQL + TF-IDF + subgrafo de coautoría

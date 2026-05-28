@@ -1,0 +1,2002 @@
+﻿id,tipo,pregunta,componentes_consultados,motores_usados,codigo_sql,codigo_networkx,consulta_tfidf,modelo_llm,endpoint_llm,uso_llm_local,prompt_usado,resumen_resultado
+D1,descriptiva,¿Qué áreas de computación concentran más artículos por periodo de publicación?,SQL + grafo principal,SQL + grafo principal,"SELECT Año, Area, COUNT(DISTINCT indice) AS articulos
+    FROM articulos_autores
+    GROUP BY Año, Area
+    ORDER BY Año, articulos DESC;",,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D1
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué áreas de computación concentran más artículos por periodo de publicación?
+Componentes consultados según archivo de preguntas: SQL + grafo principal
+Motores usados realmente: SQL + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + grafo principal
+
+[resultado]
+|   Año | Area   |   articulos |
+|------:|:-------|------------:|
+|  2024 | IA     |          50 |
+|  2024 | SIAV   |          43 |
+|  2024 | TC     |          29 |
+|  2024 | CC     |          26 |
+|  2024 | RS     |          20 |
+|  2024 | ISBD   |          19 |
+|  2025 | SIAV   |          73 |
+|  2025 | IA     |          67 |
+|  2025 | TC     |          28 |
+|  2025 | CC     |          26 |
+|  2025 | RS     |          18 |
+|  2025 | ISBD   |           7 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + grafo principal
+
+[resultado]
+|   Año | Area   |   articulos |
+|------:|:-------|------------:|
+|  2024 | IA     |          50 |
+|  2024 | SIAV   |          43 |
+|  2024 | TC     |          29 |
+|  2024 | CC     |          26 |
+|  2024 | RS     |          20 |
+|  2024 | ISBD   |          19 |
+|  2025 | SIAV   |          73 |
+|  2025 | IA     |          67 |
+|  2025 | TC     |          28 |
+|  2025 | CC     |          26 |
+|  2025 | RS     |          18 |
+|  2025 | ISBD   |           7 |"
+D2,descriptiva,¿Qué autores tienen mayor producción dentro de cada área de conocimiento?,SQL + grafo principal,SQL + grafo principal,"GROUP BY Area, Autor_norm; top 5 por área",,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D2
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué autores tienen mayor producción dentro de cada área de conocimiento?
+Componentes consultados según archivo de preguntas: SQL + grafo principal
+Motores usados realmente: SQL + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + grafo principal
+
+[resultado]
+| Area   | Autor_norm                           |   articulos |
+|:-------|:-------------------------------------|------------:|
+| CC     | Frederic Trillaud                    |           4 |
+| CC     | Mario Roberto Arrieta Paternina      |           3 |
+| CC     | Carlos Argaez                        |           2 |
+| CC     | Daniel Castañon Quiroz               |           2 |
+| CC     | Ursula Iturrarán Viveros             |           2 |
+| IA     | Helena Montserrat Gómez Adorno       |          26 |
+| IA     | Gemma Bel Enguix                     |          19 |
+| IA     | Carlos Ignacio Hernández Castellanos |          13 |
+| IA     | Gerardo Eugenio Sierra Martínez      |          11 |
+| IA     | Sergio Luis Ojeda Trueba             |           9 |
+| ISBD   | Saiph Savage                         |           6 |
+| ISBD   | Luis Martin Sanchez Adame            |           3 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + grafo principal
+
+[resultado]
+| Area   | Autor_norm                           |   articulos |
+|:-------|:-------------------------------------|------------:|
+| CC     | Frederic Trillaud                    |           4 |
+| CC     | Mario Roberto Arrieta Paternina      |           3 |
+| CC     | Carlos Argaez                        |           2 |
+| CC     | Daniel Castañon Quiroz               |           2 |
+| CC     | Ursula Iturrarán Viveros             |           2 |
+| IA     | Helena Montserrat Gómez Adorno       |          26 |
+| IA     | Gemma Bel Enguix                     |          19 |
+| IA     | Carlos Ignacio Hernández Castellanos |          13 |
+| IA     | Gerardo Eugenio Sierra Martínez      |          11 |
+| IA     | Sergio Luis Ojeda Trueba             |           9 |
+| ISBD   | Saiph Savage                         |           6 |
+| ISBD   | Luis Martin Sanchez Adame            |           3 |"
+D3,descriptiva,¿Qué artículos tienen mayor número de coautores y a qué afiliaciones pertenecen esos autores?,SQL + grafo principal,SQL + grafo principal,COUNT(DISTINCT Autor_norm) por artículo,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D3
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué artículos tienen mayor número de coautores y a qué afiliaciones pertenecen esos autores?
+Componentes consultados según archivo de preguntas: SQL + grafo principal
+Motores usados realmente: SQL + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + grafo principal
+
+[resultado]
+|   indice | Titulo                                                                                                                                              | Area   |   Año |   total_autores | autores                                                                                                                                                                                                                              | afiliaciones                                                                                                                                                                      |
+|---------:|:----------------------------------------------------------------------------------------------------------------------------------------------------|:-------|------:|----------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      297 | Efficient and reliable spike sorting from neural recordings with UMAP-based unsupervised nonlinear dimensionality reduction                         | SIAV   |  2025 |              11 | Antonio Paulino Zainos Rosales; Bernardo Andrade Ortega; Daniel Suarez Barrera; Hector Diaz; Jesus Manuel Alvarez Lopez; Lucas Bayones; Norberto Encinas Rodriguez; Roman Rossi Pool; Sebastian Pujalte; Sergio Parra; Viktor Monroy | Centro de Ciencias de la Complejidad; Instituto de Fisiología Celular                                                                                                             |
+|      338 | PCA-enhanced Speckle Interferometry with Bicubic Interpolation at the OAN-SPM México                                                                | SIAV   |  2025 |               8 | Ana Bautista Hernandez; Andres Alberto Aviles Alvarado; Beatriz Sánchez y Sánchez; Eduardo Perez Tijerina; Francisco Javier Tamayo; J E Perez Leon; J H Castro Chacon; Mauricio Reyes Ruiz                                           | Instituto de Astronomía                                                                                                                                                           |
+|      396 | Protection Of Sensitive Personal Information Contained In Digital Files Held By Individuals With Homomorphic Encryption And AI Assistance           | RS     |  2025 |               7 | Andrea Robles Guerrero; Araceli Romo Cabrera; Armando Sanchez Mata; Ernesto Alonso Villegas Jimenez; Lilly Tello Aguilera; Manuel Manzano Calixto; Paula Hernandez Ruiz                                                              | Facultad de Estudios Superiores Aragón                                                                                                                                            |
+|      261 | A three-dimensional extension of the slope chain code: analyzing the tortuosity of the flagellar beat of human sperm                                | SIAV   |  2024 |               7 | Alberto Darszon; Andrés Bribiesca Sánchez; Dan Diaz Guerrero; Ernesto Bribiesca Correa; Fernando Montoya; Gabriel Isaac Corkidi Blanco; Haydee O Hernandez                                                                           | Instituto de Biotecnología; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                                   |
+|       16 | The IBDATA Web System for Biological Collections: Design Focused on Usability                                                                       | ISBD   |  2024 |               7 | David Gernandt; Gerardo Salazar; Gerardo Sanchez Gonzalez; Miguel Murguía Romero; Susana Magallon; Ubaldo Melo Samper Palacios; Victor Sanchez Cordero                                                                               | Facultad de Ciencias; Instituto de Biología                                                                                                                                       |
+|      159 | PCIC at SMM4H 2024: Enhancing Reddit Post Classification on Social Anxiety Using Transformer Models and Advanced Loss Functions                     | IA     |  2024 |               6 | Gemma Bel Enguix; Gerardo Eugenio Sierra Martínez; Gibrán Fuentes Pineda; Helena Montserrat Gómez Adorno; Leon Hecht; Victor Martinez Pozos                                                                                          | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Universidad Nacional Autonoma de Mexico                                             |
+|      158 | Overview of HOMO-MEX at IberLEF 2024: Hate Speech Detection Towards the Mexican Spanish speaking LGBT+ Population                                   | IA     |  2024 |               6 | Gemma Bel Enguix; Helena Montserrat Gómez Adorno; Hiram Calvo; Juan Vásquez; Scott Thomas Andersen; Sergio Luis Ojeda Trueba                                                                                                         | Facultad de Estudios Superiores Cuautitlán; Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Universidad Nacional Autonoma de Mexico |
+|      193 | AI-Based Mobile App for Segmentation and Tissue Classification on Diabetic Foot Ulcer: A Step Forward in Patient Care                               | IA     |  2025 |               6 | Adrian Beltran Fernandez; Adrian Maldonado Oclica; Maria Garcia Santiago; Miguel Angel Veloz Lucas; Rashid Flores Nino; Regina Rios Lopez                                                                                            | Facultad de Ciencias; Instituto de Ciencias Aplicadas y Tecnología                                                                                                                |
+|       14 | Spatial Analysis of Student Feedback on Learning Management Systems in Mathematics: Leveraging GIS for Enhanced Insights                            | ISBD   |  2025 |               6 | Christian Carlos Delgado Elizondo; Dulce Loza Pacheco; Eduardo Eloy Loza Pacheco; Georgina Eslava Garcia; Mayra Lorena Diaz Sosa; Mayra Olguin Rosas                                                                                 | Facultad de Estudios Superiores Acatlán                                                                                                                                           |
+|       13 | OPTICAM triple-channel astronomical image acquisition control software and external triggering synchronization system                               | ISBD   |  2024 |               6 | Angel Castro; Enrique Colorado; Ivan Zavala; Javier Hernandez Landa; Juan Echevarria; R Michel                                                                                                                                       | Instituto de Astronomía                                                                                                                                                           |
+|       31 | A Semi-Analytical Model to Simulate Fluid Flow in Fractured Reservoirs                                                                              | CC     |  2025 |               6 | Ana Paulina Gomora Figueroa; Dario Solano Rojas; Jose Armando Torres Lopez; Rodolfo Gabriel Camacho Velazquez; Rosa Maria Mariscal Romero; Victor Leonardo Teja Juarez                                                               | Facultad de Ingeniería                                                                                                                                                            |
+|      157 | Overview of HOMO-LAT at IberLEF 2025: Human-centric polarity detection in Online Messages Oriented to the Latin American-speaking LGBTQ+ populaTion | IA     |  2025 |               6 | Edgar Lee Romero; Gemma Bel Enguix; Gerardo Eugenio Sierra Martínez; Helena Montserrat Gómez Adorno; Jessica Barco; Sergio Luis Ojeda Trueba                                                                                         | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Universidad Nacional Autonoma de Mexico                                                                      |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + grafo principal
+
+[resultado]
+|   indice | Titulo                                                                                                                                              | Area   |   Año |   total_autores | autores                                                                                                                                                                                                                              | afiliaciones                                                                                                                                                                      |
+|---------:|:----------------------------------------------------------------------------------------------------------------------------------------------------|:-------|------:|----------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      297 | Efficient and reliable spike sorting from neural recordings with UMAP-based unsupervised nonlinear dimensionality reduction                         | SIAV   |  2025 |              11 | Antonio Paulino Zainos Rosales; Bernardo Andrade Ortega; Daniel Suarez Barrera; Hector Diaz; Jesus Manuel Alvarez Lopez; Lucas Bayones; Norberto Encinas Rodriguez; Roman Rossi Pool; Sebastian Pujalte; Sergio Parra; Viktor Monroy | Centro de Ciencias de la Complejidad; Instituto de Fisiología Celular                                                                                                             |
+|      338 | PCA-enhanced Speckle Interferometry with Bicubic Interpolation at the OAN-SPM México                                                                | SIAV   |  2025 |               8 | Ana Bautista Hernandez; Andres Alberto Aviles Alvarado; Beatriz Sánchez y Sánchez; Eduardo Perez Tijerina; Francisco Javier Tamayo; J E Perez Leon; J H Castro Chacon; Mauricio Reyes Ruiz                                           | Instituto de Astronomía                                                                                                                                                           |
+|      396 | Protection Of Sensitive Personal Information Contained In Digital Files Held By Individuals With Homomorphic Encryption And AI Assistance           | RS     |  2025 |               7 | Andrea Robles Guerrero; Araceli Romo Cabrera; Armando Sanchez Mata; Ernesto Alonso Villegas Jimenez; Lilly Tello Aguilera; Manuel Manzano Calixto; Paula Hernandez Ruiz                                                              | Facultad de Estudios Superiores Aragón                                                                                                                                            |
+|      261 | A three-dimensional extension of the slope chain code: analyzing the tortuosity of the flagellar beat of human sperm                                | SIAV   |  2024 |               7 | Alberto Darszon; Andrés Bribiesca Sánchez; Dan Diaz Guerrero; Ernesto Bribiesca Correa; Fernando Montoya; Gabriel Isaac Corkidi Blanco; Haydee O Hernandez                                                                           | Instituto de Biotecnología; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                                   |
+|       16 | The IBDATA Web System for Biological Collections: Design Focused on Usability                                                                       | ISBD   |  2024 |               7 | David Gernandt; Gerardo Salazar; Gerardo Sanchez Gonzalez; Miguel Murguía Romero; Susana Magallon; Ubaldo Melo Samper Palacios; Victor Sanchez Cordero                                                                               | Facultad de Ciencias; Instituto de Biología                                                                                                                                       |
+|      159 | PCIC at SMM4H 2024: Enhancing Reddit Post Classification on Social Anxiety Using Transformer Models and Advanced Loss Functions                     | IA     |  2024 |               6 | Gemma Bel Enguix; Gerardo Eugenio Sierra Martínez; Gibrán Fuentes Pineda; Helena Montserrat Gómez Adorno; Leon Hecht; Victor Martinez Pozos                                                                                          | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Universidad Nacional Autonoma de Mexico                                             |
+|      158 | Overview of HOMO-MEX at IberLEF 2024: Hate Speech Detection Towards the Mexican Spanish speaking LGBT+ Population                                   | IA     |  2024 |               6 | Gemma Bel Enguix; Helena Montserrat Gómez Adorno; Hiram Calvo; Juan Vásquez; Scott Thomas Andersen; Sergio Luis Ojeda Trueba                                                                                                         | Facultad de Estudios Superiores Cuautitlán; Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Universidad Nacional Autonoma de Mexico |
+|      193 | AI-Based Mobile App for Segmentation and Tissue Classification on Diabetic Foot Ulcer: A Step Forward in Patient Care                               | IA     |  2025 |               6 | Adrian Beltran Fernandez; Adrian Maldonado Oclica; Maria Garcia Santiago; Miguel Angel Veloz Lucas; Rashid Flores Nino; Regina Rios Lopez                                                                                            | Facultad de Ciencias; Instituto de Ciencias Aplicadas y Tecnología                                                                                                                |
+|       14 | Spatial Analysis of Student Feedback on Learning Management Systems in Mathematics: Leveraging GIS for Enhanced Insights                            | ISBD   |  2025 |               6 | Christian Carlos Delgado Elizondo; Dulce Loza Pacheco; Eduardo Eloy Loza Pacheco; Georgina Eslava Garcia; Mayra Lorena Diaz Sosa; Mayra Olguin Rosas                                                                                 | Facultad de Estudios Superiores Acatlán                                                                                                                                           |
+|       13 | OPTICAM triple-channel astronomical image acquisition control software and external triggering synchronization system                               | ISBD   |  2024 |               6 | Angel Castro; Enrique Colorado; Ivan Zavala; Javier Hernandez Landa; Juan Echevarria; R Michel                                                                                                                                       | Instituto de Astronomía                                                                                                                                                           |
+|       31 | A Semi-Analytical Model to Simulate Fluid Flow in Fractured Reservoirs                                                                              | CC     |  2025 |               6 | Ana Paulina Gomora Figueroa; Dario Solano Rojas; Jose Armando Torres Lopez; Rodolfo Gabriel Camacho Velazquez; Rosa Maria Mariscal Romero; Victor Leonardo Teja Juarez                                                               | Facultad de Ingeniería                                                                                                                                                            |
+|      157 | Overview of HOMO-LAT at IberLEF 2025: Human-centric polarity detection in Online Messages Oriented to the Latin American-speaking LGBTQ+ populaTion | IA     |  2025 |               6 | Edgar Lee Romero; Gemma Bel Enguix; Gerardo Eugenio Sierra Martínez; Helena Montserrat Gómez Adorno; Jessica Barco; Sergio Luis Ojeda Trueba                                                                                         | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Universidad Nacional Autonoma de Mexico                                                                      |"
+D4,descriptiva,¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?,SQL + TF-IDF + grafo principal,SQL + TF-IDF + grafo principal,,,keywords frecuentes,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D4
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?
+Componentes consultados según archivo de preguntas: SQL + TF-IDF + grafo principal
+Motores usados realmente: SQL + TF-IDF + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + TF-IDF + grafo principal
+
+[resultado]
+| keyword                       |   articulos | area_principal   |
+|:------------------------------|------------:|:-----------------|
+| deep learning                 |          36 | SIAV             |
+| machine learning              |          36 | SIAV             |
+| computational linguistics     |          12 | IA               |
+| artificial intelligence       |          12 | SIAV             |
+| convolutional neural networks |          12 | SIAV             |
+| computer vision               |          11 | SIAV             |
+| algorithms                    |          10 | SIAV             |
+| human                         |           9 | IA               |
+| neural networks               |           9 | SIAV             |
+| data augmentation             |           8 | SIAV             |
+| natural language processing   |           8 | IA               |
+| humans                        |           8 | IA               |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + TF-IDF + grafo principal
+
+[resultado]
+| keyword                       |   articulos | area_principal   |
+|:------------------------------|------------:|:-----------------|
+| deep learning                 |          36 | SIAV             |
+| machine learning              |          36 | SIAV             |
+| computational linguistics     |          12 | IA               |
+| artificial intelligence       |          12 | SIAV             |
+| convolutional neural networks |          12 | SIAV             |
+| computer vision               |          11 | SIAV             |
+| algorithms                    |          10 | SIAV             |
+| human                         |           9 | IA               |
+| neural networks               |           9 | SIAV             |
+| data augmentation             |           8 | SIAV             |
+| natural language processing   |           8 | IA               |
+| humans                        |           8 | IA               |"
+D5,descriptiva,"Para la keyword image processing, ¿qué afiliaciones concentran más autores y artículos relacionados con ese tema?",SQL + TF-IDF + grafo principal,SQL + TF-IDF + grafo principal,,,image processing,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D5
+Tipo de pregunta: descriptiva
+Pregunta original: Para la keyword image processing, ¿qué afiliaciones concentran más autores y artículos relacionados con ese tema?
+Componentes consultados según archivo de preguntas: SQL + TF-IDF + grafo principal
+Motores usados realmente: SQL + TF-IDF + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + TF-IDF + grafo principal
+
+[resultado]
+| Afiliacion1                                                         |   articulos |   autores |
+|:--------------------------------------------------------------------|------------:|----------:|
+| Facultad de Ingeniería                                              |          10 |         9 |
+| Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |           7 |        11 |
+| Centro de Estudios en Computación Avanzada                          |           3 |         3 |
+| Instituto de Ciencias Aplicadas y Tecnología                        |           2 |         5 |
+| Facultad de Ciencias                                                |           2 |         2 |
+| Facultad de Medicina                                                |           2 |         2 |
+| Universidad Nacional Autonoma de Mexico                             |           2 |         2 |
+| Instituto de Astronomía                                             |           1 |         6 |
+| Instituto de Biotecnología                                          |           1 |         6 |
+| Instituto de Física                                                 |           1 |         3 |
+| Escuela Nacional de Estudios Superiores Unidad Juriquilla           |           1 |         2 |
+| Instituto de Neurobiología                                          |           1 |         2 |
+
+[articulos_relacionados]
+|   indice | Titulo                                                                                                                        |   similitud |
+|---------:|:------------------------------------------------------------------------------------------------------------------------------|------------:|
+|      389 | Improved protection for colour images via invertible colour-to-grey, image distortion, and visible-imperceptible watermarking |    0.160765 |
+|      276 | Automatization of Analysis Behavior in Crayfish                                                                               |    0.151001 |
+|      267 | Artifacts in single pixel imaging of complex light fields                                                                     |    0.140791 |
+|      259 | A Deep (Learning) Dive Into Bacterial Classification                                                                          |    0.134912 |
+|      153 | On the multi-objective hyperparameter optimization of the weighted entropic associative memory.                               |    0.129145 |
+|      339 | Peering into the 3D world of rat brain tissue with digital holographic microscopy                                             |    0.122642 |
+|       11 | Is It Possible to Use ChatGPT to Perform Measurements Using the COSMIC Method?                                                |    0.117212 |
+|      254 | 3D statistical shape models for automatic segmentation of the fetal cerebellum in ultrasound images                           |    0.114456 |
+|      279 | Classification based on Neural Networks to Detect Acute Lymphoblastic Leukemia                                                |    0.114278 |
+|      314 | Improving Gamma-ray Source Searches with Image Processing                                                                     |    0.111819 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + TF-IDF + grafo principal
+
+[resultado]
+| Afiliacion1                                                         |   articulos |   autores |
+|:--------------------------------------------------------------------|------------:|----------:|
+| Facultad de Ingeniería                                              |          10 |         9 |
+| Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |           7 |        11 |
+| Centro de Estudios en Computación Avanzada                          |           3 |         3 |
+| Instituto de Ciencias Aplicadas y Tecnología                        |           2 |         5 |
+| Facultad de Ciencias                                                |           2 |         2 |
+| Facultad de Medicina                                                |           2 |         2 |
+| Universidad Nacional Autonoma de Mexico                             |           2 |         2 |
+| Instituto de Astronomía                                             |           1 |         6 |
+| Instituto de Biotecnología                                          |           1 |         6 |
+| Instituto de Física                                                 |           1 |         3 |
+| Escuela Nacional de Estudios Superiores Unidad Juriquilla           |           1 |         2 |
+| Instituto de Neurobiología                                          |           1 |         2 |
+
+[articulos_relacionados]
+|   indice | Titulo                                                                                                                        |   similitud |
+|---------:|:------------------------------------------------------------------------------------------------------------------------------|------------:|
+|      389 | Improved protection for colour images via invertible colour-to-grey, image distortion, and visible-imperceptible watermarking |    0.160765 |
+|      276 | Automatization of Analysis Behavior in Crayfish                                                                               |    0.151001 |
+|      267 | Artifacts in single pixel imaging of complex light fields                                                                     |    0.140791 |
+|      259 | A Deep (Learning) Dive Into Bacterial Classification                                                                          |    0.134912 |
+|      153 | On the multi-objective hyperparameter optimization of the weighted entropic associative memory.                               |    0.129145 |
+|      339 | Peering into the 3D world of rat brain tissue with digital holographic microscopy                                             |    0.122642 |
+|       11 | Is It Possible to Use ChatGPT to Perform Measurements Using the COSMIC Method?                                                |    0.117212 |
+|      254 | 3D statistical shape models for automatic segmentation of the fetal cerebellum in ultrasound images                           |    0.114456 |
+|      279 | Classification based on Neural Networks to Detect Acute Lymphoblastic Leukemia                                                |    0.114278 |
+|      314 | Improving Gamma-ray Source Searches with Image Processing                                                                     |    0.111819 |"
+D6,descriptiva,¿Qué autores conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías?,SQL + grafo principal + subgrafo de coautoría,SQL + grafo principal + subgrafo de coautoría,,grado en subgrafo + diversidad de áreas/afiliaciones,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D6
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué autores conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías?
+Componentes consultados según archivo de preguntas: SQL + grafo principal + subgrafo de coautoría
+Motores usados realmente: SQL + grafo principal + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + grafo principal + subgrafo de coautoría
+
+[resultado]
+| Autor_norm                           |   articulos |   num_areas |   num_afiliaciones |   grado_coautoria | areas    | afiliaciones                                                                                                                                                   |
+|:-------------------------------------|------------:|------------:|-------------------:|------------------:|:---------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Helena Montserrat Gómez Adorno       |          26 |           1 |                  5 |                35 | IA       | Centro de Estudios en Computación Avanzada; Facultad de Ciencias; Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |
+| Gemma Bel Enguix                     |          19 |           1 |                  2 |                28 | IA       | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                   |
+| Boris Escalante Ramírez              |          15 |           2 |                  3 |                19 | IA; SIAV | Centro de Estudios en Computación Avanzada; Facultad de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                        |
+| Gerardo Eugenio Sierra Martínez      |          11 |           1 |                  2 |                21 | IA       | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                   |
+| Jimena Olveres Montiel               |          14 |           2 |                  2 |                17 | IA; SIAV | Centro de Estudios en Computación Avanzada; Facultad de Ingeniería                                                                                             |
+| Fernando Arámbula Cosío              |           7 |           1 |                  2 |                13 | SIAV     | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán        |
+| Sergio Luis Ojeda Trueba             |           9 |           1 |                  2 |                12 | IA       | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                   |
+| Jorge Luis Pérez González            |           7 |           1 |                  2 |                12 | SIAV     | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán        |
+| Roman Rossi Pool                     |           2 |           2 |                  2 |                10 | CC; SIAV | Centro de Ciencias de la Complejidad; Instituto de Fisiología Celular                                                                                          |
+| Ernesto Alonso Villegas Jimenez      |           2 |           2 |                  1 |                10 | RS; SIAV | Facultad de Estudios Superiores Aragón                                                                                                                         |
+| Ernesto Bribiesca Correa             |           4 |           1 |                  1 |                12 | SIAV     | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                                            |
+| Carlos Ignacio Hernández Castellanos |          13 |           1 |                  1 |                12 | IA       | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                                            |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + grafo principal + subgrafo de coautoría
+
+[resultado]
+| Autor_norm                           |   articulos |   num_areas |   num_afiliaciones |   grado_coautoria | areas    | afiliaciones                                                                                                                                                   |
+|:-------------------------------------|------------:|------------:|-------------------:|------------------:|:---------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Helena Montserrat Gómez Adorno       |          26 |           1 |                  5 |                35 | IA       | Centro de Estudios en Computación Avanzada; Facultad de Ciencias; Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |
+| Gemma Bel Enguix                     |          19 |           1 |                  2 |                28 | IA       | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                   |
+| Boris Escalante Ramírez              |          15 |           2 |                  3 |                19 | IA; SIAV | Centro de Estudios en Computación Avanzada; Facultad de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                        |
+| Gerardo Eugenio Sierra Martínez      |          11 |           1 |                  2 |                21 | IA       | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                   |
+| Jimena Olveres Montiel               |          14 |           2 |                  2 |                17 | IA; SIAV | Centro de Estudios en Computación Avanzada; Facultad de Ingeniería                                                                                             |
+| Fernando Arámbula Cosío              |           7 |           1 |                  2 |                13 | SIAV     | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán        |
+| Sergio Luis Ojeda Trueba             |           9 |           1 |                  2 |                12 | IA       | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                   |
+| Jorge Luis Pérez González            |           7 |           1 |                  2 |                12 | SIAV     | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán        |
+| Roman Rossi Pool                     |           2 |           2 |                  2 |                10 | CC; SIAV | Centro de Ciencias de la Complejidad; Instituto de Fisiología Celular                                                                                          |
+| Ernesto Alonso Villegas Jimenez      |           2 |           2 |                  1 |                10 | RS; SIAV | Facultad de Estudios Superiores Aragón                                                                                                                         |
+| Ernesto Bribiesca Correa             |           4 |           1 |                  1 |                12 | SIAV     | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                                            |
+| Carlos Ignacio Hernández Castellanos |          13 |           1 |                  1 |                12 | IA       | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                                                                            |"
+D7,descriptiva,"Para la keyword brain, ¿qué artículos la utilizan y qué autores participaron en ellos?",TF-IDF + grafo principal,TF-IDF + grafo principal,,,brain,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D7
+Tipo de pregunta: descriptiva
+Pregunta original: Para la keyword brain, ¿qué artículos la utilizan y qué autores participaron en ellos?
+Componentes consultados según archivo de preguntas: TF-IDF + grafo principal
+Motores usados realmente: TF-IDF + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+TF-IDF + grafo principal
+
+[resultado]
+|   indice | Titulo                                                                                                                              | Area   |   Año | autores                                                                                                                                     |
+|---------:|:------------------------------------------------------------------------------------------------------------------------------------|:-------|------:|:--------------------------------------------------------------------------------------------------------------------------------------------|
+|      144 | Modeling Higher-Order Interactions in Sparse and Heavy-Tailed Neural Population Activity                                            | IA     |  2025 | Ulises Rodriguez Dominguez                                                                                                                  |
+|      254 | 3D statistical shape models for automatic segmentation of the fetal cerebellum in ultrasound images                                 | SIAV   |  2025 | Boris Escalante Ramírez; Fabián Torres Robles; Fernando Arámbula Cosío; Gustavo Velasquez Rodriguez; Zian Fanti Gutiérrez                   |
+|      255 | 3D Tortuosity computation as a shape descriptor and its application to brain structure analysis                                     | SIAV   |  2024 | Ernesto Bribiesca Correa; Jorge Alberto Márquez Flores; Maria Julieta Mateos; Wendy Elizabeth Aguilar Martínez                              |
+|      275 | Automatic Standard Plane Detection in Fetal Ultrasound Improved by Fine-Tuning                                                      | SIAV   |  2025 | Boris Escalante Ramírez; Fernando Arámbula Cosío; Jimena Olveres Montiel; Jorge Luis Pérez González; Mario Estanislao Guzman Huerta         |
+|      278 | CFDA-CSF: A Multi-Modal Domain Adaptation Method for Cross-Subject Emotion Recognition                                              | SIAV   |  2024 | Gibrán Fuentes Pineda; Magdiel Jiménez Guarneros                                                                                            |
+|      285 | Deep learning-based attenuation correction in brain PET studies                                                                     | SIAV   |  2025 | Arnulfo Martínez Dávalos; Arturo Avendaño Estrada; Fernando Moncada Gutierrez; Mercedes Rodríguez Villafuerte; Miguel Angel Avila Rodriguez |
+|      291 | Development of a Virtual Reality Platform for Multiuser Training in Medical Diagnosis                                               | SIAV   |  2024 | Sergio Teodoro Vite                                                                                                                         |
+|      308 | Human-robot physical interaction system as a tool for neurocognitive stimulation in children with ADHD in Mexico                    | SIAV   |  2024 | Eduardo Escotto Cordova                                                                                                                     |
+|      315 | In-Silico Trained AI for Enhanced T2 Spectrum Imaging and Myelin Water Fraction Mapping in Preclinical 7T MRI                       | SIAV   |  2024 | Abraham Jotssel Cisneros Mejorado; L Concha                                                                                                 |
+|      320 | Light-weight neural network for intra-voxel structure analysis                                                                      | SIAV   |  2024 | Luis Concha; Mariano Rivera                                                                                                                 |
+|      328 | MMDA: A Multimodal and Multisource Domain Adaptation Method for Cross-Subject Emotion Recognition From EEG and Eye Movement Signals | SIAV   |  2025 | Gibrán Fuentes Pineda; Magdiel Jiménez Guarneros                                                                                            |
+|      339 | Peering into the 3D world of rat brain tissue with digital holographic microscopy                                                   | SIAV   |  2025 | Alejandro Vasquez Arzola; Dennis Scheidt; Luisa Del Carmen Garcia                                                                           |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+TF-IDF + grafo principal
+
+[resultado]
+|   indice | Titulo                                                                                                                              | Area   |   Año | autores                                                                                                                                     |
+|---------:|:------------------------------------------------------------------------------------------------------------------------------------|:-------|------:|:--------------------------------------------------------------------------------------------------------------------------------------------|
+|      144 | Modeling Higher-Order Interactions in Sparse and Heavy-Tailed Neural Population Activity                                            | IA     |  2025 | Ulises Rodriguez Dominguez                                                                                                                  |
+|      254 | 3D statistical shape models for automatic segmentation of the fetal cerebellum in ultrasound images                                 | SIAV   |  2025 | Boris Escalante Ramírez; Fabián Torres Robles; Fernando Arámbula Cosío; Gustavo Velasquez Rodriguez; Zian Fanti Gutiérrez                   |
+|      255 | 3D Tortuosity computation as a shape descriptor and its application to brain structure analysis                                     | SIAV   |  2024 | Ernesto Bribiesca Correa; Jorge Alberto Márquez Flores; Maria Julieta Mateos; Wendy Elizabeth Aguilar Martínez                              |
+|      275 | Automatic Standard Plane Detection in Fetal Ultrasound Improved by Fine-Tuning                                                      | SIAV   |  2025 | Boris Escalante Ramírez; Fernando Arámbula Cosío; Jimena Olveres Montiel; Jorge Luis Pérez González; Mario Estanislao Guzman Huerta         |
+|      278 | CFDA-CSF: A Multi-Modal Domain Adaptation Method for Cross-Subject Emotion Recognition                                              | SIAV   |  2024 | Gibrán Fuentes Pineda; Magdiel Jiménez Guarneros                                                                                            |
+|      285 | Deep learning-based attenuation correction in brain PET studies                                                                     | SIAV   |  2025 | Arnulfo Martínez Dávalos; Arturo Avendaño Estrada; Fernando Moncada Gutierrez; Mercedes Rodríguez Villafuerte; Miguel Angel Avila Rodriguez |
+|      291 | Development of a Virtual Reality Platform for Multiuser Training in Medical Diagnosis                                               | SIAV   |  2024 | Sergio Teodoro Vite                                                                                                                         |
+|      308 | Human-robot physical interaction system as a tool for neurocognitive stimulation in children with ADHD in Mexico                    | SIAV   |  2024 | Eduardo Escotto Cordova                                                                                                                     |
+|      315 | In-Silico Trained AI for Enhanced T2 Spectrum Imaging and Myelin Water Fraction Mapping in Preclinical 7T MRI                       | SIAV   |  2024 | Abraham Jotssel Cisneros Mejorado; L Concha                                                                                                 |
+|      320 | Light-weight neural network for intra-voxel structure analysis                                                                      | SIAV   |  2024 | Luis Concha; Mariano Rivera                                                                                                                 |
+|      328 | MMDA: A Multimodal and Multisource Domain Adaptation Method for Cross-Subject Emotion Recognition From EEG and Eye Movement Signals | SIAV   |  2025 | Gibrán Fuentes Pineda; Magdiel Jiménez Guarneros                                                                                            |
+|      339 | Peering into the 3D world of rat brain tissue with digital holographic microscopy                                                   | SIAV   |  2025 | Alejandro Vasquez Arzola; Dennis Scheidt; Luisa Del Carmen Garcia                                                                           |"
+D8,descriptiva,¿Qué áreas tienen producción reciente pero pocos autores asociados?,SQL + grafo principal,SQL + grafo principal,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D8
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué áreas tienen producción reciente pero pocos autores asociados?
+Componentes consultados según archivo de preguntas: SQL + grafo principal
+Motores usados realmente: SQL + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + grafo principal
+
+[resultado]
+| Area   |   articulos |   autores |   articulos_por_autor |
+|:-------|------------:|----------:|----------------------:|
+| ISBD   |           7 |        17 |                 0.412 |
+| RS     |          18 |        27 |                 0.667 |
+| TC     |          28 |        33 |                 0.848 |
+| CC     |          26 |        46 |                 0.565 |
+| IA     |          67 |       103 |                 0.65  |
+| SIAV   |          73 |       154 |                 0.474 |
+
+[nota]
+Se tomó como producción reciente el año 2025.
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + grafo principal
+
+[resultado]
+| Area   |   articulos |   autores |   articulos_por_autor |
+|:-------|------------:|----------:|----------------------:|
+| ISBD   |           7 |        17 |                 0.412 |
+| RS     |          18 |        27 |                 0.667 |
+| TC     |          28 |        33 |                 0.848 |
+| CC     |          26 |        46 |                 0.565 |
+| IA     |          67 |       103 |                 0.65  |
+| SIAV   |          73 |       154 |                 0.474 |
+
+[nota]
+Se tomó como producción reciente el año 2025."
+D9,descriptiva,"¿Qué autores trabajan temas similares, según keywords y abstracts, aunque todavía no aparezcan como coautores?",TF-IDF + grafo principal + subgrafo de coautoría,TF-IDF + grafo principal + subgrafo de coautoría,,,similitud entre perfiles textuales de autores,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D9
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué autores trabajan temas similares, según keywords y abstracts, aunque todavía no aparezcan como coautores?
+Componentes consultados según archivo de preguntas: TF-IDF + grafo principal + subgrafo de coautoría
+Motores usados realmente: TF-IDF + grafo principal + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+TF-IDF + grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas                                            |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:--------------------------------------------------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                                                                     |         2 |         1 |
+| Alberto Maximiliano Millan Prado | Sofia Magdalena Borrel Miller  |            0.2151 | IA        | IA        |                                                                     |         1 |         1 |
+| Hiram Calvo                      | Jessica Barco                  |            0.2128 | IA        | IA        |                                                                     |         5 |         5 |
+| Jessica Barco                    | Juan Vásquez                   |            0.2128 | IA        | IA        | Universidad Nacional Autonoma de Mexico                             |         5 |         5 |
+| Alejandro Torres Hurtado         | Dimitri Semenov Flores         |            0.2102 | IA        | IA        |                                                                     |         1 |         2 |
+| Alejandro Torres Hurtado         | Jesus Alejandro Torres Hurtado |            0.2102 | IA        | IA        |                                                                     |         1 |         2 |
+| Ricardo Daniel Fernandez Noguez  | Sofia Magdalena Borrel Miller  |            0.2075 | IA        | IA        | Universidad Nacional Autonoma de Mexico                             |         2 |         1 |
+| Fernando Marquez                 | Ricardo Loth Zavala Reyes      |            0.1948 | IA        | IA        | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |         4 |         2 |
+| Jorge Pantaleon                  | Ricardo Loth Zavala Reyes      |            0.1948 | IA        | IA        | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |         4 |         2 |
+| David Salvador Preciado Marquez  | Ilia Markov                    |            0.181  | IA        | IA        |                                                                     |         5 |         1 |
+| Daniel Torres Robledo            | Jose De Leo Jimenez            |            0.1751 | ISBD      | SIAV      |                                                                     |         1 |         1 |
+| Daniel Torres Robledo            | Emmanuel Resendiz Ochoa        |            0.1751 | ISBD      | SIAV      |                                                                     |         1 |         1 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+TF-IDF + grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas                                            |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:--------------------------------------------------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                                                                     |         2 |         1 |
+| Alberto Maximiliano Millan Prado | Sofia Magdalena Borrel Miller  |            0.2151 | IA        | IA        |                                                                     |         1 |         1 |
+| Hiram Calvo                      | Jessica Barco                  |            0.2128 | IA        | IA        |                                                                     |         5 |         5 |
+| Jessica Barco                    | Juan Vásquez                   |            0.2128 | IA        | IA        | Universidad Nacional Autonoma de Mexico                             |         5 |         5 |
+| Alejandro Torres Hurtado         | Dimitri Semenov Flores         |            0.2102 | IA        | IA        |                                                                     |         1 |         2 |
+| Alejandro Torres Hurtado         | Jesus Alejandro Torres Hurtado |            0.2102 | IA        | IA        |                                                                     |         1 |         2 |
+| Ricardo Daniel Fernandez Noguez  | Sofia Magdalena Borrel Miller  |            0.2075 | IA        | IA        | Universidad Nacional Autonoma de Mexico                             |         2 |         1 |
+| Fernando Marquez                 | Ricardo Loth Zavala Reyes      |            0.1948 | IA        | IA        | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |         4 |         2 |
+| Jorge Pantaleon                  | Ricardo Loth Zavala Reyes      |            0.1948 | IA        | IA        | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |         4 |         2 |
+| David Salvador Preciado Marquez  | Ilia Markov                    |            0.181  | IA        | IA        |                                                                     |         5 |         1 |
+| Daniel Torres Robledo            | Jose De Leo Jimenez            |            0.1751 | ISBD      | SIAV      |                                                                     |         1 |         1 |
+| Daniel Torres Robledo            | Emmanuel Resendiz Ochoa        |            0.1751 | ISBD      | SIAV      |                                                                     |         1 |         1 |"
+D10,descriptiva,"¿Qué publicaciones parecen duplicadas o variantes del mismo artículo al comparar título, DOI, URL, abstract y autores?",SQL + TF-IDF,SQL + TF-IDF,,,detección de variantes/duplicados,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: D10
+Tipo de pregunta: descriptiva
+Pregunta original: ¿Qué publicaciones parecen duplicadas o variantes del mismo artículo al comparar título, DOI, URL, abstract y autores?
+Componentes consultados según archivo de preguntas: SQL + TF-IDF
+Motores usados realmente: SQL + TF-IDF
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + TF-IDF
+
+[resultado]
+|   indice_1 | titulo_1                                                                                                                                |   indice_2 | titulo_2                                                                                                                                  |   sim_titulo |   sim_tfidf | razon                                 |
+|-----------:|:----------------------------------------------------------------------------------------------------------------------------------------|-----------:|:------------------------------------------------------------------------------------------------------------------------------------------|-------------:|------------:|:--------------------------------------|
+|        201 | ARCH-COMP24 Category Report: Artificial Intelligence and Neural Network Control System(AINNCS) for Continuous and Hybrid Systems Plants |        203 | ARCH-COMP25 Category Report: Artificial Intelligence and Neural Network Control Systems (AINNCS) for Continuous and Hybrid Systems Plants |        0.989 |       0.629 | título muy similar                    |
+|        202 | ARCH-COMP24 Category Report: Continuous and Hybrid Systems with Nonlinear Dynamics                                                      |        204 | ARCH-COMP25 Category Report: Continuous and Hybrid Systems with Nonlinear Dynamics                                                        |        0.988 |       0.733 | título muy similar; texto muy similar |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es descriptiva.
+Resume el patrón principal observado y destaca los valores más importantes.
+No presentes el resultado como predicción.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + TF-IDF
+
+[resultado]
+|   indice_1 | titulo_1                                                                                                                                |   indice_2 | titulo_2                                                                                                                                  |   sim_titulo |   sim_tfidf | razon                                 |
+|-----------:|:----------------------------------------------------------------------------------------------------------------------------------------|-----------:|:------------------------------------------------------------------------------------------------------------------------------------------|-------------:|------------:|:--------------------------------------|
+|        201 | ARCH-COMP24 Category Report: Artificial Intelligence and Neural Network Control System(AINNCS) for Continuous and Hybrid Systems Plants |        203 | ARCH-COMP25 Category Report: Artificial Intelligence and Neural Network Control Systems (AINNCS) for Continuous and Hybrid Systems Plants |        0.989 |       0.629 | título muy similar                    |
+|        202 | ARCH-COMP24 Category Report: Continuous and Hybrid Systems with Nonlinear Dynamics                                                      |        204 | ARCH-COMP25 Category Report: Continuous and Hybrid Systems with Nonlinear Dynamics                                                        |        0.988 |       0.733 | título muy similar; texto muy similar |"
+P1,predictiva,"Dados dos autores sin colaboración previa, ¿pueden considerarse candidatos preliminares a colaborar si comparten varias keywords en sus artículos?",TF-IDF/keywords + grafo principal,TF-IDF/keywords + grafo principal,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P1
+Tipo de pregunta: predictiva
+Pregunta original: Dados dos autores sin colaboración previa, ¿pueden considerarse candidatos preliminares a colaborar si comparten varias keywords en sus artículos?
+Componentes consultados según archivo de preguntas: TF-IDF/keywords + grafo principal
+Motores usados realmente: TF-IDF/keywords + grafo principal
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+TF-IDF/keywords + grafo principal
+
+[resultado]
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+TF-IDF/keywords + grafo principal
+
+[resultado]
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
+P2,predictiva,"Para un autor poco conectado, ¿qué autores sin coautoría previa son los mejores candidatos para colaborar en el futuro?",grafo principal + subgrafo de coautoría,grafo principal + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P2
+Tipo de pregunta: predictiva
+Pregunta original: Para un autor poco conectado, ¿qué autores sin coautoría previa son los mejores candidatos para colaborar en el futuro?
+Componentes consultados según archivo de preguntas: grafo principal + subgrafo de coautoría
+Motores usados realmente: grafo principal + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas                |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:----------------------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                                         |         2 |         1 |
+| Alberto Maximiliano Millan Prado | Sofia Magdalena Borrel Miller  |            0.2151 | IA        | IA        |                                         |         1 |         1 |
+| Alejandro Torres Hurtado         | Dimitri Semenov Flores         |            0.2102 | IA        | IA        |                                         |         1 |         2 |
+| Alejandro Torres Hurtado         | Jesus Alejandro Torres Hurtado |            0.2102 | IA        | IA        |                                         |         1 |         2 |
+| Ricardo Daniel Fernandez Noguez  | Sofia Magdalena Borrel Miller  |            0.2075 | IA        | IA        | Universidad Nacional Autonoma de Mexico |         2 |         1 |
+| David Salvador Preciado Marquez  | Ilia Markov                    |            0.181  | IA        | IA        |                                         |         5 |         1 |
+| Daniel Torres Robledo            | Jose De Leo Jimenez            |            0.1751 | ISBD      | SIAV      |                                         |         1 |         1 |
+| Daniel Torres Robledo            | Emmanuel Resendiz Ochoa        |            0.1751 | ISBD      | SIAV      |                                         |         1 |         1 |
+| Norberto Encinas Rodriguez       | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                                         |        10 |         0 |
+| Ulises Rodriguez Dominguez       | Viktor Monroy                  |            0.1686 | IA        | SIAV      |                                         |         0 |        10 |
+| Lucas Bayones                    | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                                         |        10 |         0 |
+| Sebastian Pujalte                | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                                         |        10 |         0 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas                |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:----------------------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                                         |         2 |         1 |
+| Alberto Maximiliano Millan Prado | Sofia Magdalena Borrel Miller  |            0.2151 | IA        | IA        |                                         |         1 |         1 |
+| Alejandro Torres Hurtado         | Dimitri Semenov Flores         |            0.2102 | IA        | IA        |                                         |         1 |         2 |
+| Alejandro Torres Hurtado         | Jesus Alejandro Torres Hurtado |            0.2102 | IA        | IA        |                                         |         1 |         2 |
+| Ricardo Daniel Fernandez Noguez  | Sofia Magdalena Borrel Miller  |            0.2075 | IA        | IA        | Universidad Nacional Autonoma de Mexico |         2 |         1 |
+| David Salvador Preciado Marquez  | Ilia Markov                    |            0.181  | IA        | IA        |                                         |         5 |         1 |
+| Daniel Torres Robledo            | Jose De Leo Jimenez            |            0.1751 | ISBD      | SIAV      |                                         |         1 |         1 |
+| Daniel Torres Robledo            | Emmanuel Resendiz Ochoa        |            0.1751 | ISBD      | SIAV      |                                         |         1 |         1 |
+| Norberto Encinas Rodriguez       | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                                         |        10 |         0 |
+| Ulises Rodriguez Dominguez       | Viktor Monroy                  |            0.1686 | IA        | SIAV      |                                         |         0 |        10 |
+| Lucas Bayones                    | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                                         |        10 |         0 |
+| Sebastian Pujalte                | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                                         |        10 |         0 |"
+P3,predictiva,¿Qué pares de autores no conectados tienen mayor posibilidad de formar una nueva colaboración académica?,subgrafo de coautoría,subgrafo de coautoría,,common_neighbors + jaccard sobre no-aristas,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P3
+Tipo de pregunta: predictiva
+Pregunta original: ¿Qué pares de autores no conectados tienen mayor posibilidad de formar una nueva colaboración académica?
+Componentes consultados según archivo de preguntas: subgrafo de coautoría
+Motores usados realmente: subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                         |   vecinos_comunes |   jaccard |   puntaje |
+|:--------------------------------|:--------------------------------|------------------:|----------:|----------:|
+| Karla Salas Jimenez             | Edgar Lee Romero                |                 5 |     0.5   |     5.777 |
+| Sergio Luis Ojeda Trueba        | David Salvador Preciado Marquez |                 5 |     0.417 |     5.706 |
+| Sergio Luis Ojeda Trueba        | Ivan Diaz                       |                 5 |     0.385 |     5.679 |
+| Gerardo Eugenio Sierra Martínez | David Salvador Preciado Marquez |                 5 |     0.238 |     5.568 |
+| Helena Montserrat Gómez Adorno  | Francisco Lopez Ponce           |                 5 |     0.139 |     5.513 |
+| Helena Montserrat Gómez Adorno  | Angel Cadena Bautista           |                 5 |     0.139 |     5.513 |
+| Ivan Diaz                       | Jessica Barco                   |                 4 |     0.571 |     4.82  |
+| Karla Salas Jimenez             | Jessica Barco                   |                 4 |     0.444 |     4.708 |
+| Fabián Torres Robles            | Mario Estanislao Guzman Huerta  |                 4 |     0.4   |     4.671 |
+| Héctor Alva Sánchez             | Juan Pablo Cruz Bastida         |                 3 |     1     |     4.195 |
+| Rodrigo Ramos Diaz              | Hugo Didier Longines Tapia      |                 3 |     1     |     4.195 |
+| Héctor Alva Sánchez             | Arturo Avendaño Estrada         |                 3 |     0.75  |     3.958 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                         |   vecinos_comunes |   jaccard |   puntaje |
+|:--------------------------------|:--------------------------------|------------------:|----------:|----------:|
+| Karla Salas Jimenez             | Edgar Lee Romero                |                 5 |     0.5   |     5.777 |
+| Sergio Luis Ojeda Trueba        | David Salvador Preciado Marquez |                 5 |     0.417 |     5.706 |
+| Sergio Luis Ojeda Trueba        | Ivan Diaz                       |                 5 |     0.385 |     5.679 |
+| Gerardo Eugenio Sierra Martínez | David Salvador Preciado Marquez |                 5 |     0.238 |     5.568 |
+| Helena Montserrat Gómez Adorno  | Francisco Lopez Ponce           |                 5 |     0.139 |     5.513 |
+| Helena Montserrat Gómez Adorno  | Angel Cadena Bautista           |                 5 |     0.139 |     5.513 |
+| Ivan Diaz                       | Jessica Barco                   |                 4 |     0.571 |     4.82  |
+| Karla Salas Jimenez             | Jessica Barco                   |                 4 |     0.444 |     4.708 |
+| Fabián Torres Robles            | Mario Estanislao Guzman Huerta  |                 4 |     0.4   |     4.671 |
+| Héctor Alva Sánchez             | Juan Pablo Cruz Bastida         |                 3 |     1     |     4.195 |
+| Rodrigo Ramos Diaz              | Hugo Didier Longines Tapia      |                 3 |     1     |     4.195 |
+| Héctor Alva Sánchez             | Arturo Avendaño Estrada         |                 3 |     0.75  |     3.958 |"
+P4,predictiva,"Para artículos relacionados con image processing, ¿qué pares de autores sin coautoría previa deberían recomendarse como candidatos de colaboración?",TF-IDF + grafo principal + subgrafo de coautoría,TF-IDF + grafo principal + subgrafo de coautoría,,,image processing,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P4
+Tipo de pregunta: predictiva
+Pregunta original: Para artículos relacionados con image processing, ¿qué pares de autores sin coautoría previa deberían recomendarse como candidatos de colaboración?
+Componentes consultados según archivo de preguntas: TF-IDF + grafo principal + subgrafo de coautoría
+Motores usados realmente: TF-IDF + grafo principal + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+TF-IDF + grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:--------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Boris Escalante Ramírez         | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| Helena Montserrat Gómez Adorno  | Jimena Olveres Montiel         |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
+| Alan Mauricio Camargo Hernandez | Helena Montserrat Gómez Adorno |                      4 | classification tasks; data augmentation; deep learning; performance                                                    |         2 |        35 |
+| Arnulfo Martínez Dávalos        | Jimena Olveres Montiel         |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |         7 |        17 |
+| Jimena Olveres Montiel          | Mercedes Rodríguez Villafuerte |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |        17 |         7 |
+| Jimena Olveres Montiel          | Mario Alan Quiroz Juarez       |                      4 | accuracy; convolutional neural networks; deep learning; transfer learning                                              |        17 |         6 |
+| Fernando Moncada Gutierrez      | Jimena Olveres Montiel         |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |         6 |        17 |
+| Arnulfo Martínez Dávalos        | Boris Escalante Ramírez        |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |         7 |        19 |
+| Boris Escalante Ramírez         | Mercedes Rodríguez Villafuerte |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |        19 |         7 |
+| Boris Escalante Ramírez         | Fernando Moncada Gutierrez     |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |        19 |         6 |
+| Fernando Arámbula Cosío         | Helena Montserrat Gómez Adorno |                      4 | data augmentation; deep learning; machine learning; neural network architecture                                        |        13 |        35 |
+| Boris Escalante Ramírez         | Mario Alan Quiroz Juarez       |                      4 | accuracy; convolutional neural networks; deep learning; transfer learning                                              |        19 |         6 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+TF-IDF + grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:--------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Boris Escalante Ramírez         | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| Helena Montserrat Gómez Adorno  | Jimena Olveres Montiel         |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
+| Alan Mauricio Camargo Hernandez | Helena Montserrat Gómez Adorno |                      4 | classification tasks; data augmentation; deep learning; performance                                                    |         2 |        35 |
+| Arnulfo Martínez Dávalos        | Jimena Olveres Montiel         |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |         7 |        17 |
+| Jimena Olveres Montiel          | Mercedes Rodríguez Villafuerte |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |        17 |         7 |
+| Jimena Olveres Montiel          | Mario Alan Quiroz Juarez       |                      4 | accuracy; convolutional neural networks; deep learning; transfer learning                                              |        17 |         6 |
+| Fernando Moncada Gutierrez      | Jimena Olveres Montiel         |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |         6 |        17 |
+| Arnulfo Martínez Dávalos        | Boris Escalante Ramírez        |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |         7 |        19 |
+| Boris Escalante Ramírez         | Mercedes Rodríguez Villafuerte |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |        19 |         7 |
+| Boris Escalante Ramírez         | Fernando Moncada Gutierrez     |                      4 | data augmentation; deep learning; training data; transfer learning                                                     |        19 |         6 |
+| Fernando Arámbula Cosío         | Helena Montserrat Gómez Adorno |                      4 | data augmentation; deep learning; machine learning; neural network architecture                                        |        13 |        35 |
+| Boris Escalante Ramírez         | Mario Alan Quiroz Juarez       |                      4 | accuracy; convolutional neural networks; deep learning; transfer learning                                              |        19 |         6 |"
+P5,predictiva,"Dentro de una misma afiliación, ¿qué pares de autores sin colaboración previa podrían colaborar si comparten keywords en sus artículos?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P5
+Tipo de pregunta: predictiva
+Pregunta original: Dentro de una misma afiliación, ¿qué pares de autores sin colaboración previa podrían colaborar si comparten keywords en sus artículos?
+Componentes consultados según archivo de preguntas: SQL + TF-IDF + subgrafo de coautoría
+Motores usados realmente: SQL + TF-IDF + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + TF-IDF + subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                        |   keywords_compartidas | keywords                                                                                                                                                        |   grado_1 |   grado_2 | afiliacion_compartida                                                                                           |
+|:--------------------------------|:-------------------------------|-----------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------:|----------:|:----------------------------------------------------------------------------------------------------------------|
+| Boris Escalante Ramírez         | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans                                          |        19 |        35 | Centro de Estudios en Computación Avanzada; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |
+| Helena Montserrat Gómez Adorno  | Jimena Olveres Montiel         |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans                                          |        35 |        17 | Centro de Estudios en Computación Avanzada                                                                      |
+| Boris Escalante Ramírez         | I Perez Ruiz                   |                     10 | accuracy; computer vision; convolutional neural networks; data augmentation; deep learning; echocardiography; learning models; transformers                     |        19 |         2 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Francisco Lopez Ponce           | Helena Montserrat Gómez Adorno |                      8 | classification tasks; computational linguistics; information retrieval; language model; large language models; model-based opc; semantic relatedness; semantics |         6 |        35 | Instituto de Ingeniería                                                                                         |
+| Boris Escalante Ramírez         | Gemma Bel Enguix               |                      8 | classification; classification tasks; data augmentation; machine learning; performance; semantics; transformer modeling; transformers                           |        19 |        28 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Gemma Bel Enguix                | Mario Alberto Diaz Torres      |                      7 | adversarial machine learning; loss functions; machine learning; machine learning algorithms; machine learning models; machine-learning; simple++                |        28 |         0 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Angel Cadena Bautista           | Helena Montserrat Gómez Adorno |                      6 | computational linguistics; information retrieval; large language models; model-based opc; semantic relatedness; semantics                                       |         6 |        35 | Instituto de Ingeniería                                                                                         |
+| Andric Valdez Valenzuela        | Sergio Luis Ojeda Trueba       |                      5 | classification tasks; computational linguistics; language model; large language models; natural language processing                                             |         5 |        12 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Edgar Garduño Angeles           | Jimena Olveres Montiel         |                      5 | algorithms; convolutional neural networks; deep learning; image segmentation; semantic segmentation                                                             |         2 |        17 | Facultad de Ingeniería                                                                                          |
+| Fernando Arámbula Cosío         | Gabriel Carcedo Rodriguez      |                      5 | deep learning; echocardiography; training; ultrasonic imaging; ultrasonics                                                                                      |        13 |         5 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán                              |
+| Helena Montserrat Gómez Adorno  | Jehu Lopez Aparicio            |                      5 | human; humans; machine learning; machine learning algorithms; performance                                                                                       |        35 |         0 | Facultad de Ciencias                                                                                            |
+| Gerardo Eugenio Sierra Martínez | Scott Thomas Andersen          |                      5 | computational linguistics; hate speech; machine learning; social media; tweets                                                                                  |        21 |         5 | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                    |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + TF-IDF + subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                        |   keywords_compartidas | keywords                                                                                                                                                        |   grado_1 |   grado_2 | afiliacion_compartida                                                                                           |
+|:--------------------------------|:-------------------------------|-----------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------:|----------:|:----------------------------------------------------------------------------------------------------------------|
+| Boris Escalante Ramírez         | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans                                          |        19 |        35 | Centro de Estudios en Computación Avanzada; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas |
+| Helena Montserrat Gómez Adorno  | Jimena Olveres Montiel         |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans                                          |        35 |        17 | Centro de Estudios en Computación Avanzada                                                                      |
+| Boris Escalante Ramírez         | I Perez Ruiz                   |                     10 | accuracy; computer vision; convolutional neural networks; data augmentation; deep learning; echocardiography; learning models; transformers                     |        19 |         2 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Francisco Lopez Ponce           | Helena Montserrat Gómez Adorno |                      8 | classification tasks; computational linguistics; information retrieval; language model; large language models; model-based opc; semantic relatedness; semantics |         6 |        35 | Instituto de Ingeniería                                                                                         |
+| Boris Escalante Ramírez         | Gemma Bel Enguix               |                      8 | classification; classification tasks; data augmentation; machine learning; performance; semantics; transformer modeling; transformers                           |        19 |        28 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Gemma Bel Enguix                | Mario Alberto Diaz Torres      |                      7 | adversarial machine learning; loss functions; machine learning; machine learning algorithms; machine learning models; machine-learning; simple++                |        28 |         0 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Angel Cadena Bautista           | Helena Montserrat Gómez Adorno |                      6 | computational linguistics; information retrieval; large language models; model-based opc; semantic relatedness; semantics                                       |         6 |        35 | Instituto de Ingeniería                                                                                         |
+| Andric Valdez Valenzuela        | Sergio Luis Ojeda Trueba       |                      5 | classification tasks; computational linguistics; language model; large language models; natural language processing                                             |         5 |        12 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                                             |
+| Edgar Garduño Angeles           | Jimena Olveres Montiel         |                      5 | algorithms; convolutional neural networks; deep learning; image segmentation; semantic segmentation                                                             |         2 |        17 | Facultad de Ingeniería                                                                                          |
+| Fernando Arámbula Cosío         | Gabriel Carcedo Rodriguez      |                      5 | deep learning; echocardiography; training; ultrasonic imaging; ultrasonics                                                                                      |        13 |         5 | Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas Unidad Yucatán                              |
+| Helena Montserrat Gómez Adorno  | Jehu Lopez Aparicio            |                      5 | human; humans; machine learning; machine learning algorithms; performance                                                                                       |        35 |         0 | Facultad de Ciencias                                                                                            |
+| Gerardo Eugenio Sierra Martínez | Scott Thomas Andersen          |                      5 | computational linguistics; hate speech; machine learning; social media; tweets                                                                                  |        21 |         5 | Instituto de Ingeniería; Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas                    |"
+P6,predictiva,"Entre autores de afiliaciones distintas, ¿qué pares podrían colaborar si publican sobre keywords similares?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P6
+Tipo de pregunta: predictiva
+Pregunta original: Entre autores de afiliaciones distintas, ¿qué pares podrían colaborar si publican sobre keywords similares?
+Componentes consultados según archivo de preguntas: SQL + TF-IDF + subgrafo de coautoría
+Motores usados realmente: SQL + TF-IDF + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + TF-IDF + subgrafo de coautoría
+
+[resultado]
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas   |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:---------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                            |         2 |         1 |
+| Alberto Maximiliano Millan Prado | Sofia Magdalena Borrel Miller  |            0.2151 | IA        | IA        |                            |         1 |         1 |
+| Hiram Calvo                      | Jessica Barco                  |            0.2128 | IA        | IA        |                            |         5 |         5 |
+| Alejandro Torres Hurtado         | Dimitri Semenov Flores         |            0.2102 | IA        | IA        |                            |         1 |         2 |
+| Alejandro Torres Hurtado         | Jesus Alejandro Torres Hurtado |            0.2102 | IA        | IA        |                            |         1 |         2 |
+| David Salvador Preciado Marquez  | Ilia Markov                    |            0.181  | IA        | IA        |                            |         5 |         1 |
+| Daniel Torres Robledo            | Emmanuel Resendiz Ochoa        |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Daniel Torres Robledo            | Jose De Leo Jimenez            |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Mario Estanislao Guzman Huerta   | Orlando Castellanos Diaz       |            0.1689 | SIAV      | SIAV      |                            |         5 |         2 |
+| Antonio Paulino Zainos Rosales   | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Hector Diaz                      | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Lucas Bayones                    | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + TF-IDF + subgrafo de coautoría
+
+[resultado]
+| autor_1                          | autor_2                        |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas   |   grado_1 |   grado_2 |
+|:---------------------------------|:-------------------------------|------------------:|:----------|:----------|:---------------------------|----------:|----------:|
+| Francisco Javier García Ugalde   | Leonardo Faustinos Morales     |            0.2462 | RS        | RS        |                            |         2 |         1 |
+| Alberto Maximiliano Millan Prado | Sofia Magdalena Borrel Miller  |            0.2151 | IA        | IA        |                            |         1 |         1 |
+| Hiram Calvo                      | Jessica Barco                  |            0.2128 | IA        | IA        |                            |         5 |         5 |
+| Alejandro Torres Hurtado         | Dimitri Semenov Flores         |            0.2102 | IA        | IA        |                            |         1 |         2 |
+| Alejandro Torres Hurtado         | Jesus Alejandro Torres Hurtado |            0.2102 | IA        | IA        |                            |         1 |         2 |
+| David Salvador Preciado Marquez  | Ilia Markov                    |            0.181  | IA        | IA        |                            |         5 |         1 |
+| Daniel Torres Robledo            | Emmanuel Resendiz Ochoa        |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Daniel Torres Robledo            | Jose De Leo Jimenez            |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Mario Estanislao Guzman Huerta   | Orlando Castellanos Diaz       |            0.1689 | SIAV      | SIAV      |                            |         5 |         2 |
+| Antonio Paulino Zainos Rosales   | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Hector Diaz                      | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Lucas Bayones                    | Ulises Rodriguez Dominguez     |            0.1686 | SIAV      | IA        |                            |        10 |         0 |"
+P7,predictiva,¿Qué autores poco conectados podrían integrarse a grupos de colaboración dentro del área de sus artículos?,grafo principal + subgrafo de coautoría,grafo principal + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P7
+Tipo de pregunta: predictiva
+Pregunta original: ¿Qué autores poco conectados podrían integrarse a grupos de colaboración dentro del área de sus artículos?
+Componentes consultados según archivo de preguntas: grafo principal + subgrafo de coautoría
+Motores usados realmente: grafo principal + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_poco_conectado              |   grado_actual | autor_grupo_sugerido            |   grado_grupo | area_compartida   |
+|:----------------------------------|---------------:|:--------------------------------|--------------:|:------------------|
+| A L Padilla Ortiz                 |              0 | Boris Escalante Ramírez         |            19 | SIAV              |
+| A L Padilla Ortiz                 |              0 | Jimena Olveres Montiel          |            17 | SIAV              |
+| A L Padilla Ortiz                 |              0 | Fernando Arámbula Cosío         |            13 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Boris Escalante Ramírez         |            19 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Jimena Olveres Montiel          |            17 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Fernando Arámbula Cosío         |            13 | SIAV              |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Ernesto Alonso Villegas Jimenez |            10 | RS                |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Héctor Benítez Pérez            |             8 | RS                |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Everardo Barcenas               |             7 | RS                |
+| Alan Ernesto Arteaga Vazquez      |              0 | Everardo Barcenas               |             7 | TC                |
+| Alan Ernesto Arteaga Vazquez      |              0 | Cesar Hernández Cruz            |             6 | TC                |
+| Alan Ernesto Arteaga Vazquez      |              0 | Jesus Nestaly Marin Nevarez     |             6 | TC                |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_poco_conectado              |   grado_actual | autor_grupo_sugerido            |   grado_grupo | area_compartida   |
+|:----------------------------------|---------------:|:--------------------------------|--------------:|:------------------|
+| A L Padilla Ortiz                 |              0 | Boris Escalante Ramírez         |            19 | SIAV              |
+| A L Padilla Ortiz                 |              0 | Jimena Olveres Montiel          |            17 | SIAV              |
+| A L Padilla Ortiz                 |              0 | Fernando Arámbula Cosío         |            13 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Boris Escalante Ramírez         |            19 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Jimena Olveres Montiel          |            17 | SIAV              |
+| Abraham Jotssel Cisneros Mejorado |              1 | Fernando Arámbula Cosío         |            13 | SIAV              |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Ernesto Alonso Villegas Jimenez |            10 | RS                |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Héctor Benítez Pérez            |             8 | RS                |
+| Ahmed Imad Hammoodi Al Jarah      |              1 | Everardo Barcenas               |             7 | RS                |
+| Alan Ernesto Arteaga Vazquez      |              0 | Everardo Barcenas               |             7 | TC                |
+| Alan Ernesto Arteaga Vazquez      |              0 | Cesar Hernández Cruz            |             6 | TC                |
+| Alan Ernesto Arteaga Vazquez      |              0 | Jesus Nestaly Marin Nevarez     |             6 | TC                |"
+P8,predictiva,"¿Qué autores que publicaron en el mismo año y en la misma área, pero que aún no han escrito juntos, podrían considerarse candidatos de colaboración?",SQL + subgrafo de coautoría,SQL + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P8
+Tipo de pregunta: predictiva
+Pregunta original: ¿Qué autores que publicaron en el mismo año y en la misma área, pero que aún no han escrito juntos, podrían considerarse candidatos de colaboración?
+Componentes consultados según archivo de preguntas: SQL + subgrafo de coautoría
+Motores usados realmente: SQL + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + subgrafo de coautoría
+
+[resultado]
+| autor_1                            | autor_2                            | años_compartidos   | areas_compartidas   |   keywords_compartidas |
+|:-----------------------------------|:-----------------------------------|:-------------------|:--------------------|-----------------------:|
+| Boris Escalante Ramírez            | Helena Montserrat Gómez Adorno     | 2024; 2025         | IA                  |                     12 |
+| Helena Montserrat Gómez Adorno     | Jimena Olveres Montiel             | 2024; 2025         | IA                  |                     12 |
+| I Perez Ruiz                       | Jimena Olveres Montiel             | 2025               | SIAV                |                     10 |
+| Boris Escalante Ramírez            | I Perez Ruiz                       | 2025               | SIAV                |                     10 |
+| Jehu Lopez Aparicio                | Jimena Olveres Montiel             | 2024               | SIAV                |                      8 |
+| Boris Escalante Ramírez            | Gemma Bel Enguix                   | 2024; 2025         | IA                  |                      8 |
+| Gemma Bel Enguix                   | Jimena Olveres Montiel             | 2024; 2025         | IA                  |                      8 |
+| Boris Escalante Ramírez            | Jehu Lopez Aparicio                | 2024               | SIAV                |                      8 |
+| Francisco Lopez Ponce              | Helena Montserrat Gómez Adorno     | 2024; 2025         | IA                  |                      8 |
+| Bernardo Andrade Ortega            | Roberto Giovanni Ramírez Chavarría | 2025               | SIAV                |                      6 |
+| Roberto Giovanni Ramírez Chavarría | Viktor Monroy                      | 2025               | SIAV                |                      6 |
+| Daniel Suarez Barrera              | Roberto Giovanni Ramírez Chavarría | 2025               | SIAV                |                      6 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + subgrafo de coautoría
+
+[resultado]
+| autor_1                            | autor_2                            | años_compartidos   | areas_compartidas   |   keywords_compartidas |
+|:-----------------------------------|:-----------------------------------|:-------------------|:--------------------|-----------------------:|
+| Boris Escalante Ramírez            | Helena Montserrat Gómez Adorno     | 2024; 2025         | IA                  |                     12 |
+| Helena Montserrat Gómez Adorno     | Jimena Olveres Montiel             | 2024; 2025         | IA                  |                     12 |
+| I Perez Ruiz                       | Jimena Olveres Montiel             | 2025               | SIAV                |                     10 |
+| Boris Escalante Ramírez            | I Perez Ruiz                       | 2025               | SIAV                |                     10 |
+| Jehu Lopez Aparicio                | Jimena Olveres Montiel             | 2024               | SIAV                |                      8 |
+| Boris Escalante Ramírez            | Gemma Bel Enguix                   | 2024; 2025         | IA                  |                      8 |
+| Gemma Bel Enguix                   | Jimena Olveres Montiel             | 2024; 2025         | IA                  |                      8 |
+| Boris Escalante Ramírez            | Jehu Lopez Aparicio                | 2024               | SIAV                |                      8 |
+| Francisco Lopez Ponce              | Helena Montserrat Gómez Adorno     | 2024; 2025         | IA                  |                      8 |
+| Bernardo Andrade Ortega            | Roberto Giovanni Ramírez Chavarría | 2025               | SIAV                |                      6 |
+| Roberto Giovanni Ramírez Chavarría | Viktor Monroy                      | 2025               | SIAV                |                      6 |
+| Daniel Suarez Barrera              | Roberto Giovanni Ramírez Chavarría | 2025               | SIAV                |                      6 |"
+P9,predictiva,"Dentro de la afiliación con mayor número de autores, ¿qué pares de autores de la misma área, pero sin coautoría previa, podrían revisarse como posibles colaboradores?",SQL + grafo principal + subgrafo de coautoría,SQL + grafo principal + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P9
+Tipo de pregunta: predictiva
+Pregunta original: Dentro de la afiliación con mayor número de autores, ¿qué pares de autores de la misma área, pero sin coautoría previa, podrían revisarse como posibles colaboradores?
+Componentes consultados según archivo de preguntas: SQL + grafo principal + subgrafo de coautoría
+Motores usados realmente: SQL + grafo principal + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                         | afiliacion             | areas_compartidas   |   keywords_compartidas |
+|:--------------------------------|:--------------------------------|:-----------------------|:--------------------|-----------------------:|
+| Alain Morales Martinez          | Jimena Olveres Montiel          | Facultad de Ingeniería | SIAV                |                      5 |
+| Alain Morales Martinez          | Boris Escalante Ramírez         | Facultad de Ingeniería | SIAV                |                      5 |
+| Edgar Garduño Angeles           | Jimena Olveres Montiel          | Facultad de Ingeniería | SIAV                |                      5 |
+| Boris Escalante Ramírez         | Edgar Garduño Angeles           | Facultad de Ingeniería | SIAV                |                      5 |
+| Jimena Olveres Montiel          | Mario Roberto Arrieta Paternina | Facultad de Ingeniería | IA; SIAV            |                      4 |
+| Boris Escalante Ramírez         | Mario Roberto Arrieta Paternina | Facultad de Ingeniería | IA; SIAV            |                      4 |
+| Edgar Garduño Angeles           | Fabián Torres Robles            | Facultad de Ingeniería | SIAV                |                      3 |
+| Alain Morales Martinez          | Fabián Torres Robles            | Facultad de Ingeniería | SIAV                |                      3 |
+| Mario Roberto Arrieta Paternina | Oliverio Cruz Mejia             | Facultad de Ingeniería | IA                  |                      2 |
+| Boris Escalante Ramírez         | Jose Maria Matias Maruri        | Facultad de Ingeniería | SIAV                |                      2 |
+| Jimena Olveres Montiel          | Jose Maria Matias Maruri        | Facultad de Ingeniería | SIAV                |                      2 |
+| Jimena Olveres Montiel          | Oliverio Cruz Mejia             | Facultad de Ingeniería | IA                  |                      2 |
+
+[afiliacion_mayor]
+Facultad de Ingeniería
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + grafo principal + subgrafo de coautoría
+
+[resultado]
+| autor_1                         | autor_2                         | afiliacion             | areas_compartidas   |   keywords_compartidas |
+|:--------------------------------|:--------------------------------|:-----------------------|:--------------------|-----------------------:|
+| Alain Morales Martinez          | Jimena Olveres Montiel          | Facultad de Ingeniería | SIAV                |                      5 |
+| Alain Morales Martinez          | Boris Escalante Ramírez         | Facultad de Ingeniería | SIAV                |                      5 |
+| Edgar Garduño Angeles           | Jimena Olveres Montiel          | Facultad de Ingeniería | SIAV                |                      5 |
+| Boris Escalante Ramírez         | Edgar Garduño Angeles           | Facultad de Ingeniería | SIAV                |                      5 |
+| Jimena Olveres Montiel          | Mario Roberto Arrieta Paternina | Facultad de Ingeniería | IA; SIAV            |                      4 |
+| Boris Escalante Ramírez         | Mario Roberto Arrieta Paternina | Facultad de Ingeniería | IA; SIAV            |                      4 |
+| Edgar Garduño Angeles           | Fabián Torres Robles            | Facultad de Ingeniería | SIAV                |                      3 |
+| Alain Morales Martinez          | Fabián Torres Robles            | Facultad de Ingeniería | SIAV                |                      3 |
+| Mario Roberto Arrieta Paternina | Oliverio Cruz Mejia             | Facultad de Ingeniería | IA                  |                      2 |
+| Boris Escalante Ramírez         | Jose Maria Matias Maruri        | Facultad de Ingeniería | SIAV                |                      2 |
+| Jimena Olveres Montiel          | Jose Maria Matias Maruri        | Facultad de Ingeniería | SIAV                |                      2 |
+| Jimena Olveres Montiel          | Oliverio Cruz Mejia             | Facultad de Ingeniería | IA                  |                      2 |
+
+[afiliacion_mayor]
+Facultad de Ingeniería"
+P10,predictiva,"¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,,,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
+Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
+
+Tu tarea es redactar una respuesta final en español usando EXCLUSIVAMENTE la evidencia calculada que se proporciona abajo.
+
+REGLAS OBLIGATORIAS:
+1. No inventes autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+2. No uses conocimiento externo.
+3. No menciones internet, búsquedas externas ni información no presente en la evidencia.
+4. No calcules totales nuevos, porcentajes o sumas si no aparecen explícitamente en la evidencia.
+5. Si un dato no aparece en la evidencia, no lo afirmes.
+6. Usa los códigos de área exactamente como aparecen:
+   ISBD, CC, IA, TC, SIAV, RS.
+7. No expandas, traduzcas ni interpretes el significado de los códigos de área.
+8. No digas que SIAV significa algo; sólo escribe SIAV.
+9. No digas que ISBD, CC, IA, TC o RS significan algo; sólo usa el código.
+10. Si los resultados son top-k, dilo en la nota de alcance.
+11. Si los resultados son preliminares, dilo claramente.
+
+ID de pregunta: P10
+Tipo de pregunta: predictiva
+Pregunta original: ¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?
+Componentes consultados según archivo de preguntas: SQL + TF-IDF + subgrafo de coautoría
+Motores usados realmente: SQL + TF-IDF + subgrafo de coautoría
+
+EVIDENCIA CALCULADA POR SQL / NETWORKX / TF-IDF:
+
+[motores]
+SQL + TF-IDF + subgrafo de coautoría
+
+[resultado]
+| autor_1                        | autor_2                    |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas   |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|------------------:|:----------|:----------|:---------------------------|----------:|----------:|
+| Daniel Torres Robledo          | Emmanuel Resendiz Ochoa    |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Daniel Torres Robledo          | Jose De Leo Jimenez        |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |            0.1686 | IA        | SIAV      |                            |         0 |        10 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+
+INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
+
+La pregunta es predictiva o de recomendación.
+NO presentes los resultados como certezas ni como predicciones garantizadas.
+Usa expresiones como:
+- candidatos preliminares
+- pares sugeridos para revisión
+- señales de posible colaboración
+- resultados exploratorios
+
+Debes explicar el criterio real usado:
+- Si se usó subgrafo de coautoría: habla de cercanía estructural, vecinos comunes, grado, Jaccard o ausencia de arista previa.
+- Si se usó TF-IDF: habla de similitud textual o similitud temática basada en Titulo, Keywords y Abstract.
+- Si se usó SQL: habla de filtros por área, año, afiliación o autor.
+
+
+ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
+1. Respuesta directa:
+   - Contesta la pregunta en 2 a 5 oraciones.
+   - Usa sólo datos de la evidencia.
+   - Si mencionas áreas, usa sólo códigos.
+
+2. Evidencia principal:
+   - Lista los resultados más importantes.
+   - Incluye cantidades, autores, artículos, áreas o afiliaciones sólo cuando aparezcan en la evidencia.
+
+3. Criterio usado:
+   - Explica brevemente qué componente permitió responder.
+   - SQL: conteos, agrupaciones o filtros.
+   - Grafo principal: relaciones artículo-autor-keyword-afiliación.
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados o cercanía estructural.
+   - TF-IDF: similitud textual o temática en Titulo, Keywords y Abstract.
+
+4. Nota de alcance:
+   - Aclara si el resultado es top-k, exploratorio o candidato preliminar.
+   - En preguntas predictivas, aclara que no son colaboraciones garantizadas.
+
+Redacta de forma clara, concreta y útil para un reporte de proyecto.
+Evita texto genérico.
+","
+[motores]
+SQL + TF-IDF + subgrafo de coautoría
+
+[resultado]
+| autor_1                        | autor_2                    |   similitud_tfidf | areas_1   | areas_2   | afiliaciones_compartidas   |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|------------------:|:----------|:----------|:---------------------------|----------:|----------:|
+| Daniel Torres Robledo          | Emmanuel Resendiz Ochoa    |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Daniel Torres Robledo          | Jose De Leo Jimenez        |            0.1751 | ISBD      | SIAV      |                            |         1 |         1 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |            0.1686 | IA        | SIAV      |                            |         0 |        10 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |            0.1686 | SIAV      | IA        |                            |        10 |         0 |"
