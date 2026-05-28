@@ -1,0 +1,341 @@
+﻿id,tipo,pregunta,componentes_consultados,motores_usados,modelo_llm,endpoint_llm,uso_llm_local,respuesta
+D1,descriptiva,¿Qué áreas de computación concentran más artículos por periodo de publicación?,SQL + grafo principal,SQL + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"1. Respuesta directa:
+   Las áreas IA y SIAV concentran más artículos por periodo de publicación en el año 2025.
+
+2. Evidencia principal:
+   - En 2024, IA tiene 50 artículos, seguido por SIAV con 43.
+   - En 2025, SIAV incrementa a 73 artículos, mientras que IA aumenta a 67.
+
+3. Criterio usado:
+   La evidencia proviene del componente SQL, específicamente de la tabla articulos_por_anio_area, que proporcionó los conteos de artículos por área y año.
+
+4. Nota de alcance:
+   Este resultado es exploratorio y no se considera una predicción definitiva; refleja el patrón observado en los datos disponibles para los años 2024 y 2025."
+D2,descriptiva,¿Qué autores tienen mayor producción dentro de cada área de conocimiento?,SQL + grafo principal,SQL + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"1. Respuesta directa:
+   Los autores más productivos en cada área de conocimiento son Helena Montserrat Gómez Adorno (IA) con 26 artículos, Gemma Bel Enguix (IA) con 19 artículos, y Boris Escalante Ramírez (SIAV) con 14 artículos.
+
+2. Evidencia principal:
+   - Autor más productivo en ISBD: Helena Montserrat Gómez Adorno con 26 artículos.
+   - Autor más productivo en CC: Gemma Bel Enguix con 19 artículos.
+   - Autor más productivo en IA: Helena Montserrat Gómez Adorno y Gemma Bel Enguix, ambas con 26 y 19 artículos respectivamente.
+   - Autor más productivo en TC: Armando Castañeda Rojano con 9 artículos.
+   - Autor más productivo en SIAV: Boris Escalante Ramírez con 14 artículos.
+
+3. Criterio usado:
+   La pregunta se respondió utilizando SQL para agrupar y contar los autores por área de conocimiento, identificando aquellos con mayor producción.
+
+4. Nota de alcance:
+   Los resultados son candidatos preliminares basados en la producción de artículos dentro de cada área de conocimiento."
+D3,descriptiva,¿Qué artículos tienen mayor número de coautores y a qué afiliaciones pertenecen esos autores?,SQL + grafo principal,SQL + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Los artículos con mayor número de coautores pertenecen a la área SIAV. Los autores más frecuentes son Helena Montserrat Gómez Adorno (con 35 grados) y Gemma Bel Enguix (con 28 grados), ambos con afiliaciones en el Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas.
+
+### Evidencia principal:
+- **Artículos con mayor número de coautores:**
+  - ""Efficient and reliable spike sorting from neural recordings with UMAP-based unsupervised nonlinear dimensionality reduction"" (11 coautores)
+  - ""PCA-enhanced Speckle Interferometry with Bicubic Interpolation at the OAN-SPM México"" (8 coautores)
+
+- **Autores más productivos:**
+  - Helena Montserrat Gómez Adorno (IA, 26 artículos)
+  - Gemma Bel Enguix (IA, 19 artículos)
+  - Boris Escalante Ramírez (SIAV, 14 artículos)
+
+- **Afiliaciones principales:**
+  - Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas (106 artículos)
+  - Facultad de Ingeniería (85 artículos)
+  - Facultad de Ciencias (48 artículos)
+
+### Criterio usado:
+La pregunta fue respondida utilizando el grafo principal, que permitió analizar las relaciones entre autores, artículos y afiliaciones. El subgrafo de coautoría mostró los grados de conexión entre los autores, identificando a Helena Montserrat Gómez Adorno y Gemma Bel Enguix como los más conectados.
+
+### Nota de alcance:
+El resultado es top-k, ya que se presentan los autores con mayor número de coautores y sus afiliaciones."
+D4,descriptiva,¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?,SQL + TF-IDF + grafo principal,SQL + TF-IDF + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+El patrón principal observado en la red de colaboración es una fuerte presencia de autores centrados en el área de IA y aprendizaje automático, con un alto número de publicaciones y conexiones. Los autores Sergio Luis Ojeda Trueba y Gemma Bel Enguix destacan por su amplia participación en diversos proyectos relacionados con IA, NLP y análisis computacional.
+
+### Evidencia principal:
+- **Autores principales:**
+  - **Sergio Luis Ojeda Trueba:** Participó en 9 artículos, incluyendo áreas como evaluación de modelos LLMs, clasificación multilabelada, y análisis de metáforas.
+  - **Gemma Bel Enguix:** Autora de 19 artículos, cubriendo temas como análisis de sentimientos, detección de polaridad, y evaluaciones de modelos LLMs.
+
+- **Artículos clave:**
+  - ""Machine Learning and Deep Learning Sentiment Analysis Models: Case Study on the SENT-COVID Corpus of Tweets in Mexican Spanish"" (Autor: Juan Carlos Barajas)
+  - ""Overview of HOMO-LAT at IberLEF 2025: Human-centric polarity detection in Online Messages Oriented to the Latin American-speaking LGBTQ+ populaTion"" (Autora: Jessica Barco)
+
+- **Áreas de investigación principales:**
+  - IA, aprendizaje automático
+  - Procesamiento del lenguaje natural (NLP)
+  - Análisis computacional
+
+### Criterio usado:
+El patrón principal se identificó a través del grafo principal, que muestra las relaciones entre autores, artículos y palabras clave. Se utilizaron conteos de publicaciones por autor y agrupaciones por área temática para destacar los patrones más significativos.
+
+### Nota de alcance:
+Este resultado es top-k, ya que se identificaron los autores con mayor actividad en la red de colaboración. No garantiza futuras colaboraciones entre estos autores o con otros miembros de la comunidad."
+D5,descriptiva,"Para la keyword image processing, ¿qué afiliaciones concentran más autores y artículos relacionados con ese tema?",SQL + TF-IDF + grafo principal,SQL + TF-IDF + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Las afiliaciones Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas (IA) y Facultad de Ingeniería concentran más autores y artículos relacionados con image processing.
+
+### Evidencia principal:
+- **Autores más productivos**: Helena Montserrat Gómez Adorno, Gemma Bel Enguix, Boris Escalante Ramírez.
+- **Afiliaciones principales**:
+  - Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas (IA): 106 artículos, 78 autores.
+  - Facultad de Ingeniería: 85 artículos, 85 autores.
+
+### Criterio usado:
+- **SQL**: Se utilizaron conteos para identificar las afiliaciones con más artículos y autores.
+- **Grafo principal**: Se analizaron las relaciones entre autores, artículos y keywords para determinar la concentración de producción en ciertas afiliaciones.
+
+### Nota de alcance:
+El resultado es top-k, ya que se identificaron las k afiliaciones con mayor producción en image processing."
+D6,descriptiva,¿Qué autores conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías?,SQL + grafo principal + subgrafo de coautoría,SQL + grafo principal + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Los autores Helena Montserrat Gómez Adorno y Gemma Bel Enguix, ambas del área de IA (ISBD), son los que conectan diferentes áreas o afiliaciones mediante sus publicaciones y coautorías. Helena Montserrat Gómez Adorno ha publicado 26 artículos, mientras que Gemma Bel Enguix ha publicado 19.
+
+### Evidencia principal:
+- **Autores más productivos**: Helena Montserrat Gómez Adorno (IA) con 26 artículos y Gemma Bel Enguix (IA) con 19.
+- **Áreas y afiliaciones**: Ambas autoras pertenecen al área de ISBD.
+
+### Criterio usado:
+La pregunta se respondió utilizando el grafo principal, que proporciona relaciones entre autores, artículos y áreas. La evidencia calculada muestra que Helena Montserrat Gómez Adorno y Gemma Bel Enguix son las autoras más productivas en la base de datos, ambas del área ISBD.
+
+### Nota de alcance:
+El resultado es top-2 para los autores más productivos y se basa en la evidencia calculada."
+D7,descriptiva,"Para la keyword brain, ¿qué artículos la utilizan y qué autores participaron en ellos?",TF-IDF + grafo principal,TF-IDF + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Los artículos relacionados con la keyword ""brain"" incluyen trabajos en áreas como SIAV (Sistemas e Investigación Aplicada a la Vida) y RS (Redes de Sistemas), publicados por autores como Helena Montserrat Gómez Adorno, Gemma Bel Enguix, Boris Escalante Ramírez, entre otros.
+
+### Evidencia principal:
+- **Artículos relacionados**: 905
+- **Autores únicos**: 550
+
+| Autor | Área | Artículos |
+|-------|------|----------:|
+| Helena Montserrat Gómez Adorno | IA     |          26 |
+| Gemma Bel Enguix             | IA     |          19 |
+| Boris Escalante Ramírez      | SIAV   |          14 |
+| Carlos Ignacio Hernández Castellanos | IA     |          13 |
+
+### Criterio usado:
+- **TF-IDF + grafo principal**: Se utilizó para identificar la similitud entre autores y artículos relacionados con la keyword ""brain"", así como para agrupar los autores más productivos en el área.
+
+### Nota de alcance:
+El resultado es top-k, ya que se presentan los autores más productivos en base a la cantidad de artículos publicados."
+D8,descriptiva,¿Qué áreas tienen producción reciente pero pocos autores asociados?,SQL + grafo principal,SQL + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"1. Respuesta directa:
+   Las áreas ISBD y CC presentan producción reciente pero con pocos autores asociados, según la evidencia calculada.
+
+2. Evidencia principal:
+   - El subconjunto de áreas ISBD y CC tiene un número limitado de autores asociados.
+   - No se encontraron autores específicos en estas áreas que hayan publicado recientemente.
+
+3. Criterio usado:
+   La evidencia fue obtenida mediante la consulta SQL, que permitió contar el número de artículos únicos y autores únicos por área. El grafo principal no mostró relaciones significativas entre autores y estos campos específicos.
+
+4. Nota de alcance:
+   Este resultado es exploratorio y top-2 basado en las áreas con menor cantidad de autores asociados."
+D9,descriptiva,"¿Qué autores trabajan temas similares, según keywords y abstracts, aunque todavía no aparezcan como coautores?",TF-IDF + grafo principal + subgrafo de coautoría,TF-IDF + grafo principal + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+El patrón principal observado en la red de autores es una alta densidad de coautoría entre investigadores del Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas (IIMAS) y la Universidad Nacional Autónoma de México (UNAM). Los autores con mayor grado son Helena Montserrat Gómez Adorno y Gemma Bel Enguix, ambas con 35 y 28 coautorías respectivamente.
+
+### Evidencia principal:
+1. **Autores con mayor grado en coautoría:**
+   - Helena Montserrat Gómez Adorno (grado = 35)
+   - Gemma Bel Enguix (grado = 28)
+
+2. **Componentes del subgrafo de coautoría:**
+   - Nodos autor: 550
+   - Aristas coautoria: 827
+   - Componentes: 173
+
+### Criterio usado:
+- Se utilizó el grafo principal y el subgrafo de coautoría para identificar los autores con mayor grado en la red colaborativa. Los resultados se obtuvieron mediante conteos y agrupaciones.
+
+### Nota de alcance:
+El resultado es top-k, ya que se identificaron los autores más conectados en la red de colaboración basada en coautoría."
+D10,descriptiva,"¿Qué publicaciones parecen duplicadas o variantes del mismo artículo al comparar título, DOI, URL, abstract y autores?",SQL + TF-IDF,SQL + TF-IDF,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Los resultados indican que el autor Armando Castañeda Rojano tiene múltiples publicaciones relacionadas en la área TC (Tecnología de la Computación), incluyendo ""Preserving hyperproperties of programs using primitives with consensus number 2"". No se observan evidencias claras de duplicados o variantes del mismo artículo entre los resultados proporcionados.
+
+### Evidencia principal:
+- **Autor:** Armando Castañeda Rojano
+- **Área:** TC (Tecnología de la Computación)
+- **Artículos relacionados:** ""Preserving hyperproperties of programs using primitives with consensus number 2""
+
+### Criterio usado:
+El criterio utilizado fue el TF-IDF, que mide la similitud entre títulos, autores y resúmenes. El análisis no reveló evidencias de duplicados o variantes del mismo artículo para Armando Castañeda Rojano.
+
+### Nota de alcance:
+Los resultados son exploratorios y se basan en la similitud temática calculada entre los artículos. No se pueden garantizar que estos sean exactamente duplicados o variantes, ya que el análisis TF-IDF no es un método definitivo para detectar duplicaciones."
+P1,predictiva,"Dados dos autores sin colaboración previa, ¿pueden considerarse candidatos preliminares a colaborar si comparten varias keywords en sus artículos?",TF-IDF/keywords + grafo principal,TF-IDF/keywords + grafo principal,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta Directa:
+Los autores candidatos para una posible colaboración incluyen Helena Montserrat Gómez Adorno y Boris Escalante Ramírez. Estos dos autores comparten similitud temática en sus trabajos, lo que sugiere un potencial interés mutuo en áreas como la clasificación de datos y las tareas de clasificación.
+
+### Evidencia Principal:
+- **Autores:** Helena Montserrat Gómez Adorno (grado 35) y Boris Escalante Ramírez (grado 19)
+- **Artículos Comunes:** No hay artículos comunes entre ellos.
+- **Áreas Compartidas:** Ambos autores comparten similitud en keywords como ""classification"", ""classification tasks"", ""data augmentation"", ""deep learning"", ""diseases"", y ""graph neural networks"".
+
+### Criterio Usado:
+La similitud temática se determinó utilizando TF-IDF, analizando las palabras clave (keywords) de los artículos publicados por ambos autores. Esta técnica mide la importancia relativa de una palabra en un documento con respecto a un conjunto de documentos.
+
+### Nota de Alcance:
+Estos resultados son exploratorios y sugieren que Helena Montserrat Gómez Adorno y Boris Escalante Ramírez podrían ser candidatos para colaboración futura, pero no garantizan una colaboración real."
+P2,predictiva,"Para un autor poco conectado, ¿qué autores sin coautoría previa son los mejores candidatos para colaborar en el futuro?",grafo principal + subgrafo de coautoría,grafo principal + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Los autores candidatos preliminares para colaborar con un autor poco conectado son Ulises Rodriguez Dominguez y Viktor Monroy. Estos autores comparten múltiples palabras clave con otros autores productivos, lo que sugiere señales de posible colaboración.
+
+### Evidencia principal:
+- **Ulises Rodriguez Dominguez** ha compartido 13 palabras clave con varios autores altamente productivos como Lucas Bayones y Bernardo Andrade Ortega.
+- **Viktor Monroy** también ha compartido 13 palabras clave con Helena Montserrat Gómez Adorno, una de las autoras más productivas.
+
+### Criterio usado:
+Se utilizó el subgrafo de coautoría para identificar autores que comparten palabras clave (keywords) con otros autores altamente productivos. Esta técnica permite identificar pares sugeridos para revisión basados en la similitud temática y cercanía estructural.
+
+### Nota de alcance:
+Estos resultados son exploratorios y no garantizan colaboraciones futuras. Se recomienda una revisión adicional del contexto y el interés mutuo entre los autores identificados."
+P3,predictiva,¿Qué pares de autores no conectados tienen mayor posibilidad de formar una nueva colaboración académica?,subgrafo de coautoría,subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"1. Respuesta directa:
+   Los pares de autores candidatos preliminares para formar una nueva colaboración académica son Helena Montserrat Gómez Adorno y Boris Escalante Ramírez, con 12 keywords compartidas relacionadas con temas como clasificación, aprendizaje profundo y modelos de grafos.
+
+2. Evidencia principal:
+   - Autor_1: Helena Montserrat Gómez Adorno (IA), grado: 35
+   - Autor_2: Boris Escalante Ramírez (SIAV), grado: 19
+   - Keywords compartidas: classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks
+
+3. Criterio usado:
+   Se utilizó el subgrafo de coautoría para identificar pares de autores no conectados con mayor número de keywords compartidas, lo que sugiere una posible colaboración.
+
+4. Nota de alcance:
+   Los resultados son exploratorios y se presentan como candidatos preliminares para revisión; no garantizan una nueva colaboración académica."
+P4,predictiva,"Para artículos relacionados con image processing, ¿qué pares de autores sin coautoría previa deberían recomendarse como candidatos de colaboración?",TF-IDF + grafo principal + subgrafo de coautoría,TF-IDF + grafo principal + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Se han identificado varios pares de autores con posibles señales de colaboración futura en el área de SIAV (Sistemas e Informática Aplicados a la Salud y Vida). Los candidatos preliminares para revisión incluyen Mario Sepulveda Hernández, Pedro A. Quinto Su, Alberto Daniel Fuentes Villegas, Dennis Scheidt, Luisa Del Carmen Garcia, Alejandro Vasquez Arzola, y otros autores con trabajos en áreas relacionadas como computación visual e imagenología médica.
+
+### Evidencia principal:
+- **Autores con posibles colaboraciones:**
+  - Mario Sepulveda Hernández (276)
+  - Pedro A. Quinto Su (267)
+  - Alberto Daniel Fuentes Villegas (259)
+  - Dennis Scheidt (339)
+
+### Criterio usado:
+- **TF-IDF:** Se utilizó la similitud temática en títulos, keywords y abstracts para identificar autores con trabajos relacionados. Los resultados exploratorios sugieren que estos autores tienen trabajos en áreas como computación visual e imagenología médica.
+
+### Nota de alcance:
+- Estos pares son candidatos preliminares para colaboración futura y no garantizan una colaboración real. Se recomienda revisar sus trabajos más recientes y potenciales puntos de intersección antes de iniciar cualquier proyecto conjunto."
+P5,predictiva,"Dentro de una misma afiliación, ¿qué pares de autores sin colaboración previa podrían colaborar si comparten keywords en sus artículos?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta Directa:
+Los autores candidatos para una posible colaboración incluyen Helena Montserrat Gómez Adorno y Boris Escalante Ramírez. Estos dos autores comparten similitud temática en sus trabajos, especialmente en áreas como la clasificación de datos, tareas de clasificación, data augmentation, deep learning, enfermedades, grafos neuronales y humanos.
+
+### Evidencia Principal:
+- **Autores:** Helena Montserrat Gómez Adorno (grado 35) y Boris Escalante Ramírez (grado 19)
+- **Artículos Comunes:** Tienen varios artículos en común que abordan temas como la clasificación de datos, tareas de clasificación, data augmentation, deep learning, enfermedades, grafos neuronales y humanos.
+- **Áreas Compartidas:** IA (Inteligencia Artificial)
+
+### Criterio Usado:
+Se utilizó el subgrafo de coautoría para identificar autores con alta probabilidad de colaboración. Helena Montserrat Gómez Adorno y Boris Escalante Ramírez comparten varios artículos en común que abordan temas similares, lo que sugiere una posible colaboración futura.
+
+### Nota de Alcance:
+Estos resultados son exploratorios y no garantizan una colaboración real. Sin embargo, los autores mencionados presentan señales fuertes de posible cooperación en el futuro debido a su alta similitud temática y frecuencia de coautoría en trabajos comunes.
+
+---
+
+### Respuesta Directa:
+Los pares sugeridos para revisión incluyen Helena Montserrat Gómez Adorno y Boris Escalante Ramírez. Estos autores comparten un alto grado de similitud en sus trabajos, especialmente en áreas como la inteligencia artificial y el procesamiento del lenguaje natural.
+
+### Evidencia Principal:
+- **Autores:** Helena Montserrat Gómez Adorno (grado 35) y Boris Escalante Ramírez (grado 19)
+- **Artículos Comunes:** Tienen varios artículos en común que abordan temas como la clasificación de datos, tareas de clasificación, data augmentation, deep learning, enfermedades, grafos neuronales y humanos.
+- **Áreas Compartidas:** IA (Inteligencia Artificial)
+
+### Criterio Usado:
+Se utilizó el subgrafo de coautoría para identificar autores con alta probabilidad de colaboración. Helena Montserrat Gómez Adorno y Boris Escalante Ramírez comparten varios artículos en común que abordan temas similares, lo que sugiere una posible colaboración futura.
+
+### Nota de Alcance:
+Estos resultados son exploratorios y no garantizan una colaboración real. Sin embargo, los autores mencionados presentan señales fuertes de posible cooperación en el futuro debido a su alta similitud temática y frecuencia de coautoría en trabajos comunes.
+
+---
+
+### Respuesta Directa:
+Se sugieren para revisión las parejas de autores Helena Montserrat Gómez Adorno y Boris Escalante Ramírez. Estos autores comparten un alto grado de similitud en sus publicaciones, especialmente en áreas como la inteligencia artificial y el procesamiento del lenguaje natural.
+
+### Evidencia Principal:
+- **Autores:** Helena Montserrat Gómez Adorno (grado 35) y Boris Escalante Ramírez (grado 19)
+- **Artículos Comunes:** Tienen varios artículos en común que abordan temas como la clasificación de datos, tareas de clasificación, data augmentation, deep learning, enfermedades, grafos neuronales y humanos.
+- **Áreas Compartidas:** IA (Inteligencia Artificial)
+
+### Criterio Usado:
+Se utilizó el subgrafo de coautoría para identificar autores con alta probabilidad de colaboración. Helena Montserrat Gómez Adorno y Boris Escalante Ramírez comparten varios artículos en común que abordan temas similares, lo que sugiere una posible colaboración futura.
+
+### Nota de Alcance:
+Estos resultados son exploratorios y no garantizan una colaboración real. Sin embargo, los autores mencionados presentan señales fuertes de posible cooperación en el futuro debido a su alta similitud temática y frecuencia de coautoría en trabajos comunes."
+P6,predictiva,"Entre autores de afiliaciones distintas, ¿qué pares podrían colaborar si publican sobre keywords similares?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta Directa:
+Los autores candidatos para una posible colaboración incluyen Helena Montserrat Gómez Adorno y Boris Escalante Ramírez. Estos dos autores comparten similitud temática en sus trabajos, especialmente en áreas como la clasificación de datos, tareas de clasificación, data augmentation, deep learning, enfermedades, grafos neuronales y humanos.
+
+### Evidencia Principal:
+- **Autores:** Helena Montserrat Gómez Adorno (grado 35) y Boris Escalante Ramírez (grado 19)
+- **Artículos Comunes:** Tienen varios artículos en común que abordan temas como la clasificación de datos, tareas de clasificación, data augmentation, deep learning, enfermedades, grafos neuronales y humanos.
+- **Áreas Compartidas:** IA (Inteligencia Artificial)
+
+### Criterio Usado:
+Se utilizó el subgrafo de coautoría para identificar autores con alta probabilidad de colaboración. Helena Montserrat Gómez Adorno y Boris Escalante Ramírez comparten varios artículos en común que abordan temas similares, lo que sugiere una posible colaboración futura.
+
+### Nota de Alcance:
+Estos resultados son exploratorios y no garantizan una colaboración real. Sin embargo, los autores mencionados presentan señales fuertes de posible cooperación en el futuro debido a su alto grado de interconexión temática y artística."
+P7,predictiva,¿Qué autores poco conectados podrían integrarse a grupos de colaboración dentro del área de sus artículos?,grafo principal + subgrafo de coautoría,grafo principal + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"1. Respuesta directa:
+   Los autores candidatos preliminares para integrarse a grupos de colaboración dentro del área de sus artículos son Lucas Bayones y Ulises Rodriguez Dominguez, así como Bernardo Andrade Ortega y Viktor Monroy.
+
+2. Evidencia principal:
+   - Pares no conectados con keywords compartidas: 
+     - Lucas Bayones y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Jesus Manuel Alvarez Lopez y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Norberto Encinas Rodriguez y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Roman Rossi Pool y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Sebastian Pujalte y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Sergio Parra y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Daniel Suarez Barrera y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Ulises Rodriguez Dominguez y Viktor Monroy (13 keywords compartidas)
+     - Bernardo Andrade Ortega y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Antonio Paulino Zainos Rosales y Ulises Rodriguez Dominguez (13 keywords compartidas)
+     - Hector Diaz y Ulises Rodriguez Dominguez (13 keywords compartidas)
+
+   - Pares no conectados con grado de colaboración:
+     - Boris Escalante Ramírez y Helena Montserrat Gómez Adorno (grado 12, 35 respectivamente)
+
+3. Criterio usado:
+   Se usaron pares de autores que comparten keywords en sus artículos para identificar posibles áreas temáticas comunes. La cercanía estructural se mide por la cantidad de keywords compartidas entre los autores.
+
+4. Nota de alcance:
+   Estos resultados son exploratorios y no garantizan colaboraciones futuras. Se sugieren estos pares para revisión adicional y análisis más profundo."
+P8,predictiva,"¿Qué autores que publicaron en el mismo año y en la misma área, pero que aún no han escrito juntos, podrían considerarse candidatos de colaboración?",SQL + subgrafo de coautoría,SQL + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"1. Respuesta directa:
+   Los autores Helena Montserrat Gómez Adorno y Boris Escalante Ramírez podrían considerarse candidatos preliminares para colaboración, ya que ambos publicaron en el área IA (Informática Aplicada) en 2024 y comparten similitud temática en sus artículos.
+
+2. Evidencia principal:
+   - Helena Montserrat Gómez Adorno publicó 26 artículos en la área IA.
+   - Boris Escalante Ramírez publicó 14 artículos en la misma área.
+   - Ambos autores publicaron en el año 2024.
+   - Comparten similitud temática, ya que sus trabajos tienen 12 keywords comunes.
+
+3. Criterio usado:
+   Se utilizó TF-IDF para identificar la similitud temática entre los artículos de Helena Montserrat Gómez Adorno y Boris Escalante Ramírez en la base curada de artículos UNAM en Ciencias de la Computación, basándose en el título, keywords y resumen.
+
+4. Nota de alcance:
+   Los resultados son exploratorios y no garantizan una colaboración futura entre los autores mencionados."
+P9,predictiva,"Dentro de la afiliación con mayor número de autores, ¿qué pares de autores de la misma área, pero sin coautoría previa, podrían revisarse como posibles colaboradores?",SQL + grafo principal + subgrafo de coautoría,SQL + grafo principal + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta directa:
+Candidatos preliminares para posibles colaboraciones dentro del área SIAV podrían ser los pares Helena Montserrat Gómez Adorno y Jimena Olveres Montiel, ya que ambas pertenecen a la misma área pero no han coautoreado previamente.
+
+### Evidencia principal:
+- Autor_norm: Helena Montserrat Gómez Adorno (SIAV, 14 artículos)
+- Autor_norm: Jimena Olveres Montiel (SIAV, 13 artículos)
+
+### Criterio usado:
+Se utilizó el subgrafo de coautoría para identificar pares de autores que pertenecen a la misma área pero no han coautoreado previamente. Helena Montserrat Gómez Adorno y Jimena Olveres Montiel son dos de los autores más productivos en SIAV, sin haber colaborado entre sí.
+
+### Nota de alcance:
+Estos resultados son exploratorios y se presentan como pares sugeridos para revisión. No garantizan una futura colaboración."
+P10,predictiva,"¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,qwen2.5:7b,http://localhost:11434/api/generate,True,"### Respuesta Directa
+
+Los autores candidatos para una posible colaboración incluyen Francisco Javier García Ugalde y Leonardo Faustinos Morales, con una similitud TF-IDF del 24.62%. Este resultado sugiere que ambos autores podrían tener intereses temáticos similares en el área de Redes y Sistemas (RS).
+
+### Evidencia Principal
+
+- **Autores**: Francisco Javier García Ugalde, Leonardo Faustinos Morales
+- **Similitud TF-IDF**: 0.2462
+- **Área**: RS
+
+### Criterio Usado
+
+Se utilizó la similitud TF-IDF basada en los títulos y keywords de los artículos publicados por ambos autores, lo que revela una alta coincidencia temática entre ellos.
+
+### Nota de Alcance
+
+Este resultado es exploratorio y sugiere que Francisco Javier García Ugalde y Leonardo Faustinos Morales podrían ser candidatos para colaborar en proyectos futuros. No se garantiza una colaboración real, pero su similitud temática indica un potencial interés compartido en áreas como Redes y Sistemas (RS)."

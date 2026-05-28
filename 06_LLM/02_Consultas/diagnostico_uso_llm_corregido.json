@@ -1,0 +1,12 @@
+{
+  "modelo_llm": "qwen2.5:7b",
+  "endpoint_llm": "http://localhost:11434/api/generate",
+  "ollama_detectado": true,
+  "modelos_disponibles": [
+    "qwen2.5:7b"
+  ],
+  "preguntas_totales": 20,
+  "preguntas_con_llm": 20,
+  "todas_usaron_llm": true,
+  "preguntas_sin_llm": []
+}

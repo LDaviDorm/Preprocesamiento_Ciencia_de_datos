@@ -1,0 +1,160 @@
+REPORTE FINAL DE CONSULTAS HETEROGÉNEAS CON LLM LOCAL
+
+1. Dictamen general
+
+La etapa de consultas heterogéneas con LLM local queda técnicamente correcta y lista para cerrarse.
+
+La ejecución final confirmó que:
+- Se detectó Ollama local correctamente.
+- Se utilizó el modelo qwen2.5:7b.
+- Se respondieron las 20 preguntas del proyecto.
+- Las 20 preguntas usaron el LLM local.
+- No se usó API_KEY.
+- Las respuestas fueron generadas a partir de resultados calculados previamente con SQL, NetworkX y TF-IDF.
+
+2. Objetivo de esta etapa
+
+El objetivo fue implementar una libreta capaz de responder preguntas descriptivas y predictivas sobre la base bibliográfica curada usando consultas heterogéneas.
+
+La solución integra tres fuentes de consulta locales:
+
+- SQLite:
+  Para consultas tabulares sobre la base canónica artículo-autor.
+
+- NetworkX:
+  Para consultar el grafo principal y el subgrafo de coautoría.
+
+- TF-IDF:
+  Para similitud textual o temática usando Titulo, Keywords y Abstract.
+
+El LLM local se usó como capa de redacción final y explicación de resultados, no como fuente de datos.
+
+3. Recursos utilizados
+
+La etapa trabajó con los siguientes recursos ya preparados:
+
+- Base SQLite con una tabla canónica artículo-autor.
+- Índice TF-IDF de artículos.
+- Índice TF-IDF de autores.
+- Grafo principal en NetworkX.
+- Subgrafo de coautoría en NetworkX.
+- Archivo simple de 20 preguntas con id, tipo, pregunta y componentes consultados.
+
+4. Modelo LLM utilizado
+
+Modelo configurado:
+qwen2.5:7b
+
+Endpoint local:
+http://localhost:11434/api/generate
+
+Ejecución:
+Ollama fue detectado correctamente y la libreta validó que el modelo estuviera disponible antes de responder las preguntas.
+
+Resultado de validación:
+- Preguntas totales: 20
+- Preguntas respondidas con LLM: 20
+- Todas usaron LLM local: True
+
+5. Preguntas respondidas
+
+Total de preguntas:
+20
+
+Distribución:
+- Preguntas descriptivas: 10
+- Preguntas predictivas: 10
+
+Las preguntas cubren:
+- Producción por área y año.
+- Autores con mayor producción.
+- Artículos con mayor número de coautores.
+- Keywords frecuentes.
+- Afiliaciones relacionadas con temas específicos.
+- Autores que conectan áreas o afiliaciones.
+- Artículos asociados a keywords.
+- Áreas con producción reciente y pocos autores.
+- Similitud temática entre autores.
+- Posibles variantes o duplicados de artículos.
+- Candidatos preliminares de colaboración académica.
+
+6. Motores utilizados
+
+Frecuencia de uso por motor:
+
+- SQL: 13 preguntas.
+- TF-IDF: 10 preguntas.
+- Grafo principal: 14 preguntas.
+- Subgrafo de coautoría: 11 preguntas.
+
+La selección de motores siguió la lógica del archivo de preguntas:
+- SQL para conteos, agrupaciones y filtros.
+- Grafo principal para relaciones artículo-autor-keyword-afiliación.
+- Subgrafo de coautoría para relaciones entre autores.
+- TF-IDF para similitud textual y temática.
+
+7. Control de calidad aplicado al prompt
+
+Se corrigió el prompt para reducir interpretaciones indebidas del LLM.
+
+Las reglas principales incorporadas fueron:
+
+- Usar los códigos de área exactamente como aparecen en la base:
+  ISBD, CC, IA, TC, SIAV, RS.
+
+- No expandir ni interpretar el significado de las siglas de área.
+
+- No inventar autores, artículos, afiliaciones, DOI, URL, áreas, keywords ni cantidades.
+
+- No calcular totales nuevos si no aparecen explícitamente en la evidencia.
+
+- Presentar las preguntas predictivas como resultados exploratorios o candidatos preliminares, no como predicciones garantizadas.
+
+- Distinguir entre:
+  TF-IDF = similitud textual o temática.
+  Subgrafo de coautoría = cercanía estructural, vecinos comunes, grado o Jaccard.
+
+- Incluir una nota de alcance cuando el resultado sea top-k, preliminar o exploratorio.
+
+8. Evaluación del resultado final
+
+El resultado final es correcto para cerrar la etapa porque:
+
+- La libreta comprobó que el LLM local se usó en las 20 preguntas.
+- Las respuestas se generaron con evidencia calculada.
+- Las respuestas ya no expanden incorrectamente las siglas de área.
+- Las respuestas predictivas se presentan como candidatas preliminares.
+- Las respuestas descriptivas incluyen evidencia y criterio de consulta.
+- La trazabilidad conserva la pregunta, componentes, motores usados, prompt y resumen del resultado.
+- La arquitectura se mantiene fiel al modelo del proyecto: base tabular, grafo principal, subgrafo y texto.
+
+9. Observaciones de alcance
+
+Las respuestas predictivas no deben interpretarse como predicciones definitivas de colaboración futura.
+
+Su alcance correcto es:
+- sugerencias preliminares,
+- pares candidatos,
+- señales de posible colaboración,
+- resultados exploratorios basados en estructura de coautoría, keywords y similitud textual.
+
+Las respuestas descriptivas tampoco sustituyen una revisión bibliográfica completa; resumen patrones observados en la base curada.
+
+10. Archivos de salida de esta etapa
+
+La libreta generó:
+
+- Respuestas de las 20 preguntas en formato CSV.
+- Respuestas de las 20 preguntas en formato TXT.
+- Trazabilidad de las consultas y prompts usados.
+- Diagnóstico de uso del LLM local.
+- Libreta ejecutada con la lógica de SQL, NetworkX, TF-IDF y LLM local.
+
+11. Conclusión
+
+La etapa de consultas heterogéneas con LLM local puede cerrarse.
+
+La solución final cumple con la lógica esperada:
+pregunta en lenguaje natural -> selección de motores -> ejecución de consultas SQL, NetworkX y/o TF-IDF -> integración de evidencia -> redacción final con LLM local.
+
+No se requiere modificar nuevamente la arquitectura ni rehacer las preguntas. Cualquier mejora futura sería de estilo o extensión de respuestas, no de funcionamiento técnico.
