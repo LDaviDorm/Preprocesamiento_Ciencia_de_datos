@@ -11,6 +11,5 @@ Esta carpeta no contiene datos crudos. Contiene documentos de control:
 - `manifiesto_archivos.md`: nombres oficiales de archivos esperados por editorial y área.
 - `criterios_generales_depuracion.md`: reglas comunes usadas en la depuración preliminar.
 - `resumen_cuantitativo_recoleccion.md`: tabla resumen para el PDF.
-- `pendientes_recoleccion.md`: actividades pendientes antes de la integración global.
 
 Estos documentos sirven como evidencia de procedencia, linaje y control del proceso antes de pasar a las etapas de correspondencia de esquemas, mapeo al modelo canónico, perfilado, limpieza, data matching, fusión y obtención del registro de oro.
