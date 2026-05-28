@@ -1,0 +1,345 @@
+REPORTE DE PREPARACIÓN DE DATOS PARA CONSULTAS HETEROGÉNEAS CON LLM
+================================================================================
+
+Etapa documentada
+-----------------
+Esta etapa corresponde a la preparación de los recursos locales que serán usados en
+la siguiente libreta de consultas heterogéneas con LLM. El objetivo no fue responder
+todavía las 20 preguntas, sino dejar listos los tres insumos principales:
+
+1. Una base SQLite para consultas tabulares.
+2. Un índice TF-IDF por artículo para búsqueda textual y similitud temática.
+3. Un índice TF-IDF por autor para comparar perfiles temáticos de autores.
+
+La decisión metodológica fue mantener el modelo canónico limpio como fuente
+principal, sin modificarlo, y crear recursos derivados para facilitar las consultas.
+La estructura relacional se mantuvo simple: una sola tabla canónica en SQLite. Las
+relaciones complejas autor-artículo-keyword-afiliación se consultarán después desde
+los grafos NetworkX ya creados, y la similitud textual se resolverá con TF-IDF.
+
+
+Archivos generados
+------------------
+La libreta fue configurada para generar únicamente tres archivos de salida:
+
+1. UNAM_Completo_2024_2025.sqlite
+   Base SQLite local con una sola tabla: articulos_autores.
+
+2. tfidf_articulos.joblib
+   Objeto serializado con el vectorizador TF-IDF, la matriz TF-IDF por artículo y
+   los metadatos necesarios para recuperar los artículos encontrados.
+
+3. tfidf_autores.joblib
+   Objeto serializado con el mismo vectorizador TF-IDF, la matriz TF-IDF por autor
+   y los metadatos necesarios para recuperar autores y sus temas agregados.
+
+
+Preparación de SQLite
+---------------------
+Se creó una base SQLite con una sola tabla física:
+
+articulos_autores
+
+Esta tabla conserva la estructura artículo-autor-afiliación de la base curada. Cada
+fila representa una relación entre un artículo y un autor UNAM, junto con sus
+metadatos bibliográficos.
+
+Columnas de la tabla articulos_autores:
+
+indice INTEGER
+Titulo TEXT
+Año INTEGER
+Autor_norm TEXT
+Afiliacion1 TEXT
+Afiliacion2 TEXT
+ISBN TEXT
+ISSN TEXT
+Doi TEXT
+URL TEXT
+Area TEXT
+Subarea TEXT
+Keywords TEXT
+Abstract TEXT
+
+Para mejorar consultas frecuentes se crearon índices internos de SQLite sobre:
+
+indice
+Autor_norm
+Area
+Año
+Titulo
+
+Estos índices no cambian los datos, sólo facilitan búsquedas, agrupaciones y filtros
+que se usarán en la libreta de consultas.
+
+La decisión de usar una sola tabla se tomó porque la base ya está limpia y en formato
+canónico. Crear muchas tablas relacionales habría duplicado relaciones que ya están
+representadas de mejor manera en los grafos NetworkX.
+
+
+Métricas de la tabla SQLite
+---------------------------
+La tabla articulos_autores contiene:
+
+Filas autor-artículo: 905
+Artículos únicos: 406
+Títulos únicos: 406
+Autores únicos: 550
+
+Rango de índices:
+
+Mínimo: 1
+Máximo: 406
+Índices únicos: 406
+Huecos en el índice: 0
+
+Validaciones estructurales:
+
+Duplicados indice + Autor_norm: 0
+Filas sin título: 0
+Filas sin autor: 0
+Filas sin afiliación principal: 0
+Subarea no vacía: 0
+
+Distribución por año:
+
+2024: 187 artículos, 396 filas autor-artículo
+2025: 219 artículos, 509 filas autor-artículo
+
+Distribución por área a nivel de artículos:
+
+IA: 117 artículos
+SIAV: 116 artículos
+TC: 57 artículos
+CC: 52 artículos
+RS: 38 artículos
+ISBD: 26 artículos
+
+Distribución por área a nivel de filas autor-artículo:
+
+SIAV: 314 filas
+IA: 278 filas
+TC: 92 filas
+CC: 91 filas
+RS: 71 filas
+ISBD: 59 filas
+
+Campos vacíos esperados o permitidos:
+
+Afiliacion2 vacía: 855 filas
+ISBN vacío: 582 filas
+ISSN vacío: 155 filas
+Doi vacío: 35 filas
+Keywords vacío: 12 filas
+Subarea vacía: 905 filas
+URL vacío: 0 filas
+Abstract vacío: 0 filas
+
+La columna Subarea queda vacía de manera intencional, conforme a la regla definida
+para el modelo canónico final.
+
+
+Preparación del índice TF-IDF
+-----------------------------
+Se creó una representación textual-vectorial local usando TF-IDF. Esta capa no
+reemplaza a la base tabular ni a los grafos. Funciona como apoyo para las preguntas
+que requieren búsqueda textual o similitud temática.
+
+Campos usados:
+
+Titulo
+Keywords
+Abstract
+
+En vez de crear un índice separado para cada campo, se creó una representación
+combinada ponderada. La ponderación usada fue:
+
+Titulo x3
+Keywords x4
+Abstract x1
+
+Justificación:
+
+- Titulo identifica de forma compacta el tema del artículo.
+- Keywords son el campo más importante para detectar similitud temática, por eso
+  reciben el mayor peso.
+- Abstract aporta contexto amplio, pero si se usa con demasiado peso puede dominar
+  la búsqueda y diluir el efecto de las keywords.
+
+Esta combinación permite que la siguiente libreta pueda responder preguntas sobre:
+
+- artículos relacionados con una keyword;
+- autores con temas similares;
+- posibles candidatos de colaboración por cercanía temática;
+- publicaciones parecidas o variantes;
+- similitud entre autores a partir de los textos de sus artículos.
+
+
+Configuración técnica de TF-IDF
+-------------------------------
+El vectorizador TF-IDF se configuró con:
+
+Máximo de términos: 30,000
+N-gramas: unigramas y bigramas
+min_df: 1
+max_df: 0.95
+Stopwords: lista básica en español e inglés
+Normalización: la propia de TfidfVectorizer
+
+Se usó el mismo vectorizador para artículos y autores. Esto es importante porque
+ambas matrices quedan en el mismo espacio vectorial, lo que permitirá comparar:
+
+consulta contra artículos;
+artículo contra artículo;
+autor contra autor;
+consulta contra perfil temático de autor.
+
+
+Índice TF-IDF por artículo
+--------------------------
+El índice por artículo contiene una fila por artículo único.
+
+Matriz TF-IDF por artículo:
+
+Dimensión: 406 x 30,000
+
+Cada fila representa un artículo. El objeto guardado incluye:
+
+- tipo: tfidf_articulos
+- descripción del índice
+- campos textuales usados
+- ponderación aplicada
+- vectorizer
+- matrix
+- metadata
+
+Metadatos incluidos por artículo:
+
+indice
+Titulo
+Año
+Area
+Doi
+URL
+ISBN
+ISSN
+Autores
+Afiliaciones1
+Afiliaciones2
+Keywords
+Abstract
+
+Este índice servirá para recuperar artículos por consulta textual, por ejemplo:
+
+image processing
+brain
+machine learning
+robotics
+natural language processing
+medical image analysis
+
+También permitirá comparar artículos entre sí para detectar cercanía temática o
+posibles variantes.
+
+
+Índice TF-IDF por autor
+-----------------------
+El índice por autor se construyó agregando los textos de todos los artículos asociados
+a cada autor. Así, cada autor queda representado por un perfil temático.
+
+Matriz TF-IDF por autor:
+
+Dimensión: 550 x 30,000
+
+Cada fila representa un autor. El objeto guardado incluye:
+
+- tipo: tfidf_autores
+- descripción del índice
+- campos textuales usados
+- ponderación aplicada
+- vectorizer
+- matrix
+- metadata
+
+Metadatos incluidos por autor:
+
+Autor_norm
+num_articulos
+indices
+Titulos
+Areas
+Afiliaciones1
+Afiliaciones2
+Keywords_agregadas
+
+Este índice se creó para apoyar preguntas predictivas o de recomendación, por
+ejemplo:
+
+- autores con temas similares aunque todavía no sean coautores;
+- pares de autores sin colaboración previa con alta similitud temática;
+- autores poco conectados que podrían integrarse a grupos existentes;
+- candidatos de colaboración por cercanía de keywords y abstracts.
+
+
+Autores más productivos detectados en la base preparada
+------------------------------------------------------
+Como validación adicional, se revisó el conteo de artículos por autor. Los autores
+con mayor número de artículos en la base preparada son:
+
+Helena Montserrat Gómez Adorno: 26 artículos
+Gemma Bel Enguix: 19 artículos
+Boris Escalante Ramírez: 15 artículos
+Jimena Olveres Montiel: 14 artículos
+Carlos Ignacio Hernández Castellanos: 13 artículos
+Gerardo Eugenio Sierra Martínez: 11 artículos
+Sergio Rajsbaum Gorodezky: 11 artículos
+Mario Roberto Arrieta Paternina: 10 artículos
+Sergio Luis Ojeda Trueba: 9 artículos
+Armando Castañeda Rojano: 9 artículos
+
+Autores con más de un artículo: 135
+
+Estos conteos son útiles para validar que la tabla SQLite y los metadatos de TF-IDF
+están alineados con la estructura artículo-autor de la base.
+
+
+Decisiones metodológicas relevantes
+-----------------------------------
+1. Se mantuvo una sola tabla SQLite.
+   La base original ya está curada y normalizada como artículo-autor, por lo que no
+   era necesario dividirla en varias tablas. Esto simplifica la explicación y reduce
+   errores en la generación de SQL.
+
+2. No se alteró la base canónica.
+   Los archivos creados son derivados para consulta. No modifican la base limpia.
+
+3. Se creó TF-IDF combinado, no uno por campo.
+   Para responder preguntas temáticas, conviene que título, keywords y abstract
+   participen juntos, pero con pesos distintos.
+
+4. Se creó TF-IDF por artículo y por autor.
+   El índice por artículo permite recuperar publicaciones; el índice por autor permite
+   comparar perfiles temáticos de investigadores.
+
+5. Se evitó crear archivos innecesarios.
+   La libreta genera sólo los tres recursos necesarios para la siguiente etapa.
+
+
+Validación final de la etapa
+----------------------------
+Resultado final validado:
+
+SQLite creado correctamente: sí
+Tabla única articulos_autores: sí
+Columnas canónicas conservadas: sí
+Filas en SQLite: 905
+Artículos en SQLite: 406
+Autores en SQLite: 550
+Índices consecutivos: sí
+Duplicados indice + Autor_norm: 0
+TF-IDF por artículo creado: sí
+TF-IDF por autor creado: sí
+Dimensión TF-IDF artículos: 406 x 30,000
+Dimensión TF-IDF autores: 550 x 30,000
+Archivos generados: 3
+
