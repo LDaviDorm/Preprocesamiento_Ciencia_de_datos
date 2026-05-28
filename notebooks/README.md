@@ -1,3 +1,3 @@
 # notebooks
 
-Coloca aquí las libretas Jupyter del proyecto, numeradas según la fase.
+Libretas Jupyter del proyecto, numeradas según la fase.
