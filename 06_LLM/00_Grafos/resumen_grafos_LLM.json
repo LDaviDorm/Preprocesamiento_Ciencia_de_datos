@@ -1,0 +1,23 @@
+{
+  "base": {
+    "filas": 905,
+    "articulos": 406,
+    "autores": 550
+  },
+  "grafo_principal": {
+    "nodos": 3896,
+    "aristas": 5078,
+    "nodos_por_tipo": {
+      "articulo": 406,
+      "keyword": 2889,
+      "autor": 550,
+      "afiliacion": 51
+    }
+  },
+  "subgrafo_coautoria": {
+    "nodos": 550,
+    "aristas": 827,
+    "componentes_conexas": 173,
+    "componente_mayor": 60
+  }
+}

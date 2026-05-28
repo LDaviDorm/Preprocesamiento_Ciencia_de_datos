@@ -1,0 +1,375 @@
+REPORTE DE GENERACIÓN DE GRAFOS PARA CONSULTAS CON LLM
+
+================================================================================
+1. OBJETIVO DE LA ETAPA
+================================================================================
+
+El objetivo de esta etapa fue transformar la base canónica limpia y curada en una
+representación de grafos que pudiera ser utilizada posteriormente como fuente de
+información para consultas heterogéneas con LLM.
+
+La construcción se hizo tomando como base el modelo de datos ya depurado, sin
+modificar el contenido bibliográfico ni aplicar nuevas reglas de limpieza. En esta
+fase no se eliminaron artículos, no se eliminaron autores y no se modificaron las
+columnas canónicas. El propósito fue únicamente crear estructuras de consulta a
+partir de la base final.
+
+A diferencia de una versión filtrada para link prediction, en esta etapa se decidió
+conservar toda la información disponible de la base. Por ello, los grafos generados
+no aplican el filtro de autores con más de tres artículos. Esto permite que el LLM
+pueda consultar autores con baja producción, artículos aislados, keywords poco
+frecuentes y afiliaciones con pocos registros.
+
+================================================================================
+2. ARCHIVO DE ENTRADA
+================================================================================
+
+El archivo de entrada utilizado fue la base canónica limpia:
+
+UNAM_Completo_2024_2025.csv
+
+La ruta configurada en el código fue:
+
+C:\Users\hazar\Desktop\PROYECTO\05_Correcciones\UNAM_Completo_2024_2025.csv
+
+La base conserva las 14 columnas canónicas:
+
+1. indice
+2. Titulo
+3. Año
+4. Autor_norm
+5. Afiliacion1
+6. Afiliacion2
+7. ISBN
+8. ISSN
+9. Doi
+10. URL
+11. Area
+12. Subarea
+13. Keywords
+14. Abstract
+
+Dimensiones de la base utilizada:
+
+- Filas autor-artículo: 905
+- Artículos únicos: 406
+- Autores únicos: 550
+
+Distribución de artículos por área:
+
+- IA: 117 artículos
+- SIAV: 116 artículos
+- TC: 57 artículos
+- CC: 52 artículos
+- RS: 38 artículos
+- ISBD: 26 artículos
+
+================================================================================
+3. CARPETA DE SALIDA
+================================================================================
+
+Los documentos y grafos se configuraron para guardarse en:
+
+C:\Users\hazar\Desktop\PROYECTO\06_LLM\00_Grafos
+
+En el entorno de ejecución de prueba, los archivos equivalentes quedaron en la
+carpeta de salida local de trabajo.
+
+================================================================================
+4. ARCHIVOS GENERADOS
+================================================================================
+
+Se generaron los siguientes archivos:
+
+1. UNAM_Completo_LLM.csv
+   Copia de trabajo de la base limpia para la etapa de LLM. Conserva las 14
+   columnas canónicas y no altera la base original. Funciona como respaldo tabular
+   directo para consultas posteriores.
+
+2. nodes_catalogue_LLM.csv
+   Catálogo de autores. Cada fila corresponde a un autor único e incluye:
+   - Autor_norm
+   - Afiliacion1 agregada
+   - Afiliacion2 agregada
+   - número de artículos asociados al autor
+
+   Este catálogo facilita la consulta de autores, producción por autor y
+   afiliaciones asociadas.
+
+3. BD_UNAM_Graph_LLM.gml
+   Grafo principal. Contiene nodos de tipo artículo, keyword, autor y afiliación.
+   Es la estructura principal para responder consultas sobre relaciones entre
+   artículos, autores, keywords, áreas, abstracts y afiliaciones.
+
+4. BD_UNAM_Sub_Graph_LLM.gml
+   Subgrafo de coautoría. Contiene únicamente autores como nodos. Las aristas
+   representan coautorías, es decir, pares de autores que participaron en un mismo
+   artículo.
+
+5. resumen_grafos_LLM.json
+   Resumen cuantitativo de la base, del grafo principal y del subgrafo de
+   coautoría.
+
+6. BD_UNAM_Graph_LLM_vista_muestra.png
+   Visualización de una muestra razonable del grafo principal. Se construye a
+   partir de nodos con mayor grado y algunos vecinos, para evitar una visualización
+   saturada del grafo completo.
+
+7. BD_UNAM_Sub_Graph_LLM_vista_muestra.png
+   Visualización de una muestra del subgrafo de coautoría. Permite observar
+   comunidades y autores con más conexiones de coautoría.
+
+8. 01_distribucion_tipos_nodos_LLM.png
+   Gráfica de barras con la cantidad de nodos por tipo en el grafo principal.
+
+9. 02_top_autores_grado_coautoria_LLM.png
+   Gráfica de barras con los autores de mayor grado dentro del subgrafo de
+   coautoría.
+
+10. 06_crear_grafos_llm_principal.ipynb
+    Libreta de Jupyter con el procedimiento completo, comentarios en Markdown,
+    creación de archivos, generación de grafos y visualizaciones.
+
+
+================================================================================
+5. LÓGICA GENERAL DEL CÓDIGO
+================================================================================
+
+El código se organizó de forma sencilla y práctica con las siguientes etapas:
+
+1. Configuración de rutas
+   Se define la raíz del proyecto, el archivo de entrada y la carpeta de salida.
+   También se incluye un fallback para pruebas fuera de la computadora local.
+
+2. Validación de columnas
+   Se comprueba que la base contenga exactamente las 14 columnas canónicas.
+   Si faltan columnas o aparecen columnas extra, el código detiene la ejecución.
+
+3. Limpieza auxiliar de valores
+   Se usan funciones simples para tratar valores vacíos, quitar espacios dobles y
+   evitar cadenas como nan, none, null o n/a.
+
+4. Separación de keywords
+   Las keywords se separan a partir de coma, punto y coma o pipe. Se pasan a
+   minúsculas y se limpian signos residuales como punto y dos puntos. Esta
+   operación sólo se usa para construir nodos keyword; no modifica la base original.
+
+5. Creación del catálogo de autores
+   Se agrupa por Autor_norm y se consolidan afiliaciones observadas por autor.
+   También se calcula el número de artículos únicos por autor.
+
+6. Construcción del grafo principal
+   Se crea un grafo no dirigido con NetworkX. Los nodos se separan por tipo:
+   artículo, keyword, autor y afiliación. Las aristas conectan:
+   - autor con artículo
+   - artículo con keyword
+   - autor con afiliación
+
+7. Construcción del subgrafo de coautoría
+   Se agrupa la base por artículo. Para cada artículo, se generan todas las
+   combinaciones de pares de autores y se crea una arista entre ellos. Si dos
+   autores colaboraron en más de un artículo, la arista incrementa su peso.
+
+8. Exportación
+   Se guardan el grafo principal y el subgrafo en formato GML, compatible con
+   NetworkX y otras herramientas de análisis de grafos.
+
+9. Visualización
+   Se generan visualizaciones de muestra para revisar que los grafos se hayan
+   creado correctamente sin intentar mostrar todos los nodos al mismo tiempo.
+
+10. Resumen
+    Se genera un archivo JSON con métricas principales de la base y los grafos.
+
+================================================================================
+6. DISEÑO DEL GRAFO PRINCIPAL
+================================================================================
+
+El grafo principal se diseñó como una red heterogénea con cuatro tipos de nodos:
+
+1. Artículo
+   Representa cada artículo único de la base. Se identifica con el índice y el
+   título. Los atributos del nodo artículo son:
+   - nombre
+   - indice
+   - Year
+   - ISBN
+   - ISSN
+   - Doi
+   - URL
+   - Area
+   - Abstract
+
+2. Autor
+   Representa cada autor único de la base, usando Autor_norm.
+
+3. Keyword
+   Representa cada keyword única obtenida desde la columna Keywords.
+
+4. Afiliación
+   Representa cada entidad o dependencia presente en Afiliacion1 o Afiliacion2.
+
+Tipos de aristas del grafo principal:
+
+- autor_articulo: conecta un autor con un artículo en el que participa.
+- articulo_keyword: conecta un artículo con cada keyword asociada.
+- autor_afiliacion: conecta un autor con su afiliación o afiliaciones.
+
+Para evitar colisiones entre nodos que pudieran tener el mismo texto, el código
+usa identificadores internos con prefijo de tipo. Por ejemplo:
+
+- articulo::indice::titulo
+- autor::nombre
+- keyword::termino
+- afiliacion::dependencia
+
+Esto evita que una keyword, una afiliación o un autor con textos similares se
+mezclen por accidente.
+
+Métricas del grafo principal:
+
+- Nodos totales: 3,896
+- Aristas totales: 5,078
+
+Distribución de nodos por tipo:
+
+- Artículos: 406
+- Keywords: 2,889
+- Autores: 550
+- Afiliaciones: 51
+
+La distribución muestra que las keywords son el tipo de nodo más numeroso. Esto
+es esperable, porque un mismo artículo puede contener varios términos temáticos,
+y muchas keywords aparecen sólo en pocos artículos.
+
+================================================================================
+7. DISEÑO DEL SUBGRAFO DE COAUTORÍA
+================================================================================
+
+El subgrafo de coautoría se creó para estudiar relaciones directas entre autores.
+A diferencia del grafo principal, este subgrafo sólo contiene autores como nodos.
+
+Regla de construcción:
+
+- Se agrupa la base por artículo.
+- Para cada artículo se obtiene la lista de autores.
+- Cada par de autores dentro del mismo artículo recibe una arista.
+- Si un par colabora en más de un artículo, se incrementa el peso de la arista.
+
+Atributos de los nodos autor:
+
+- nombre
+- afiliacion1
+- afiliacion2
+- num_articulos
+
+Atributos de las aristas:
+
+- weight: número de artículos compartidos por el par de autores.
+- articulos: títulos de los artículos en los que colaboraron.
+
+Métricas del subgrafo:
+
+- Nodos autor: 550
+- Aristas de coautoría: 827
+- Componentes conexas: 173
+- Tamaño de la componente mayor: 60 autores
+
+Estas métricas indican que la red de coautoría no forma un único componente
+gigante. Existen múltiples grupos de colaboración, algunos pequeños y otros más
+conectados. La componente mayor contiene 60 autores.
+
+================================================================================
+8. RESULTADOS DESTACADOS
+================================================================================
+
+Autores con mayor número de artículos en el catálogo:
+
+1. Helena Montserrat Gómez Adorno: 26 artículos
+2. Gemma Bel Enguix: 19 artículos
+3. Boris Escalante Ramírez: 15 artículos
+4. Jimena Olveres Montiel: 14 artículos
+5. Carlos Ignacio Hernández Castellanos: 13 artículos
+6. Gerardo Eugenio Sierra Martínez: 11 artículos
+7. Sergio Rajsbaum Gorodezky: 11 artículos
+8. Mario Roberto Arrieta Paternina: 10 artículos
+9. Armando Castañeda Rojano: 9 artículos
+10. Sergio Luis Ojeda Trueba: 9 artículos
+
+Autores con mayor grado de coautoría en el subgrafo:
+
+1. Helena Montserrat Gómez Adorno: grado 35
+2. Gemma Bel Enguix: grado 28
+3. Gerardo Eugenio Sierra Martínez: grado 21
+4. Boris Escalante Ramírez: grado 19
+5. Jimena Olveres Montiel: grado 17
+6. Fernando Arámbula Cosío: grado 13
+7. Jorge Luis Pérez González: grado 12
+8. Carlos Ignacio Hernández Castellanos: grado 12
+9. Ernesto Bribiesca Correa: grado 12
+10. Sergio Luis Ojeda Trueba: grado 12
+
+Keywords con mayor grado en el grafo principal:
+
+1. deep learning: 36 conexiones
+2. machine learning: 36 conexiones
+3. artificial intelligence: 12 conexiones
+4. computational linguistics: 12 conexiones
+5. convolutional neural networks: 12 conexiones
+6. computer vision: 11 conexiones
+7. algorithms: 10 conexiones
+8. human: 9 conexiones
+9. neural networks: 9 conexiones
+10. humans: 8 conexiones
+
+Estas métricas son útiles para la etapa siguiente, porque permiten identificar
+nodos centrales, autores con mayor conectividad, keywords dominantes y áreas de
+concentración temática.
+
+================================================================================
+9. VISUALIZACIONES GENERADAS
+================================================================================
+
+Se generaron cuatro visualizaciones principales:
+
+1. Distribución de nodos por tipo
+   Muestra la cantidad de artículos, keywords, autores y afiliaciones dentro del
+   grafo principal. La gráfica confirma que el grafo está dominado por nodos de
+   tipo keyword, seguido por autores, artículos y afiliaciones.
+
+2. Top 20 autores por grado de coautoría
+   Muestra los autores con más conexiones directas en el subgrafo. Esta gráfica
+   permite detectar autores con mayor participación en redes de colaboración.
+
+3. Muestra del grafo principal para LLM
+   Representa una submuestra del grafo principal, seleccionando nodos de mayor
+   grado y vecinos relacionados. Se usa una muestra porque visualizar los 3,896
+   nodos completos no sería legible.
+
+4. Muestra del subgrafo de coautoría para LLM
+   Representa una submuestra de autores con mayor conectividad y sus aristas de
+   colaboración. Permite observar grupos, comunidades y autores puente.
+
+Las visualizaciones no sustituyen el análisis completo del grafo, pero funcionan
+como diagnóstico visual para verificar que la estructura fue creada correctamente.
+
+================================================================================
+10. VALIDACIONES REALIZADAS
+================================================================================
+
+Después de generar los grafos se verificó lo siguiente:
+
+- La base de trabajo conserva 905 filas.
+- La base contiene 406 artículos únicos.
+- La base contiene 550 autores únicos.
+- El grafo principal contiene los cuatro tipos de nodos esperados.
+- El número de artículos en el grafo principal coincide con la base.
+- El número de autores en el grafo principal coincide con la base.
+- El subgrafo contiene 550 nodos autor.
+- El subgrafo no contiene nodos de artículo, keyword ni afiliación.
+- Las aristas del subgrafo representan coautoría.
+- Los archivos GML se guardaron correctamente.
+- El resumen JSON fue creado correctamente.
+- Las visualizaciones se generaron sin alterar la base.
+
+
