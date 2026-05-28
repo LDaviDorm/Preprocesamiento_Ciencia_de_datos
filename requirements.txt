@@ -1,0 +1,14 @@
+pandas
+numpy
+openpyxl
+matplotlib
+networkx
+scikit-learn
+scipy
+joblib
+jupyter
+notebook
+tqdm
+python-Levenshtein
+rapidfuzz
+requests
