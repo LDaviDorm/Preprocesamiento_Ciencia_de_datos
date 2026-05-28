@@ -1,0 +1,383 @@
+REPORTE DE LIMPIEZA - NORMALIZACIÓN DE NOMBRES DE AUTORES
+
+1. OBJETIVO DE LA FASE
+
+El objetivo de esta fase fue normalizar la columna Autor_norm en la base UNAM ya filtrada y estandarizada, usando un diccionario de alias de autores construido a partir de dos fuentes:
+
+- la base actual del proyecto, ya separada artículo-autor, filtrada a autores UNAM y estandarizada antes de deduplicación;
+- la base de referencia UNAM_Completo_Corregido.xlsx
+
+La normalización buscó que Autor_norm quedara con el estilo esperado por la base de referencia:
+
+- un solo autor por fila;
+- formato Nombre(s) Apellido(s);
+- sin coma;
+- sin punto;
+- sin números;
+- sin marcadores de afiliación;
+- sin punto y coma;
+- sin guiones usados como separadores de nombre;
+- sin inventar nombres completos cuando no había evidencia suficiente.
+
+Esta fase NO hizo deduplicación ni fusión de artículos. Tampoco modificó afiliaciones, área, subárea ni metadatos bibliográficos ya estandarizados.
+
+2. ARCHIVOS Y LIBRETAS USADAS
+
+2.1. Entrada principal para la normalización de autores
+
+Ruta del proyecto:
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\02_Normalizar_Columnas\integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+Archivo usado en esta revisión:
+integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+Este archivo ya venía de la fase anterior, con columnas bibliográficas normalizadas, afiliaciones UNAM normalizadas y Subarea vacía.
+
+2.2. Base de referencia
+
+Ruta del proyecto:
+C:\Users\hazar\Desktop\PROYECTO\00_control\UNAM_Completo_Corregido.xlsx
+
+Archivo usado en esta revisión:
+UNAM_Completo_Corregido.xlsx
+
+Esta base se utilizó como referencia de estilo para los nombres de autores. La base de referencia no contiene necesariamente los mismos artículos de la base actual, pero sí sirvió como estándar de escritura de nombres.
+
+2.3. Libreta para crear diccionario de autores
+
+Libreta:
+04_limpieza_06_crear_diccionario_autores_unam.ipynb
+
+Propósito:
+Crear un diccionario inicial de alias de autores y una tabla de autores sin coincidencia segura. Esta libreta generó dos salidas principales:
+
+- diccionario_alias_autores_unam.csv
+- autores_unicos_sin_coincidencia.csv
+
+2.4. Diccionario final corregido manualmente
+
+Archivo final usado:
+diccionario_alias_autores_unam_final_corregido.csv
+
+Ruta del proyecto:
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\03_Nomralizar_Nombres\diccionario_alias_autores_unam_final_corregido.csv
+
+Este archivo fue revisado y corregido manualmente antes de aplicarse a la base. Es el diccionario que debe conservarse como referencia para esta fase.
+
+2.5. Libreta para aplicar el diccionario a la base
+
+Libreta:
+04_limpieza_07_normalizar_nombres_autores.ipynb
+
+Script equivalente:
+04_limpieza_07_normalizar_nombres_autores.py
+
+Propósito:
+Aplicar el diccionario final alias -> autor_normalizado sobre la columna Autor_norm y generar la base con nombres normalizados.
+
+2.6. Salida final de la fase
+
+Ruta del proyecto:
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\03_Nomralizar_Nombres\integrado_solo_unam_autores_normalizados.csv
+
+Archivo usado en esta revisión:
+integrado_solo_unam_autores_normalizados.csv
+
+3. PROCEDIMIENTO REALIZADO
+
+3.1. Creación del diccionario inicial
+
+Primero se revisó la columna Autor_norm de la base actual y se comparó contra los nombres disponibles en UNAM_Completo_Corregido.xlsx.
+
+El procedimiento inicial generó:
+
+- un diccionario automático de alias seguros;
+- una lista de autores únicos sin coincidencia segura;
+- contexto bibliográfico para buscar manualmente autores no resueltos.
+
+El archivo autores_unicos_sin_coincidencia.csv incluyó columnas de apoyo como:
+
+- Autor_norm_original;
+- autor_propuesto_limpio;
+- afiliaciones;
+- artículos asociados;
+- ISBN;
+- ISSN;
+- DOI;
+- URL;
+- área.
+
+Este archivo fue útil para buscar nombres completos y resolver casos donde la fuente traía iniciales, nombres invertidos o variantes incompletas.
+
+3.2. Mejora manual del diccionario
+
+Después del diccionario inicial, se elaboró una versión final corregida manualmente:
+
+diccionario_alias_autores_unam_final_corregido.csv
+
+En esta versión se incorporaron alias adicionales y se resolvieron casos que no podían corregirse con seguridad sólo mediante coincidencia automática.
+
+Criterio aplicado para acentos:
+
+- si la forma con acentos aparecía en la base de la tutora, se usó la forma de la tutora;
+- si no aparecía en la base de la tutora, se usó la versión sin acentos.
+
+3.3. Casos manuales relevantes
+
+Se incorporaron las siguientes correcciones específicas:
+
+- Martinez, V. -> V Martinez
+  Se conservó como forma provisional porque sólo aparece abreviado como Martinez, V.
+
+- Ramos, R. / R Ramos -> Rodrigo Ramos
+  Para el artículo Minimal FCN for image segmentation se confirmó que corresponde a Rodrigo Ramos.
+
+- Marín, N. / N Marín -> Jesús Nestaly Marín Nevárez
+  Para el artículo Crossing and intersecting families of geometric graphs on point sets, DOI 10.1007/s00373-023-02734-9, se confirmó el nombre completo.
+
+- Flores, Cristohper / Flores, Cristohper Ramos -> Cristohper Ramos Flores
+  Para el artículo Kuturani: a low-cost device to augment acoustic string instruments, DOI 10.5216/mh.v25.82559, se confirmó que corresponde a Cristohper Ramos Flores.
+
+3.4. Exclusión manual de un caso no UNAM
+
+Durante la normalización también se aplicó una exclusión manual específica:
+
+- Ramos, R. en el artículo Real-time Ocean Probabilistic Forecasts, Reachability Analysis, and Adaptive Sampling in the Gulf of Mexico, DOI 10.1109/oceans55160.2024.10754153, no corresponde a un autor UNAM y debía eliminarse.
+
+En la base de entrada aparecían 2 filas para ese caso, asociadas a los índices:
+248, 306
+
+Esas filas fueron eliminadas en la salida final. La eliminación se dejó dentro de esta etapa porque afecta directamente a Autor_norm y evita conservar un autor externo que había quedado por una afiliación asignada en una fase anterior.
+
+4. MÉTRICAS DE LOS ARCHIVOS DE DICCIONARIO
+
+4.1. Diccionario automático inicial
+
+Archivo:
+diccionario_alias_autores_unam.csv
+
+Filas: 525
+Alias únicos exactos: 510
+Alias únicos normalizados: 373
+Autores normalizados únicos: 164
+Conflictos alias -> más de un autor: 0
+
+Este archivo fue útil como punto de partida, pero no era suficiente para cerrar la normalización porque muchos autores nuevos de 2024-2025 no estaban en la base de la tutora.
+
+4.2. Archivo de autores sin coincidencia segura
+
+Archivo:
+autores_unicos_sin_coincidencia.csv
+
+Filas: 829
+Columnas: 19
+
+Este archivo se usó como lista de trabajo para búsqueda y corrección manual. Incluyó contexto por autor para decidir nombres completos sin tener que modificar todavía la base principal.
+
+4.3. Diccionario final corregido
+
+Archivo:
+diccionario_alias_autores_unam_final_corregido.csv
+
+Filas: 1,844
+Alias únicos exactos: 1,844
+Alias únicos normalizados: 1,844
+Autores normalizados únicos exactos: 743
+Autores normalizados únicos normalizados: 743
+Alias vacíos: 0
+Autores normalizados vacíos: 0
+Conflictos alias -> más de un autor: 0
+Duplicados exactos de filas: 0
+
+Cobertura sobre la base de entrada:
+Filas cubiertas: 3,239 de 3,239
+Autores únicos cubiertos: 938 de 938
+
+5. COMPARACIÓN CON LA BASE DE LA TUTORA
+
+La base de referencia se uso como un comienzo  y no como lista cerrada de autores, porque muchos autores de la base actual pertenecen al periodo 2024-2025 y no necesariamente aparecen en la base histórica.
+
+Métricas de la base:
+
+Filas en UNAM_Completo_Corregido.xlsx: 5,255
+Autores únicos visibles después de limpieza de formato: 1,945
+Autores únicos por clave normalizada: 1,902
+
+Comparación de autores normalizados finales:
+
+Autores únicos finales en la base actual: 743
+Autores finales que aparecen en la base de la tutora: 171
+Autores finales que no aparecen en la base de la tutora: 572
+
+La diferencia es esperable porque el archivo actual contiene artículos más recientes. El criterio principal fue mantener el formato de la base de referencia, no forzar que todos los autores existieran en ella.
+
+6. MÉTRICAS DE LA BASE ANTES Y DESPUÉS
+
+6.1. Base de entrada
+
+Archivo:
+integrado_solo_unam_estandarizado_pre_deduplicacion_limpio.csv
+
+Filas: 3,239
+Columnas: 14
+Columnas canónicas correctas: True
+Autores únicos exactos en Autor_norm: 1,112
+Autores únicos por clave normalizada: 938
+
+6.2. Base de salida
+
+Archivo:
+integrado_solo_unam_autores_normalizados.csv
+
+Filas: 3,237
+Columnas: 14
+Columnas canónicas correctas: True
+Autores únicos exactos en Autor_norm: 743
+Autores únicos por clave normalizada: 743
+Filas eliminadas por exclusión manual: 2
+Artículos únicos conservados por indice: 1,459
+Rango de indice: 1 a 1,471
+
+6.3. Reducción de variantes de autores
+
+Antes de normalizar:
+Autores únicos exactos: 1,112
+Autores únicos por clave normalizada: 938
+
+Después de normalizar:
+Autores únicos exactos: 743
+Autores únicos por clave normalizada: 743
+
+La normalización redujo muchas variantes causadas por:
+
+- formato Apellido, Nombre;
+- iniciales;
+- acentos inconsistentes;
+- guiones;
+- puntos;
+- diferencias entre mayúsculas/minúsculas;
+- variantes con nombre completo e iniciales.
+
+7. VALIDACIONES DE FORMATO EN Autor_norm
+
+En la base final se validó que Autor_norm no conservara problemas básicos de formato.
+
+Autores con coma: 0
+Autores con punto: 0
+Autores con dígitos: 0
+Autores con corchetes/paréntesis/asteriscos: 0
+Autores con punto y coma: 0
+
+Resultado:
+La columna Autor_norm quedó sin separadores múltiples, sin comas, sin puntos, sin números y sin marcadores.
+
+8. VALIDACIONES DE INTEGRIDAD DE LA BASE FINAL
+
+Columnas finales: indice, Titulo, Año, Autor_norm, Afiliacion1, Afiliacion2, ISBN, ISSN, Doi, URL, Area, Subarea, Keywords, Abstract
+
+La salida conserva exactamente las 14 columnas canónicas.
+
+Subarea vacía: True
+Filas con Afiliacion1 y Afiliacion2 ambas vacías: 0
+Afiliaciones con coma: 0
+
+Distribución por año:
+- 2024: 1,397
+- 2025: 1,840
+
+Distribución por área:
+- CC: 243
+- IA: 875
+- ISBD: 216
+- RS: 412
+- SIAV: 1,131
+- TC: 360
+
+9. CASOS ESPECÍFICOS VERIFICADOS
+
+9.1. Rodrigo Ramos
+
+Se confirmó que Ramos, R. corresponde a Rodrigo Ramos en Minimal FCN for image segmentation.
+
+Filas de Rodrigo Ramos conservadas en Minimal FCN for image segmentation:
+6
+
+También se eliminaron las filas de Ramos, R. del DOI 10.1109/oceans55160.2024.10754153, porque no correspondían a autor UNAM.
+
+Filas Rodrigo Ramos restantes en ese DOI después de la limpieza:
+0
+
+9.2. Jesús Nestaly Marín Nevárez
+
+Se normalizó Marín, N. / N Marín como Jesús Nestaly Marín Nevárez en el artículo:
+Crossing and intersecting families of geometric graphs on point sets
+DOI: 10.1007/s00373-023-02734-9
+
+Filas verificadas con ese nombre y DOI: 1
+
+9.3. Cristohper Ramos Flores
+
+Se normalizó Flores, Cristohper / Flores, Cristohper Ramos como Cristohper Ramos Flores en el artículo:
+Kuturani: a low-cost device to augment acoustic string instruments
+DOI: 10.5216/mh.v25.82559
+
+Filas verificadas con ese nombre y DOI: 1
+
+9.4. Martinez, V.
+
+Se incorporó Martinez, V. al diccionario como V Martinez. Esta forma debe considerarse provisional si más adelante se encuentra el nombre completo en una fuente bibliográfica confiable.
+
+10. QUÉ NO SE HIZO EN ESTA FASE
+
+Esta fase no realizó:
+
+- deduplicación;
+- fusión de artículos repetidos;
+- cambios en Afiliacion1;
+- cambios en Afiliacion2;
+- cambios en Area;
+- cambios en Subarea;
+- cambios en ISBN, ISSN, DOI, URL, título, keywords o abstract;
+- reclasificación temática;
+- enriquecimiento externo automático.
+
+La única eliminación de filas fue la exclusión manual del caso Ramos, R. no UNAM en el DOI 10.1109/oceans55160.2024.10754153.
+
+11. ESTADO FINAL DE LA FASE
+
+La fase de normalización de nombres quedó completada con la base:
+
+C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\03_Nomralizar_Nombres\integrado_solo_unam_autores_normalizados.csv
+
+Estado final:
+
+- base con 14 columnas canónicas;
+- Autor_norm normalizado mediante diccionario final corregido;
+- sin autores con comas, puntos, dígitos, marcadores o punto y coma;
+- afiliaciones conservadas tal como venían de la fase anterior;
+- Subarea vacía;
+- sin deduplicar todavía;
+- lista para continuar con las siguientes validaciones del flujo de limpieza.
+
+12. ARCHIVOS QUE DEBEN CONSERVARSE COMO RESULTADO DE ESTA FASE
+
+1. diccionario_alias_autores_unam_final_corregido.csv
+   Uso: diccionario final de alias para normalizar Autor_norm.
+
+2. integrado_solo_unam_autores_normalizados.csv
+   Uso: base principal posterior a la normalización de autores.
+
+3. 04_limpieza_07_normalizar_nombres_autores.ipynb
+   Uso: libreta reproducible para aplicar el diccionario final corregido.
+
+4. 04_limpieza_06_crear_diccionario_autores_unam.ipynb
+   Uso: libreta usada para generar el diccionario inicial y la lista de autores sin coincidencia.
+
+13. OBSERVACIÓN FINAL
+
+Esta fue una de las fases más delicadas porque Autor_norm venía con muchas variantes de escritura, iniciales, orden invertido y diferencias de acentuación. La estrategia final fue adecuada porque separó el problema en dos pasos:
+
+1. crear un diccionario de alias y una lista de autores sin coincidencia segura;
+2. corregir manualmente el diccionario y aplicarlo a la base completa.
+
+Con esto se evitó normalizar autores de forma puramente automática y se redujo el riesgo de fusionar personas distintas bajo un mismo nombre.

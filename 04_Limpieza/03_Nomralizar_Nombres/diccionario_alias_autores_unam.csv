@@ -1,0 +1,526 @@
+﻿alias,autor_normalizado,confianza,origen,score,n_filas_base,n_articulos_base
+A I H Al Jarah,A I H Al Jarah,alta,tutora_exacta_display,1.0,2,2
+A. I. H. Al-Jarah,A I H Al Jarah,alta,tutora_exacta,1.0,5,5
+"Al-Jarah, A.I.H.",A I H Al Jarah,alta,tutora_exacta,1.0,2,2
+A Ramírez Vigueras,Adriana Ramírez Vigueras,media,tutora_probable_display,0.96,1,1
+"Ramírez-Vigueras, A.",Adriana Ramírez Vigueras,media,tutora_probable,0.96,1,1
+Airam Curtidor,Airam Curtidor,alta,tutora_exacta_display,1.0,2,2
+"Curtidor, Airam",Airam Curtidor,alta,tutora_exacta,1.0,2,2
+Alan Romero Pacheco,Alan Romero Pacheco,alta,tutora_exacta_display,1.0,2,2
+Alan Romero pacheco,Alan Romero Pacheco,alta,tutora_exacta_display,1.0,2,2
+"Romero-pacheco, Alan",Alan Romero Pacheco,alta,tutora_exacta,1.0,2,2
+"Romero–Pacheco, Alan",Alan Romero Pacheco,alta,tutora_exacta,1.0,2,2
+Alberto Darszon,Alberto Darszon,alta,tutora_exacta_display,1.0,1,1
+"Darszon, Alberto",Alberto Darszon,alta,tutora_exacta,1.0,1,1
+Alejandro Cruz Osorio,Alejandro Cruz Osorio,alta,tutora_exacta_display,1.0,4,4
+"Cruz-Osorio, Alejandro",Alejandro Cruz Osorio,alta,tutora_exacta,1.0,4,4
+Alejandro Ramirez Reivich,Alejandro Cuauhtemoc Ramirez Reivich,alta,tutora_probable_display,0.99,7,7
+"Ramirez-Reivich, Alejandro",Alejandro Cuauhtemoc Ramirez Reivich,alta,tutora_probable,0.99,7,7
+Alejandro Velazquez Mena,Alejandro Velázquez Mena,alta,tutora_exacta_display,1.0,5,5
+"Velazquez-Mena, Alejandro",Alejandro Velázquez Mena,alta,tutora_exacta,1.0,5,5
+Alessio Franci,Alessio Franci,alta,tutora_exacta_display,1.0,2,2
+"Franci, Alessio",Alessio Franci,alta,tutora_exacta,1.0,2,2
+A. G. Strozzi,Alfonso Gastélum Strozzi,media,tutora_probable,0.96,2,2
+Andrés Tejero Andrade,Andres Tejero Andrade,alta,tutora_exacta_display,1.0,3,3
+"Tejero-Andrade, Andrés",Andres Tejero Andrade,alta,tutora_exacta,1.0,3,3
+Andric Valdez Valenzuela,Andric Valdez Valenzuela,alta,tutora_exacta_display,1.0,12,12
+"Valdez-Valenzuela, Andric",Andric Valdez Valenzuela,alta,tutora_exacta,1.0,12,12
+Andres Bribiesca Sanchez,Andrés Bribiesca Sánchez,alta,tutora_exacta_display,1.0,2,2
+Andrés Bribiesca Sánchez,Andrés Bribiesca Sánchez,alta,tutora_exacta_display,1.0,3,3
+"Bribiesca-Sanchez, Andres",Andrés Bribiesca Sánchez,alta,tutora_exacta,1.0,2,2
+"Bribiesca-Sánchez, Andrés",Andrés Bribiesca Sánchez,alta,tutora_exacta,1.0,3,3
+Antonio Cedillo Hernandez,Antonio Cedillo Hernández,alta,tutora_exacta_display,1.0,2,2
+"Cedillo-Hernandez, Antonio",Antonio Cedillo Hernández,alta,tutora_exacta,1.0,2,2
+Antonio Neme,Antonio Neme,alta,tutora_exacta_display,1.0,3,3
+"Neme, Antonio",Antonio Neme,alta,tutora_exacta,1.0,3,3
+Armando Castaneda,Armando Castañeda Rojano,alta,tutora_doi_compartido_display,0.98,11,11
+Armando Castañeda,Armando Castañeda Rojano,alta,tutora_doi_compartido_display,0.98,38,38
+"Castaneda, Armando",Armando Castañeda Rojano,alta,tutora_doi_compartido,0.98,11,11
+"Castañeda, Armando",Armando Castañeda Rojano,alta,tutora_doi_compartido,0.98,38,38
+A Martinez Davalos,Arnulfo Martínez Dávalos,media,tutora_probable_display,0.96,3,3
+A Martínez Dávalos,Arnulfo Martínez Dávalos,media,tutora_probable_display,0.96,3,3
+A. Martínez-Dávalos,Arnulfo Martínez Dávalos,media,tutora_probable,0.96,6,6
+Arnulfo Martinez Davalos,Arnulfo Martínez Dávalos,alta,tutora_exacta_display,1.0,3,3
+Arnulfo Martínez Dávalos,Arnulfo Martínez Dávalos,alta,tutora_exacta_display,1.0,3,3
+"Martinez-Davalos, A.",Arnulfo Martínez Dávalos,media,tutora_probable,0.96,3,3
+"Martinez-Davalos, Arnulfo",Arnulfo Martínez Dávalos,alta,tutora_exacta,1.0,3,3
+"Martínez-Dávalos, A.",Arnulfo Martínez Dávalos,media,tutora_probable,0.96,3,3
+"Martínez-Dávalos, Arnulfo",Arnulfo Martínez Dávalos,alta,tutora_exacta,1.0,3,3
+Arturo Avendano Estrada,Arturo Avendaño Estrada,alta,tutora_exacta_display,1.0,1,1
+Arturo Avendaño Estrada,Arturo Avendaño Estrada,alta,tutora_exacta_display,1.0,1,1
+"Avendano-Estrada, Arturo",Arturo Avendaño Estrada,alta,tutora_exacta,1.0,1,1
+"Avendaño-Estrada, Arturo",Arturo Avendaño Estrada,alta,tutora_exacta,1.0,1,1
+C Hernandez,Augusto Cesar Poot Hernández,media,tutora_probable_display,0.96,1,1
+C. Hernández,Augusto Cesar Poot Hernández,media,tutora_probable,0.96,12,12
+"Hernandez, C.",Augusto Cesar Poot Hernández,media,tutora_probable,0.96,1,1
+E Sánchez,Beatriz Sánchez y Sánchez,media,tutora_probable_display,0.96,1,1
+"Sánchez, E.",Beatriz Sánchez y Sánchez,media,tutora_probable,0.96,1,1
+Bibiana Obregón Quintana,Bibiana Obregón Quintana,alta,tutora_exacta_display,1.0,3,3
+"Obregón-Quintana, Bibiana",Bibiana Obregón Quintana,alta,tutora_exacta,1.0,3,3
+B Escalante Ramírez,Boris Escalante Ramírez,media,tutora_probable_display,0.96,2,2
+B Escalante Ramírez,Boris Escalante Ramírez,media,tutora_probable_display,0.96,4,4
+B. Escalante-Ramírez,Boris Escalante Ramírez,media,tutora_probable,0.96,5,5
+Boris Escalante Ramirez,Boris Escalante Ramírez,alta,tutora_exacta_display,1.0,21,21
+Boris Escalante Ramírez,Boris Escalante Ramírez,alta,tutora_exacta_display,1.0,24,24
+Boris Escalante-Ramírez,Boris Escalante Ramírez,alta,tutora_exacta,1.0,1,1
+"Escalante-Ramirez, Boris",Boris Escalante Ramírez,alta,tutora_exacta,1.0,21,21
+"Escalante-Ramírez, B.",Boris Escalante Ramírez,media,tutora_probable,0.96,2,2
+"Escalante-Ramírez, B.",Boris Escalante Ramírez,media,tutora_probable,0.96,4,4
+"Escalante-Ramírez, Boris",Boris Escalante Ramírez,alta,tutora_exacta,1.0,24,24
+Carlos Francisco Mendez Cruz,Carlos Francisco Méndez Cruz,alta,tutora_exacta_display,1.0,3,3
+Carlos Francisco Méndez Cruz,Carlos Francisco Méndez Cruz,alta,tutora_exacta_display,1.0,2,2
+"Mendez-Cruz, Carlos-Francisco",Carlos Francisco Méndez Cruz,alta,tutora_exacta,1.0,3,3
+"Méndez-Cruz, Carlos-Francisco",Carlos Francisco Méndez Cruz,alta,tutora_exacta,1.0,2,2
+C I Hernández Castellanos,Carlos Ignacio Hernández Castellanos,media,tutora_probable_display,0.96,4,4
+Carlos Hernández Castellanos,Carlos Ignacio Hernández Castellanos,alta,tutora_probable_display,0.99,1,1
+Carlos Hernández Castellanos,Carlos Ignacio Hernández Castellanos,alta,tutora_probable_display,0.99,4,4
+Carlos Ignacio Hernandez Castellanos,Carlos Ignacio Hernández Castellanos,alta,tutora_exacta_display,1.0,6,6
+Carlos Ignacio Hernandez Castellanos,Carlos Ignacio Hernández Castellanos,alta,tutora_exacta_display,1.0,5,5
+Carlos Ignacio Hernández Castellanos,Carlos Ignacio Hernández Castellanos,alta,tutora_exacta_display,1.0,11,11
+Carlos Ignacio Hernández Castellanos,Carlos Ignacio Hernández Castellanos,alta,tutora_exacta_display,1.0,25,25
+"Castellanos, Carlos Hernández",Carlos Ignacio Hernández Castellanos,alta,tutora_probable,0.99,1,1
+"Castellanos, Carlos Ignacio Hernandez",Carlos Ignacio Hernández Castellanos,alta,tutora_exacta,1.0,6,6
+"Castellanos, Carlos Ignacio Hernández",Carlos Ignacio Hernández Castellanos,alta,tutora_exacta,1.0,11,11
+"Hernandez Castellanos, Carlos Ignacio",Carlos Ignacio Hernández Castellanos,alta,tutora_exacta,1.0,5,5
+"Hernández Castellanos, C.I.",Carlos Ignacio Hernández Castellanos,media,tutora_probable,0.96,4,4
+"Hernández Castellanos, Carlos",Carlos Ignacio Hernández Castellanos,alta,tutora_probable,0.99,4,4
+"Hernández Castellanos, Carlos Ignacio",Carlos Ignacio Hernández Castellanos,alta,tutora_exacta,1.0,25,25
+Carlos Minutti Martinez,Carlos Minutti Martinez,alta,tutora_exacta_display,1.0,4,4
+"Minutti-Martinez, Carlos",Carlos Minutti Martinez,alta,tutora_exacta,1.0,4,4
+Carlos Ricardo Cruz Mendoza,Carlos Ricardo Cruz Mendoza,alta,tutora_exacta_display,1.0,2,2
+"Cruz-Mendoza, Carlos Ricardo",Carlos Ricardo Cruz Mendoza,alta,tutora_exacta,1.0,2,2
+Cesar Hernandez Cruz,Cesar Hernández Cruz,alta,tutora_exacta_display,1.0,1,1
+César Hernández Cruz,Cesar Hernández Cruz,alta,tutora_exacta_display,1.0,9,9
+"Hernandez-Cruz, Cesar",Cesar Hernández Cruz,alta,tutora_exacta,1.0,1,1
+"Hernández-Cruz, César",Cesar Hernández Cruz,alta,tutora_exacta,1.0,9,9
+Christopher R Stephens,Christopher Rhodes Stephens,media,tutora_probable_display,0.96,1,1
+"Stephens, Christopher R.",Christopher Rhodes Stephens,media,tutora_probable,0.96,1,1
+"Castanon Quiroz, D.",Daniel Castañon Quiroz,media,tutora_probable,0.96,1,1
+D Castanon Quiroz,Daniel Castañon Quiroz,media,tutora_probable_display,0.96,1,1
+Daniel Castanon Quiroz,Daniel Castañon Quiroz,alta,tutora_exacta_display,1.0,1,1
+"Quiroz, Daniel Castanon",Daniel Castañon Quiroz,alta,tutora_exacta,1.0,1,1
+D. Haro-Mendoza,Daniel Haro Mendoza,media,tutora_probable,0.96,4,4
+Daniel Haro Mendoza,Daniel Haro Mendoza,alta,tutora_exacta_display,1.0,2,2
+Daniel Haro-Mendoza,Daniel Haro Mendoza,alta,tutora_exacta,1.0,2,2
+"Haro-Mendoza, Daniel",Daniel Haro Mendoza,alta,tutora_exacta,1.0,2,2
+David Romero,David Romero,alta,tutora_exacta_display,1.0,2,2
+"Romero, David",David Romero,alta,tutora_exacta,1.0,2,2
+D. T. Varela,David Tinoco Varela,media,tutora_probable,0.96,7,7
+David Tinoco Varela,David Tinoco Varela,alta,tutora_exacta_display,1.0,1,1
+David Tinoco Varela,David Tinoco Varela,alta,tutora_exacta_display,1.0,5,5
+"Tinoco-Varela, David",David Tinoco Varela,alta,tutora_exacta,1.0,1,1
+"Varela, David Tinoco",David Tinoco Varela,alta,tutora_exacta,1.0,5,5
+"Belmont-Moreno, E.",E Belmont Moreno,alta,tutora_exacta,1.0,1,1
+E Belmont Moreno,E Belmont Moreno,alta,tutora_exacta_display,1.0,1,1
+Edgar Galvan,Edgar Galvan,alta,tutora_exacta_display,1.0,2,2
+Edgar Galván,Edgar Galvan,alta,tutora_exacta_display,1.0,1,1
+"Galvan, Edgar",Edgar Galvan,alta,tutora_exacta,1.0,2,2
+"Galván, Edgar",Edgar Galvan,alta,tutora_exacta,1.0,1,1
+Edgardo Galan Vasquez,Edgardo Galán Vásquez,alta,tutora_exacta_display,1.0,3,3
+Edgardo Galán Vásquez,Edgardo Galán Vásquez,alta,tutora_exacta_display,1.0,6,6
+"Galan-Vasquez, Edgardo",Edgardo Galán Vásquez,alta,tutora_exacta,1.0,3,3
+"Galán-Vásquez, Edgardo",Edgardo Galán Vásquez,alta,tutora_exacta,1.0,6,6
+Edgardo Roldán Pensado,Edgardo Roldán Pensado,alta,tutora_exacta_display,1.0,3,3
+"Roldán-Pensado, Edgardo",Edgardo Roldán Pensado,alta,tutora_exacta,1.0,3,3
+"Acuña Yeomans, Eduardo",Eduardo Acuña Yeomans,alta,tutora_exacta,1.0,1,1
+Eduardo Acuna Yeomans,Eduardo Acuña Yeomans,alta,tutora_exacta_display,1.0,1,1
+Eduardo Acuña Yeomans,Eduardo Acuña Yeomans,alta,tutora_exacta_display,1.0,1,1
+"Yeomans, Eduardo Acuna",Eduardo Acuña Yeomans,alta,tutora_exacta,1.0,1,1
+Eduardo Fragoso Navarro,Eduardo Fragoso Navarro,alta,tutora_exacta_display,1.0,6,6
+"Fragoso-Navarro, Eduardo",Eduardo Fragoso Navarro,alta,tutora_exacta,1.0,6,6
+Elsa Leticia Flores Márquez,Elsa Leticia Flores Marquez,alta,tutora_exacta_display,1.0,3,3
+"Flores-Márquez, Elsa Leticia",Elsa Leticia Flores Marquez,alta,tutora_exacta,1.0,3,3
+Eric Valdez Valenzuela,Eric Valdez Valenzuela,alta,tutora_exacta_display,1.0,3,3
+"Valdez-Valenzuela, Eric",Eric Valdez Valenzuela,alta,tutora_exacta,1.0,3,3
+"Carbajal-Degante, Erik",Erik Carbajal Degante,alta,tutora_exacta,1.0,6,6
+Erik Carbajal Degante,Erik Carbajal Degante,alta,tutora_exacta_display,1.0,6,6
+Ernesto Perez Rueda,Ernesto Pérez Rueda,alta,tutora_exacta_display,1.0,7,7
+Ernesto Pérez Rueda,Ernesto Pérez Rueda,alta,tutora_exacta_display,1.0,1,1
+"Perez-Rueda, Ernesto",Ernesto Pérez Rueda,alta,tutora_exacta,1.0,7,7
+"Pérez-Rueda, Ernesto",Ernesto Pérez Rueda,alta,tutora_exacta,1.0,1,1
+Ernst Kussul,Ernst Kussul,alta,tutora_exacta_display,1.0,2,2
+"Kussul, Ernst",Ernst Kussul,alta,tutora_exacta,1.0,2,2
+"Barcenas, Everardo",Everardo Barcenas,alta,tutora_exacta,1.0,14,14
+"Bárcenas, Everardo",Everardo Barcenas,alta,tutora_exacta,1.0,14,14
+Everardo Barcenas,Everardo Barcenas,alta,tutora_exacta_display,1.0,14,14
+Everardo Bárcenas,Everardo Barcenas,alta,tutora_exacta_display,1.0,14,14
+F. A. Cosío,F A Cosío,alta,tutora_exacta,1.0,3,3
+F Garcia,F Garcia,alta,tutora_exacta_display,1.0,2,2
+F. García,F Garcia,alta,tutora_exacta,1.0,4,4
+"Garcia, F.",F Garcia,alta,tutora_exacta,1.0,2,2
+Fabian Torres Robles,Fabián Torres Robles,alta,tutora_exacta_display,1.0,2,2
+Fabián Torres Robles,Fabián Torres Robles,alta,tutora_exacta_display,1.0,2,2
+"Torres-Robles, Fabian",Fabián Torres Robles,alta,tutora_exacta,1.0,2,2
+"Torres-Robles, Fabián",Fabián Torres Robles,alta,tutora_exacta,1.0,2,2
+"Arámbula Cosío, Fernando",Fernando Arámbula Cosío,alta,tutora_exacta,1.0,5,5
+"Cosio, Fernando Arambula",Fernando Arámbula Cosío,alta,tutora_exacta,1.0,5,5
+"Cosío, Fernando Arámbula",Fernando Arámbula Cosío,alta,tutora_exacta,1.0,2,2
+Fernando Arambula Cosio,Fernando Arámbula Cosío,alta,tutora_exacta_display,1.0,5,5
+Fernando Arámbula Cosío,Fernando Arámbula Cosío,alta,tutora_exacta_display,1.0,5,5
+Fernando Arámbula Cosío,Fernando Arámbula Cosío,alta,tutora_exacta_display,1.0,2,2
+"Ayala-Niño, Fernando",Fernando Ayala Niño,alta,tutora_exacta,1.0,5,5
+Fernando Ayala Niño,Fernando Ayala Niño,alta,tutora_exacta_display,1.0,5,5
+"Baltazar-Larios, Fernando",Fernando Baltazar Larios,alta,tutora_exacta,1.0,1,1
+Fernando Baltazar Larios,Fernando Baltazar Larios,alta,tutora_exacta_display,1.0,1,1
+F G Moncada Gutierrez,Fernando Moncada Gutierrez,media,tutora_probable_display,0.96,3,3
+F. G. Moncada-Gutiérrez,Fernando Moncada Gutierrez,media,tutora_probable,0.96,6,6
+"Moncada-Gutierrez, F.G.",Fernando Moncada Gutierrez,media,tutora_probable,0.96,3,3
+Fernando Montoya,Fernando Montoya,alta,tutora_exacta_display,1.0,5,5
+"Montoya, Fernando",Fernando Montoya,alta,tutora_exacta,1.0,5,5
+Fernando Perez Escamirosa,Fernando Pérez Escamirosa,alta,tutora_exacta_display,1.0,3,3
+Fernando Pérez Escamirosa,Fernando Pérez Escamirosa,alta,tutora_exacta_display,1.0,1,1
+"Perez-Escamirosa, Fernando",Fernando Pérez Escamirosa,alta,tutora_exacta,1.0,3,3
+"Pérez-Escamirosa, Fernando",Fernando Pérez Escamirosa,alta,tutora_exacta,1.0,1,1
+"Delgado-Vences, Francisco",Francisco Delgado Vences,alta,tutora_exacta,1.0,1,1
+Francisco Delgado Vences,Francisco Delgado Vences,alta,tutora_exacta_display,1.0,1,1
+Francisco Hernandez Quiroz,Francisco Hernández Quiroz,alta,tutora_exacta_display,1.0,2,2
+"Hernandez-Quiroz, Francisco",Francisco Hernández Quiroz,alta,tutora_exacta,1.0,2,2
+Francisco Javier Garcia Ugalde,Francisco Javier García Ugalde,alta,tutora_exacta_display,1.0,15,15
+"Garcia-Ugalde, Francisco Javier",Francisco Javier García Ugalde,alta,tutora_exacta,1.0,15,15
+Francisco J Sánchez Sesma,Francisco José Sánchez Sesma,media,tutora_probable_display,0.96,1,1
+"Sánchez-Sesma, Francisco J.",Francisco José Sánchez Sesma,media,tutora_probable,0.96,1,1
+Francisco Valdes Souto,Francisco Valdés Souto,alta,tutora_exacta_display,1.0,3,3
+Francisco Valdés Souto,Francisco Valdés Souto,alta,tutora_exacta_display,1.0,11,11
+"Valdes-Souto, Francisco",Francisco Valdés Souto,alta,tutora_exacta,1.0,3,3
+"Valdés-Souto, Francisco",Francisco Valdés Souto,alta,tutora_exacta,1.0,11,11
+F Trillaud,Frederic Trillaud,media,tutora_probable_display,0.96,1,1
+Frederic Trillaud,Frederic Trillaud,alta,tutora_exacta_display,1.0,1,1
+"Trillaud, F.",Frederic Trillaud,media,tutora_probable,0.96,1,1
+"Trillaud, Frederic",Frederic Trillaud,alta,tutora_exacta,1.0,1,1
+R Ramos,G A Ramos,media,tutora_probable_display,0.96,6,6
+"Ramos, R.",G A Ramos,media,tutora_probable,0.96,6,6
+"Bel-Enguix, Gemma",Gemma Bel Enguix,alta,tutora_exacta,1.0,43,43
+"Enguix, Gemma Bel",Gemma Bel Enguix,alta,tutora_exacta,1.0,1,1
+Gemma Bel Enguix,Gemma Bel Enguix,alta,tutora_exacta_display,1.0,43,43
+Gemma Bel Enguix,Gemma Bel Enguix,alta,tutora_exacta_display,1.0,1,1
+Gerardo Eugenio Sierra Martínez,Gerardo Eugenio Sierra Martínez,alta,tutora_exacta_display,1.0,1,1
+Gerardo Sierra,Gerardo Eugenio Sierra Martínez,alta,tutora_doi_compartido_display,0.98,25,25
+"Martínez, Gerardo Eugenio Sierra",Gerardo Eugenio Sierra Martínez,alta,tutora_exacta,1.0,1,1
+"Sierra, Gerardo",Gerardo Eugenio Sierra Martínez,alta,tutora_doi_compartido,0.98,25,25
+"Fuentes Pineda, Gibran",Gibrán Fuentes Pineda,alta,tutora_exacta,1.0,1,1
+"Fuentes-Pineda, Gibran",Gibrán Fuentes Pineda,alta,tutora_exacta,1.0,15,15
+G. Fuentes-Pineda,Gibrán Fuentes Pineda,media,tutora_probable,0.96,8,8
+Gibran Fuentes Pineda,Gibrán Fuentes Pineda,alta,tutora_exacta_display,1.0,1,1
+Gibran Fuentes Pineda,Gibrán Fuentes Pineda,alta,tutora_exacta_display,1.0,15,15
+"Pineda, Gibran Fuentes",Gibrán Fuentes Pineda,alta,tutora_exacta,1.0,1,1
+Grigori Sidorov,Grigori Sidorov,alta,tutora_exacta_display,1.0,1,1
+"Sidorov, Grigori",Grigori Sidorov,alta,tutora_exacta,1.0,1,1
+G. Gilberto Molero-Castillo,Guillermo Gilberto Molero Castillo,media,tutora_probable,0.96,3,3
+Gunnar Wolf,Gunnar Wolf,alta,tutora_exacta_display,1.0,6,6
+"Wolf, Gunnar",Gunnar Wolf,alta,tutora_exacta,1.0,6,6
+Haydee O Hernandez,Haydee O Hernandez,alta,tutora_exacta_display,1.0,2,2
+Haydee O Hernández,Haydee O Hernandez,alta,tutora_exacta_display,1.0,3,3
+Haydeé O Hernández,Haydee O Hernandez,alta,tutora_exacta_display,1.0,1,1
+"Hernandez, Haydee O.",Haydee O Hernandez,alta,tutora_exacta,1.0,2,2
+"Hernández, Haydee O.",Haydee O Hernandez,alta,tutora_exacta,1.0,3,3
+"Hernández, Haydeé O.",Haydee O Hernandez,alta,tutora_exacta,1.0,1,1
+"Gomez-Adorno, H.",Helena Montserrat Gómez Adorno,media,tutora_probable,0.96,2,2
+"Gomez-Adorno, Helena",Helena Montserrat Gómez Adorno,alta,tutora_probable,0.99,25,25
+"Goméz-Adorno, Helena",Helena Montserrat Gómez Adorno,alta,tutora_probable,0.99,2,2
+"Gómez-Adorno, Helena",Helena Montserrat Gómez Adorno,alta,tutora_probable,0.99,31,31
+H Gomez Adorno,Helena Montserrat Gómez Adorno,media,tutora_probable_display,0.96,2,2
+Helena Gomez Adorno,Helena Montserrat Gómez Adorno,alta,tutora_probable_display,0.99,25,25
+Helena Goméz Adorno,Helena Montserrat Gómez Adorno,alta,tutora_probable_display,0.99,2,2
+Helena Gómez Adorno,Helena Montserrat Gómez Adorno,alta,tutora_probable_display,0.99,31,31
+"Alva-Sanchez, H.",Héctor Alva Sánchez,media,tutora_probable,0.96,3,3
+H Alva Sanchez,Héctor Alva Sánchez,media,tutora_probable_display,0.96,3,3
+H. Alva-Sánchez,Héctor Alva Sánchez,media,tutora_probable,0.96,6,6
+"Benitez-Perez, Hector",Héctor Benítez Pérez,alta,tutora_exacta,1.0,5,5
+"Benitez-Perez, Héctor",Héctor Benítez Pérez,alta,tutora_exacta,1.0,2,2
+"Benítez-Pérez, Héctor",Héctor Benítez Pérez,alta,tutora_exacta,1.0,7,7
+Hector Benitez Perez,Héctor Benítez Pérez,alta,tutora_exacta_display,1.0,5,5
+Héctor Benitez Perez,Héctor Benítez Pérez,alta,tutora_exacta_display,1.0,2,2
+Héctor Benítez Pérez,Héctor Benítez Pérez,alta,tutora_exacta_display,1.0,7,7
+"Guerrero, Hector",Héctor Guerrero,alta,tutora_exacta,1.0,1,1
+Hector Guerrero,Héctor Guerrero,alta,tutora_exacta_display,1.0,1,1
+Ismael Lopez Juarez,Ismael Lopez Juarez,alta,tutora_exacta_display,1.0,2,2
+Ismael López Juárez,Ismael Lopez Juarez,alta,tutora_exacta_display,1.0,3,3
+"Lopez-Juarez, Ismael",Ismael Lopez Juarez,alta,tutora_exacta,1.0,2,2
+"López-Juárez, Ismael",Ismael Lopez Juarez,alta,tutora_exacta,1.0,3,3
+Ivan Vladimir Meza Ruiz,Ivan Vladimir Meza Ruíz,alta,tutora_exacta_display,1.0,2,2
+"Ruiz, Ivan Vladimir Meza",Ivan Vladimir Meza Ruíz,alta,tutora_exacta,1.0,2,2
+"Eizmendi, Inaki",Iñaki Eizmendi,alta,tutora_exacta,1.0,2,2
+Inaki Eizmendi,Iñaki Eizmendi,alta,tutora_exacta_display,1.0,2,2
+J E Solis Perez,J E Solís Pérez,alta,tutora_exacta_display,1.0,1,1
+J E Solís Pérez,J E Solís Pérez,alta,tutora_exacta_display,1.0,1,1
+"Solis-Perez, J. E.",J E Solís Pérez,alta,tutora_exacta,1.0,1,1
+"Solís-Pérez, J. E.",J E Solís Pérez,alta,tutora_exacta,1.0,1,1
+"Camacho-Escoto, J. J.",J J Camacho Escoto,alta,tutora_exacta,1.0,2,2
+"Camacho-Escoto, J.J.",J J Camacho Escoto,alta,tutora_exacta,1.0,2,2
+"Escoto, J. J. Camacho",J J Camacho Escoto,alta,tutora_exacta,1.0,1,1
+J J Camacho Escoto,J J Camacho Escoto,alta,tutora_exacta_display,1.0,2,2
+J J Camacho Escoto,J J Camacho Escoto,alta,tutora_exacta_display,1.0,1,1
+J. J. Camacho-Escoto,J J Camacho Escoto,alta,tutora_exacta,1.0,2,2
+J Perez Gonzalez,J Perez Gonzalez,alta,tutora_exacta_display,1.0,4,4
+J Pérez González,J Perez Gonzalez,alta,tutora_exacta_display,1.0,1,1
+J. Perez-Gonzalez,J Perez Gonzalez,alta,tutora_exacta,1.0,6,6
+J. Pérez-González,J Perez Gonzalez,alta,tutora_exacta,1.0,3,3
+"Perez-Gonzalez, J.",J Perez Gonzalez,alta,tutora_exacta,1.0,4,4
+"Pérez-González, J.",J Perez Gonzalez,alta,tutora_exacta,1.0,1,1
+J. A. Moreno,Jaime A Moreno,media,tutora_probable,0.96,1,1
+Jaime Urrutia Fucugauchi,Jaime Humberto Urrutia Fucugauchi,alta,tutora_probable_display,0.99,1,1
+"Urrutia-Fucugauchi, Jaime",Jaime Humberto Urrutia Fucugauchi,alta,tutora_probable,0.99,1,1
+"Garcia-Ramirez, Jesus",Jesús García Ramírez,alta,tutora_exacta,1.0,2,2
+"García-Ramírez, Jesús",Jesús García Ramírez,alta,tutora_exacta,1.0,4,4
+Jesus Garcia Ramirez,Jesús García Ramírez,alta,tutora_exacta_display,1.0,2,2
+Jesús García Ramírez,Jesús García Ramírez,alta,tutora_exacta_display,1.0,4,4
+Jesús García-Ramírez,Jesús García Ramírez,alta,tutora_exacta,1.0,1,1
+Jimena Olveres Montiel,Jimena Olveres Montiel,alta,tutora_exacta_display,1.0,2,2
+"Olveres-Montiel, Jimena",Jimena Olveres Montiel,alta,tutora_exacta,1.0,2,2
+Jorge A Marquez Flores,Jorge Alberto Márquez Flores,media,tutora_probable_display,0.96,2,2
+"Marquez-Flores, Jorge A.",Jorge Alberto Márquez Flores,media,tutora_probable,0.96,2,2
+"Barrera Ballesteros, Jorge K.",Jorge Karolt Barrera Ballesteros,media,tutora_probable,0.96,2,2
+Jorge K Barrera Ballesteros,Jorge Karolt Barrera Ballesteros,media,tutora_probable_display,0.96,2,2
+"Arjona, J.L.O.",Jorge Luis Ortega Arjona,media,tutora_probable,0.96,2,2
+"Arjona, Jorge Luis Ortega",Jorge Luis Ortega Arjona,alta,tutora_exacta,1.0,3,3
+J L O Arjona,Jorge Luis Ortega Arjona,media,tutora_probable_display,0.96,2,2
+J. L. O. Arjona,Jorge Luis Ortega Arjona,media,tutora_probable,0.96,3,3
+J. L. Ortega-Arjona,Jorge Luis Ortega Arjona,media,tutora_probable,0.96,2,2
+Jorge Luis Ortega Arjona,Jorge Luis Ortega Arjona,alta,tutora_exacta_display,1.0,3,3
+Jorge Luis Ortega Arjona,Jorge Luis Ortega Arjona,alta,tutora_exacta_display,1.0,9,9
+"Ortega Arjona, Jorge Luis",Jorge Luis Ortega Arjona,alta,tutora_exacta,1.0,3,3
+"Ortega-Arjona, Jorge Luis",Jorge Luis Ortega Arjona,alta,tutora_exacta,1.0,9,9
+Jorge Perez Gonzalez,Jorge Pérez González,alta,tutora_exacta_display,1.0,6,6
+Jorge Perez Gonzalez,Jorge Pérez González,alta,tutora_exacta_display,1.0,2,2
+Jorge Perez gonzalez,Jorge Pérez González,alta,tutora_exacta_display,1.0,2,2
+Jorge Pérez González,Jorge Pérez González,alta,tutora_exacta_display,1.0,2,2
+"Perez-Gonzalez, Jorge",Jorge Pérez González,alta,tutora_exacta,1.0,6,6
+"Perez-gonzalez, Jorge",Jorge Pérez González,alta,tutora_exacta,1.0,2,2
+"Perez–Gonzalez, Jorge",Jorge Pérez González,alta,tutora_exacta,1.0,2,2
+"Pérez-González, Jorge",Jorge Pérez González,alta,tutora_exacta,1.0,2,2
+Jose Antonio Marmolejo Saucedo,Jose Antonio Marmolejo Saucedo,alta,tutora_exacta_display,1.0,5,5
+"Marmolejo-Saucedo, Jose Antonio",Jose Antonio Marmolejo Saucedo,alta,tutora_exacta,1.0,5,5
+Jose I Martinez Lopez,Jose Ismael Martinez Lopez,media,tutora_probable_display,0.96,1,1
+"Martinez-Lopez, Jose I.",Jose Ismael Martinez Lopez,media,tutora_probable,0.96,1,1
+José L Medina Franco,Jose Luis Medina Franco,media,tutora_probable_display,0.96,1,1
+"Medina-Franco, José L.",Jose Luis Medina Franco,media,tutora_probable,0.96,1,1
+"Herrera-Camacho, Jose Abel",José Abel Herrera Camacho,alta,tutora_exacta,1.0,2,2
+"Herrera-Camacho, José Abel",José Abel Herrera Camacho,alta,tutora_exacta,1.0,2,2
+Jose Abel Herrera Camacho,José Abel Herrera Camacho,alta,tutora_exacta_display,1.0,2,2
+José Abel Herrera Camacho,José Abel Herrera Camacho,alta,tutora_exacta_display,1.0,2,2
+David Flores Peñaloza,José David Flores Peñaloza,alta,tutora_probable_display,0.99,4,4
+"Flores-Peñaloza, David",José David Flores Peñaloza,alta,tutora_probable,0.99,4,4
+Juan Antonio Lopez Rivera,Juan Antonio López Rivera,alta,tutora_exacta_display,1.0,2,2
+"Rivera, Juan Antonio Lopez",Juan Antonio López Rivera,alta,tutora_exacta,1.0,2,2
+"Carlos Martinez-Garcia, Juan",Juan Carlos Martínez García,alta,tutora_exacta,1.0,1,1
+J C Martínez García,Juan Carlos Martínez García,media,tutora_probable_display,0.96,2,2
+Juan Carlos Martinez Garcia,Juan Carlos Martínez García,alta,tutora_exacta_display,1.0,1,1
+"Martínez-García, J.C.",Juan Carlos Martínez García,media,tutora_probable,0.96,2,2
+Juan José Montellano Ballesteros,Juan Jose Montellano Ballesteros,alta,tutora_exacta_display,1.0,1,1
+"Montellano-Ballesteros, Juan José",Juan Jose Montellano Ballesteros,alta,tutora_exacta,1.0,1,1
+"Cruz-Bastida, Juan P.",Juan Pablo Cruz Bastida,media,tutora_probable,0.96,4,4
+Juan P Cruz Bastida,Juan Pablo Cruz Bastida,media,tutora_probable_display,0.96,4,4
+Juan Vásquez,Juan Vásquez,alta,tutora_exacta_display,1.0,1,1
+"Vásquez, Juan",Juan Vásquez,alta,tutora_exacta,1.0,1,1
+J C Ramírez Vélez,Julio Cesar Ramirez Velez,media,tutora_probable_display,0.96,1,1
+"Ramírez-Vélez, J C",Julio Cesar Ramirez Velez,media,tutora_probable,0.96,1,1
+Katya Rodriguez Vazquez,Katya Rodríguez Vázquez,alta,tutora_exacta_display,1.0,2,2
+Katya Rodríguez Vázquez,Katya Rodríguez Vázquez,alta,tutora_exacta_display,1.0,6,6
+"Rodriguez-Vazquez, Katya",Katya Rodríguez Vázquez,alta,tutora_exacta,1.0,2,2
+"Rodríguez-Vázquez, Katya",Katya Rodríguez Vázquez,alta,tutora_exacta,1.0,6,6
+L. Concha,L Concha,alta,tutora_exacta,1.0,3,3
+"Ledesma-Dominguez, Leonardo",Leonardo Ledesma Domínguez,alta,tutora_exacta,1.0,6,6
+Leonardo Ledesma Dominguez,Leonardo Ledesma Domínguez,alta,tutora_exacta_display,1.0,6,6
+Liliana Peralta,Liliana Peralta,alta,tutora_exacta_display,1.0,1,1
+"Peralta, Liliana",Liliana Peralta,alta,tutora_exacta,1.0,1,1
+Lorena Nunez,Lorena Nunez,alta,tutora_exacta_display,1.0,2,2
+Lorena Núñez,Lorena Nunez,alta,tutora_exacta_display,1.0,2,2
+"Nunez, Lorena",Lorena Nunez,alta,tutora_exacta,1.0,2,2
+"Núñez, Lorena",Lorena Nunez,alta,tutora_exacta,1.0,2,2
+"Cortés, Luis A. Pineda",Luis Alberto Pineda Cortés,media,tutora_probable,0.96,5,5
+Luis A Pineda Cortés,Luis Alberto Pineda Cortés,media,tutora_probable_display,0.96,5,5
+"Concha, Luis",Luis Concha,alta,tutora_exacta,1.0,4,4
+Luis Concha,Luis Concha,alta,tutora_exacta_display,1.0,4,4
+"Jimenez-Angeles, Luis",Luis Jimenez Angeles,alta,tutora_exacta,1.0,1,1
+Luis Jimenez Angeles,Luis Jimenez Angeles,alta,tutora_exacta_display,1.0,1,1
+M A Quiroz Juárez,M A Quiroz Juárez,alta,tutora_exacta_display,1.0,1,1
+M. A. Quiroz-Juárez,M A Quiroz Juárez,alta,tutora_exacta,1.0,2,2
+"Quiroz-Juárez, M.A.",M A Quiroz Juárez,alta,tutora_exacta,1.0,1,1
+M Manea,M Manea,alta,tutora_exacta_display,1.0,4,4
+"Manea, M.",M Manea,alta,tutora_exacta,1.0,4,4
+"Jimenez-Guarneros, M.",Magdiel Jiménez Guarneros,alta,tutora_doi_compartido,0.98,2,2
+"Jimenez-Guarneros, Magdiel",Magdiel Jiménez Guarneros,alta,tutora_exacta,1.0,13,13
+"Jiménez-Guarneros, Magdiel",Magdiel Jiménez Guarneros,alta,tutora_exacta,1.0,2,2
+M Jimenez Guarneros,Magdiel Jiménez Guarneros,alta,tutora_doi_compartido_display,0.98,2,2
+M. Jiménez-Guarneros,Magdiel Jiménez Guarneros,alta,tutora_doi_compartido,0.98,8,8
+Magdiel Jimenez Guarneros,Magdiel Jiménez Guarneros,alta,tutora_exacta_display,1.0,13,13
+Magdiel Jiménez Guarneros,Magdiel Jiménez Guarneros,alta,tutora_exacta_display,1.0,2,2
+"Cedillo-Hernandez, Manuel",Manuel Cedillo Hernández,alta,tutora_exacta,1.0,26,26
+Manuel Cedillo Hernandez,Manuel Cedillo Hernández,alta,tutora_exacta_display,1.0,26,26
+Marco Negrete,Marco Negrete,alta,tutora_exacta_display,1.0,7,7
+"Negrete, Marco",Marco Negrete,alta,tutora_exacta,1.0,7,7
+"Bernal-Romero, Marcos",Marcos Bernal Romero,alta,tutora_exacta,1.0,1,1
+Marcos Bernal Romero,Marcos Bernal Romero,alta,tutora_exacta_display,1.0,1,1
+Maria Julieta Mateos,Maria Julieta Mateos,alta,tutora_exacta_display,1.0,2,2
+"Mateos, Maria-Julieta",Maria Julieta Mateos,alta,tutora_exacta,1.0,2,2
+Mario A Quiroz Juarez,Mario Alan Quiroz Juarez,media,tutora_probable_display,0.96,8,8
+Mario A Quiroz Juárez,Mario Alan Quiroz Juarez,media,tutora_probable_display,0.96,5,5
+"Quiroz-Juarez, Mario A.",Mario Alan Quiroz Juarez,media,tutora_probable,0.96,8,8
+"Quiroz-Juárez, Mario A.",Mario Alan Quiroz Juarez,media,tutora_probable,0.96,5,5
+Mario Peña Cabrera,Mario Peña Cabrera,alta,tutora_exacta_display,1.0,1,1
+"Peña-Cabrera, Mario",Mario Peña Cabrera,alta,tutora_exacta,1.0,1,1
+"Arrieta Paternina, Mario R.",Mario R Arrieta Paternina,alta,tutora_exacta,1.0,3,3
+Mario R Arrieta Paternina,Mario R Arrieta Paternina,alta,tutora_exacta_display,1.0,3,3
+Mario R Arrieta Paternina,Mario R Arrieta Paternina,alta,tutora_exacta_display,1.0,4,4
+Mario R. Arrieta Paternina,Mario R Arrieta Paternina,alta,tutora_exacta,1.0,2,2
+"Paternina, Mario R. Arrieta",Mario R Arrieta Paternina,alta,tutora_exacta,1.0,4,4
+M. R. A. Paternina,Mario Roberto Arrieta Paternina,alta,tutora_doi_compartido,0.98,3,3
+M Elena Martinez Perez,María Elena Martínez Pérez,media,tutora_probable_display,0.96,3,3
+"Martinez-Perez, M. Elena",María Elena Martínez Pérez,media,tutora_probable,0.96,3,3
+"Brandan, Maria-Ester",María Ester Brandan,alta,tutora_exacta,1.0,4,4
+Maria Ester Brandan,María Ester Brandan,alta,tutora_exacta_display,1.0,4,4
+"Angeles, Maria Del Pilar",María del Pilar Angeles,alta,tutora_exacta,1.0,2,2
+Maria Del Pilar Angeles,María del Pilar Angeles,alta,tutora_exacta_display,1.0,2,2
+M Reyes Ruiz,Mauricio Reyes Ruiz,media,tutora_probable_display,0.96,1,1
+"Reyes-Ruiz, M.",Mauricio Reyes Ruiz,media,tutora_probable,0.96,1,1
+M Rodriguez Villafuerte,Mercedes Rodríguez Villafuerte,media,tutora_probable_display,0.96,3,3
+M Rodríguez Villafuerte,Mercedes Rodríguez Villafuerte,media,tutora_probable_display,0.96,3,3
+M. Rodríguez-Villafuerte,Mercedes Rodríguez Villafuerte,media,tutora_probable,0.96,6,6
+Mercedes Rodriguez Villafuerte,Mercedes Rodríguez Villafuerte,alta,tutora_exacta_display,1.0,3,3
+Mercedes Rodríguez Villafuerte,Mercedes Rodríguez Villafuerte,alta,tutora_exacta_display,1.0,3,3
+"Rodriguez-Villafuerte, M.",Mercedes Rodríguez Villafuerte,media,tutora_probable,0.96,3,3
+"Rodriguez-Villafuerte, Mercedes",Mercedes Rodríguez Villafuerte,alta,tutora_exacta,1.0,3,3
+"Rodríguez-Villafuerte, M.",Mercedes Rodríguez Villafuerte,media,tutora_probable,0.96,3,3
+"Rodríguez-Villafuerte, Mercedes",Mercedes Rodríguez Villafuerte,alta,tutora_exacta,1.0,3,3
+Michelle Reyes,Michelle Reyes,alta,tutora_exacta_display,1.0,3,3
+"Reyes, Michelle",Michelle Reyes,alta,tutora_exacta,1.0,3,3
+Miguel Murguia Romero,Miguel Murguía Romero,alta,tutora_exacta_display,1.0,1,1
+"Murguia-Romero, Miguel",Miguel Murguía Romero,alta,tutora_exacta,1.0,1,1
+Miguel angel Padilla Castaneda,Miguel Ángel Padilla Castañeda,alta,tutora_exacta_display,1.0,1,1
+Miguel Ángel Padilla Castañeda,Miguel Ángel Padilla Castañeda,alta,tutora_exacta_display,1.0,7,7
+"Padilla-Castaneda, Miguel angel",Miguel Ángel Padilla Castañeda,alta,tutora_exacta,1.0,1,1
+"Padilla-Castañeda, Miguel Ángel",Miguel Ángel Padilla Castañeda,alta,tutora_exacta,1.0,7,7
+"Marín, N.",N M Montalvo Marin,media,tutora_probable,0.99,1,1
+N Marín,N M Montalvo Marin,media,tutora_probable_display,0.99,1,1
+"Jonard-Pérez, Natalia",Natalia Jonard Perez,alta,tutora_exacta,1.0,1,1
+Natalia Jonard Pérez,Natalia Jonard Perez,alta,tutora_exacta_display,1.0,1,1
+Nelly Selem Mojica,Nelly Selem Mojica,alta,tutora_exacta_display,1.0,1,1
+Nelly Sélem Mojica,Nelly Selem Mojica,alta,tutora_exacta_display,1.0,1,1
+"Selem-Mojica, Nelly",Nelly Selem Mojica,alta,tutora_exacta,1.0,1,1
+"Sélem-Mojica, Nelly",Nelly Selem Mojica,alta,tutora_exacta,1.0,1,1
+"Marín, Nestaly",Nestaly Marín,alta,tutora_exacta,1.0,1,1
+Nestaly Marín,Nestaly Marín,alta,tutora_exacta_display,1.0,1,1
+"Hevia-Montiel, Nidiyare",Nidiyare Hevia Montiel,alta,tutora_exacta,1.0,4,4
+"Hevia-montiel, Nidiyare",Nidiyare Hevia Montiel,alta,tutora_exacta,1.0,2,2
+"Hevia–Montiel, Nidiyare",Nidiyare Hevia Montiel,alta,tutora_exacta,1.0,2,2
+N. Hevia-Montiel,Nidiyare Hevia Montiel,media,tutora_probable,0.96,5,5
+Nidiyare Hevia Montiel,Nidiyare Hevia Montiel,alta,tutora_exacta_display,1.0,4,4
+Nidiyare Hevia Montiel,Nidiyare Hevia Montiel,alta,tutora_exacta_display,1.0,2,2
+Nidiyare Hevia montiel,Nidiyare Hevia Montiel,alta,tutora_exacta_display,1.0,2,2
+Nora Isabel Perez Quezadas,Nora Isabel Pérez Quezadas,alta,tutora_exacta_display,1.0,2,2
+Nora Isabel Pérez Quezadas,Nora Isabel Pérez Quezadas,alta,tutora_exacta_display,1.0,7,7
+"Perez-Quezadas, Nora Isabel",Nora Isabel Pérez Quezadas,alta,tutora_exacta,1.0,2,2
+"Pérez-Quezadas, Nora Isabel",Nora Isabel Pérez Quezadas,alta,tutora_exacta,1.0,7,7
+"Gonzalez-Cabrera, Nestor",Néstor González Cabrera,alta,tutora_exacta,1.0,1,1
+Nestor Gonzalez Cabrera,Néstor González Cabrera,alta,tutora_exacta_display,1.0,1,1
+"Cruz-Mejia, Oliverio",Oliverio Cruz Mejia,alta,tutora_exacta,1.0,8,8
+"Cruz-Mejía, Oliverio",Oliverio Cruz Mejia,alta,tutora_exacta,1.0,3,3
+Oliverio Cruz Mejia,Oliverio Cruz Mejia,alta,tutora_exacta_display,1.0,8,8
+Oliverio Cruz Mejía,Oliverio Cruz Mejia,alta,tutora_exacta_display,1.0,3,3
+Oriol Sole Pi,Oriol Solé Pi,alta,tutora_exacta_display,1.0,1,1
+Oriol Solé Pi,Oriol Solé Pi,alta,tutora_exacta_display,1.0,1,1
+"Pi, Oriol Sole",Oriol Solé Pi,alta,tutora_exacta,1.0,1,1
+"Pi, Oriol Solé",Oriol Solé Pi,alta,tutora_exacta,1.0,1,1
+Orlando Ramos Flores,Orlando Ramos Flores,alta,tutora_exacta_display,1.0,3,3
+"Ramos-Flores, Orlando",Orlando Ramos Flores,alta,tutora_exacta,1.0,3,3
+"Arana-Hernandez, Oscar",Oscar Arana Hernández,alta,tutora_exacta,1.0,2,2
+O. Arana-Hernández,Oscar Arana Hernández,media,tutora_probable,0.96,1,1
+Oscar Arana Hernandez,Oscar Arana Hernández,alta,tutora_exacta_display,1.0,2,2
+Patricio J Valadés Pelayo,Patricio Javier Valadés Pelayo,media,tutora_probable_display,0.96,1,1
+"Valadés-Pelayo, Patricio J.",Patricio Javier Valadés Pelayo,media,tutora_probable,0.96,1,1
+"Cruz-Morales, R.D.",R D Cruz Morales,alta,tutora_exacta,1.0,3,3
+R D Cruz Morales,R D Cruz Morales,alta,tutora_exacta_display,1.0,3,3
+R. D. Cruz-Morales,R D Cruz Morales,alta,tutora_exacta,1.0,3,3
+R. d. J. León-Montiel,R D J León Montiel,alta,tutora_exacta,1.0,2,2
+"Ramírez-Chavarría, Roberto G.",Roberto Giovanni Ramírez Chavarría,alta,tutora_doi_compartido,0.98,9,9
+Roberto G Ramírez Chavarría,Roberto Giovanni Ramírez Chavarría,alta,tutora_doi_compartido_display,0.98,9,9
+"Aldeco Peréz, Rocio",Rocio Aldeco Perez,alta,tutora_exacta,1.0,2,2
+"Perez, Rocio Aldeco",Rocio Aldeco Perez,alta,tutora_exacta,1.0,2,2
+Rocio Aldeco Perez,Rocio Aldeco Perez,alta,tutora_exacta_display,1.0,2,2
+Rocio Aldeco Peréz,Rocio Aldeco Perez,alta,tutora_exacta_display,1.0,2,2
+"Ramos-Díaz, Rodrigo",Rodrigo Ramos Diaz,alta,tutora_exacta,1.0,2,2
+Rodrigo Ramos Díaz,Rodrigo Ramos Diaz,alta,tutora_exacta_display,1.0,2,2
+Rodrigo Ramos-Díaz,Rodrigo Ramos Diaz,alta,tutora_exacta,1.0,1,1
+"Comparan, Roman Osorio",Roman Osorio Comparan,alta,tutora_exacta,1.0,1,1
+"Comparán, Román Osorio",Roman Osorio Comparan,alta,tutora_exacta,1.0,1,1
+"Osorio-Comparan, Roman",Roman Osorio Comparan,alta,tutora_exacta,1.0,8,8
+"Osorio-Comparán, Román",Roman Osorio Comparan,alta,tutora_exacta,1.0,3,3
+Roman Osorio Comparan,Roman Osorio Comparan,alta,tutora_exacta_display,1.0,1,1
+Roman Osorio Comparan,Roman Osorio Comparan,alta,tutora_exacta_display,1.0,8,8
+Román Osorio Comparán,Roman Osorio Comparan,alta,tutora_exacta_display,1.0,1,1
+Román Osorio Comparán,Roman Osorio Comparan,alta,tutora_exacta_display,1.0,3,3
+R. Rossi-Pool,Roman Rossi Pool,media,tutora_probable,0.96,1,1
+Roman Rossi Pool,Roman Rossi Pool,alta,tutora_exacta_display,1.0,2,2
+Román Rossi Pool,Roman Rossi Pool,alta,tutora_exacta_display,1.0,2,2
+"Rossi-Pool, Roman",Roman Rossi Pool,alta,tutora_exacta,1.0,2,2
+"Rossi-Pool, Román",Roman Rossi Pool,alta,tutora_exacta,1.0,2,2
+Ruben Tapia Olvera,Rubén Tapia Olvera,alta,tutora_exacta_display,1.0,3,3
+"Tapia-Olvera, Ruben",Rubén Tapia Olvera,alta,tutora_exacta,1.0,3,3
+"Fuentes-García, Ruth",Ruth Selene Fuentes Garcia,alta,tutora_probable,0.99,2,2
+Ruth Fuentes García,Ruth Selene Fuentes Garcia,alta,tutora_probable_display,0.99,2,2
+"Rodriguez-Romo, S.",S Rodríguez Romo,alta,tutora_exacta,1.0,2,2
+"Rodríguez-Romo, S.",S Rodríguez Romo,alta,tutora_exacta,1.0,2,2
+S Rodriguez Romo,S Rodríguez Romo,alta,tutora_exacta_display,1.0,2,2
+S Rodríguez Romo,S Rodríguez Romo,alta,tutora_exacta_display,1.0,2,2
+"Ojeda-Trueba, Sergio",Sergio Luis Ojeda Trueba,alta,tutora_probable,0.99,4,4
+"Ojeda-Trueba, Sergio Luis",Sergio Luis Ojeda Trueba,alta,tutora_exacta,1.0,7,7
+"Ojeda-Trueba, Sergio-Luis",Sergio Luis Ojeda Trueba,alta,tutora_exacta,1.0,13,13
+Sergio Luis Ojeda Trueba,Sergio Luis Ojeda Trueba,alta,tutora_exacta_display,1.0,7,7
+Sergio Luis Ojeda Trueba,Sergio Luis Ojeda Trueba,alta,tutora_exacta_display,1.0,13,13
+Sergio Ojeda Trueba,Sergio Luis Ojeda Trueba,alta,tutora_probable_display,0.99,4,4
+"Alcocer, Sergio M.",Sergio M Alcocer,alta,tutora_exacta,1.0,3,3
+Sergio M Alcocer,Sergio M Alcocer,alta,tutora_exacta_display,1.0,3,3
+"Quezada-Garcia, Sergio",Sergio Quezada García,alta,tutora_exacta,1.0,1,1
+"Quezada-García, Sergio",Sergio Quezada García,alta,tutora_exacta,1.0,1,1
+Sergio Quezada Garcia,Sergio Quezada García,alta,tutora_exacta_display,1.0,1,1
+Sergio Quezada García,Sergio Quezada García,alta,tutora_exacta_display,1.0,1,1
+Shweta Vincent,Shweta Vincent,alta,tutora_exacta_display,1.0,1,1
+"Vincent, Shweta",Shweta Vincent,alta,tutora_exacta,1.0,1,1
+"Garcia Benitez, Silvia Raquel",Silvia Raquel García Benítez,alta,tutora_exacta,1.0,1,1
+Silvia Raquel Garcia Benitez,Silvia Raquel García Benítez,alta,tutora_exacta_display,1.0,1,1
+"Ortuno-Chanelo, S.",Stephany Ortuño Chanelo,alta,tutora_doi_compartido,0.98,1,1
+"Ortuno-Chanelo, Stephany",Stephany Ortuño Chanelo,alta,tutora_exacta,1.0,2,2
+"Ortuño-Chanelo, Stephany",Stephany Ortuño Chanelo,alta,tutora_exacta,1.0,1,1
+S Ortuno Chanelo,Stephany Ortuño Chanelo,alta,tutora_doi_compartido_display,0.98,1,1
+Stephany Ortuno Chanelo,Stephany Ortuño Chanelo,alta,tutora_exacta_display,1.0,2,2
+Stephany Ortuño Chanelo,Stephany Ortuño Chanelo,alta,tutora_exacta_display,1.0,1,1
+"Rodriguez-Romo, Suemi",Suemi Rodríguez Romo,alta,tutora_exacta,1.0,15,15
+"Rodríguez-Romo, Suemi",Suemi Rodríguez Romo,alta,tutora_exacta,1.0,11,11
+Suemi Rodriguez Romo,Suemi Rodríguez Romo,alta,tutora_exacta_display,1.0,15,15
+Suemi Rodríguez Romo,Suemi Rodríguez Romo,alta,tutora_exacta_display,1.0,11,11
+"Baydyk, Tetyana",Tetyana Baydyk,alta,tutora_exacta,1.0,2,2
+Tetyana Baydyk,Tetyana Baydyk,alta,tutora_exacta_display,1.0,2,2
+"Olivares-Pinto, U",Ulises Olivares Pinto,media,tutora_probable,0.96,2,2
+"Olivares-Pinto, U.",Ulises Olivares Pinto,media,tutora_probable,0.96,2,2
+U Olivares Pinto,Ulises Olivares Pinto,media,tutora_probable_display,0.96,2,2
+"Iturrarán-Viveros, Ursula",Ursula Iturrarán Viveros,alta,tutora_exacta,1.0,5,5
+Ursula Iturrarán Viveros,Ursula Iturrarán Viveros,alta,tutora_exacta_display,1.0,5,5
+"Manea, V.C.",V C Manea,alta,tutora_exacta,1.0,5,5
+V C Manea,V C Manea,alta,tutora_exacta_display,1.0,5,5
+"Arriola Rios, Veronica Esther",Verónica Esther Arriola Ríos,alta,tutora_exacta,1.0,1,1
+"Arriola Ríos, Verónica Esther",Verónica Esther Arriola Ríos,alta,tutora_exacta,1.0,1,1
+"Arriola-Rios, V.E.",Verónica Esther Arriola Ríos,media,tutora_probable,0.96,1,1
+"Arriola-Rios, Veronica E.",Verónica Esther Arriola Ríos,media,tutora_probable,0.96,2,2
+V E Arriola Rios,Verónica Esther Arriola Ríos,media,tutora_probable_display,0.96,1,1
+V. E. Arriola Ríos,Verónica Esther Arriola Ríos,media,tutora_probable,0.96,1,1
+Veronica E Arriola Rios,Verónica Esther Arriola Ríos,media,tutora_probable_display,0.96,2,2
+Veronica Esther Arriola Rios,Verónica Esther Arriola Ríos,alta,tutora_exacta_display,1.0,1,1
+Verónica Esther Arriola Ríos,Verónica Esther Arriola Ríos,alta,tutora_exacta_display,1.0,1,1
+"Manea, Vlad C.",Vlad Constantin Manea,media,tutora_probable,0.96,3,3
+Vlad C Manea,Vlad Constantin Manea,media,tutora_probable_display,0.96,3,3
+"Gonzalez-Villela, Victor J.",Víctor Javier González Villela,media,tutora_probable,0.96,7,7
+V. J. Gonzalez-Villela,Víctor Javier González Villela,media,tutora_probable,0.96,4,4
+Victor J Gonzalez Villela,Víctor Javier González Villela,media,tutora_probable_display,0.96,7,7
+Victor J. Gonzalez-Villela,Víctor Javier González Villela,media,tutora_probable,0.96,2,2
+"Lomas, Victor",Víctor Lomas Barrie,alta,tutora_doi_compartido,0.98,3,3
+Victor Lomas,Víctor Lomas Barrie,alta,tutora_doi_compartido_display,0.98,3,3
+"Corza-Vargas, Victor Manuel",Víctor Manuel Corza Vargas,alta,tutora_exacta,1.0,2,2
+Victor Manuel Corza Vargas,Víctor Manuel Corza Vargas,alta,tutora_exacta_display,1.0,2,2
+V M Velasco Herrera,Víctor Manuel Velasco Herrera,media,tutora_probable_display,0.96,1,1
+"Velasco-Herrera, V.M.",Víctor Manuel Velasco Herrera,media,tutora_probable,0.96,1,1
+"Fanti-Gutierrez, Zian",Zian Fanti Gutiérrez,alta,tutora_exacta,1.0,3,3
+"Fanti-Gutiérrez, Zian",Zian Fanti Gutiérrez,alta,tutora_exacta,1.0,3,3
+Zian Fanti Gutierrez,Zian Fanti Gutiérrez,alta,tutora_exacta_display,1.0,3,3
+Zian Fanti Gutiérrez,Zian Fanti Gutiérrez,alta,tutora_exacta_display,1.0,3,3
+"Leyva-Acosta, Zoe",Zoe Leyva Acosta,alta,tutora_exacta,1.0,2,2
+Zoe Leyva Acosta,Zoe Leyva Acosta,alta,tutora_exacta_display,1.0,2,2
