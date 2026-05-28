@@ -1,0 +1,317 @@
+REPORTE DE LIMPIEZA - FASE DE DEDUPLICACIÓN Y FUSIÓN
+Proyecto: Preprocesamiento / Calidad de Datos - Base bibliográfica UNAM en Ciencias de la Computación
+Etapa: Deduplicación y fusión de artículos después de normalizar afiliaciones, columnas y nombres de autores
+
+================================================================================
+1. OBJETIVO DE LA ETAPA
+================================================================================
+
+El objetivo de esta fase fue reducir los registros duplicados generados por la integración de varias fuentes/editoriales, conservando una base final en formato artículo-autor, es decir, una fila por autor UNAM asociado a cada artículo final deduplicado.
+
+A diferencia de versiones previas, en esta etapa NO se usó DOI como llave principal de deduplicación. La razón es que un mismo artículo puede aparecer en distintas fuentes con DOI distinto, DOI editorial, DOI de proceedings, DOI de arXiv o variaciones bibliográficas. Por ello, el criterio principal elegido fue:
+
+    Titulo normalizado + Año + Autor_norm normalizado
+
+El DOI se conservó únicamente como dato bibliográfico a fusionar, no como criterio principal de unión.
+
+================================================================================
+2. ARCHIVO DE ENTRADA
+================================================================================
+
+Archivo de entrada usado:
+
+    C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\03_Nomralizar_Nombres\integrado_solo_unam_autores_normalizados.csv
+
+Este archivo ya venía de las fases anteriores con:
+
+    - autores separados por fila artículo-autor;
+    - sólo autores con afiliación UNAM conservados;
+    - afiliaciones UNAM normalizadas;
+    - columnas bibliográficas estandarizadas;
+    - nombres de autores normalizados;
+    - 14 columnas canónicas;
+    - Subarea vacía.
+
+Antes de la deduplicación, la base tenía:
+
+    Filas artículo-autor originales: 3,237
+    Artículos originales por indice: 1,459
+
+================================================================================
+3. LIBRETA Y CÓDIGO USADOS
+================================================================================
+
+Libreta usada para esta fase:
+
+    04_limpieza_08_deduplicar_fusionar_pares.ipynb
+
+Código base/final de la fase:
+
+    12_deduplicar_fusionar_titulo_anio_autor_pares_revisados.py
+
+La libreta fue ajustada para deduplicar principalmente por título, año y autor, incorporando además reglas revisadas manualmente para cuatro pares/casos específicos donde el título presentaba variantes textuales pero correspondía al mismo artículo.
+
+================================================================================
+4. ARCHIVOS GENERADOS
+================================================================================
+
+La etapa generó los siguientes archivos en:
+
+    C:\Users\hazar\Desktop\PROYECTO\04_Limpieza\04_deduplicar
+
+Archivos principales:
+
+    1. integrado_solo_unam_deduplicado_fusionado.csv
+       Base final deduplicada y fusionada en formato artículo-autor.
+
+    2. integrado_solo_unam_deduplicado_fusionado_articulos.csv
+       Vista agregada por artículo fusionado.
+
+Archivos de diagnóstico:
+
+    3. diagnostico_deduplicacion_fusion_articulos.csv
+       Diagnóstico por artículo fusionado. Incluye índices originales, reglas de unión, conflictos de título, año, área y DOI, así como metadatos fusionados.
+
+    4. diagnostico_deduplicacion_fusion_autores.csv
+       Diagnóstico por autor dentro de cada artículo fusionado. Incluye variantes de autor, afiliaciones candidatas, afiliaciones descartadas y motivo de fusión.
+
+Archivo de resumen:
+
+    5. resumen_deduplicacion_fusion.json
+       Resumen cuantitativo de la etapa.
+
+================================================================================
+5. CRITERIO FINAL DE DEDUPLICACIÓN
+================================================================================
+
+El criterio principal fue:
+
+    titulo_normalizado + año + autor_normalizado
+
+Además se usaron reglas complementarias para mejorar cobertura sin depender del DOI:
+
+    1. Mismo título normalizado + mismo año + mismo autor.
+    2. Mismo título normalizado + mismo año.
+    3. Mismo título normalizado + autor compartido, aun si el año difiere entre 2024 y 2025.
+    4. Título muy similar + mismo año + autor compartido.
+    5. Equivalencias manuales revisadas de títulos específicos.
+
+El DOI no se usó como clave de unión. Sólo se conservó y fusionó como un campo bibliográfico más.
+
+================================================================================
+6. CASOS MANUALES REVISADOS
+================================================================================
+
+Durante la revisión se identificaron cuatro grupos donde el mismo artículo podía aparecer con variantes de título, año o forma textual. Se incorporaron reglas manuales controladas para esos casos, siempre exigiendo compatibilidad de autor.
+
+Los grupos manuales revisados corresponden a:
+
+    1. Finding locally optimal solutions for multiobjective multimodal optimization.
+    2. Finding the set of nearly optimal solutions of a multiobjective optimization problem.
+    3. Solution algorithms for the capacitated location-tree problem with interconnections.
+    4. Towards a collaborative game designer using the CCDSF framework.
+
+Estos casos se fusionaron sólo cuando había evidencia suficiente por título equivalente y autor compatible.
+
+Validación de pares revisados:
+
+    Grupos manuales validados: 4
+    Índices originales cubiertos: 1,459
+    Índices originales perdidos: 0
+
+================================================================================
+7. CRITERIO DE FUSIÓN DE CAMPOS
+================================================================================
+
+La fusión buscó conservar la máxima información posible por artículo y por autor.
+
+Reglas de fusión aplicadas:
+
+    Titulo:
+        Se conservó la versión más limpia, menos ruidosa y más informativa.
+
+    Año:
+        Se seleccionó el año con mayor soporte dentro del grupo fusionado.
+        Si el grupo tenía años 2024 y 2025, se documentó como conflicto de año.
+
+    Autor_norm:
+        Se conservaron los autores UNAM normalizados.
+        Si el mismo autor aparecía repetido dentro del mismo artículo, se fusionó en una sola fila.
+
+    Afiliacion1 y Afiliacion2:
+        Se priorizaron afiliaciones específicas sobre la afiliación genérica:
+
+            Universidad Nacional Autonoma de Mexico
+
+        Si para el mismo autor existía una afiliación específica, se descartó la genérica.
+        Si había dos afiliaciones UNAM específicas distintas, se usaron Afiliacion1 y Afiliacion2.
+
+    ISBN:
+        Se conservaron valores únicos fusionados.
+
+    ISSN:
+        Se conservaron valores únicos fusionados.
+
+    Doi:
+        No se usó para deduplicar.
+        Si existían varios DOI dentro de un grupo, se eligió uno como DOI final y los demás quedaron documentados en diagnóstico.
+
+    URL:
+        Se priorizó la URL derivada del DOI final cuando correspondía.
+
+    Area:
+        Se conservó un solo código válido del catálogo:
+
+            ISBD, CC, IA, TC, SIAV, RS
+
+        Cuando un artículo aparecía en más de un área, el conflicto quedó documentado en diagnóstico.
+
+    Subarea:
+        Se mantuvo siempre vacía.
+
+    Keywords:
+        Se fusionaron y deduplicaron las palabras clave de las fuentes disponibles.
+
+    Abstract:
+        Se conservó el resumen más completo.
+
+================================================================================
+8. RESULTADOS CUANTITATIVOS
+================================================================================
+
+Resumen de reducción:
+
+    Filas originales artículo-autor: 3,237
+    Artículos originales por indice: 1,459
+
+    Artículos finales deduplicados: 410
+    Filas finales artículo-autor: 1,070
+
+    Filas artículo-autor reducidas: 2,167
+    Artículos reducidos: 1,049
+
+    Clusters con duplicados: 305
+    Índices originales dentro de clusters duplicados: 1,354
+
+Autores y DOI:
+
+    Autores únicos finales: 738
+    DOI únicos finales no vacíos: 387
+    Artículos finales sin DOI: 23
+
+Afiliaciones:
+
+    Filas finales con Afiliacion2: 61
+    Afiliaciones genéricas UNAM antes de fusionar: 1,241
+    Afiliaciones genéricas UNAM después de fusionar: 301
+
+Esto indica que la fusión redujo de forma importante los casos donde sólo se tenía la afiliación genérica, al aprovechar información más específica disponible en otros registros duplicados.
+
+================================================================================
+9. CONFLICTOS DOCUMENTADOS
+================================================================================
+
+La deduplicación/fusión no ocultó los conflictos detectados. Los documentó en los archivos de diagnóstico.
+
+Conflictos detectados:
+
+    Clusters con conflicto de título: 2
+    Clusters con conflicto de año: 2
+    Clusters con conflicto de área: 15
+    Clusters con conflicto de DOI: 4
+
+Interpretación:
+
+    - Conflicto de título:
+      El artículo apareció con variantes textuales de título.
+
+    - Conflicto de año:
+      El mismo artículo apareció registrado en 2024 y 2025.
+
+    - Conflicto de área:
+      El mismo artículo apareció clasificado en más de una área.
+
+    - Conflicto de DOI:
+      El mismo artículo o grupo fusionado contenía más de un DOI.
+      El DOI no se usó como llave de unión, por lo que estos conflictos se conservaron como evidencia diagnóstica.
+
+================================================================================
+10. DISTRIBUCIÓN DE REGLAS DE DEDUPLICACIÓN
+================================================================================
+
+Reglas aplicadas a clusters:
+
+    295 clusters:
+        mismo_titulo_año_autor | mismo_titulo_normalizado_y_año | titulo_similar_año_autor_sim_1.000
+
+    1 cluster:
+        fusion_manual_titulo_equivalente_autor_compatible::manual_finding_epsilon_locally_optimal_multiobjective_multimodal
+
+    1 cluster:
+        fusion_manual_titulo_equivalente_autor_compatible::manual_finding_set_nearly_optimal_multiobjective
+
+    1 cluster:
+        fusion_manual_titulo_equivalente_autor_compatible::manual_solution_algorithms_capacitated_location_tree
+
+    1 cluster:
+        fusion_manual_titulo_equivalente_autor_compatible::manual_towards_collaborative_game_designer_ccdsf
+
+    6 clusters:
+        mismo_titulo_normalizado_y_año
+
+    105 clusters:
+        sin_duplicado
+
+================================================================================
+11. VALIDACIÓN FINAL DE LA SALIDA
+================================================================================
+
+La salida final fue validada con las siguientes métricas:
+
+    Filas finales: 1,070
+    Columnas canónicas correctas: Sí
+    Subarea no vacía: 0
+    DOI inválidos: 0
+    URL inválidas: 0
+    Filas sin autor: 0
+    Filas sin afiliación: 0
+    Afiliaciones con coma: 0
+    Áreas fuera del catálogo: 0
+    Duplicados indice + autor: 0
+
+También se confirmó que no se perdieron índices originales:
+
+    Índices originales cubiertos: 1,459
+    Índices originales perdidos: 0
+
+================================================================================
+12. ESTADO FINAL DE LA BASE
+================================================================================
+
+El archivo final seleccionado para continuar es:
+
+    integrado_solo_unam_deduplicado_fusionado.csv
+
+Estado de la base final:
+
+    - conserva las 14 columnas canónicas;
+    - conserva una fila por autor UNAM de cada artículo final;
+    - no contiene filas sin autor;
+    - no contiene filas sin afiliación;
+    - mantiene Subarea vacía;
+    - conserva áreas válidas;
+    - fusiona metadatos para maximizar información disponible;
+    - reduce fuertemente afiliaciones genéricas UNAM;
+    - documenta conflictos en archivos de diagnóstico.
+
+================================================================================
+13. CONCLUSIÓN
+================================================================================
+
+La fase de deduplicación y fusión dejó la base en un estado mucho más consolidado. La base pasó de 1,459 artículos originales por índice a 410 artículos finales deduplicados, y de 3,237 filas artículo-autor a 1,070 filas finales artículo-autor.
+
+El procedimiento elegido fue adecuado para el dominio bibliográfico porque evitó usar DOI como llave principal y se centró en título, año y autor normalizado. Esto permitió fusionar registros de distintas fuentes/editoriales aun cuando el DOI no coincidía.
+
+La fusión también mejoró la calidad de la información, especialmente en afiliaciones, ISBN, ISSN, keywords y abstract. La afiliación genérica Universidad Nacional Autonoma de Mexico se redujo de 1,241 a 301 apariciones, gracias a la priorización de dependencias específicas cuando estaban disponibles en registros duplicados.
+
+La base final queda lista para la siguiente etapa del proyecto, manteniendo trazabilidad diagnóstica mediante los archivos de diagnóstico de artículos y autores.
