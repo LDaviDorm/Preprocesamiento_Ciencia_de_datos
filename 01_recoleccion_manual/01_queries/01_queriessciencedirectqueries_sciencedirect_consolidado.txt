@@ -1,0 +1,88 @@
+Query BDIS 
+Author affiliation:
+"Universidad Nacional Autónoma de México" OR "Universidad Nacional Autonoma de Mexico" OR "National Autonomous University of Mexico" OR "UNAM" OR "IIMAS UNAM" OR "IIMAS-UNAM"
+Year(s):
+2024 OR 2025
+Title, abstract or author-specified keywords:
+"software engineering" OR "ingeniería de software" OR "ingenieria de software" OR "software development" OR "software architecture" OR "software design" OR "software testing" OR "software quality" OR "requirements engineering" OR "software requirements" OR "software maintenance" OR "software process" OR "software metrics" OR "software project management" OR "technical debt" OR "software refactoring" OR "program comprehension" OR "code generation" OR "model driven development" OR "microservices" OR "database systems" OR "database management system" OR "DBMS" OR "relational database" OR "SQL optimization" OR "query processing" OR "query optimization" OR "transaction processing" OR "concurrency control" OR "database recovery" OR "distributed database" OR "parallel database" OR "database replication" OR "data fragmentation" OR "NoSQL" OR "data warehouse" OR "OLAP" OR "big data management" OR "data management" OR "data integration" OR "data quality" OR "data provenance" OR "metadata management" OR "data governance" OR "information retrieval" OR "digital libraries" OR "document retrieval" OR "text retrieval" OR "human computer interaction" OR "human-computer interaction" OR "HCI" OR "user interface" OR "user interfaces" OR "interface design" OR "interaction design" OR "usability evaluation" OR "usability testing" OR "user experience" OR "UX" OR "accessibility" OR "interactive systems" OR "conversational interface" OR "chatbot interface" OR "collaborative software" OR "CSCW" OR "human centered computing" OR "pervasive computing" OR "ubiquitous computing" OR "bases de datos" OR "sistemas de información" OR "sistemas de informacion" OR "minería de datos" OR "mineria de datos" OR "interfaz de usuario" OR "usabilidad"
+Author(s):
+"Maria del Pilar Angeles" OR "María del Pilar Angeles" OR "María del Pilar Ángeles" OR "Ma del Pilar Angeles" OR "Ma. del Pilar Ángeles" OR "Gustavo A Marquez Flores" OR "Gustavo A Márquez Flores" OR "Gustavo Marquez" OR "Gustavo Márquez" OR "Jorge Luis Ortega Arjona" OR "Jorge Ortega Arjona" OR "Ortega Arjona" OR "Hanna Oktaba" OR "Hanna J Oktaba" OR "Guadalupe Ibarguengoitia" OR "Guadalupe Ibargüengoitia" OR "Javier Garcia Garcia" OR "Javier García García" OR "Fernando Gamboa"
+
+
+
+
+
+
+
+Query Computacion cientifica
+
+Author affiliation:
+"Universidad Nacional Autónoma de México" OR "Universidad Nacional Autonoma de Mexico" OR "National Autonomous University of Mexico" OR "UNAM" OR "IIMAS UNAM" OR "IIMAS-UNAM"
+Year(s):
+2024 OR 2025
+Title, abstract or author-specified keywords:
+"scientific computing" OR "computación científica" OR "computacion cientifica" OR "computational science" OR "computational mathematics" OR "numerical analysis" OR "numerical methods" OR "computational modeling" OR "computational modelling" OR "computational simulation" OR "numerical simulation" OR "numerical modeling" OR "numerical modelling" OR "mathematical modeling" OR "mathematical modelling" OR "simulation model" OR "computational model" OR "computational framework" OR "scientific visualization" OR "numerical linear algebra" OR "matrix computations" OR "linear system" OR "linear systems" OR "sparse matrix" OR "iterative solver" OR "iterative solvers" OR "Krylov subspace" OR "conjugate gradient" OR "Gaussian elimination" OR "Cholesky" OR "Jacobi method" OR "Gauss-Seidel" OR "preconditioner" OR "preconditioned conjugate gradient" OR "ill-conditioned matrix" OR "parallel solver" OR "distributed memory" OR "partial differential equations" OR "partial differential equation" OR "PDE" OR "finite difference method" OR "finite difference methods" OR "finite element method" OR "finite element methods" OR "finite volume method" OR "numerical discretization" OR "error estimation" OR "consistency analysis" OR "stability analysis" OR "transport equation" OR "diffusion equation" OR "heat equation" OR "Laplace equation" OR "hyperbolic equation" OR "wave propagation" OR "high performance computing" OR "HPC" OR "supercomputing" OR "parallel computing" OR "parallel processing" OR "parallel algorithms" OR "GPU computing" OR "CUDA" OR "GPGPU" OR "MPI" OR "OpenMP" OR "message passing" OR "shared memory" OR "cluster computing" OR "load balancing" OR "scalability analysis" OR "performance optimization" OR "numerical optimization" OR "nonlinear optimization" OR "non-linear optimization" OR "global optimization" OR "Newton method" OR "quasi Newton" OR "truncated Newton" OR "trust region" OR "line search" OR "branch and bound" OR "genetic algorithm" OR "parallel genetic algorithm" OR "metaheuristic optimization" OR "evolutionary optimization" OR "inverse problem" OR "inverse problems" OR "regularization" OR "parameter estimation" OR "scientific software" OR "computational software" OR "scientific workflow" OR "numerical code" OR "simulation code" OR "open source software" OR "computational platform" OR "computational tool" OR "software framework" OR "métodos numéricos" OR "metodos numericos" OR "simulación numérica" OR "simulacion numerica" OR "modelado computacional" OR "cómputo paralelo" OR "computo paralelo"
+Author(s):
+"Luis Miguel de la Cruz" OR "Luis Miguel de la Cruz Salas" OR "De la Cruz Salas" OR "Ismael Herrera" OR "Ismael Herrera Revilla" OR "Ismael Herrera-Revilla" OR "Vladislav Khartchenko" OR "Khartchenko" OR "Lukas Nellen" OR "Lukas Nellen Filla" OR "Nellen Filla" OR "Suemi Rodriguez Romo" OR "Suemi Rodríguez Romo" OR "Rodriguez Romo" OR "Rodríguez Romo" OR "Rodríguez-Romo" OR "Atocha Aliseda" OR "Atocha Aliseda Llera" OR "Katya Rodriguez Vazquez" OR "Katya Rodríguez Vázquez" OR "Christopher Stephens" OR "Christopher R Stephens"
+
+
+
+
+
+
+Query Inteligencia Artificial
+Author affiliation:
+"Universidad Nacional Autónoma de México" OR "Universidad Nacional Autonoma de Mexico" OR "National Autonomous University of Mexico" OR "UNAM" OR "IIMAS UNAM" OR "IIMAS-UNAM"
+Year(s):
+2024 OR 2025
+Title, abstract or author-specified keywords:
+"artificial intelligence" OR "inteligencia artificial" OR "machine learning" OR "aprendizaje automático" OR "aprendizaje automatico" OR "deep learning" OR "aprendizaje profundo" OR "neural network" OR "neural networks" OR "redes neuronales" OR "reinforcement learning" OR "computational intelligence" OR "evolutionary computation" OR "computación evolutiva" OR "computacion evolutiva" OR "fuzzy logic" OR "lógica difusa" OR "logica difusa" OR "natural language processing" OR "computational linguistics" OR "large language model" OR "large language models" OR "language model" OR "language models" OR "LLM" OR "retrieval augmented generation" OR "retrieval-augmented generation" OR "RAG" OR "generative AI" OR "text classification" OR "sentiment analysis" OR "chatbot" OR "multi-agent system" OR "multiagent system" OR "intelligent agent" OR "autonomous agent" OR "knowledge representation" OR "automated reasoning" OR "AI planning" OR "robotics" OR "human robot interaction" OR "genetic algorithm" OR "particle swarm optimization" OR "swarm intelligence" OR "ant colony optimization" OR "metaheuristic" OR "multiobjective optimization" OR "Bayesian network" OR "support vector machine" OR "random forest"
+Author(s):
+"Gibran Fuentes Pineda" OR "Gibrán Fuentes Pineda" OR "Helena Gómez Adorno" OR "Elena Gómez Adorno" OR "Angel Kuri Morales" OR "Ángel Kuri Morales" OR "Luis Alberto Pineda" OR "Luis Alberto Pineda Cortés" OR "Katya Rodríguez Vázquez" OR "Katya Rodriguez Vazquez" OR "Jesús Savage" OR "Jesus Savage" OR "Ernesto Pérez Rueda" OR "Ernesto Perez Rueda" OR "Carlos Ignacio Hernández Castellanos" OR "Carlos Ignacio Hernandez Castellanos" OR "Iván Vladimir Meza Ruiz" OR "Ivan Vladimir Meza Ruiz" OR "Gerardo Sierra Martínez" OR "Gerardo Sierra Martinez" OR "Christopher Stephens" OR "Cristina Verde Rodarte" OR "David Rosenblueth" OR "Sergio Marcelín" OR "Sergio Marcelin"
+
+
+
+
+
+
+
+Query Redes y Seguridad en Cómputo
+Author affiliation:
+"Universidad Nacional Autónoma de México" OR "Universidad Nacional Autonoma de Mexico" OR "National Autonomous University of Mexico" OR "UNAM" OR "IIMAS UNAM" OR "IIMAS-UNAM"
+Year(s):
+2024 OR 2025
+Title, abstract or author-specified keywords:
+"computer networks" OR "network security" OR "computer security" OR "cybersecurity" OR "information security" OR "cryptography" OR "encryption" OR "digital signature" OR "access control" OR "authentication" OR "authorization" OR "privacy preserving" OR "differential privacy" OR "homomorphic encryption" OR "wireless networks" OR "wireless sensor networks" OR "network protocols" OR "routing" OR "quality of service" OR "software defined networking" OR "SDN" OR "internet of things" OR "IoT" OR "edge computing" OR "fog computing" OR "distributed systems" OR "distributed computing" OR "distributed algorithms" OR "consensus algorithm" OR "Byzantine fault tolerance" OR "shared memory" OR "parallel computing" OR "high performance computing" OR "HPC" OR "MPI" OR "OpenMP" OR "GPU computing" OR "blockchain" OR "smart contracts" OR "distributed ledger"
+Author(s):
+"Sergio Rajsbaum" OR "Víctor Rangel Licea" OR "Javier Gómez" OR "Héctor Benítez" OR "Fabián García Nocetti" OR "Rocío Alejandra Aldeco Pérez" OR "Jorge Luis Ortega Arjona" OR "Gerardo Vega Hernández" OR "Francisco García Jiménez" OR "María Elena Lárraga Ramírez"
+
+
+
+
+
+
+
+Query Teoria de la computacion
+Author affiliation:
+"Universidad Nacional Autónoma de México" OR "Universidad Nacional Autonoma de Mexico" OR "National Autonomous University of Mexico" OR "UNAM" OR "IIMAS UNAM" OR "IIMAS-UNAM"
+Year(s):
+2024 OR 2025
+Title, abstract or author-specified keywords:
+"theory of computation" OR "teoría de la computación" OR "teoria de la computacion" OR "computational complexity" OR "complexity theory" OR "automata theory" OR "formal languages" OR "computability" OR "decidability" OR "Turing machine" OR "formal grammar" OR "lambda calculus" OR "algorithm design" OR "algorithm analysis" OR "NP-complete" OR "NP-hard" OR "parameterized complexity" OR "approximation algorithms" OR "graph algorithms" OR "computational geometry" OR "combinatorial optimization" OR "formal verification" OR "model checking" OR "runtime verification" OR "bounded model checking" OR "temporal logic" OR "linear temporal logic" OR "SAT solver" OR "SMT solver" OR "theorem proving" OR "distributed algorithms" OR "distributed computing" OR "concurrency theory" OR "concurrent data structures" OR "shared memory" OR "consensus algorithm" OR "Byzantine fault tolerance" OR "linearizability" OR "wait-free" OR "finite fields" OR "Galois fields" OR "coding theory" OR "error correcting codes" OR "linear codes" OR "cyclic codes" OR "Reed Solomon" OR "decoding algorithm" OR "cryptographic protocol" OR "data structures" OR "proof theory" OR "modal logic" OR "description logic" OR "Kripke structure" OR "transition system" OR "Markov decision process" OR "population protocol" OR "set agreement"
+Author(s):
+"Armando Castañeda" OR "Armando Castaneda" OR "David Flores Peñaloza" OR "David Flores Penaloza" OR "Francisco Hernández Quiroz" OR "Francisco Hernandez Quiroz" OR "Sergio Rajsbaum" OR "David Rosenblueth" OR "Jorge Urrutia" OR "Everardo Bárcenas Patiño" OR "Everardo Barcenas Patino" OR "César Hernández Cruz" OR "Cesar Hernandez Cruz" OR "Favio Miranda Perea" OR "Carlos Velarde Velázquez" OR "Carlos Velarde Velazquez"
+
+
+
+
+
+
+Query Señales, Imágenes y Ambientes Virtuales
+Author affiliation:
+"Universidad Nacional Autónoma de México" OR "Universidad Nacional Autonoma de Mexico" OR "National Autonomous University of Mexico" OR "UNAM" OR "IIMAS UNAM" OR "IIMAS-UNAM"
+Year(s):
+2024 OR 2025
+Title, abstract or author-specified keywords:
+"signal processing" OR "digital signal processing" OR "procesamiento de señales" OR "procesamiento de senales" OR "image processing" OR "digital image processing" OR "procesamiento de imágenes" OR "procesamiento de imagenes" OR "image analysis" OR "computer vision" OR "visión por computadora" OR "vision por computadora" OR "pattern recognition" OR "reconocimiento de patrones" OR "image segmentation" OR "semantic segmentation" OR "image classification" OR "object detection" OR "feature extraction" OR "image reconstruction" OR "3D reconstruction" OR "three dimensional reconstruction" OR "medical imaging" OR "MRI" OR "ultrasound imaging" OR "computed tomography" OR "image registration" OR "texture analysis" OR "image restoration" OR "image enhancement" OR "wavelet transform" OR "Fourier transform" OR "spectrogram" OR "signal denoising" OR "audio signal processing" OR "speech processing" OR "speech recognition" OR "computer graphics" OR "computer animation" OR "virtual reality" OR "realidad virtual" OR "augmented reality" OR "realidad aumentada" OR "mixed reality" OR "realidad mixta" OR "extended reality" OR "XR" OR "virtual environments" OR "ambientes virtuales" OR "immersive systems" OR "scientific visualization" OR "multimedia systems" OR "human computer interaction" OR "HCI" OR "3D interaction" OR "motion capture" OR "haptic interface" OR "haptic interfaces" OR "gesture recognition" OR "principal component analysis"
+Author(s):
+"Fernando Arámbula Cosío" OR "Fernando Arambula Cosio" OR "Boris Escalante Ramírez" OR "Boris Escalante Ramirez" OR "Gabriel Corkidi" OR "Ernesto Bribiesca" OR "Francisco García Ugalde" OR "Francisco Garcia Ugalde" OR "Edgar Garduño Ángeles" OR "Edgar Garduño Angeles" OR "Alfonso Gastélum Strozzi" OR "Alfonso Gastelum Strozzi" OR "Nidiyare Hevia Montiel" OR "Jorge Márquez Flores" OR "Jorge Marquez Flores" OR "María Elena Martínez Pérez" OR "Maria Elena Martinez Perez" OR "Paul Erick Méndez Monroy" OR "Paul Erick Mendez Monroy" OR "Erik Molino Minero Re" OR "Jimena Olveres Montiel" OR "Miguel Ángel Padilla Castañeda" OR "Miguel Angel Padilla Castañeda" OR "Jorge Luis Pérez González" OR "Jorge Luis Perez Gonzalez" OR "Caleb Antonio Rascón Estebané" OR "Caleb Antonio Rascon Estebane" OR "Jesús Savage Carmona" OR "Jesus Savage Carmona" OR "Jesús Savage" OR "Jesus Savage"
