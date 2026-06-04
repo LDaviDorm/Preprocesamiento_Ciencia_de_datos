@@ -12,3 +12,4 @@ tqdm
 python-Levenshtein
 rapidfuzz
 requests
+tabulate
