@@ -1,12 +1,12 @@
 # Resumen de integración preliminar canónica
 
-Fecha de ejecución: 2026-05-21 03:07:40
+Fecha de ejecución: 2026-06-04 06:13:23
 
 ## Rutas
 
-- Carpeta de entrada: `C:\Users\hazar\Desktop\PROYECTO\02_modelo canonico\02_por_area`
-- Carpeta de salida: `C:\Users\hazar\Desktop\PROYECTO\02_modelo canonico\03_union`
-- Reporte Excel: `C:\Users\hazar\Desktop\PROYECTO\outputs\reportes\reporte_integracion_preliminar.xlsx`
+- Carpeta de entrada: `C:\Users\hazar\Documents\GitHub\Preprocesamiento_Ciencia_de_datos\02_modelo canonico\02_por_area`
+- Carpeta de salida: `C:\Users\hazar\Documents\GitHub\Preprocesamiento_Ciencia_de_datos\02_modelo canonico\03_union`
+- Reporte Excel: `C:\Users\hazar\Documents\GitHub\Preprocesamiento_Ciencia_de_datos\outputs\reportes\reporte_integracion_preliminar.xlsx`
 
 ## Archivos de salida
 

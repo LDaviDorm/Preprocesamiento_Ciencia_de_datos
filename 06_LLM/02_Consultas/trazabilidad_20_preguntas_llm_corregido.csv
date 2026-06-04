@@ -387,20 +387,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
 
 INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
 
@@ -423,7 +423,7 @@ ESTRUCTURA OBLIGATORIA DE LA RESPUESTA:
    - Explica brevemente qué componente permitió responder.
    - SQL: conteos, agrupaciones o filtros.
    - Grafo principal: relaciones artículo-autor-keyword-afiliación.
-   - Subgrafo de coautorí","
+   - Subgrafo de coautoría: coautorías, autores conectados, autores no conectados","
 [motores]
 SQL + grafo principal
 
@@ -511,20 +511,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 D4,descriptiva,¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?,SQL + TF-IDF + grafo principal,SQL + TF-IDF + grafo principal,generico,generico,¿Qué keywords aparecen con mayor frecuencia y en qué áreas se concentran?,qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
@@ -851,20 +851,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep le","
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |","
 [motores]
 SQL + grafo principal + subgrafo de coautoría
 
@@ -968,20 +968,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 D7,descriptiva,"Para la keyword brain, ¿qué artículos la utilizan y qué autores participaron en ellos?",TF-IDF + grafo principal,TF-IDF + grafo principal,generico,generico,brain,qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
@@ -1630,20 +1630,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
 
 INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
 
@@ -1756,20 +1756,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 P3,predictiva,¿Qué pares de autores no conectados tienen mayor posibilidad de formar una nueva colaboración académica?,subgrafo de coautoría,subgrafo de coautoría,generico,generico,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
@@ -1849,20 +1849,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
 
 INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
 
@@ -1956,20 +1956,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 P4,predictiva,"Para artículos relacionados con image processing, ¿qué pares de autores sin coautoría previa deberían recomendarse como candidatos de colaboración?",TF-IDF + grafo principal + subgrafo de coautoría,TF-IDF + grafo principal + subgrafo de coautoría,generico,generico,image processing,qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
@@ -2413,20 +2413,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
 
 INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
 
@@ -2525,20 +2525,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 P8,predictiva,"¿Qué autores que publicaron en el mismo año y en la misma área, pero que aún no han escrito juntos, podrían considerarse candidatos de colaboración?",SQL + subgrafo de coautoría,SQL + subgrafo de coautoría,generico,generico,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
@@ -2644,20 +2644,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
 
 INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
 
@@ -2777,20 +2777,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 P9,predictiva,"Dentro de la afiliación con mayor número de autores, ¿qué pares de autores de la misma área, pero sin coautoría previa, podrían revisarse como posibles colaboradores?",SQL + grafo principal + subgrafo de coautoría,SQL + grafo principal + subgrafo de coautoría,generico,generico,,qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
@@ -2889,20 +2889,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |
 
 INSTRUCCIONES SEGÚN TIPO DE PREGUNTA:
 
@@ -3015,20 +3015,20 @@ Evidencia generada con una función genérica; no se usaron resolutores específ
 | Roman Rossi Pool                     |      10 |
 
 [pares_no_conectados_keywords_compartidas]
-| autor_1                        | autor_2                        |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
-|:-------------------------------|:-------------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
-| Lucas Bayones                  | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Roman Rossi Pool               | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sebastian Pujalte              | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Sergio Parra                   | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Ulises Rodriguez Dominguez     | Viktor Monroy                  |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
-| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Hector Diaz                    | Ulises Rodriguez Dominguez     |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
-| Boris Escalante Ramírez        | Helena Montserrat Gómez Adorno |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        19 |        35 |"
+| autor_1                        | autor_2                    |   keywords_compartidas | keywords                                                                                                               |   grado_1 |   grado_2 |
+|:-------------------------------|:---------------------------|-----------------------:|:-----------------------------------------------------------------------------------------------------------------------|----------:|----------:|
+| Bernardo Andrade Ortega        | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Daniel Suarez Barrera          | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Antonio Paulino Zainos Rosales | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Hector Diaz                    | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Ulises Rodriguez Dominguez     | Viktor Monroy              |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |         0 |        10 |
+| Sergio Parra                   | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Jesus Manuel Alvarez Lopez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Sebastian Pujalte              | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Roman Rossi Pool               | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Norberto Encinas Rodriguez     | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Lucas Bayones                  | Ulises Rodriguez Dominguez |                     13 | action potential; action potentials; animal; animals; biological model; electrophysiology; models; nerve cell          |        10 |         0 |
+| Helena Montserrat Gómez Adorno | Jimena Olveres Montiel     |                     12 | classification; classification tasks; data augmentation; deep learning; diseases; graph neural networks; human; humans |        35 |        17 |"
 P10,predictiva,"¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?",SQL + TF-IDF + subgrafo de coautoría,SQL + TF-IDF + subgrafo de coautoría,generico,generico,"¿Qué pares de autores sin coautoría previa presentan alta similitud temática, pero sus artículos están clasificados en áreas diferentes?",qwen2.5:7b,http://localhost:11434/api/generate,True,"
 Eres un asistente de análisis bibliográfico/académico para una base curada de artículos UNAM en Ciencias de la Computación.
 
